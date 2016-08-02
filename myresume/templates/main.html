@@ -1,0 +1,22 @@
+<!DOCTYPE=html>
+<html>
+<head></head>
+<body>
+	<div>
+		{% for person in persons_list %}
+			<p>{{ person.person_name }}</p>
+			<p>{{ person.person_lastname }}</p>
+			<p>{{ person.person_role }}</p>
+			<p>{{ person.person_birthday }}</p>
+		{% endfor %}
+		{% for skill in skills_list %}
+			<p>{{ skill.skill_name }}</p>
+			<p>{{ skill.skill_description }}</p>
+			<p>{{ skill.skill_type }}</p>
+			<p>{{ skill.skill_category }}</p>
+		{% endfor %}
+	</div>
+</body>
+</html>
+
+
