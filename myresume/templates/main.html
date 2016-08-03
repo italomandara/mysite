@@ -1,8 +1,12 @@
-<!DOCTYPE=html>
+{% load sass_tags %}
+
+<!DOCTYPE html>
 <html>
-<head></head>
+<head>
+	<link href="{% sass_src 'scss/app.scss' %}" rel="stylesheet" type="text/css" />
+</head>
 <body>
-	<div>
+	<div class="row">
 		{% for person in persons_list %}
 			<p>{{ person.person_name }}</p>
 			<p>{{ person.person_lastname }}</p>

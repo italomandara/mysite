@@ -5,7 +5,6 @@ from django.template import loader
 
 from .models import Person, Skill
 
-
 def index(request):
 	persons_list = Person.objects.all()
 	skills_list = Skill.objects.all()
