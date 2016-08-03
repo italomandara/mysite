@@ -124,8 +124,6 @@ STATIC_ROOT = os.path.join(BASE_DIR, "static")
 STATICFILES_DIRS = [
     os.path.join(ROOT_PATH, 'static'),
 ]
-print STATICFILES_DIRS
-print STATIC_ROOT
 
 # sass processor settings
 SASS_PROCESSOR_ROOT = os.path.join(ROOT_PATH, 'static')
