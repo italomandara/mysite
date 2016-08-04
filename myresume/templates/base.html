@@ -1,0 +1,24 @@
+{% load sass_tags %}
+{% load static from staticfiles %}
+
+<!DOCTYPE html>
+<html>
+	<head>
+		{% block head %}
+		<link href="{% sass_src 'scss/app.scss' %}" rel="stylesheet" type="text/css" />
+		{% endblock %}
+	</head>
+	<body>
+		{% block header-body %}
+		{% endblock %}
+		{% block body %}
+		{% endblock %}
+		{% block footer-body %}
+		{% endblock %}
+		{% block footer-js %}
+		<script type="text/javascript" src="{% static 'app.js' %}"></script>
+		{% endblock %}
+	</body>
+</html>
+
+

@@ -1,0 +1,11 @@
+<div class="column category-{{ skill.get_skill_category }} subcategory-{{ skill.subcategory }}" data-equalizer-watch>
+	<div class="callout secondary large">
+		<h4><i class="ico {{ skill.icon }}"></i>{{ skill.name }}</h4>
+		<p>{{ skill.description }}</p>
+		<p>
+			<span class="secondary label">{{ skill.get_skill_category }}</span>
+			<span class="secondary label">{{ skill.subcategory }}</span>
+		</p>
+		<progress max="10" value="{{ skill.rating }}"></progress>
+	</div>
+</div>

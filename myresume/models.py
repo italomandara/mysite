@@ -5,10 +5,10 @@ from django.db import models
 # Create your models here.
 
 class Person(models.Model):
-    person_name = models.CharField(max_length=200)
-    person_lastname = models.CharField(max_length=200)
-    person_role = models.CharField(max_length=200)
-    person_birthday = models.DateTimeField('Birthday')
+    name = models.CharField(max_length=200)
+    lastname = models.CharField(max_length=200)
+    role = models.CharField(max_length=200)
+    birthday = models.DateTimeField('Birthday')
 
 
 class Skill(models.Model):
@@ -16,22 +16,22 @@ class Skill(models.Model):
 	DESIGN = 'DS'
 	CODING = 'CO'
 	HUMAN = 'HU'
-	SKILL_TYPES = (
+	TYPES = (
         (PRINT , 'Print'),
         (DESIGN , 'Design'),
         (CODING , 'Coding'),
         (HUMAN , 'Human')
     )
-	skill_type = models.CharField(
+	category = models.CharField(
     	max_length = 2,
-    	choices = SKILL_TYPES,
+    	choices = TYPES,
     	default = CODING,
     )
-	skill_name = models.CharField(max_length=200)
-	skill_description = models.CharField(max_length=200)
-	skill_icon = models.CharField(max_length=200)
-	skill_rating = models.IntegerField(default=0)
-	skill_category = models.CharField(max_length=200)
+	name = models.CharField(max_length=200)
+	description = models.TextField(max_length=5000)
+	icon = models.CharField(max_length=200)
+	rating = models.IntegerField(default=0)
+	subcategory = models.CharField(max_length=200)
 
-	def get_skill_type(self):
-		return self.skill_type
+	def get_skill_category(self):
+		return dict(self.TYPES)[self.category]
