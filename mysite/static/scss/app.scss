@@ -4,40 +4,109 @@
 @import 'foundation';
 @import 'motion-ui';
 
-@include foundation-global-styles;
-@include foundation-grid;
-@include foundation-typography;
-@include foundation-button;
-@include foundation-forms;
-@include foundation-visibility-classes;
-@include foundation-float-classes;
-@include foundation-accordion;
-@include foundation-badge;
-@include foundation-breadcrumbs;
-@include foundation-button-group;
-@include foundation-callout;
-@include foundation-close-button;
-@include foundation-drilldown-menu;
-@include foundation-dropdown;
-@include foundation-dropdown-menu;
-@include foundation-flex-video;
-@include foundation-label;
-@include foundation-media-object;
-@include foundation-menu;
-@include foundation-off-canvas;
-@include foundation-orbit;
-@include foundation-pagination;
-@include foundation-progress-bar;
-@include foundation-slider;
-@include foundation-sticky;
-@include foundation-reveal;
-@include foundation-switch;
-@include foundation-table;
-@include foundation-tabs;
-@include foundation-thumbnail;
-@include foundation-title-bar;
-@include foundation-tooltip;
-@include foundation-top-bar;
+@include foundation-everything();
 
-@include motion-ui-transitions;
-@include motion-ui-animations;
+.large-masonry-4
+{
+    @include breakpoint(xlarge down)
+    {
+           -moz-column-count: 4;
+        -webkit-column-count: 4;
+                column-count: 4;
+           -moz-column-gap: $grid-column-gutter;
+        -webkit-column-gap: $grid-column-gutter;
+                column-gap: $grid-column-gutter;
+        > div
+        {
+            display: inline-block;
+
+            width: 100%;
+            margin-bottom: $grid-column-gutter/2;
+        }
+    }
+}
+
+
+.medium-masonry-3
+{
+    @include breakpoint(medium down)
+    {
+           -moz-column-count: 3;
+        -webkit-column-count: 3;
+                column-count: 3;
+           -moz-column-gap: $grid-column-gutter;
+        -webkit-column-gap: $grid-column-gutter;
+                column-gap: $grid-column-gutter;
+        > div
+        {
+            display: inline-block;
+
+            width: 100%;
+            margin-bottom: $grid-column-gutter/2;
+        }
+    }
+}
+
+.small-masonry-2
+{
+    @include breakpoint(small only)
+    {
+           -moz-column-count: 2;
+        -webkit-column-count: 2;
+                column-count: 2;
+           -moz-column-gap: $grid-column-gutter;
+        -webkit-column-gap: $grid-column-gutter;
+                column-gap: $grid-column-gutter;
+        > div
+        {
+            display: inline-block;
+
+            width: 100%;
+            margin-bottom: $grid-column-gutter/2;
+        }
+    }
+}
+
+.medium-masonry-2
+{
+    @include breakpoint(medium down)
+    {
+           -moz-column-count: 2;
+        -webkit-column-count: 2;
+                column-count: 2;
+           -moz-column-gap: $grid-column-gutter;
+        -webkit-column-gap: $grid-column-gutter;
+                column-gap: $grid-column-gutter;
+        > div
+        {
+            display: inline-block;
+
+            width: 100%;
+            margin-bottom: $grid-column-gutter/2;
+        }
+    }
+}
+
+.small-masonry-1
+{
+    @include breakpoint(small only)
+    {
+           -moz-column-count: 1;
+        -webkit-column-count: 1;
+                column-count: 1;
+           -moz-column-gap: 0;
+        -webkit-column-gap: 0;
+                column-gap: 0;
+        > div
+        {
+            display: inline-block;
+
+            width: 100%;
+            margin-bottom: $grid-column-gutter/2;
+        }
+    }
+}
+
+body>.row{
+	padding: 0 $grid-column-gutter;
+}
