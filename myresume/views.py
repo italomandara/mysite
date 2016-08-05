@@ -6,12 +6,12 @@ from django.template import loader
 from .models import Person, Skill, MyContent
 
 def index(request):
-	persons_list = Person.objects.all()
+	person = Person.objects.get(name__iexact='italo')
 	skills_list = Skill.objects.all()
 	intro = MyContent.objects.get(slug='intro')
 	template = loader.get_template('main.html')
 	context = {
-		'persons_list': persons_list,
+		'person': person,
 		'skills_list': skills_list,
 		'intro': intro
     }

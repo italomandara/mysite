@@ -2,11 +2,9 @@
 
 {% block body %}
 	<div class="row">
-		{% for person in persons_list %}
-			<h1>{{ intro.h1 }}</h1>
-			<h3>{{ intro.h2 }}</h3>
-			<p>{{ intro.body }}</p>
-		{% endfor %}
+		<h1>{{ intro.h1 }}</h1>
+		<h3>{{ intro.h2 }}</h3>
+		<p>{{ intro.body }}</p>
 		<div class="small-masonry-1 medium-masonry-2 large-masonry-4">
 			{% for skill in skills_list %}
 				{% include 'skill.html' %}

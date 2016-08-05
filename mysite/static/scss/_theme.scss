@@ -1,0 +1,41 @@
+@mixin masonry($masonry-columns, $masonry-gutter)
+{
+       -moz-column-count: $masonry-columns;
+    -webkit-column-count: $masonry-columns;
+            column-count: $masonry-columns;
+       -moz-column-gap: $masonry-gutter;
+    -webkit-column-gap: $masonry-gutter;
+            column-gap: $masonry-gutter;
+    > div
+    {
+        display: inline-block;
+        width: 100%;
+        margin-bottom: $masonry-gutter/2;
+    }
+}
+@mixin responsiveMasonry($max-columns-masonry: 4) {
+    @for $iterate-columns from $max-columns-masonry*-1 through -1 {
+        $iterate-columns: $iterate-columns*-1;
+        .large-masonry-#{$iterate-columns} {
+            @include breakpoint(xlarge down) {
+                @include masonry($iterate-columns, $grid-column-gutter);
+            }
+        }
+        .medium-masonry-#{$iterate-columns} {
+            @include breakpoint(medium down) {
+                @include masonry($iterate-columns, $grid-column-gutter);
+            }
+        }
+        .small-masonry-#{$iterate-columns} {
+            @include breakpoint(small only) {
+                @include masonry($iterate-columns, $grid-column-gutter);
+            }
+        }
+    }
+}
+
+@include responsiveMasonry()
+
+body>.row, {
+	padding: 0 $grid-column-gutter;
+}

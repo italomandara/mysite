@@ -6,10 +6,13 @@
 	<head>
 		{% block head %}
 		<link href="{% sass_src 'scss/app.scss' %}" rel="stylesheet" type="text/css" />
+		<link href="https://fonts.googleapis.com/css?family=Oxygen:300" rel="stylesheet">
+		<link href="https://fonts.googleapis.com/css?family=Oswald" rel="stylesheet">
 		{% endblock %}
 	</head>
 	<body>
 		{% block header-body %}
+		{% include 'header.html' %}
 		{% endblock %}
 		{% block body %}
 		{% endblock %}

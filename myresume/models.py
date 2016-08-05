@@ -28,6 +28,7 @@ class Skill(models.Model):
     )
 	name = models.CharField(max_length=255)
 	description = models.TextField(max_length=5000)
+	description_it = models.TextField(max_length=5000)
 	icon = models.CharField(max_length=255)
 	rating = models.IntegerField(default=0)
 	subcategory = models.CharField(max_length=255)
@@ -46,3 +47,67 @@ class MyContent(models.Model):
 	h2_it = models.CharField(max_length=255, blank=True)
 	body_it = models.TextField(max_length=5000)
 	layout_class = models.CharField(max_length=255, blank=True)
+
+class Job(models.Model):
+	PRINT = 'PR'
+	DESIGN = 'DS'
+	CODING = 'CO'
+	HUMAN = 'HU'
+	TYPES = (
+        (PRINT , 'Print'),
+        (DESIGN , 'Design'),
+        (CODING , 'Coding'),
+        (HUMAN , 'Human')
+    )
+	category = models.CharField(
+    	max_length = 2,
+    	choices = TYPES,
+    	default = CODING,
+    )
+	h1 = models.CharField(max_length=255, blank=True)
+	h2 = models.CharField(max_length=255, blank=True)
+	h1_it = models.CharField(max_length=255, blank=True)
+	h2_it = models.CharField(max_length=255, blank=True)
+	description = models.TextField(max_length=5000)
+	description_it = models.TextField(max_length=5000)
+	
+	location = models.CharField(max_length=255, blank=True)
+	layout_class = models.CharField(max_length=255, blank=True)
+
+	start_date = models.DateField('Start Date')
+	end_date = models.DateField('End Date')
+
+	def get_job_category(self):
+		return dict(self.TYPES)[self.category]
+
+class Course(models.Model):
+	PRINT = 'PR'
+	DESIGN = 'DS'
+	CODING = 'CO'
+	HUMAN = 'HU'
+	SCHOOL = 'SC'
+	TYPES = (
+        (PRINT , 'Print'),
+        (DESIGN , 'Design'),
+        (CODING , 'Coding'),
+        (HUMAN , 'Human'),
+        (SCHOOL , 'School')
+    )
+	category = models.CharField(
+    	max_length = 2,
+    	choices = TYPES,
+    	default = SCHOOL,
+    )
+	title = models.CharField(max_length=255, blank=True)
+	title_it = models.CharField(max_length=255, blank=True)
+	description = models.TextField(max_length=5000)
+	description_it = models.TextField(max_length=5000)
+	
+	location = models.CharField(max_length=255, blank=True)
+	layout_class = models.CharField(max_length=255, blank=True)
+
+	start_date = models.DateField('Start Date')
+	end_date = models.DateField('End Date')
+
+	def get_job_category(self):
+		return dict(self.TYPES)[self.category]
