@@ -6,7 +6,9 @@
 			<span class="secondary label">{{ skill.get_skill_category }}</span>
 			<span class="secondary label">{{ skill.subcategory }}</span>
 		</p>
-		<progress max="10" value="{{ skill.rating }}"></progress>
+		<div class="progress" role="progressbar" tabindex="0" >
+			<div class="progress-meter" style="width: {{ skill.rating }}0%"></div>
+		</div>
 	</div>
 </div>
 

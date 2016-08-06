@@ -109,5 +109,5 @@ class Course(models.Model):
 	start_date = models.DateField('Start Date')
 	end_date = models.DateField('End Date')
 
-	def get_job_category(self):
+	def get_course_category(self):
 		return dict(self.TYPES)[self.category]

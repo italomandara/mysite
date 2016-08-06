@@ -3418,7 +3418,7 @@ table.hover tr:nth-of-type(even):hover {
     .large-masonry-4 > div {
       display: inline-block;
       width: 100%;
-      margin-bottom: 15px; } }
+      margin-bottom: 30px; } }
 
 @media screen and (max-width: 63.9375em) {
   .medium-masonry-4 {
@@ -3431,7 +3431,7 @@ table.hover tr:nth-of-type(even):hover {
     .medium-masonry-4 > div {
       display: inline-block;
       width: 100%;
-      margin-bottom: 15px; } }
+      margin-bottom: 30px; } }
 
 @media screen and (min-width: 0em) and (max-width: 31.9375em) {
   .small-masonry-4 {
@@ -3444,7 +3444,7 @@ table.hover tr:nth-of-type(even):hover {
     .small-masonry-4 > div {
       display: inline-block;
       width: 100%;
-      margin-bottom: 15px; } }
+      margin-bottom: 30px; } }
 
 @media screen and (max-width: 89.9375em) {
   .large-masonry-3 {
@@ -3457,7 +3457,7 @@ table.hover tr:nth-of-type(even):hover {
     .large-masonry-3 > div {
       display: inline-block;
       width: 100%;
-      margin-bottom: 15px; } }
+      margin-bottom: 30px; } }
 
 @media screen and (max-width: 63.9375em) {
   .medium-masonry-3 {
@@ -3470,7 +3470,7 @@ table.hover tr:nth-of-type(even):hover {
     .medium-masonry-3 > div {
       display: inline-block;
       width: 100%;
-      margin-bottom: 15px; } }
+      margin-bottom: 30px; } }
 
 @media screen and (min-width: 0em) and (max-width: 31.9375em) {
   .small-masonry-3 {
@@ -3483,7 +3483,7 @@ table.hover tr:nth-of-type(even):hover {
     .small-masonry-3 > div {
       display: inline-block;
       width: 100%;
-      margin-bottom: 15px; } }
+      margin-bottom: 30px; } }
 
 @media screen and (max-width: 89.9375em) {
   .large-masonry-2 {
@@ -3496,7 +3496,7 @@ table.hover tr:nth-of-type(even):hover {
     .large-masonry-2 > div {
       display: inline-block;
       width: 100%;
-      margin-bottom: 15px; } }
+      margin-bottom: 30px; } }
 
 @media screen and (max-width: 63.9375em) {
   .medium-masonry-2 {
@@ -3509,7 +3509,7 @@ table.hover tr:nth-of-type(even):hover {
     .medium-masonry-2 > div {
       display: inline-block;
       width: 100%;
-      margin-bottom: 15px; } }
+      margin-bottom: 30px; } }
 
 @media screen and (min-width: 0em) and (max-width: 31.9375em) {
   .small-masonry-2 {
@@ -3522,7 +3522,7 @@ table.hover tr:nth-of-type(even):hover {
     .small-masonry-2 > div {
       display: inline-block;
       width: 100%;
-      margin-bottom: 15px; } }
+      margin-bottom: 30px; } }
 
 @media screen and (max-width: 89.9375em) {
   .large-masonry-1 {
@@ -3535,7 +3535,7 @@ table.hover tr:nth-of-type(even):hover {
     .large-masonry-1 > div {
       display: inline-block;
       width: 100%;
-      margin-bottom: 15px; } }
+      margin-bottom: 30px; } }
 
 @media screen and (max-width: 63.9375em) {
   .medium-masonry-1 {
@@ -3548,7 +3548,7 @@ table.hover tr:nth-of-type(even):hover {
     .medium-masonry-1 > div {
       display: inline-block;
       width: 100%;
-      margin-bottom: 15px; } }
+      margin-bottom: 30px; } }
 
 @media screen and (min-width: 0em) and (max-width: 31.9375em) {
   .small-masonry-1 {
@@ -3561,9 +3561,69 @@ table.hover tr:nth-of-type(even):hover {
     .small-masonry-1 > div {
       display: inline-block;
       width: 100%;
-      margin-bottom: 15px; } }
+      margin-bottom: 30px; } }
+
+.margin.none {
+  margin: 0; }
+
+.margin.bottom {
+  margin-bottom: 30px; }
+  .margin.bottom.none {
+    margin-bottom: 0; }
+
+.margin.top {
+  margin-top: 30px; }
+  .margin.top.none {
+    margin-top: 0; }
+
+.margin.small.bottom {
+  margin-bottom: 15px; }
+
+.margin.small.top {
+  margin-top: 15px; }
+
+.margin.medium.bottom {
+  margin-bottom: 45px; }
+
+.margin.medium.top {
+  margin-top: 45px; }
+
+.margin.large.bottom {
+  margin-bottom: 60px; }
+
+.margin.large.top {
+  margin-top: 60px; }
+
+.margin.xlarge.bottom {
+  margin-bottom: 60px; }
+
+.margin.xlarge.top {
+  margin-top: 60px; }
 
 body > .row {
   padding: 0 30px; }
+
+.set-text-color.to-white {
+  color: white; }
+
+.set-text-color.to-black {
+  color: #0a0a0a; }
+
+.set-text-color.to-gray {
+  color: #cacaca; }
+
+.set-text-color.to-light-gray {
+  color: #e6e6e6; }
+
+.set-text-color.to-dark-gray {
+  color: #8a8a8a; }
+
+.callout {
+  border-radius: 1px;
+  border: none;
+  box-shadow: 0 0 2px rgba(0, 0, 0, 0.35); }
+
+.masonry > .callout, .masonry > div > .callout {
+  margin: 2px 2px 0; }
 
 /*# sourceMappingURL=../../../../../../../static/scss/app.css.map */
