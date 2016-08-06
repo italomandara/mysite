@@ -11,6 +11,9 @@ def index(request):
 	job_history = Job.objects.all().order_by('-end_date')
 	education = Course.objects.all().order_by('-end_date')
 	intro = MyContent.objects.get(slug='intro')
+	achievements = MyContent.objects.get(slug='achievements')
+	profile = MyContent.objects.get(slug='profile')
+	skills = MyContent.objects.get(slug='skills')
 	template = loader.get_template('home/index.html')
 	context = {
 		'person': person,
@@ -18,5 +21,8 @@ def index(request):
 		'intro': intro,
 		'job_history': job_history,
 		'education': education,
+		'achievements': achievements,
+		'profile': profile,
+		'skills': skills,
     }
 	return HttpResponse(template.render(context, request))

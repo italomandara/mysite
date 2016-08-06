@@ -6,9 +6,20 @@
 	<div class="row">
 		<h1 class="margin top">{{ intro.h1 }}</h1>
 		<h3 class="small margin bottom">{{ intro.h2 }}</h3>
-		<p class="medium-masonry-1 large-masonry-2 margin bottom">{{ intro.body }}</p>
+		<p class="medium-masonry-1 large-masonry-3 margin bottom">{{ intro.body }}</p>
+		
+		<div class="row">
+			{% if profile %}
+				{% include 'home/partials/row.html' with mycontent=profile class="medium-6 column" %}
+			{% endif %}		
+
+			{% if skills %}
+				{% include 'home/partials/row.html' with mycontent=skills class="medium-6 column" %}
+			{% endif %}
+		</div>
+
 		{% if skills_list|length %}
-			<h4 class="margin bottom">{% trans "Skills" %}</h4>
+			<h4 class="margin bottom">{% trans "Skills list" %}</h4>
 			<div class="masonry small-masonry-1 medium-masonry-2 large-masonry-4 margin bottom">
 				{% for skill in skills_list %}
 					{% include 'home/partials/skill.html' %}
@@ -23,6 +34,11 @@
 				{% endfor %}
 			</div>
 		{% endif %}
+
+		{% if achievements %}
+			{% include 'home/partials/row.html' with mycontent=achievements class="large-6" %}
+		{% endif %}
+
 		{% if education %}
 			<h4 class="margin bottom">{% trans "Education and Courses" %}</h4>
 			<div class="small-masonry-1 large-masonry-2">
