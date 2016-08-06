@@ -33,6 +33,7 @@ ALLOWED_HOSTS = []
 INSTALLED_APPS = [
     'myresume.apps.MyresumeConfig',
     'sass_processor',
+    'django_markup',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',

@@ -1,12 +1,13 @@
-
 {% extends 'base.html' %}
+
 {% load i18n %}
+{% load markup_tags %}
 
 {% block body %}
 	<div class="row">
 		<h1 class="margin top">{{ intro.h1 }}</h1>
 		<h3 class="small margin bottom">{{ intro.h2 }}</h3>
-		<p class="medium-masonry-1 large-masonry-3 margin bottom">{{ intro.body }}</p>
+		<p class="medium-masonry-1 large-masonry-3 margin bottom">{{ intro.body|apply_markup:"markdown" }}</p>
 		
 		<div class="row">
 			{% if profile %}
@@ -26,26 +27,32 @@
 				{% endfor %}
 			</div>
 		{% endif %}
-		{% if job_history|length %}
-			<h4 class="margin bottom">{% trans "Job History" %}</h4>
-			<div class="small-masonry-1 large-masonry-2">
-				{% for job in job_history %}
-					{% include 'home/partials/job.html' %}
-				{% endfor %}
+		
+		<div class="row">
+			<div class="medium-9 column">
+				{% if job_history|length %}
+					<h4 class="margin bottom">{% trans "Job History" %}</h4>
+					<div class="small-masonry-1 large-masonry-2">
+						{% for job in job_history %}
+							{% include 'home/partials/job.html' %}
+						{% endfor %}
+					</div>
+				{% endif %}				
 			</div>
-		{% endif %}
-
+			<div class="medium-3 column">
+				{% if education %}
+					<h4 class="margin bottom">{% trans "Education and Courses" %}</h4>
+					<div class="small-masonry-1 large-masonry-2">
+						{% for school in education %}
+							{% include 'home/partials/education.html' %}
+						{% endfor %}
+					</div>
+				{% endif %}				
+			</div>
+		</div>
 		{% if achievements %}
 			{% include 'home/partials/row.html' with mycontent=achievements class="large-6" %}
 		{% endif %}
 
-		{% if education %}
-			<h4 class="margin bottom">{% trans "Education and Courses" %}</h4>
-			<div class="small-masonry-1 large-masonry-2">
-				{% for school in education %}
-					{% include 'home/partials/education.html' %}
-				{% endfor %}
-			</div>
-		{% endif %}
 	</div>
 {% endblock %}
