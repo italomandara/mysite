@@ -52,22 +52,23 @@ class Job(models.Model):
 	PRINT = 'PR'
 	DESIGN = 'DS'
 	CODING = 'CO'
-	HUMAN = 'HU'
+	OTHER = 'OT'
 	TYPES = (
         (PRINT , 'Print'),
         (DESIGN , 'Design'),
         (CODING , 'Coding'),
-        (HUMAN , 'Human')
+        (OTHER , 'Human')
     )
 	category = models.CharField(
     	max_length = 2,
     	choices = TYPES,
     	default = CODING,
     )
-	h1 = models.CharField(max_length=255, blank=True)
-	h2 = models.CharField(max_length=255, blank=True)
-	h1_it = models.CharField(max_length=255, blank=True)
-	h2_it = models.CharField(max_length=255, blank=True)
+	name = models.CharField(max_length=255, blank=True)
+	excerpt = models.CharField(max_length=255, blank=True)
+	company = models.CharField(max_length=255, blank=True)
+	name_it = models.CharField(max_length=255, blank=True)
+	excerpt_it = models.CharField(max_length=255, blank=True)
 	description = models.TextField(max_length=5000)
 	description_it = models.TextField(max_length=5000)
 	

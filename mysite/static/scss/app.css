@@ -3563,7 +3563,10 @@ table.hover tr:nth-of-type(even):hover {
       width: 100%;
       margin-bottom: 30px; } }
 
-.margin.none {
+.margin.adjust-top {
+  margin-top: -0.4em; }
+
+.margin.none:not(.bottom):not(.top) {
   margin: 0; }
 
 .margin.bottom {
@@ -3575,6 +3578,12 @@ table.hover tr:nth-of-type(even):hover {
   margin-top: 30px; }
   .margin.top.none {
     margin-top: 0; }
+
+.margin.xsmall.bottom {
+  margin-bottom: 7.5px; }
+
+.margin.xsmall.top {
+  margin-top: 7.5px; }
 
 .margin.small.bottom {
   margin-bottom: 15px; }
@@ -3625,5 +3634,15 @@ body > .row {
 
 .masonry > .callout, .masonry > div > .callout {
   margin: 2px 2px 0; }
+
+.top-bar.in-grid {
+  padding-left: 0;
+  padding-right: 0; }
+  .top-bar.in-grid .row {
+    padding-left: 30px;
+    padding-right: 30px;
+    margin: 0 auto; }
+  .top-bar.in-grid .menu-text {
+    padding-left: 0; }
 
 /*# sourceMappingURL=../../../../../../../static/scss/app.css.map */

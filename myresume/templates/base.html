@@ -5,14 +5,23 @@
 <html>
 	<head>
 		{% block head %}
-		<link href="{% sass_src 'scss/app.scss' %}" rel="stylesheet" type="text/css" />
-		<link href="https://fonts.googleapis.com/css?family=Oxygen:300" rel="stylesheet">
-		<link href="https://fonts.googleapis.com/css?family=Oswald" rel="stylesheet">
+			{% block page-title%}
+			<title>{% block page-title-prefix%}home{% endblock %} @ Italo Mandara cv</title>
+			{% endblock %}
+			{% block page-meta%}
+			{% endblock %}
+			{% block head-css %}
+			<link href="{% sass_src 'scss/app.scss' %}" rel="stylesheet" type="text/css" />
+			<link href="https://fonts.googleapis.com/css?family=Oxygen:300" rel="stylesheet">
+			<link href="https://fonts.googleapis.com/css?family=Oswald" rel="stylesheet">
+			{% endblock %}
+			{% block head-js%}
+			{% endblock %}
 		{% endblock %}
 	</head>
 	<body>
 		{% block header-body %}
-		{% include 'header.html' %}
+		{% include 'shared/header.html' %}
 		{% endblock %}
 		{% block body %}
 		{% endblock %}

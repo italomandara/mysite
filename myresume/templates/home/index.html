@@ -1,3 +1,4 @@
+
 {% extends 'base.html' %}
 {% load i18n %}
 
@@ -7,26 +8,26 @@
 		<h3 class="small margin bottom">{{ intro.h2 }}</h3>
 		<p class="medium-masonry-1 large-masonry-2 margin bottom">{{ intro.body }}</p>
 		{% if skills_list|length %}
-		<h4>{% trans "Skills" %}</h4>
-		<div class="masonry small-masonry-1 medium-masonry-2 large-masonry-4 margin bottom">
-			{% for skill in skills_list %}
-				{% include 'skill.html' %}
-			{% endfor %}
-		</div>
+			<h4 class="margin bottom">{% trans "Skills" %}</h4>
+			<div class="masonry small-masonry-1 medium-masonry-2 large-masonry-4 margin bottom">
+				{% for skill in skills_list %}
+					{% include 'home/partials/skill.html' %}
+				{% endfor %}
+			</div>
 		{% endif %}
 		{% if job_history|length %}
-		<h4>{% trans "Job History" %}</h4>
+			<h4 class="margin bottom">{% trans "Job History" %}</h4>
 			<div class="small-masonry-1 large-masonry-2">
 				{% for job in job_history %}
-					{% include 'job.html' %}
+					{% include 'home/partials/job.html' %}
 				{% endfor %}
 			</div>
 		{% endif %}
 		{% if education %}
-			<h4>{% trans "Education and Courses" %}</h4>
+			<h4 class="margin bottom">{% trans "Education and Courses" %}</h4>
 			<div class="small-masonry-1 large-masonry-2">
 				{% for school in education %}
-					{% include 'education.html' %}
+					{% include 'home/partials/education.html' %}
 				{% endfor %}
 			</div>
 		{% endif %}
