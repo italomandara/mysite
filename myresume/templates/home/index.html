@@ -18,18 +18,22 @@
 				{% include 'home/partials/row.html' with mycontent=skills class="medium-6 column" %}
 			{% endif %}
 		</div>
-
-		{% if skills_list|length %}
-			<h4 class="margin bottom">{% trans "Skills list" %}</h4>
-			<div class="masonry small-masonry-1 medium-masonry-2 large-masonry-4 margin bottom">
-				{% for skill in skills_list %}
-					{% include 'home/partials/skill.html' %}
-				{% endfor %}
-			</div>
-		{% endif %}
-		
+	</div>
+	<div class="background-color-1 pad on-top margin bottom">
 		<div class="row">
-			<div class="medium-9 column">
+			{% if skills_list|length %}
+				<h4 class="margin bottom set-text-color to-white">{% trans "Skills list" %}</h4>
+				<div class="masonry small-masonry-1 medium-masonry-2 large-masonry-4 margin bottom">
+					{% for skill in skills_list %}
+						{% include 'home/partials/skill.html' %}
+					{% endfor %}
+				</div>
+			{% endif %}
+		</div>
+	</div>
+	<div class="row">
+		<div class="row">
+			<div class="large-9 column">
 				{% if job_history|length %}
 					<h4 class="margin bottom">{% trans "Job History" %}</h4>
 					<div class="small-masonry-1 large-masonry-2">
@@ -39,7 +43,7 @@
 					</div>
 				{% endif %}				
 			</div>
-			<div class="medium-3 column">
+			<div class="large-3 column">
 				{% if education %}
 					<h4 class="margin bottom">{% trans "Education and Courses" %}</h4>
 					<div class="small-masonry-1 large-masonry-2">

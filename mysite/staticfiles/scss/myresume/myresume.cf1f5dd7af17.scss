@@ -1,0 +1,123 @@
+@import 'partials/variables';
+@import 'partials/mixins';
+
+@include responsiveMasonry()
+
+.margin{
+    &.adjust-top{
+        margin-top: -0.4em;
+    }
+
+    &.none:not(.bottom):not(.top) {
+        margin: 0;
+    }
+
+    &.bottom{
+        margin-bottom: $my-global-margin;
+        &.none {
+            margin-bottom: 0;
+        }
+    }
+    &.top {
+        margin-top: $my-global-margin;
+        &.none {
+            margin-top: 0;
+        }
+    }
+    &.xsmall{
+        &.bottom {
+            margin-bottom: $my-global-margin/4;
+        }
+        &.top {
+            margin-top: $my-global-margin/4;
+        }
+    }
+    &.small{
+        &.bottom {
+            margin-bottom: $my-global-margin/2;
+        }
+        &.top {
+            margin-top: $my-global-margin/2;
+        }
+    }
+    &.medium{
+        &.bottom{
+            margin-bottom: $my-global-margin*1.5;
+        }
+        &.top{
+            margin-top: $my-global-margin*1.5;
+        }
+    }
+    &.large{
+        &.bottom{
+            margin-bottom: $my-global-margin*2;
+        }
+        &.top{
+            margin-top: $my-global-margin*2;
+        }
+    }
+    &.xlarge{
+        &.bottom{
+            margin-bottom: $my-global-margin*2;
+        }
+        &.top{
+            margin-top: $my-global-margin*2;
+        }
+    }
+}
+
+body {
+    >.row, {
+    	padding: 0 $my-minimum-row-margin;
+    }
+}
+
+.set-text-color{
+    &.to-white{
+        color: white;
+    }
+    &.to-black{
+        color: $black;
+    }
+    &.to-gray{
+        color: $medium-gray;
+    }
+    &.to-light-gray{
+        color: $light-gray;
+    }
+    &.to-dark-gray{
+        color: $dark-gray;
+    }
+}
+
+.callout{
+    border-radius: $global-border-radius;
+    border: none;
+    box-shadow: 0 0 $global-shadow-size $global-shadow-color;
+}
+
+.masonry{
+    > .callout, > div > .callout{
+        margin: $global-shadow-size $global-shadow-size 0;
+    }
+}
+
+.top-bar.in-grid{
+        padding: {
+            left: 0;
+            right: 0; 
+        }
+    .row{
+        padding: {
+            left: $my-minimum-row-margin;
+            right: $my-minimum-row-margin; 
+        }
+        margin: 0 auto;
+    }
+    .menu-text {
+         padding: {
+            left: 0;
+        }
+    }
+}
+
