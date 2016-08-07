@@ -24,5 +24,9 @@ def index(request):
 		'achievements': achievements,
 		'profile': profile,
 		'skills': skills,
+		'page' : {
+			'title': 'home',
+			'description': intro.h1 + ', ' + intro.h2 ,
+		},
     }
 	return HttpResponse(template.render(context, request))

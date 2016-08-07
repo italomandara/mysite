@@ -3643,10 +3643,14 @@ body > .row, body > div:not(.row) > .row {
     padding-right: 30px;
     margin: 0 auto; }
   .top-bar.in-grid .menu-text {
+    font-weight: normal;
     padding-left: 0; }
 
 .background-color-1 {
   background-color: #8a8a8a; }
+
+.background-color-2 {
+  background-color: #cacaca; }
 
 .pad {
   padding: 30px; }

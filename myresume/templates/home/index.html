@@ -19,7 +19,7 @@
 			{% endif %}
 		</div>
 	</div>
-	<div class="background-color-1 pad on-top margin bottom">
+	<div class="background-color-1 pad on-top">
 		<div class="row">
 			{% if skills_list|length %}
 				<h4 class="margin bottom set-text-color to-white">{% trans "Skills list" %}</h4>
@@ -33,17 +33,19 @@
 	</div>
 	<div class="row">
 		<div class="row">
-			<div class="large-9 column">
-				{% if job_history|length %}
-					<h4 class="margin bottom">{% trans "Job History" %}</h4>
-					<div class="small-masonry-1 large-masonry-2">
-						{% for job in job_history %}
-							{% include 'home/partials/job.html' %}
-						{% endfor %}
-					</div>
-				{% endif %}				
+			<div class="large-8 column">
+				<div class="background-color-2 pad margin top">
+					{% if job_history|length %}
+						<h4 class="margin bottom set-text-color to-white">{% trans "Job History" %}</h4>
+						<div class="small-masonry-1 large-masonry-2">
+							{% for job in job_history %}
+								{% include 'home/partials/job.html' %}
+							{% endfor %}
+						</div>
+					{% endif %}	
+				</div>		
 			</div>
-			<div class="large-3 column">
+			<div class="large-4 column margin top">
 				{% if education %}
 					<h4 class="margin bottom">{% trans "Education and Courses" %}</h4>
 					<div class="small-masonry-1 large-masonry-2">
@@ -58,5 +60,7 @@
 			{% include 'home/partials/row.html' with mycontent=achievements class="large-6" %}
 		{% endif %}
 
+		<p>{% trans 'Interested' %}?<a href="javascript:void(0)" data-open="contact"> {% trans 'contact me' %}</a></p>
+		{% include 'shared/modal.html' with modal_id="contact" %}
 	</div>
 {% endblock %}

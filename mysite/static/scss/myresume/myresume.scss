@@ -115,6 +115,7 @@ body {
         margin: 0 auto;
     }
     .menu-text {
+        font-weight: normal;
          padding: {
             left: 0;
         }
@@ -123,6 +124,9 @@ body {
 
 .background-color-1{
     background-color: $background-color-1;
+}
+.background-color-2{
+    background-color: $background-color-2;
 }
 
 .pad{
