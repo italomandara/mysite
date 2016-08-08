@@ -1,7 +1,7 @@
 <div class="category-{{ job.get_skill_category }} subcategory-{{ job.subcategory }}">
-	<h5 class="margin bottom xsmall">{{ job.name }}</h5>
-	<p class="set-text-color to-dark-gray margin bottom none"><em>{{ job.company }} {{ job.location }}</em></p>
-	<p class="set-text-color to-gray margin bottom xsmall"><small>{{ job.start_date|date:"M Y" }} - {{ job.end_date|date:"M Y" }}</small></p>
+	<h5 class="margin bottom xsmall set-text-color to-white">{{ job.name }}</h5>
+	<p class="set-text-color to-white margin bottom none"><em>{{ job.company }} {{ job.location }}</em></p>
+	<p class="set-text-color to-white margin bottom xsmall"><small>{{ job.start_date|date:"M Y" }} - {{ job.end_date|date:"M Y" }}</small></p>
 	<p>{{ job.description }}</p>
 	<p>
 		<span class="secondary label">{{ job.get_job_category }}</span>

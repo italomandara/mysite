@@ -1,7 +1,11 @@
 <div class="reveal {{ extra_classes }}" id="{{ modal_id }}" data-reveal data-animation-in="fadeIn">
 	{% if not is_locked %}
-		<button class="close-button" data-close aria-label="Close modal" type="button">
+	<div class="modal-title">		
+		<button class="close-button set-text-color to-white" data-close aria-label="Close modal" type="button">
 			<span aria-hidden="true">&times;</span>
 		</button>
+		<h5>{{ modal_title }}</h5>
+	</div>
+	<div class="modal-content">{% include modal_content %}</div>
 	{% endif %}
-</div>
+</div> 

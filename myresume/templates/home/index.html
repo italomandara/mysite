@@ -7,7 +7,7 @@
 	<div class="row">
 		<h1 class="margin top">{{ intro.h1 }}</h1>
 		<h3 class="small margin bottom">{{ intro.h2 }}</h3>
-		<p class="medium-masonry-1 large-masonry-3 margin bottom">{{ intro.body|apply_markup:"markdown" }}</p>
+		<div class="medium-masonry-1 large-masonry-3 margin bottom">{{ intro.body|apply_markup:"markdown" }}</div>
 		
 		<div class="row">
 			{% if profile %}
@@ -19,7 +19,7 @@
 			{% endif %}
 		</div>
 	</div>
-	<div class="background-color-1 pad on-top">
+	<div class="background-color-1 pad on-top margin top">
 		<div class="row">
 			{% if skills_list|length %}
 				<h4 class="margin bottom set-text-color to-white">{% trans "Skills list" %}</h4>
@@ -36,7 +36,7 @@
 			<div class="large-8 column">
 				<div class="background-color-2 pad margin top">
 					{% if job_history|length %}
-						<h4 class="margin bottom set-text-color to-white">{% trans "Job History" %}</h4>
+						<h4 class="margin bottom">{% trans "Job History" %}</h4>
 						<div class="small-masonry-1 large-masonry-2">
 							{% for job in job_history %}
 								{% include 'home/partials/job.html' %}
@@ -61,6 +61,6 @@
 		{% endif %}
 
 		<p>{% trans 'Interested' %}?<a href="javascript:void(0)" data-open="contact"> {% trans 'contact me' %}</a></p>
-		{% include 'shared/modal.html' with modal_id="contact" %}
+		{% include 'shared/modal.html' with modal_id="contact" modal_title="contact form" modal_content="home/partials/contact-form.html" %}
 	</div>
 {% endblock %}

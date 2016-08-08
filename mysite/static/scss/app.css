@@ -763,7 +763,7 @@ body {
 body {
   padding: 0;
   margin: 0;
-  font-family: "Source Sans Pro", sans-serif;
+  font-family: "Roboto", sans-serif;
   font-weight: normal;
   line-height: 1.5;
   color: #0a0a0a;
@@ -1844,26 +1844,26 @@ textarea {
   display: block;
   box-sizing: border-box;
   width: 100%;
-  height: 2.4375rem;
-  padding: 0.5rem;
+  height: 1.6875rem;
+  padding: 0.25rem;
   border: 1px solid #cacaca;
-  margin: 0 0 1rem;
+  margin: 0 0 0.5rem;
   font-family: inherit;
   font-size: 1rem;
   color: #8a8a8a;
   background-color: #fefefe;
-  box-shadow: inset 0 1px 2px rgba(10, 10, 10, 0.1);
+  box-shadow: none;
   border-radius: 0;
-  transition: box-shadow 0.5s, border-color 0.25s ease-in-out;
+  transition: border-color 0.25s ease-in-out;
   -webkit-appearance: none;
   -moz-appearance: none; }
   [type="text"]:focus, [type="password"]:focus, [type="date"]:focus, [type="datetime"]:focus, [type="datetime-local"]:focus, [type="month"]:focus, [type="week"]:focus, [type="email"]:focus, [type="number"]:focus, [type="search"]:focus, [type="tel"]:focus, [type="time"]:focus, [type="url"]:focus, [type="color"]:focus,
   textarea:focus {
-    border: 1px solid #8a8a8a;
+    border: 1px solid #cacaca;
     background: #fefefe;
     outline: none;
-    box-shadow: 0 0 5px #cacaca;
-    transition: box-shadow 0.5s, border-color 0.25s ease-in-out; }
+    box-shadow: none;
+    transition: border-color 0.25s ease-in-out; }
 
 textarea {
   max-width: 100%; }
@@ -1888,19 +1888,19 @@ input[type="search"] {
 [type="file"],
 [type="checkbox"],
 [type="radio"] {
-  margin: 0 0 1rem; }
+  margin: 0 0 0.5rem; }
 
 [type="checkbox"] + label,
 [type="radio"] + label {
   display: inline-block;
-  margin-left: 0.5rem;
-  margin-right: 1rem;
+  margin-left: 0.25rem;
+  margin-right: 0.5rem;
   margin-bottom: 0;
   vertical-align: baseline; }
 
 label > [type="checkbox"],
 label > [type="label"] {
-  margin-right: 0.5rem; }
+  margin-right: 0.25rem; }
 
 [type="file"] {
   width: 100%; }
@@ -1913,11 +1913,11 @@ label {
   line-height: 1.8;
   color: #0a0a0a; }
   label.middle {
-    margin: 0 0 1rem;
-    padding: 0.5625rem 0; }
+    margin: 0 0 0.5rem;
+    padding: 0.3125rem 0; }
 
 .help-text {
-  margin-top: -0.5rem;
+  margin-top: -0.25rem;
   font-size: 0.8125rem;
   font-style: italic;
   color: #333; }
@@ -1925,7 +1925,7 @@ label {
 .input-group {
   display: table;
   width: 100%;
-  margin-bottom: 1rem; }
+  margin-bottom: 0.5rem; }
 
 .input-group-label, .input-group-field, .input-group-button {
   display: table-cell;
@@ -1958,7 +1958,7 @@ fieldset {
   margin: 0; }
 
 legend {
-  margin-bottom: 0.5rem; }
+  margin-bottom: 0.25rem; }
 
 .fieldset {
   border: 1px solid #cacaca;
@@ -1971,11 +1971,11 @@ legend {
     margin-left: -0.1875rem; }
 
 select {
-  height: 2.4375rem;
-  padding: 0.5rem;
+  height: 1.6875rem;
+  padding: 0.25rem;
   border: 1px solid #cacaca;
   border-radius: 0;
-  margin: 0 0 1rem;
+  margin: 0 0 0.5rem;
   font-size: 1rem;
   font-family: inherit;
   line-height: normal;
@@ -1986,7 +1986,7 @@ select {
   -moz-appearance: none;
   background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" version="1.1" width="32" height="24" viewBox="0 0 32 24"><polygon points="0,0 32,0 16,24" style="fill: rgb(51, 51, 51)"></polygon></svg>');
   background-size: 9px 6px;
-  background-position: right 0.5rem center;
+  background-position: right 0.25rem center;
   background-repeat: no-repeat; }
   @media screen and (min-width: 0\0) {
     select {
@@ -2008,8 +2008,8 @@ select {
 
 .form-error {
   display: none;
-  margin-top: -0.5rem;
-  margin-bottom: 1rem;
+  margin-top: -0.25rem;
+  margin-bottom: 0.5rem;
   font-size: 0.75rem;
   font-weight: bold;
   color: #ec5840; }
@@ -2986,14 +2986,14 @@ body {
   left: 0;
   right: 0;
   z-index: 1005;
-  background-color: rgba(10, 10, 10, 0.45);
+  background-color: rgba(10, 10, 10, 0.75);
   overflow-y: scroll; }
 
 .reveal {
   display: none;
   z-index: 1006;
-  padding: 1rem;
-  border: 1px solid #cacaca;
+  padding: 0;
+  border: none;
   margin: 100px auto 0 auto;
   background-color: #fefefe;
   border-radius: 0;
@@ -3665,5 +3665,28 @@ body > .row, body > div:not(.row) > .row {
   .pad.horizontal {
     padding-left: 0;
     padding-right: 0; }
+
+h1:last-child, h2:last-child, h3:last-child, h4:last-child, h5:last-child, p:last-child, .button:last-child {
+  margin-bottom: 0; }
+
+input[type=text], input[type=number], input[type=password], input[type=email] {
+  border-top: none;
+  border-left: none;
+  border-right: none;
+  background-color: transparent; }
+  input[type=text]:focus, input[type=number]:focus, input[type=password]:focus, input[type=email]:focus {
+    border-top: none;
+    border-left: none;
+    border-right: none;
+    border-bottom-color: #0a0a0a;
+    background-color: transparent; }
+
+.modal-title {
+  padding: 15px 30px;
+  background-color: #8a8a8a;
+  color: white; }
+
+.modal-content {
+  padding: 15px 30px; }
 
 /*# sourceMappingURL=../../../../../../../static/scss/app.css.map */

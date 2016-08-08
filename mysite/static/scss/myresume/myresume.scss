@@ -152,3 +152,35 @@ body {
         }
     }
 }
+h1,h2,h3,h4,h5,p,.button{
+    &:last-child{
+        margin-bottom: 0;
+    }
+}
+
+input[type=text], input[type=number], input[type=password], input[type=email]{
+    border:{
+        top: none;
+        left: none;
+        right: none;
+    }
+    background-color: transparent;
+    &:focus{ 
+        border: {
+            top: none;
+            left: none;
+            right: none;
+            bottom-color: $black;
+        }
+        background-color: transparent;
+    }
+}
+
+.modal-title{
+    padding: $my-global-margin/2 $my-global-margin;
+    background-color: $dark-gray;
+    color: white;
+}
+.modal-content{
+    padding: $my-global-margin/2 $my-global-margin;
+}
