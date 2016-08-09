@@ -134,3 +134,6 @@ class Contact(models.Model):
     phone = models.CharField(max_length=100, blank=True)
     email = models.CharField(max_length=100)
     message = models.CharField(max_length=1000)
+
+    def __unicode__(self):
+    	return self.name
