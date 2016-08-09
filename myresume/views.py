@@ -18,7 +18,7 @@ def index(request):
 	profile = MyContent.objects.get(slug='profile')
 	skills = MyContent.objects.get(slug='skills')
 	template = loader.get_template('home/index.html')
-	form = ContactForm()
+	form = ContactForm(request.POST)
 	context = {
 		'person': person,
 		'skills_list': skills_list,
@@ -34,4 +34,13 @@ def index(request):
 			'description': intro.h1 + ', ' + intro.h2 ,
 		},
     }
+
+	if request.method == 'POST':
+		
+		if form.is_valid():
+			form.save()
+
+		else: 
+			print "error"
+
 	return HttpResponse(template.render(context, request))

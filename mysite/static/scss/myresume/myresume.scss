@@ -189,20 +189,33 @@ input[type=text], input[type=number], input[type=password], input[type=email]{
 .modal-content{
     padding: $my-global-margin/2 $my-global-margin;
 }
-
+.reveal-overlay{
+    text-align: center;
+}
 .reveal{
-    position: fixed;
+    text-align: left;
+    position: static;
     top: 0 !important;
     margin-top: 0 !important;
     max-height: none !important;
     height: 100%;
+    overflow: visible;
     background-color: transparent;
-    text-align: center;
+
+    &:focus{
+        outline: none;
+        box-shadow: none;
+    }
+
+    .row{
+        margin: 0 -$grid-column-gutter/2;
+    }
+    
 }
 .modal-wrapper{
-    text-align: left;
     background-color: $reveal-background;
     position: relative;
+    // box-shadow: 0 0 20px $global-shadow-color;
 }
 .vertical-center-container{
     white-space: nowrap;

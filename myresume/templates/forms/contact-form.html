@@ -1,6 +1,6 @@
 {% load i18n %}
 
-<form id="mailform" action="." class="form-reset form-2 gray" style="width: 100%;" data-abide>
+<form id="mailform" action="." method="POST" class="form-reset form-2 gray" style="width: 100%;" data-abide novalidate>
   {% csrf_token %}
   <p>
     To send me a contact request please fill in all fields and submit the form.
