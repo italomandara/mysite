@@ -1,5 +1,7 @@
-<form id="mailform" class="form-reset form-2 gray" style="width: 100%;" data-abide>
+{% load i18n %}
 
+<form id="mailform" action="." class="form-reset form-2 gray" style="width: 100%;" data-abide>
+  {% csrf_token %}
   <p>
     To send me a contact request please fill in all fields and submit the form.
 Fields marked with a
@@ -9,43 +11,17 @@ Fields marked with a
 
   <div class="row">
     <div class="medium-6 column">
-      <label>
-        Name
-        <span>*</span>
-        <input required class="text" type="text" name="name*" tabindex="21">
-      </label>
-      
-      <label>
-        Telephone
-        <span>*</span>
-        <input required class="text" type="text" name="phone*" tabindex="23">
-      </label>
-      
-
+      {% include "shared/form-element.html" with field=form.name %}
+      {% include "shared/form-element.html" with field=form.phone %}
     </div>
     <div class="medium-6 column">
-      <label>
-        Company
-        <input required class="text" type="text" name="company" tabindex="22">
-      </label>
-      
-       <label>
-        Email
-        <span>*</span>
-        <input required id="mail" class="text" type="text" name="email*" tabindex="24">
-      </label>
-      
-      
+      {% include "shared/form-element.html" with field=form.company %}
+      {% include "shared/form-element.html" with field=form.email %}
   </div>
 </div>
 
-<div style="width:100%;">
-  <label>
-    Message
-    <span>*</span>
-    <textarea required rows="5" style="height: 88px;" class="textareafull" name="message*" tabindex="25"></textarea>
-  </label>
-  
+<div class="small-12">
+  {% include "shared/form-element.html" with field=form.message %}  
 </div>
   <!-- CAPTCHA
   <div class="captchacont">
@@ -69,5 +45,5 @@ Fields marked with a
     </div>
   </div>
   CAPTCHA -->
-  <button class="button">Send</button>
+  <button type="submit" class="button">{% trans "Send" %}</button>
 </form>

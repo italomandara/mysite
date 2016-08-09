@@ -32,8 +32,11 @@
 		{% block footer-body %}
 		{% endblock %}
 		{% block footer-js %}
-		<script type="text/javascript" src="{% static 'app.js' %}"></script>
-		<script type="text/javascript" src="{% static 'motion-ui.js' %}"></script>
+		<script type="text/javascript" src="https://code.jquery.com/jquery-2.2.4.min.js"></script>
+		<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/foundation/6.2.3/foundation.min.js"></script>
+		<script type="text/javascript">$(document).foundation()</script>
+		{# <script type="text/javascript" src="{% static 'app.js' %}"></script> #}
+		{# <script type="text/javascript" src="{% static 'motion-ui.js' %}"></script> #}
 		{% endblock %}
 	</body>
 </html>

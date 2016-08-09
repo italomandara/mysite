@@ -23,7 +23,7 @@
 		<div class="row">
 			{% if skills_list|length %}
 				<h4 class="margin bottom set-text-color to-white">{% trans "Skills list" %}</h4>
-				<div class="masonry small-masonry-1 medium-masonry-2 large-masonry-4 margin bottom">
+				<div class="masonry small-masonry-1 medium-masonry-2 large-masonry-4">
 					{% for skill in skills_list %}
 						{% include 'home/partials/skill.html' %}
 					{% endfor %}
@@ -61,6 +61,6 @@
 		{% endif %}
 
 		<p>{% trans 'Interested' %}?<a href="javascript:void(0)" data-open="contact"> {% trans 'contact me' %}</a></p>
-		{% include 'shared/modal.html' with modal_id="contact" modal_title="contact form" modal_content="home/partials/contact-form.html" %}
+		{% include 'shared/modal.html' with modal_id="contact" modal_title="contact form" modal_content="forms/contact-form.html" %}
 	</div>
 {% endblock %}

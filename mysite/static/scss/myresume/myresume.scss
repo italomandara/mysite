@@ -175,7 +175,12 @@ input[type=text], input[type=number], input[type=password], input[type=email]{
         background-color: transparent;
     }
 }
-
+// .topbar, .topbar ul{
+//     background-color: transparent!important;
+//     ul>li{
+//         background-color: rgba($black, 0.5);
+//     }
+// }
 .modal-title{
     padding: $my-global-margin/2 $my-global-margin;
     background-color: $dark-gray;
@@ -183,4 +188,33 @@ input[type=text], input[type=number], input[type=password], input[type=email]{
 }
 .modal-content{
     padding: $my-global-margin/2 $my-global-margin;
+}
+
+.reveal{
+    position: fixed;
+    top: 0 !important;
+    margin-top: 0 !important;
+    max-height: none !important;
+    height: 100%;
+    background-color: transparent;
+    text-align: center;
+}
+.modal-wrapper{
+    text-align: left;
+    background-color: $reveal-background;
+    position: relative;
+}
+.vertical-center-container{
+    white-space: nowrap;
+    &:before{
+        content: "";
+        display:inline-block;
+        height: 100%;
+        vertical-align: middle;
+    }
+}
+.vertical-center{
+    display: inline-block;
+    vertical-align: middle;
+    white-space: initial;
 }

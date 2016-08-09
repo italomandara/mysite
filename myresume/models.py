@@ -9,6 +9,9 @@ class Person(models.Model):
     lastname = models.CharField(max_length=255)
     role = models.CharField(max_length=255)
     birthday = models.DateTimeField('Birthday')
+
+    def __unicode__(self):
+		return self.name
     
 class Skill(models.Model):
 	PRINT = 'PR'
@@ -36,6 +39,9 @@ class Skill(models.Model):
 	def get_skill_category(self):
 		return dict(self.TYPES)[self.category]
 
+	def __unicode__(self):
+		return self.name
+
 class MyContent(models.Model):
 	slug = models.SlugField(max_length=255, primary_key=True)
 	image_primary = models.CharField(max_length=255, blank=True)
@@ -47,6 +53,9 @@ class MyContent(models.Model):
 	h2_it = models.CharField(max_length=255, blank=True)
 	body_it = models.TextField(max_length=5000)
 	layout_class = models.CharField(max_length=255, blank=True)
+
+	def __unicode__(self):
+		return self.slug
 
 class Job(models.Model):
 	PRINT = 'PR'
@@ -81,6 +90,9 @@ class Job(models.Model):
 	def get_job_category(self):
 		return dict(self.TYPES)[self.category]
 
+	def __unicode__(self):
+		return self.name
+
 class Course(models.Model):
 	PRINT = 'PR'
 	DESIGN = 'DS'
@@ -112,3 +124,13 @@ class Course(models.Model):
 
 	def get_course_category(self):
 		return dict(self.TYPES)[self.category]
+
+	def __unicode__(self):
+		return self.title
+
+class Contact(models.Model):
+    name = models.CharField(max_length=100)
+    company = models.CharField(max_length=100, blank=True)
+    phone = models.CharField(max_length=100, blank=True)
+    email = models.CharField(max_length=100)
+    message = models.CharField(max_length=1000)

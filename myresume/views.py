@@ -1,6 +1,9 @@
 from django.http import HttpResponse
 from django.template import loader
 
+from django.shortcuts import render
+from .forms import ContactForm
+
 # Create your views here.
 
 from .models import Person, Skill, MyContent, Job, Course
@@ -15,6 +18,7 @@ def index(request):
 	profile = MyContent.objects.get(slug='profile')
 	skills = MyContent.objects.get(slug='skills')
 	template = loader.get_template('home/index.html')
+	form = ContactForm()
 	context = {
 		'person': person,
 		'skills_list': skills_list,
@@ -24,6 +28,7 @@ def index(request):
 		'achievements': achievements,
 		'profile': profile,
 		'skills': skills,
+		'form': form,
 		'page' : {
 			'title': 'home',
 			'description': intro.h1 + ', ' + intro.h2 ,

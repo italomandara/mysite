@@ -34,6 +34,7 @@ INSTALLED_APPS = [
     'myresume.apps.MyresumeConfig',
     'sass_processor',
     'django_markup',
+    'template_repl',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
