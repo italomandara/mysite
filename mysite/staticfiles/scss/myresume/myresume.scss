@@ -67,9 +67,13 @@
 }
 
 body {
-    >.row, {
+    >.row, >div:not(.row)>.row {
     	padding: 0 $my-minimum-row-margin;
     }
+}
+
+.row.last{
+    padding-bottom: $my-minimum-row-margin;
 }
 
 .set-text-color{
@@ -102,17 +106,131 @@ body {
     }
 }
 
+
+.background-color-1{
+    background-color: $background-color-1;
+}
+.background-color-2{
+    background-color: $background-color-2;
+}
+
+.pad{
+    padding: $my-global-margin;
+    &.on-top{
+        padding: {
+            left: 0;
+            right: 0;
+            bottom: 0;
+        }
+    }
+    &.on-bottom{
+        padding: {
+            left: 0;
+            right: 0;
+            top: 0;
+        }
+    }
+    &.horizontal{
+        padding: {
+            left: 0;
+            right: 0;
+        }
+    }
+}
+
+h1,h2,h3,h4,h5,p,.button{
+    &:last-child{
+        margin-bottom: 0;
+    }
+}
+
+input[type=text], input[type=number], input[type=password], input[type=email]{
+    border:{
+        top: none;
+        left: none;
+        right: none;
+    }
+    background-color: transparent;
+    &:focus{ 
+        border: {
+            top: none;
+            left: none;
+            right: none;
+            bottom-color: $black;
+        }
+        background-color: transparent;
+    }
+}
+
+.modal-title{
+    padding: $my-global-margin/2 $my-global-margin;
+    background-color: $dark-gray;
+    color: white;
+}
+.modal-content{
+    padding: $my-global-margin/2 $my-global-margin;
+}
+.reveal-overlay{
+    text-align: center;
+}
+.reveal{
+    text-align: left;
+    position: static;
+    top: 0 !important;
+    margin-top: 0 !important;
+    max-height: none !important;
+    height: 100%;
+    overflow: visible;
+    background-color: transparent;
+
+    &:focus{
+        outline: none;
+        box-shadow: none;
+    }
+
+    .row{
+        margin: 0 -$grid-column-gutter/2;
+    }
+    
+}
+.modal-wrapper{
+    background-color: $reveal-background;
+    position: relative;
+    // box-shadow: 0 0 20px $global-shadow-color;
+}
+
+
+.vertical-center-container{
+    white-space: nowrap;
+    &:before{
+        content: "";
+        display: inline-block;
+        height: 100%;
+        vertical-align: middle;
+    }
+}
+.vertical-center{
+    display: inline-block;
+    vertical-align: middle;
+    white-space: initial;
+}
+
+
+%row-template{
+        padding: {
+        left: $my-minimum-row-margin;
+        right: $my-minimum-row-margin; 
+    }
+    margin: 0 auto;
+}
+
 .top-bar.in-grid{
         padding: {
             left: 0;
             right: 0; 
         }
     .row{
-        padding: {
-            left: $my-minimum-row-margin;
-            right: $my-minimum-row-margin; 
-        }
-        margin: 0 auto;
+        @extend %row-template;
     }
     .menu-text {
          padding: {
@@ -121,3 +239,23 @@ body {
     }
 }
 
+.cover{
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.row-wrapper{
+    margin: 0;
+    width: 100%;
+    .row{
+        @extend %row-template;
+    }
+}
+
+.standout-text{
+    display: inline-block;
+    background: rgba($primary-color, 0.5);
+    padding: 0.25em 0.5em;
+    margin-bottom: 0;
+}

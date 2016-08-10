@@ -1515,12 +1515,12 @@ h6 {
     font-size: 1rem; } }
 
 a {
-  color: #2199e8;
+  color: #ec9b4b;
   text-decoration: none;
   line-height: inherit;
   cursor: pointer; }
   a:hover, a:focus {
-    color: #1585cf; }
+    color: #e88524; }
   a img {
     border: 0; }
 
@@ -1731,12 +1731,12 @@ kbd {
   padding: 0.85em 1em;
   margin: 0 1rem 1rem 0;
   font-size: 0.9rem;
-  background: #2199e8;
+  background: #ec9b4b;
   color: #fff; }
   [data-whatinput="mouse"] .button {
     outline: 0; }
   .button:hover, .button:focus {
-    background: #1583cc;
+    background: #e88421;
     color: #fff; }
   .button.tiny {
     font-size: 0.6rem; }
@@ -1750,10 +1750,10 @@ kbd {
     margin-left: 0;
     margin-right: 0; }
   .button.primary {
-    background: #2199e8;
+    background: #ec9b4b;
     color: #fff; }
     .button.primary:hover, .button.primary:focus {
-      background: #147cc0;
+      background: #e17c18;
       color: #fff; }
   .button.secondary {
     background: #777;
@@ -1780,19 +1780,19 @@ kbd {
       background: #cc8b00;
       color: #fff; }
   .button.hollow {
-    border: 1px solid #2199e8;
-    color: #2199e8; }
+    border: 1px solid #ec9b4b;
+    color: #ec9b4b; }
     .button.hollow, .button.hollow:hover, .button.hollow:focus {
       background: transparent; }
     .button.hollow:hover, .button.hollow:focus {
-      border-color: #0c4d78;
-      color: #0c4d78; }
+      border-color: #8d4d0f;
+      color: #8d4d0f; }
     .button.hollow.primary {
-      border: 1px solid #2199e8;
-      color: #2199e8; }
+      border: 1px solid #ec9b4b;
+      color: #ec9b4b; }
       .button.hollow.primary:hover, .button.hollow.primary:focus {
-        border-color: #0c4d78;
-        color: #0c4d78; }
+        border-color: #8d4d0f;
+        color: #8d4d0f; }
     .button.hollow.secondary {
       border: 1px solid #777;
       color: #777; }
@@ -2131,7 +2131,7 @@ select {
   padding: 1.25rem 1rem;
   line-height: 1;
   font-size: 0.75rem;
-  color: #2199e8;
+  color: #ec9b4b;
   position: relative;
   border-bottom: 1px solid #e6e6e6; }
   .accordion-title:hover, .accordion-title:focus {
@@ -2160,7 +2160,7 @@ select {
     width: 0;
     height: 0;
     border: inset 6px;
-    border-color: #2199e8 transparent transparent;
+    border-color: #ec9b4b transparent transparent;
     border-top-style: solid;
     position: absolute;
     top: 50%;
@@ -2178,8 +2178,8 @@ select {
   font-size: 0.6rem;
   text-align: center;
   border-radius: 50%;
-  background: #2199e8;
-  color: #fefefe; }
+  background: #ec9b4b;
+  color: #0a0a0a; }
   .badge.secondary {
     background: #777;
     color: #fefefe; }
@@ -2215,7 +2215,7 @@ select {
       top: 1px;
       opacity: 1; }
   .breadcrumbs a {
-    color: #2199e8; }
+    color: #ec9b4b; }
     .breadcrumbs a:hover {
       text-decoration: underline; }
   .breadcrumbs .disabled {
@@ -2257,10 +2257,10 @@ select {
   .button-group.expanded .button:nth-last-child(6):first-child ~ .button {
     width: 16.66667%; }
   .button-group.primary .button {
-    background: #2199e8;
+    background: #ec9b4b;
     color: #fff; }
     .button-group.primary .button:hover, .button-group.primary .button:focus {
-      background: #147cc0;
+      background: #e17c18;
       color: #fff; }
   .button-group.secondary .button {
     background: #777;
@@ -2307,11 +2307,11 @@ select {
   .callout > :last-child {
     margin-bottom: 0; }
   .callout.primary {
-    background-color: #def0fc; }
+    background-color: #fcf0e4; }
     .callout.primary a {
-      color: #116ca8; }
+      color: #c56c15; }
       .callout.primary a:hover {
-        color: #0a4063; }
+        color: #80460d; }
   .callout.secondary {
     background-color: #ebebeb; }
   .callout.success {
@@ -2384,7 +2384,7 @@ select {
     width: 0;
     height: 0;
     border: inset 6px;
-    border-color: transparent transparent transparent #2199e8;
+    border-color: transparent transparent transparent #ec9b4b;
     border-left-style: solid;
     position: absolute;
     top: 50%;
@@ -2397,7 +2397,7 @@ select {
   width: 0;
   height: 0;
   border: inset 6px;
-  border-color: transparent #2199e8 transparent transparent;
+  border-color: transparent #ec9b4b transparent transparent;
   border-right-style: solid;
   float: left;
   margin-right: 0.75rem;
@@ -2438,7 +2438,7 @@ select {
     width: 0;
     height: 0;
     border: inset 5px;
-    border-color: #2199e8 transparent transparent;
+    border-color: #ec9b4b transparent transparent;
     border-top-style: solid; }
   .dropdown.menu .has-submenu.is-left-arrow > a::after {
     content: '';
@@ -2446,7 +2446,7 @@ select {
     width: 0;
     height: 0;
     border: inset 5px;
-    border-color: transparent #2199e8 transparent transparent;
+    border-color: transparent #ec9b4b transparent transparent;
     border-right-style: solid;
     float: left;
     margin-left: 0;
@@ -2457,7 +2457,7 @@ select {
     width: 0;
     height: 0;
     border: inset 5px;
-    border-color: transparent transparent transparent #2199e8;
+    border-color: transparent transparent transparent #ec9b4b;
     border-left-style: solid; }
   .dropdown.menu .has-submenu.is-left-arrow.opens-inner .submenu {
     right: 0;
@@ -2532,8 +2532,8 @@ select {
   white-space: nowrap;
   cursor: default;
   border-radius: 0;
-  background: #2199e8;
-  color: #fefefe; }
+  background: #ec9b4b;
+  color: #0a0a0a; }
   .label.secondary {
     background: #777;
     color: #fefefe; }
@@ -2842,8 +2842,8 @@ body {
     margin-left: 0.75rem; }
   .pagination .current {
     padding: 0.1875rem 0.625rem;
-    background: #2199e8;
-    color: #fefefe;
+    background: #ec9b4b;
+    color: #0a0a0a;
     cursor: default; }
   .pagination .disabled {
     padding: 0.1875rem 0.625rem;
@@ -2862,7 +2862,7 @@ body {
   margin-bottom: 1rem;
   border-radius: 0; }
   .progress.primary .progress-meter {
-    background-color: #2199e8; }
+    background-color: #ec9b4b; }
   .progress.secondary .progress-meter {
     background-color: #777; }
   .progress.success .progress-meter {
@@ -2877,7 +2877,7 @@ body {
   display: block;
   width: 0%;
   height: 100%;
-  background-color: #2199e8;
+  background-color: #ec9b4b;
   border-radius: 0; }
   .progress-meter .progress-meter-text {
     position: absolute;
@@ -2921,14 +2921,14 @@ body {
   display: inline-block;
   width: 1.4rem;
   height: 1.4rem;
-  background-color: #2199e8;
+  background-color: #ec9b4b;
   transition: all 0.2s ease-in-out;
   touch-action: manipulation;
   border-radius: 0; }
   [data-whatinput="mouse"] .slider-handle {
     outline: 0; }
   .slider-handle:hover {
-    background-color: #1583cc; }
+    background-color: #e88421; }
   .slider-handle.is-dragging {
     transition: all 0s linear; }
 
@@ -3080,7 +3080,7 @@ body {
     transition: all 0.25s ease-out;
     transform: translate3d(0, 0, 0); }
   input:checked ~ .switch-paddle {
-    background: #2199e8; }
+    background: #ec9b4b; }
     input:checked ~ .switch-paddle::after {
       left: 2.25rem; }
   [data-whatinput="mouse"] input:focus ~ .switch-paddle {
@@ -3211,11 +3211,11 @@ table.hover tr:nth-of-type(even):hover {
     float: none;
     display: block; }
   .tabs.primary {
-    background: #2199e8; }
+    background: #ec9b4b; }
     .tabs.primary > li > a {
-      color: #fefefe; }
+      color: #0a0a0a; }
       .tabs.primary > li > a:hover, .tabs.primary > li > a:focus {
-        background: #1893e4; }
+        background: #eb933d; }
 
 .tabs-title {
   float: left; }
@@ -3224,7 +3224,7 @@ table.hover tr:nth-of-type(even):hover {
     padding: 1.25rem 1.5rem;
     line-height: 1;
     font-size: 12px;
-    color: #2199e8; }
+    color: #ec9b4b; }
     .tabs-title > a:hover, .tabs-title > a:focus, .tabs-title > a[aria-selected="true"] {
       background: #e6e6e6; }
 
@@ -3253,7 +3253,7 @@ table.hover tr:nth-of-type(even):hover {
   border-radius: 0;
   margin-bottom: 1rem; }
   .thumbnail:hover, .thumbnail:focus {
-    box-shadow: 0 0 6px 1px rgba(33, 153, 232, 0.5); }
+    box-shadow: 0 0 6px 1px rgba(236, 155, 75, 0.5); }
 
 .title-bar {
   background: #0a0a0a;
@@ -3396,7 +3396,7 @@ table.hover tr:nth-of-type(even):hover {
   .top-bar::after {
     clear: both; }
   .top-bar, .top-bar ul {
-    background-color: #8a8a8a; }
+    background-color: #ec9b4b; }
   .top-bar input {
     width: 200px;
     margin-right: 1rem; }
@@ -3612,6 +3612,9 @@ table.hover tr:nth-of-type(even):hover {
 body > .row, body > div:not(.row) > .row {
   padding: 0 30px; }
 
+.row.last {
+  padding-bottom: 30px; }
+
 .set-text-color.to-white {
   color: white; }
 
@@ -3635,22 +3638,11 @@ body > .row, body > div:not(.row) > .row {
 .masonry > .callout, .masonry > div > .callout {
   margin: 3px 3px 0; }
 
-.top-bar.in-grid {
-  padding-left: 0;
-  padding-right: 0; }
-  .top-bar.in-grid .row {
-    padding-left: 30px;
-    padding-right: 30px;
-    margin: 0 auto; }
-  .top-bar.in-grid .menu-text {
-    font-weight: normal;
-    padding-left: 0; }
-
 .background-color-1 {
   background-color: #8a8a8a; }
 
 .background-color-2 {
-  background-color: #cacaca; }
+  background-color: #ec9b4b; }
 
 .pad {
   padding: 30px; }
@@ -3723,5 +3715,31 @@ input[type=text], input[type=number], input[type=password], input[type=email] {
   display: inline-block;
   vertical-align: middle;
   white-space: initial; }
+
+.top-bar.in-grid .row, .row-wrapper .row {
+  padding-left: 30px;
+  padding-right: 30px;
+  margin: 0 auto; }
+
+.top-bar.in-grid {
+  padding-left: 0;
+  padding-right: 0; }
+  .top-bar.in-grid .menu-text {
+    padding-left: 0; }
+
+.cover {
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-size: cover; }
+
+.row-wrapper {
+  margin: 0;
+  width: 100%; }
+
+.standout-text {
+  display: inline-block;
+  background: rgba(236, 155, 75, 0.5);
+  padding: 0.25em 0.5em;
+  margin-bottom: 0; }
 
 /*# sourceMappingURL=../../../../../../../static/scss/app.css.map */

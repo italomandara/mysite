@@ -2,13 +2,28 @@
 
 {% load i18n %}
 {% load markup_tags %}
+{% load static from staticfiles %}
+
+{% block head-css %}
+	{{ block.super }}
+	<style>
+		#hero{
+			background-image: url({% static 'img/bg2.jpg' %});
+			background-position: bottom center;
+		}
+
+	</style>
+{% endblock %}
 
 {% block body %}
+	<figure id="hero" class="row-wrapper cover">
+		<div class="row">
+			<h1 class="margin top standout-text">{{ intro.h1 }}</h1>
+			<h3 class="small margin bottom standout-text" style="margin-left: 50px">{{ intro.h2 }}</h3>
+			<div class="medium-masonry-1 large-masonry-3 margin bottom set-text-color to-white">{{ intro.body|apply_markup:"markdown" }}</div>
+		</div>
+	</figure>
 	<div class="row">
-		<h1 class="margin top">{{ intro.h1 }}</h1>
-		<h3 class="small margin bottom">{{ intro.h2 }}</h3>
-		<div class="medium-masonry-1 large-masonry-3 margin bottom">{{ intro.body|apply_markup:"markdown" }}</div>
-		
 		<div class="row">
 			{% if profile %}
 				{% include 'home/partials/row.html' with mycontent=profile class="medium-6 column" %}
@@ -31,7 +46,7 @@
 			{% endif %}
 		</div>
 	</div>
-	<div class="row">
+	<div class="row last">
 		<div class="row">
 			<div class="large-8 column">
 				<div class="background-color-2 pad margin top">
@@ -61,6 +76,6 @@
 		{% endif %}
 
 		<p>{% trans 'Interested' %}?<a href="javascript:void(0)" data-open="contact"> {% trans 'contact me' %}</a></p>
-		{% include 'shared/modal.html' with modal_id="contact" modal_title="contact form" modal_content="forms/contact-form.html" %}
 	</div>
+	{% include 'shared/modal.html' with modal_id="contact" modal_title="contact form" modal_content="forms/contact-form.html" %}
 {% endblock %}

@@ -17,7 +17,7 @@
     @for $iterate-columns from $max-columns-masonry*-1 through -1 {
         $iterate-columns: $iterate-columns*-1;
         .large-masonry-#{$iterate-columns} {
-            @include breakpoint(xlarge down) {
+            @include breakpoint(large) {
                 @include masonry($iterate-columns, $grid-column-gutter);
             }
         }
