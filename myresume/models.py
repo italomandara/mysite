@@ -9,6 +9,9 @@ class Person(models.Model):
     lastname = models.CharField(max_length=255)
     role = models.CharField(max_length=255)
     birthday = models.DateTimeField('Birthday')
+    available = models.BooleanField(default=True)
+    unavailable_msg = models.TextField(max_length=1000, blank=True)
+    unavailable_msg_it = models.TextField(max_length=1000, blank=True)
 
     def __unicode__(self):
 		return self.name
@@ -38,6 +41,12 @@ class Skill(models.Model):
 
 	def get_skill_category(self):
 		return dict(self.TYPES)[self.category]
+
+	def get_categories(self):
+		return self.TYPES
+
+	def get_subcategories(self):
+		return self.values('subcategory')
 
 	def __unicode__(self):
 		return self.name

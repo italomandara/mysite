@@ -3742,4 +3742,25 @@ input[type=text], input[type=number], input[type=password], input[type=email] {
   padding: 0.25em 0.5em;
   margin-bottom: 0; }
 
+.opacity-filter, .height-filter {
+  -webkit-transition: display 0.5s 0 ease-in-out, opacity 0.5s ease-in-out, padding 0.5s ease-in-out, margin 0.5s ease-in-out, max-height 0.5s ease-in-out;
+  -moz-transition: display 0.5s 0 ease-in-out, opacity 0.5s ease-in-out, padding 0.5s ease-in-out, margin 0.5s ease-in-out, max-height 0.5s ease-in-out;
+  transition: display 0.5s 0 ease-in-out, opacity 0.5s ease-in-out, padding 0.5s ease-in-out, margin 0.5s ease-in-out, max-height 0.5s ease-in-out; }
+
+.opacity-filter {
+  opacity: 1; }
+  .opacity-filter.invisible {
+    opacity: 0.5; }
+
+.height-filter {
+  max-height: 1000px; }
+  .height-filter.invisible {
+    display: block;
+    max-height: 0;
+    padding: 0;
+    margin: 0; }
+
+.button.secondary.active {
+  background-color: #ec9b4b; }
+
 /*# sourceMappingURL=../../../../../../../static/scss/app.css.map */

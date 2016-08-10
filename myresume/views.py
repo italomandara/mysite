@@ -19,9 +19,13 @@ def index(request):
 	skills = MyContent.objects.get(slug='skills')
 	template = loader.get_template('home/index.html')
 	form = ContactForm(request.POST)
+	skill_categories = Skill.TYPES
+	skill_subcategories = 'none'
 	context = {
 		'person': person,
 		'skills_list': skills_list,
+		'skill_categories': skill_categories,
+		'skill_subcategories': skill_subcategories,
 		'intro': intro,
 		'job_history': job_history,
 		'education': education,

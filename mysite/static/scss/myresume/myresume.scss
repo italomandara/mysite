@@ -259,3 +259,32 @@ input[type=text], input[type=number], input[type=password], input[type=email]{
     padding: 0.25em 0.5em;
     margin-bottom: 0;
 }
+
+%filter-transitions{
+    -webkit-transition: display $global-transition-time 0 ease-in-out, opacity $global-transition-time ease-in-out, padding $global-transition-time ease-in-out, margin $global-transition-time ease-in-out, max-height $global-transition-time ease-in-out;
+    -moz-transition: display $global-transition-time 0 ease-in-out, opacity $global-transition-time ease-in-out, padding $global-transition-time ease-in-out, margin $global-transition-time ease-in-out, max-height $global-transition-time ease-in-out;
+    transition: display $global-transition-time 0 ease-in-out, opacity $global-transition-time ease-in-out, padding $global-transition-time ease-in-out, margin $global-transition-time ease-in-out, max-height $global-transition-time ease-in-out;
+}
+
+.opacity-filter{
+    @extend %filter-transitions;
+    opacity: 1;
+    &.invisible{
+        opacity: 0.5;
+    }
+}
+
+.height-filter{
+    @extend %filter-transitions;
+    max-height: 1000px;
+    &.invisible{
+        display: block;
+        max-height: 0;
+        padding: 0;
+        margin: 0;
+    }
+}
+
+.button.secondary.active{
+    background-color: $secondary-active-color;
+}

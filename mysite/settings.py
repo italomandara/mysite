@@ -35,6 +35,7 @@ INSTALLED_APPS = [
     'sass_processor',
     'django_markup',
     'template_repl',
+    'compressor',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',

@@ -19,7 +19,7 @@
 	<figure id="hero" class="row-wrapper cover">
 		<div class="row">
 			<h1 class="margin top standout-text">{{ intro.h1 }}</h1>
-			<h3 class="small margin bottom standout-text" style="margin-left: 50px">{{ intro.h2 }}</h3>
+			<h3 class="margin bottom standout-text" style="margin-left: 50px">{{ intro.h2 }}</h3>
 			<div class="medium-masonry-1 large-masonry-3 margin bottom set-text-color to-white">{{ intro.body|apply_markup:"markdown" }}</div>
 		</div>
 	</figure>
@@ -38,6 +38,10 @@
 		<div class="row">
 			{% if skills_list|length %}
 				<h4 class="margin bottom set-text-color to-white">{% trans "Skills list" %}</h4>
+				{% for skill_category in skill_categories %}
+					<a href="#" class="button secondary" data-filter="{{ skill_category.1 }}">{{ skill_category.1 }}</a>
+				{% endfor %}
+					<a href="#" class="button secondary active" data-filter="none">{% trans 'All' %}</a>
 				<div class="masonry small-masonry-1 medium-masonry-2 large-masonry-4">
 					{% for skill in skills_list %}
 						{% include 'home/partials/skill.html' %}
@@ -74,8 +78,9 @@
 		{% if achievements %}
 			{% include 'home/partials/row.html' with mycontent=achievements class="large-6" %}
 		{% endif %}
-
-		<p>{% trans 'Interested' %}?<a href="javascript:void(0)" data-open="contact"> {% trans 'contact me' %}</a></p>
+		{% if person.available %}
+			<p>{% trans 'Interested' %}? <a class="button" href="javascript:void(0)" data-open="contact"> {% trans 'contact me' %}</a></p>
+		{% endif %}
 	</div>
 	{% include 'shared/modal.html' with modal_id="contact" modal_title="contact form" modal_content="forms/contact-form.html" %}
 {% endblock %}

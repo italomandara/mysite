@@ -1,6 +1,6 @@
 {% load sass_tags %}
 {% load static from staticfiles %}
-{# {% load compress %} #}
+{% load compress %}
 
 <!DOCTYPE html>
 <html>
@@ -33,17 +33,12 @@
 		{% block footer-body %}
 		{% endblock %}
 		{% block footer-js %}
-		{% if True %}
-		<script type="text/javascript" src="https://code.jquery.com/jquery-2.2.4.min.js"></script>
-		<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/foundation/6.2.3/foundation.min.js"></script>
-		<script type="text/javascript">$(document).foundation()</script>
-		{% else %}
-
-		<script type="text/javascript" src="{% static 'js/jquery.min.js' %}"></script>
-		<script type="text/javascript" src="{% static 'js/foundation.min.js' %}"></script>
-		<script type="text/javascript" src="{% static 'js/app.js' %}"></script>
-
-		{% endif %}
+		{% compress js %}
+			<script type="text/javascript" src="{% static 'js/jquery.min.js' %}"></script>
+			<script type="text/javascript" src="{% static 'js/foundation.min.js' %}"></script>
+			<script type="text/javascript" src="{% static 'js/app.js' %}"></script>
+		{% endcompress %}
+		
 		{% endblock %}
 	</body>
 </html>
