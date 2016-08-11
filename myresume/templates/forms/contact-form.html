@@ -1,49 +1,55 @@
 {% load i18n %}
-
 <form id="mailform" action="." method="POST" class="form-reset form-2 gray" style="width: 100%;" data-abide novalidate>
-  {% csrf_token %}
-  <p>
-    To send me a contact request please fill in all fields and submit the form.
-Fields marked with a
-    <span class="hilight">*</span>
-    must be filled in to submit the form.
-  </p>
+    {% csrf_token %}
+    <p>
+        To send me a contact request please fill in all fields and submit the form.
+        Fields marked with a
+        <span class="hilight">*</span>
+        must be filled in to submit the form.
+    </p>
+    <div class="row">
+        <div class="medium-6 column">
+            {% include "shared/form-element.html" with field=form.name %}
+            {% include "shared/form-element.html" with field=form.phone %}
+        </div>
+        <div class="medium-6 column">
+            {% include "shared/form-element.html" with field=form.company %}
+            {% include "shared/form-element.html" with field=form.email %}
+        </div>
+        <div class="small-12 column">
+            {% include "shared/form-element.html" with field=form.message %}
+        </div>
+        <div class="small-12 medium-2 column">
+            <button class="button expand" type="submit">{% trans "Send" %}</button>
+        </div>
+    </div>
 
-  <div class="row">
-    <div class="medium-6 column">
-      {% include "shared/form-element.html" with field=form.name %}
-      {% include "shared/form-element.html" with field=form.phone %}
+    <!-- CAPTCHA
+    <div class="captchacont">
+        <p class="disclaimer">
+            IMPORTANT: do not forget to enter captcha code before submitting.
+        </p>
+        <div class="clearfix captcha">
+            <img id="captcha" class="captchaimg" src="securimage/securimage_show.php" alt="CAPTCHA Image">
+            <a id="bt_captcha" class="captchareload" href="#"><span class="icon-retweet-1">re-captcha</span></a>
+        </div>
+        <div style="display:inline;">
+            <input class="text" type="text" name="captchacode*" size="10" maxlength="6" tabindex="26/">
+        </div>
+        <div id="send" style="float:right;" class="btn" tabindex="27">Send <small>(disabled)</small></div>
+        <div class="feedback error hide">
+            Aw snap! something went wrong!<br>Please review highlighted boxes.
+        </div>
+        <div class="feedback success hide">
+            Thank you,<br>
+            your message has been sent.
+        </div>
     </div>
-    <div class="medium-6 column">
-      {% include "shared/form-element.html" with field=form.company %}
-      {% include "shared/form-element.html" with field=form.email %}
-  </div>
-</div>
-
-<div class="small-12">
-  {% include "shared/form-element.html" with field=form.message %}  
-</div>
-  <!-- CAPTCHA
-  <div class="captchacont">
-<p class="disclaimer">
-        IMPORTANT: do not forget to enter captcha code before submitting.
-      </p>
-    <div class="clearfix captcha">
-      <img id="captcha" class="captchaimg" src="securimage/securimage_show.php" alt="CAPTCHA Image">
-      <a id="bt_captcha" class="captchareload" href="#"><span class="icon-retweet-1">re-captcha</span></a>
+    CAPTCHA -->
+    <div class="row small-up-4 text-center set-text-color to-gray margin top" >
+        <div class="column text-left"><i class="icon i-linkedin"></i> <span class="hide-for-small-only">linkedin</span></div>
+        <div class="column"><i class="icon i-codeopen"></i> <span class="hide-for-small-only">codepen</span></div>
+        <div class="column"><i class="icon i-skype"></i> <span class="hide-for-small-only">skype</span></div>
+        <div class="column text-right"><i class="icon i-github-circled-alt2"></i> <span class="hide-for-small-only">github</span></div>
     </div>
-    <div style="display:inline;">
-      <input class="text" type="text" name="captchacode*" size="10" maxlength="6" tabindex="26/">
-    </div>
-    <div id="send" style="float:right;" class="btn" tabindex="27">Send <small>(disabled)</small></div>
-    <div class="feedback error hide">
-      Aw snap! something went wrong!<br>Please review highlighted boxes.
-    </div>
-    <div class="feedback success hide">
-      Thank you,<br>
-      your message has been sent.
-    </div>
-  </div>
-  CAPTCHA -->
-  <button type="submit" class="button">{% trans "Send" %}</button>
 </form>

@@ -11,7 +11,7 @@ var filter_el = function($el,e) {
 		$('.js-filter').not('.category-'+ el_class).addClass('invisible');
 		$('.category-'+ el_class).removeClass('invisible');
 	}
-	return True
+	return true
 }
 $(document).on('click', '[data-filter]', function(e) {
 	filter_el($(this),e)

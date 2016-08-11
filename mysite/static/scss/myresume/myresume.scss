@@ -162,6 +162,10 @@ input[type=text], input[type=number], input[type=password], input[type=email]{
     }
 }
 
+textarea{
+    resize: vertical;
+}
+
 .modal-title{
     padding: $my-global-margin/2 $my-global-margin;
     background-color: $dark-gray;
@@ -188,8 +192,11 @@ input[type=text], input[type=number], input[type=password], input[type=email]{
         box-shadow: none;
     }
 
-    .row{
-        margin: 0 -$grid-column-gutter/2;
+    .row {
+        margin: {
+            left: -$grid-column-gutter/2;
+            right: -$grid-column-gutter/2;
+        } 
     }
     
 }
@@ -261,9 +268,9 @@ input[type=text], input[type=number], input[type=password], input[type=email]{
 }
 
 %filter-transitions{
-    -webkit-transition: display $global-transition-time 0 ease-in-out, opacity $global-transition-time ease-in-out, padding $global-transition-time ease-in-out, margin $global-transition-time ease-in-out, max-height $global-transition-time ease-in-out;
-    -moz-transition: display $global-transition-time 0 ease-in-out, opacity $global-transition-time ease-in-out, padding $global-transition-time ease-in-out, margin $global-transition-time ease-in-out, max-height $global-transition-time ease-in-out;
-    transition: display $global-transition-time 0 ease-in-out, opacity $global-transition-time ease-in-out, padding $global-transition-time ease-in-out, margin $global-transition-time ease-in-out, max-height $global-transition-time ease-in-out;
+    -webkit-transition: opacity $global-transition-time ease-in-out, padding $global-transition-time ease-in-out, margin $global-transition-time ease-in-out, max-height $global-transition-time ease-in-out, max-width $global-transition-time ease-in-out ;
+    -moz-transition: opacity $global-transition-time ease-in-out, padding $global-transition-time ease-in-out, margin $global-transition-time ease-in-out, max-height $global-transition-time ease-in-out, max-width $global-transition-time ease-in-out ;
+    transition: opacity $global-transition-time ease-in-out, padding $global-transition-time ease-in-out, margin $global-transition-time ease-in-out, max-height $global-transition-time ease-in-out, max-width $global-transition-time ease-in-out ;
 }
 
 .opacity-filter{
@@ -271,14 +278,23 @@ input[type=text], input[type=number], input[type=password], input[type=email]{
     opacity: 1;
     &.invisible{
         opacity: 0.5;
+        >div{
+            opacity: 1;
+        }
     }
 }
 
-.height-filter{
+.normal-filter.invisible {
+    display: none;
+}
+
+
+.size-filter{
     @extend %filter-transitions;
     max-height: 1000px;
+    max-width: 100%;
     &.invisible{
-        display: block;
+        max-width: 0;
         max-height: 0;
         padding: 0;
         margin: 0;
@@ -287,4 +303,14 @@ input[type=text], input[type=number], input[type=password], input[type=email]{
 
 .button.secondary.active{
     background-color: $secondary-active-color;
+}
+
+i.icon{
+    font-size: rem-calc(14);
+    &.small-icon{
+        font-size: rem-calc(12);
+    }
+    &.large-icon{
+        font-size: rem-calc(16);
+    }
 }

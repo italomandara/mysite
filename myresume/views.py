@@ -48,3 +48,13 @@ def index(request):
 			print "error"
 
 	return HttpResponse(template.render(context, request))
+
+def icons(request):
+
+	template = loader.get_template('icons.html')
+	person = Person.objects.get(name__iexact='italo')
+	context = { 
+			'person': person,
+		}
+
+	return HttpResponse(template.render(context, request))

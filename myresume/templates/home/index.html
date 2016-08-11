@@ -43,9 +43,7 @@
 				{% endfor %}
 					<a href="#" class="button secondary active" data-filter="none">{% trans 'All' %}</a>
 				<div class="masonry small-masonry-1 medium-masonry-2 large-masonry-4">
-					{% for skill in skills_list %}
-						{% include 'home/partials/skill.html' %}
-					{% endfor %}
+					{% for skill in skills_list %}{% include 'home/partials/skill.html' %}{% endfor %}
 				</div>
 			{% endif %}
 		</div>
@@ -78,9 +76,9 @@
 		{% if achievements %}
 			{% include 'home/partials/row.html' with mycontent=achievements class="large-6" %}
 		{% endif %}
-		{% if person.available %}
-			<p>{% trans 'Interested' %}? <a class="button" href="javascript:void(0)" data-open="contact"> {% trans 'contact me' %}</a></p>
-		{% endif %}
+		
+			<p>{% trans 'Interested' %}? <a class="button" href="javascript:void(0)" {% if not person.available %}data-tooltip aria-haspopup="true" class="has-tip" data-disable-hover="false" tabindex="1" title="{{ person.unavailable_msg }}" disabled{% else %}data-open="contact" {% endif %}
+				> {% trans 'contact me' %}</a></p>
 	</div>
 	{% include 'shared/modal.html' with modal_id="contact" modal_title="contact form" modal_content="forms/contact-form.html" %}
 {% endblock %}
