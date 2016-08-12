@@ -26,7 +26,7 @@
 	$.fn.hideLoader = function() {
 		return hideLoader(this);
 	};
-	
+
 	var callbacks = {
 		openThankYou: function(data,$loader) {
 			if (!!data.stored){
@@ -81,7 +81,7 @@
 				$target.html(data);
 			}
 			if (typeof doneCallBack !== typeof undefined) {
-				doneCallBack(data, $target, $loader ,usejson);
+				doneCallBack(data, $loader, $target, usejson);
 			}
 
 		});

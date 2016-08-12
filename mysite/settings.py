@@ -171,6 +171,12 @@ STATICFILES_DIRS = (
     os.path.join(PROJECT_ROOT, 'static'),
 )
 
+#sass processor
+
+SASS_PROCESSOR_ENABLED = True
+SASS_OUTPUT_STYLE = 'compressed'
+
+# compressor
 COMPRESS_ENABLED = True
 
 if socket.gethostname() == 'itmandar.herokuapp.com':
