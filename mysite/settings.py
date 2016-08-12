@@ -173,6 +173,11 @@ STATICFILES_DIRS = (
 
 COMPRESS_ENABLED = True
 
+if socket.gethostname() == 'itmandar.herokuapp.com':
+    COMPRESS_OFFLINE = True
+else:
+    COMPRESS_OFFLINE = False
+
 STATICFILES_FINDERS = (
     'django.contrib.staticfiles.finders.FileSystemFinder',
     'django.contrib.staticfiles.finders.AppDirectoriesFinder',
