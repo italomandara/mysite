@@ -1,4 +1,9 @@
 {% load i18n %}
+
+{% trans "This field is required" as required %}
+{% trans "Must be a valid phone number" as phone %}
+{% trans "Must be a valid email" as email %}
+
 <form id="mailform" data-callback="openThankYou" action="{% url 'contact-form' %}" method="POST" class="js-ajaxform" style="width: 100%;" data-abide novalidate>
     {% csrf_token %}
     <p>
@@ -11,10 +16,10 @@
     </div>
     <div class="row">
         <div class="medium-6 column">
-            {% include "shared/form-element.html" with field=form.name %}
+            {% include "shared/form-element.html" with field=form.name abide_error=required %}
         </div>
         <div class="medium-6 column">
-            {% include "shared/form-element.html" with field=form.phone %}
+            {% include "shared/form-element.html" with field=form.phone abide_error=phone %}
         </div>
     </div>
     <div class="row">
@@ -22,12 +27,12 @@
             {% include "shared/form-element.html" with field=form.company %}
         </div>
         <div class="medium-6 column">
-            {% include "shared/form-element.html" with field=form.email %}
+            {% include "shared/form-element.html" with field=form.email abide_error=email %}
         </div>
     </div>
     <div class="row">
         <div class="small-12 column">
-            {% include "shared/form-element.html" with field=form.message %}
+            {% include "shared/form-element.html" with field=form.message abide_error=required %}
         </div>
         <div class="small-12 medium-2 column">
             <button class="button expand" type="submit" name="submit">{% trans "Send" %}</button>

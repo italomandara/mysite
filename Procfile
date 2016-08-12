@@ -1,2 +1,2 @@
-web: python manage.py migrate;python manage.py loaddata mr.json;gunicorn mysite.wsgi
+web: python manage.py migrate;python manage.py dumpdata > db_live.json;gunicorn mysite.wsgi
 

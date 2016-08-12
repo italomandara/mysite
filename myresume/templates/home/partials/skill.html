@@ -1,11 +1,14 @@
+{% load i18n %}
+
 <div class="js-filter normal-filter category-{{ skill.get_skill_category }} subcategory-{{ skill.subcategory }}">
 	<div class="widget secondary large">
 		<h5><i class="ico {{ skill.icon }}"></i>{{ skill.name }}</h5>
 		<p>{{ skill.description }}</p>
-		<p>
+		<p class="margin bottom">
 			<span class="secondary label">{{ skill.get_skill_category }}</span>
 			<span class="secondary label">{{ skill.subcategory }}</span>
 		</p>
+		<p class="xsmall margin bottom">{% trans "proficiency" %}:</p>
 		<div class="progress" role="progressbar" tabindex="0" >
 			<div class="progress-meter" style="width: {{ skill.rating }}0%"></div>
 		</div>

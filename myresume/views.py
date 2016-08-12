@@ -19,7 +19,7 @@ def index(request):
 	profile = MyContent.objects.get(slug='profile')
 	skills = MyContent.objects.get(slug='skills')
 	template = loader.get_template('home/index.html')
-	form = ContactForm(request.POST)
+	form = ContactForm()
 	skill_categories = Skill.TYPES
 	skill_subcategories = 'none'
 	context = {
@@ -61,20 +61,21 @@ def ajaxContactForm(request):
 			form.save()
 
 			return HttpResponse(
-				json.dumps({"status": 1}),
+				json.dumps({"stored": 1}),
 				content_type="application/json"
 			)
 
 		else:
+			form_errors = json.loads(form.errors.as_json())
 
 			return HttpResponse(
-				json.dumps({"status": 0}),
+				json.dumps({"stored": 0, "error": 0, "form_errors" : form_errors}),
 				content_type="application/json"
 			)
 
 	else:
 		return HttpResponse(
-			json.dumps({"status": 0, "error": 1}),
+			json.dumps({"stored": 0, "error": 1}),
 			content_type="application/json"
 		)
 

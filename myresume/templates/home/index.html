@@ -84,5 +84,5 @@
 	{% trans "Contact request sent" as contactformok %}
 
 	{% include 'shared/modal.html' with modal_id="contact" modal_title=contactform modal_content="forms/contact-form.html" %}
-	{% include 'shared/modal.html' with modal_id="contact-thank-you" modal_title=contactformok modal_content="modals/contact-thank-you.html" %}
+	{% include 'shared/modal.html' with modal_id="contact-thank-you" extra_classes="tiny text-center" modal_title=contactformok modal_content="modals/contact-thank-you.html" %}
 {% endblock %}
