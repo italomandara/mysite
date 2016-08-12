@@ -1,6 +1,7 @@
 from __future__ import unicode_literals
 
 from django.db import models
+from django.core.validators import validate_email, RegexValidator
 
 # Create your models here.
 
@@ -138,11 +139,13 @@ class Course(models.Model):
 		return self.title
 
 class Contact(models.Model):
-    name = models.CharField(max_length=100)
-    company = models.CharField(max_length=100, blank=True)
-    phone = models.CharField(max_length=100, blank=True)
-    email = models.CharField(max_length=100)
-    message = models.CharField(max_length=1000)
+	phone_regex = RegexValidator(regex=r'^\+?1?\d{9,15}$', message="Phone number must be entered in the format: '+999999999'. Up to 15 digits allowed.")
+	name = models.CharField(max_length=100)
+	company = models.CharField(max_length=100, blank=True)
+	phone = models.CharField(max_length=15, validators=[phone_regex], blank=True)
+	email = models.CharField(max_length=100, validators=[validate_email])
+	message = models.CharField(max_length=1000)
 
-    def __unicode__(self):
-    	return self.name
+	def __unicode__(self):
+		
+		return self.name

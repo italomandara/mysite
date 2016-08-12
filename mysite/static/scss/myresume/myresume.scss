@@ -1,4 +1,5 @@
 @import 'partials/variables';
+@import 'partials/placeholders';
 @import 'partials/mixins';
 
 @include responsiveMasonry()
@@ -94,10 +95,25 @@ body {
     }
 }
 
-.callout{
-    border-radius: $global-border-radius;
+.widget{
+    padding: $callout-padding;
+    background-color: $light-gray;
+    
     border: none;
     box-shadow: 0 0 $global-shadow-size $global-shadow-color;
+    &:nth-child(odd){
+        border-radius: $local-radius 0 $local-radius 0;
+    }
+    &:nth-child(even){
+        border-radius: 0 $local-radius 0 $local-radius;
+    }
+}
+
+.callout.alert{
+    background-color: transparent;
+    border-color: $alert-color;
+    // border-width: 3px;
+    color: $alert-color;
 }
 
 .masonry{
@@ -263,15 +279,10 @@ textarea{
 .standout-text{
     display: inline-block;
     background: rgba($primary-color, 0.5);
-    padding: 0.25em 0.5em;
+    padding: 0.5rem 1rem;
     margin-bottom: 0;
 }
 
-%filter-transitions{
-    -webkit-transition: opacity $global-transition-time ease-in-out, padding $global-transition-time ease-in-out, margin $global-transition-time ease-in-out, max-height $global-transition-time ease-in-out, max-width $global-transition-time ease-in-out ;
-    -moz-transition: opacity $global-transition-time ease-in-out, padding $global-transition-time ease-in-out, margin $global-transition-time ease-in-out, max-height $global-transition-time ease-in-out, max-width $global-transition-time ease-in-out ;
-    transition: opacity $global-transition-time ease-in-out, padding $global-transition-time ease-in-out, margin $global-transition-time ease-in-out, max-height $global-transition-time ease-in-out, max-width $global-transition-time ease-in-out ;
-}
 
 .opacity-filter{
     @extend %filter-transitions;
@@ -312,5 +323,31 @@ i.icon{
     }
     &.large-icon{
         font-size: rem-calc(16);
+    }
+}
+
+.loader{
+    @extend .icon;
+    @extend .i-hourglass;
+    @extend %fit-in-container;
+
+    background-color: rgba($primary-color, 0.5);
+    color: white;
+    position: absolute;
+    text-align: center;
+    font-size: 1rem;
+
+    &:before{
+        display: inline-block;
+        vertical-align: middle;
+        @extend .spin-cw;
+        @extend .infinite;
+    }
+
+    &:after{
+        content: '';
+        display: inline-block;
+        height: 100%;
+        vertical-align: middle;
     }
 }

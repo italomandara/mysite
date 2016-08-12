@@ -1,4 +1,9 @@
-<label>{{ field.label }}
+<label {% if field.errors %}class="is-invalid-label"{% endif %}>{{ field.label }}
     {% if field.required %}<span>*</span>{% endif %}
     {{ field }}
+    <span class="form-error {% if field.errors %}is-visible{% endif %}">
+		{% for error in field.errors %}
+			{{ error }},
+		{% endfor %}
+	</span>
 </label>

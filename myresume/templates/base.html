@@ -17,14 +17,12 @@
 			{% endblock %}
 			{% block head-css %}
 			<link href="{% sass_src 'scss/app.scss' %}" rel="stylesheet" type="text/css" />
-			
-			{% compress css %}
-				<link href="{% static 'font/css/fontello.css' %}" rel="stylesheet" type="text/css" />
-			{% endcompress %}
-
 			<link href="https://fonts.googleapis.com/css?family=Roboto:300" rel="stylesheet">
 			<link href="https://fonts.googleapis.com/css?family=Oswald" rel="stylesheet">
 			{% endblock %}
+
+			
+
 			{% block head-js%}
 			{% endblock %}
 		{% endblock %}
@@ -39,11 +37,17 @@
 		{% endblock %}
 		{% block footer-js %}
 		{% compress js %}
+			<script>
+				var GLOBALS ={
+					csrf: '{{ csrf_token }}',
+					ajaxCache: true,
+				}
+			</script>
 			<script type="text/javascript" src="{% static 'js/jquery.min.js' %}"></script>
 			<script type="text/javascript" src="{% static 'js/foundation.min.js' %}"></script>
 			<script type="text/javascript" src="{% static 'js/app.js' %}"></script>
 		{% endcompress %}
-		
+
 		{% endblock %}
 	</body>
 </html>

@@ -1,8 +1,9 @@
-from django.http import HttpResponse
+from django.http import HttpResponse, HttpResponseRedirect
 from django.template import loader
 
 from django.shortcuts import render
 from .forms import ContactForm
+import json
 
 # Create your views here.
 
@@ -39,15 +40,43 @@ def index(request):
 		},
     }
 
+	return HttpResponse(template.render(context, request))
+
+def contactForm(request):
+	form = ContactForm(request.POST)
+
 	if request.method == 'POST':
 		
 		if form.is_valid():
 			form.save()
 
-		else: 
-			print "error"
+	return HttpResponseRedirect('/')
 
-	return HttpResponse(template.render(context, request))
+def ajaxContactForm(request):
+	form = ContactForm(request.POST)
+
+	if request.method == 'POST':
+
+		if form.is_valid():
+			form.save()
+
+			return HttpResponse(
+				json.dumps({"status": 1}),
+				content_type="application/json"
+			)
+
+		else:
+
+			return HttpResponse(
+				json.dumps({"status": 0}),
+				content_type="application/json"
+			)
+
+	else:
+		return HttpResponse(
+			json.dumps({"status": 0, "error": 1}),
+			content_type="application/json"
+		)
 
 def icons(request):
 
