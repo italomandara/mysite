@@ -78,7 +78,7 @@
 		{% endif %}
 		
 			<p>{% trans 'Interested' %}? <a class="button" href="javascript:void(0)" {% if not person.available %}data-tooltip aria-haspopup="true" class="has-tip" data-disable-hover="false" tabindex="1" title="{{ person.unavailable_msg }}" disabled{% else %}data-open="contact" {% endif %}
-				> {% trans 'contact me' %}</a></p>
+				><i class="icon i-mail"></i> {% trans 'contact me' %}</a></p>
 	</div>
 	{% trans "Contact form" as contactform %}
 	{% trans "Contact request sent" as contactformok %}

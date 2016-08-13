@@ -10,3 +10,24 @@
 	left: 0;
 	right: 0;
 }
+%loader{
+    // @extend .icon;
+    // @extend .i-hourglass;
+    @extend %fit-in-container;
+
+    background-color: rgba($primary-color, 0.5);
+    color: white;
+    text-align: center;
+    font-size: 1rem;
+
+    &:before{
+        content: '';
+        display: inline-block;
+        height: 100%;
+        vertical-align: middle;
+    }
+    img{
+        @extend .spin-cw;
+        @extend .infinite
+    }
+}

@@ -1,17 +1,28 @@
 (function() {
+	function Loaders() {
+		var src = '<img src="' + django._static('img/loader.svg') + '"/>';
+		return {
+			normal: '<div class="loader">' + src + '</div>',
+			fixed: '<div class="loader-fixed">' + src + '</div>',
+		}
+	}
+	var loader = Loaders();
+
 	var showLoader = function(_where_to, $this) {
 		if (_where_to === _inside_element) {
-			$this.css('position', 'relative').append('<div class="loader"></div>');
+			$this.css('position', 'relative').append(loader.normal);
 			return $this;
 		} else {
-			$('body').append('<div class="loader-fixed"></div>');
+			$('body').append(loader.fixed)
+			$('html').addClass('scroll-lock');
 			return $('body');
 		}
 	};
 
 	var hideLoader = function($this) {
-		if (typeof $this === typeof undefined) {
-			$('.loader').remove();
+		if (typeof $this === typeof undefined || !$this) {
+			$('.loader, .loader-fixed').remove();
+			$('html').removeClass('scroll-lock');
 			return $('body');
 		} else {
 			$this.find('.loader').remove();
@@ -23,19 +34,21 @@
 		return showLoader(_where_to, this);
 	};
 
-	$.fn.hideLoader = function() {
-		return hideLoader(this);
+	$.fn.hideLoader = function(_all) {
+		if (_all){
+			return hideLoader(false);
+		}
 	};
 
 	var callbacks = {
-		openThankYou: function(data,$loader) {
-			if (!!data.stored){
+		openThankYou: function(data, $loader) {
+			if (!!data.stored) {
 				$loader.hideLoader()
 				$('#contact-thank-you').foundation('open');
 				$('#mailform').foundation('resetForm');
 			} else {
 				$loader.hideLoader()
-				for(var idx in data.form_errors){
+				for (var idx in data.form_errors) {
 					$('#mailform').foundation('addErrorClasses', $('[name=' + idx + ']'));
 				}
 			}
@@ -60,8 +73,10 @@
 		return o;
 	};
 
-	$.fn.form2Ajax = function($target, $loader ,usejson, doneCallBack) {
-		var data = {'empty':0};
+	$.fn.form2Ajax = function($target, $loader, usejson, doneCallBack) {
+		var data = {
+			'empty': 0
+		};
 		var $form = this.is('form') ? this : this.parents('form'),
 			path = $form.attr('action'),
 			_data = (typeof usejson !== typeof undefined && usejson) ? $form.serialize() : JSON.stringify($form.form2JSON()),
@@ -102,7 +117,7 @@
 			$('.category-' + el_class).removeClass('invisible');
 		}
 		return true
-	}
+	};
 	$(document)
 		.on('click', '[data-filter]', function(e) {
 			filter_el($(this), e)

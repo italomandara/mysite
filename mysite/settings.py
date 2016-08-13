@@ -177,7 +177,10 @@ SASS_PROCESSOR_ENABLED = True
 SASS_OUTPUT_STYLE = 'compressed'
 
 # compressor
-COMPRESS_ENABLED = True
+if socket.gethostname() == 'localhost':
+    COMPRESS_ENABLED = False
+else:
+    COMPRESS_ENABLED = True
 
 if socket.gethostname() == 'itmandar.herokuapp.com':
     COMPRESS_OFFLINE = True

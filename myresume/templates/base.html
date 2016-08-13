@@ -20,9 +20,6 @@
 			<link href="https://fonts.googleapis.com/css?family=Roboto:300" rel="stylesheet">
 			<link href="https://fonts.googleapis.com/css?family=Oswald" rel="stylesheet">
 			{% endblock %}
-
-			
-
 			{% block head-js%}
 			{% endblock %}
 		{% endblock %}
@@ -38,10 +35,16 @@
 		{% block footer-js %}
 		{% compress js %}
 			<script>
-				var GLOBALS ={
+				var GLOBALS = {
 					csrf: '{{ csrf_token }}',
 					ajaxCache: true,
-				}
+				};
+				var django = {
+					_static: function(path) {
+						return '{% static '' %}' + path;
+					}
+				};
+				
 			</script>
 			<script type="text/javascript" src="{% static 'js/jquery.min.js' %}"></script>
 			<script type="text/javascript" src="{% static 'js/foundation.min.js' %}"></script>

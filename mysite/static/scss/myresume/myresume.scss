@@ -316,6 +316,10 @@ textarea{
     background-color: $secondary-active-color;
 }
 
+.scroll-lock{
+    overflow: hidden; 
+}
+
 i.icon{
     font-size: rem-calc(14);
     &.small-icon{
@@ -327,27 +331,12 @@ i.icon{
 }
 
 .loader{
-    @extend .icon;
-    @extend .i-hourglass;
-    @extend %fit-in-container;
-
-    background-color: rgba($primary-color, 0.5);
-    color: white;
+    @extend %loader;
     position: absolute;
-    text-align: center;
-    font-size: 1rem;
-
-    &:before{
-        display: inline-block;
-        vertical-align: middle;
-        @extend .spin-cw;
-        @extend .infinite;
-    }
-
-    &:after{
-        content: '';
-        display: inline-block;
-        height: 100%;
-        vertical-align: middle;
-    }
 }
+
+.loader-fixed{
+    @extend %loader;
+    position: fixed;
+}
+
