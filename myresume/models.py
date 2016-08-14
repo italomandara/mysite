@@ -47,7 +47,7 @@ class Skill(models.Model):
 		return self.TYPES
 
 	def get_subcategories(self):
-		return self.values('subcategory')
+		return self.objects.values_list('subcategory').distinct()
 
 	def __unicode__(self):
 		return self.name

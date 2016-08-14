@@ -21,7 +21,7 @@ def index(request):
 	template = loader.get_template('home/index.html')
 	form = ContactForm()
 	skill_categories = Skill.TYPES
-	skill_subcategories = 'none'
+	skill_subcategories = Skill.objects.values_list('subcategory').distinct()
 	context = {
 		'person': person,
 		'skills_list': skills_list,

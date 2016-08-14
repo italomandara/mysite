@@ -1,11 +1,8 @@
 @include responsiveMasonry();
 
 .masonry{
-    .filter{
-        margin-bottom: 0;
-    }
     > .widget, > div > .widget{
-        margin: $global-shadow-size $global-shadow-size $grid-column-gutter $global-shadow-size;
+        margin: $global-shadow-size;
     }
 }
 

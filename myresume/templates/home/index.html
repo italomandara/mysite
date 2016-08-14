@@ -10,7 +10,8 @@
 	{% compress css %}
 		<style>
 			#hero{
-				background-image: url({% static 'img/bg2.jpg' %});
+				background-image: url({% static 'img/bg3.jpg' %});
+				min-height: 320px;
 				background-position: bottom center;
 			}
 		</style>
@@ -18,14 +19,14 @@
 {% endblock %}
 
 {% block body %}
-	<figure id="hero" class="row-wrapper cover">
+	<figure id="hero" class="row-wrapper cover margin bottom">
 		<div class="row">
-			<h1 class="margin top standout-text set-text-color to-white">{{ intro.h1 }}</h1>
-			<h3 class="margin bottom standout-text set-text-color to-white" style="margin-left: 50px">{{ intro.h2 }}</h3>
-			<div class="medium-masonry-1 large-masonry-3 margin bottom set-text-color to-white">{{ intro.body|apply_markup:"markdown" }}</div>
+			<h1 class="margin top standout-text">{{ intro.h1 }}</h1>
+			<h3 class="margin bottom standout-text" style="margin-left: 50px">{{ intro.h2 }}</h3>
 		</div>
 	</figure>
 	<div class="row">
+		<div class="medium-masonry-1 large-masonry-3 margin bottom">{{ intro.body|apply_markup:"markdown" }}</div>
 		<div class="row">
 			{% if profile %}
 				{% include 'home/partials/row.html' with mycontent=profile class="medium-6 column" %}
@@ -41,9 +42,12 @@
 			{% if skills_list|length %}
 				<h4 class="margin bottom set-text-color to-white">{% trans "Skills list" %}</h4>
 				{% for skill_category in skill_categories %}
-					<a href="#" class="button secondary" data-filter="{{ skill_category.1 }}">{{ skill_category.1 }}</a>
+					<a href="#" class="button small secondary" data-filter="{{ skill_category.1|slugify }}">{{ skill_category.1 }}</a>
 				{% endfor %}
-					<a href="#" class="button secondary active" data-filter="none">{% trans 'All' %}</a>
+				{% for skill_subcategory in skill_subcategories %}
+					<a href="#" class="button small secondary" data-filter-sub="{{ skill_subcategory.0|slugify }}">{{ skill_subcategory.0 }}</a>
+				{% endfor %}
+					<a href="#" class="button small secondary active" data-filter="none">{% trans 'All' %}</a>
 				<div class="masonry small-masonry-1 medium-masonry-2 large-masonry-4">
 					{% for skill in skills_list %}{% include 'home/partials/skill.html' %}{% endfor %}
 				</div>
@@ -84,7 +88,7 @@
 			{% include 'home/partials/row.html' with mycontent=achievements class="large-6" %}
 		{% endif %}
 		
-			<p>{% trans 'Interested' %}? <a class="button" href="javascript:void(0)" {% if not person.available %}data-tooltip aria-haspopup="true" class="has-tip" data-disable-hover="false" tabindex="1" title="{{ person.unavailable_msg }}" disabled{% else %}data-open="contact" {% endif %}
+			<p class="large margin top">{% trans 'Interested' %}? <a class="button" href="javascript:void(0)" {% if not person.available %}data-tooltip aria-haspopup="true" class="has-tip" data-disable-hover="false" tabindex="1" title="{{ person.unavailable_msg }}" disabled{% else %}data-open="contact" {% endif %}
 				><i class="icon i-mail"></i> {% trans 'contact me' %}</a></p>
 	</div>
 	{% trans "Contact form" as contactform %}

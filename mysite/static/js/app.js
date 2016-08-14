@@ -75,6 +75,11 @@
 		return o;
 	};
 
+	$.fn.attr_safe = function(attribute){
+		console.log(this)
+		return (typeof this.attr(attribute) !== typeof undefined || !this.attr(attribute)) ? this.attr(attribute) : 'undefined';
+	}
+
 	$.fn.form2Ajax = function($target, $loader, usejson, doneCallBack) {
 		var data = {
 			'empty': 0
@@ -105,21 +110,26 @@
 		return data || this;
 	};
 	var filter_el = function($el, e) {
-		if (!!e) {
+		if (typeof e !== typeof undefined) {
 			e.preventDefault();
 		}
-		$el.addClass('active').siblings('[data-filter]').removeClass('active');
-		var el_class = $el.attr('data-filter');
-		if (el_class.toLowerCase() === 'none') {
+		$el.addClass('active').siblings('[data-filter], [data-filter-sub]').removeClass('active');
+		var category = $el.attr_safe('data-filter');
+		var subcategory = $el.attr_safe('data-filter-sub');
+		var el_class = '.category-' + category;
+		var el_class_sub = '.subcategory-' + subcategory;
+
+		'.subcategory-' + el_class_sub
+		if (typeof category !== typeof undefined && category.toLowerCase() === 'none') {
 			$('.js-filter').removeClass('invisible');
 		} else {
-			$('.js-filter').not('.category-' + el_class).addClass('invisible');
-			$('.category-' + el_class).removeClass('invisible');
+			$('.js-filter').not(el_class + ', '+ el_class_sub).addClass('invisible');
+			$(el_class + ', '+ el_class_sub).removeClass('invisible');
 		}
 		return true
 	};
 	$(document)
-		.on('click', '[data-filter]', function(e) {
+		.on('click', '[data-filter], [data-filter-sub]', function(e) {
 			filter_el($(this), e)
 		})
 		.on('submit', '.js-ajaxform', function(e) {
