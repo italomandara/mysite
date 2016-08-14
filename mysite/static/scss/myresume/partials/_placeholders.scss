@@ -10,12 +10,14 @@
 	left: 0;
 	right: 0;
 }
+
 %loader{
     // @extend .icon;
     // @extend .i-hourglass;
     @extend %fit-in-container;
+    z-index: $reveal-zindex;
 
-    background-color: rgba($primary-color, 0.5);
+    background-color: rgba($primary-color, $local-overlay-opacity);
     color: white;
     text-align: center;
     font-size: 1rem;
@@ -30,4 +32,12 @@
         @extend .spin-cw;
         @extend .infinite
     }
+}
+
+%row-template{
+        padding: {
+        left: $my-minimum-row-margin;
+        right: $my-minimum-row-margin; 
+    }
+    margin: 0 auto;
 }

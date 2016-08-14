@@ -1,4 +1,5 @@
 (function() {
+	window.GLOBALS.listener = '';
 	var callbacks = {
 		openThankYou: function(data, $loader) {
 			if (!!data.stored) {
@@ -103,8 +104,6 @@
 		});
 		return data || this;
 	};
-
-	$(document).foundation();
 	var filter_el = function($el, e) {
 		if (!!e) {
 			e.preventDefault();
@@ -127,5 +126,15 @@
 			e.preventDefault();
 			var $t = $(this);
 			$(this).form2Ajax(false, $t.parents('.modal-content'), 'usejson', callbacks[$t.attr('data-callback')])
+		})
+		.on('keypress', function(e){
+			window.GLOBALS.listener += String.fromCharCode( e.which );
+			console.log(window.GLOBALS.listener);
+			if(window.GLOBALS.listener === 'italuccio'){
+				$('#00-eegg').removeClass('hide');
+			}
 		});
+	$(function(){ // ON DOCUMENT READY
+		$(document).foundation();
+	});
 })();

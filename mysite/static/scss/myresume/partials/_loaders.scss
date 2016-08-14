@@ -1,0 +1,9 @@
+.loader{
+    @extend %loader;
+    position: absolute;
+}
+
+.loader-fixed{
+    @extend %loader;
+    position: fixed;
+}

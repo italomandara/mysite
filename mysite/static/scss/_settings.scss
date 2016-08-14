@@ -296,7 +296,7 @@ $dropdown-sizes: (
 $dropdownmenu-arrows: true;
 $dropdownmenu-min-width: 200px;
 $dropdownmenu-background: $white;
-$dropdown-border: 1px solid $medium-gray;
+$dropdown-border: none;
 
 // 18. Flex Video
 // --------------
@@ -384,9 +384,9 @@ $maincontent-prevent-scroll: true;
 // 24. Orbit
 // ---------
 
-$orbit-bullet-background: $medium-gray;
-$orbit-bullet-background-active: $dark-gray;
-$orbit-bullet-diameter: 1.2rem;
+$orbit-bullet-background: rgba($black,0.3);
+$orbit-bullet-background-active: rgba($black,0.5);
+$orbit-bullet-diameter: 0.5rem;
 $orbit-bullet-margin: 0.1rem;
 $orbit-bullet-margin-top: 0.8rem;
 $orbit-bullet-margin-bottom: 0.8rem;
@@ -523,8 +523,8 @@ $tooltip-radius: $global-radius;
 // 34. Top Bar
 // -----------
 
-$topbar-padding: 0.8rem $grid-column-gutter/2;
-$topbar-background: $primary-color;
+$topbar-padding: 0.5rem $grid-column-gutter/2;
+$topbar-background: white;
 $topbar-link-color: $black;
 $topbar-input-width: 200px;
 

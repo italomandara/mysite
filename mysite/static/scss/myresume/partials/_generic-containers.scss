@@ -1,0 +1,32 @@
+body {
+    >.row, >div:not(.row)>.row {
+    	padding: 0 $my-minimum-row-margin;
+    }
+}
+
+.row.last{
+    padding-bottom: $my-minimum-row-margin;
+}
+
+.row-wrapper{
+    margin: 0;
+    width: 100%;
+    .row{
+        @extend %row-template;
+    }
+}
+
+.vertical-center-container{
+    white-space: nowrap;
+    &:before{
+        content: "";
+        display: inline-block;
+        height: 100%;
+        vertical-align: middle;
+    }
+}
+.vertical-center{
+    display: inline-block;
+    vertical-align: middle;
+    white-space: initial;
+}

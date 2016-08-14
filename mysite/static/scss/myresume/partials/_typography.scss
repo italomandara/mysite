@@ -1,0 +1,24 @@
+.set-text-color{
+    &.to-white{
+        color: white;
+    }
+    &.to-black{
+        color: $black;
+    }
+    &.to-gray{
+        color: $medium-gray;
+    }
+    &.to-light-gray{
+        color: $light-gray;
+    }
+    &.to-dark-gray{
+        color: $dark-gray;
+    }
+}
+
+.standout-text{
+    display: inline-block;
+    background: rgba($primary-color, 0.5);
+    padding: 0.5rem 1rem;
+    margin-bottom: 0;
+}

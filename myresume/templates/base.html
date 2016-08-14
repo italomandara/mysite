@@ -17,7 +17,7 @@
 			{% endblock %}
 			{% block head-css %}
 			<link href="{% sass_src 'scss/app.scss' %}" rel="stylesheet" type="text/css" />
-			<link href="https://fonts.googleapis.com/css?family=Roboto:300" rel="stylesheet">
+			<link href="https://fonts.googleapis.com/css?family=Roboto:300,300italic,700" rel="stylesheet">
 			<link href="https://fonts.googleapis.com/css?family=Oswald" rel="stylesheet">
 			{% endblock %}
 			{% block head-js%}
@@ -46,8 +46,9 @@
 				};
 				
 			</script>
-			<script type="text/javascript" src="{% static 'js/jquery.min.js' %}"></script>
-			<script type="text/javascript" src="{% static 'js/foundation.min.js' %}"></script>
+			<script type="text/javascript" src="{% static 'js/jquery.js' %}"></script>
+			<script type="text/javascript" src="{% static 'js/foundation.js' %}"></script>
+			<script type="text/javascript" src="{% static 'js/what-input.js' %}"></script>
 			<script type="text/javascript" src="{% static 'js/app.js' %}"></script>
 		{% endcompress %}
 
