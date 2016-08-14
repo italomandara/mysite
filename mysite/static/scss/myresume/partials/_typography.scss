@@ -1,4 +1,4 @@
-.set-text-color{
+.set-text-color {
     &.to-white{
         color: white;
     }
@@ -16,9 +16,20 @@
     }
 }
 
-.standout-text{
+.standout-text {
     display: inline-block;
     background: rgba($white, 0.5);
     padding: 0.5rem 1rem;
     margin-bottom: 0;
+}
+
+.text-left-for-small-only {
+    @include breakpoint(small only) {
+        text-align: left;
+    }
+}
+.text-center-for-small-only {
+    @include breakpoint(small only) {
+        text-align: center;
+    }
 }
