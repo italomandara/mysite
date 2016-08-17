@@ -1,6 +1,6 @@
 {% load i18n %}
 
-<div class="js-filter filter normal-filter category-{{ skill.get_skill_category|slugify }} subcategory-{{ skill.subcategory|slugify }}">
+<div class="js-filter filter size-filter category-{{ skill.get_skill_category|slugify }} subcategory-{{ skill.subcategory|slugify }}">
 	<div class="widget secondary large">
 		<h5><i class="{{ skill.icon }}"></i>{{ skill.name }}</h5>
 		<p>{{ skill.description }}</p>

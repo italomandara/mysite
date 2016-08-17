@@ -121,10 +121,10 @@
 
 		'.subcategory-' + el_class_sub
 		if (typeof category !== typeof undefined && category.toLowerCase() === 'none') {
-			$('.js-filter').removeClass('invisible');
+			$('.js-filter').removeAttr('style');
 		} else {
-			$('.js-filter').not(el_class + ', '+ el_class_sub).addClass('invisible');
-			$(el_class + ', '+ el_class_sub).removeClass('invisible');
+			$('.js-filter').not(el_class + ', '+ el_class_sub).css({'opacity':0.3});
+			$(el_class + ', '+ el_class_sub).removeAttr('style');
 		}
 		return true
 	};

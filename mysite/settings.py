@@ -138,11 +138,7 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/1.10/howto/static-files/
 
-STATIC_URL = '/static/'
-STATIC_ROOT = os.path.join(BASE_DIR, "static")
-STATICFILES_DIRS = [
-    os.path.join(ROOT_PATH, 'static'),
-]
+
 
 # sass processor settings
 SASS_PROCESSOR_ROOT = os.path.join(ROOT_PATH, 'static')
@@ -163,24 +159,35 @@ STATICFILES_STORAGE = 'whitenoise.django.GzipManifestStaticFilesStorage'
 
 PROJECT_ROOT = os.path.dirname(os.path.abspath(__file__))
 
-STATIC_ROOT = os.path.join(PROJECT_ROOT, 'staticfiles')
 STATIC_URL = '/static/'
+# STATIC_ROOT = os.path.join(BASE_DIR, "static")
+STATIC_ROOT = os.path.join(PROJECT_ROOT, 'staticfiles')
+
+STATICFILES_DIRS = [
+    # os.path.join(ROOT_PATH, 'static'),
+    os.path.join(PROJECT_ROOT, 'static'),
+]
+
 
 # Extra places for collectstatic to find static files.
-STATICFILES_DIRS = (
-    os.path.join(PROJECT_ROOT, 'static'),
-)
+# STATICFILES_DIRS = (
+#     os.path.join(PROJECT_ROOT, 'static'),
+# )
 
 #sass processor
-
 SASS_PROCESSOR_ENABLED = True
-SASS_OUTPUT_STYLE = 'compressed'
+SASS_PRECISION = 8
 
 # compressor
 if socket.gethostname() == 'localhost':
     COMPRESS_ENABLED = False
+
+    #sass processor
+    SASS_PROCESSOR_ENABLED = True
+    SASS_OUTPUT_STYLE = 'compact'
 else:
     COMPRESS_ENABLED = True
+    SASS_OUTPUT_STYLE = 'compressed'
 
 if socket.gethostname() == 'itmandar.herokuapp.com':
     COMPRESS_OFFLINE = True
