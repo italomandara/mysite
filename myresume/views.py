@@ -5,6 +5,8 @@ from django.shortcuts import render
 from .forms import ContactForm
 import json
 
+import socket
+
 # Create your views here.
 
 from .models import Person, Skill, MyContent, Job, Course
@@ -22,7 +24,9 @@ def index(request):
 	form = ContactForm()
 	skill_categories = Skill.TYPES
 	skill_subcategories = Skill.objects.values_list('subcategory').distinct()
+	hostname = socket.gethostname()
 	context = {
+		'hostname': hostname,
 		'person': person,
 		'skills_list': skills_list,
 		'skill_categories': skill_categories,
