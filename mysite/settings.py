@@ -184,14 +184,14 @@ SASS_PROCESSOR_ENABLED = True
 SASS_PRECISION = 8
 
 # compressor
+COMPRESS_ENABLED = DEBUG
+
 if socket.gethostname() == 'localhost':
-    COMPRESS_ENABLED = False
 
     #sass processor
     SASS_PROCESSOR_ENABLED = True
     SASS_OUTPUT_STYLE = 'nested'
 else:
-    COMPRESS_ENABLED = True
     SASS_OUTPUT_STYLE = 'compressed'
 
 if socket.gethostname() == 'itmandar.herokuapp.com':

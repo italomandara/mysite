@@ -1,8 +1,6 @@
 {% extends '403.html' %}
 
-{% block body %}
-	<div class="row text-center">
-		<h1>500:</h1>
-		<h3>Server failure, please contact the administrator</h3>
-	</div>
+{% block error_msg %}
+	<h1>500:</h1>
+	<h3>Server failure, please contact the administrator</h3>
 {% endblock %}
