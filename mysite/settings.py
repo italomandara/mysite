@@ -26,13 +26,11 @@ SECRET_KEY = '80s8*6n!6iijjuymo(x-+xt(26n%4x6&i2c-h*a(xiq45b5syw'
 # SECURITY WARNING: don't run with debug turned on in production!
 
 
-if socket.gethostname() != 'it.local':
+if socket.gethostname().lower() != 'it.local':
     DEBUG = False
+    TEMPLATE_DEBUG = DEBUG
 else:
     DEBUG = True
-
-TEMPLATE_DEBUG = DEBUG
-
 
 ALLOWED_HOSTS = ['localhost', '127.0.0.1', '0.0.0.0', 'itmandar.herokuapp.com']
 
@@ -185,7 +183,7 @@ SASS_PRECISION = 8
 # compressor
 COMPRESS_ENABLED = DEBUG
 
-if socket.gethostname() == 'it.local':
+if socket.gethostname().lower() == 'it.local':
 
     #sass processor
     SASS_PROCESSOR_ENABLED = True
@@ -193,7 +191,7 @@ if socket.gethostname() == 'it.local':
 else:
     SASS_OUTPUT_STYLE = 'compressed'
 
-if socket.gethostname() != 'it.local':
+if socket.gethostname().lower() != 'it.local':
     COMPRESS_OFFLINE = True
 else:
     COMPRESS_OFFLINE = False
