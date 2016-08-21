@@ -27,6 +27,7 @@ SECRET_KEY = '80s8*6n!6iijjuymo(x-+xt(26n%4x6&i2c-h*a(xiq45b5syw'
  
 if socket.gethostname() == 'itmandar.herokuapp.com':
     DEBUG = False
+    TEMPLATE_DEBUG = DEBUG
 else:
     DEBUG = True
 
@@ -184,7 +185,7 @@ if socket.gethostname() == 'localhost':
 
     #sass processor
     SASS_PROCESSOR_ENABLED = True
-    SASS_OUTPUT_STYLE = 'compact'
+    SASS_OUTPUT_STYLE = 'nested'
 else:
     COMPRESS_ENABLED = True
     SASS_OUTPUT_STYLE = 'compressed'
