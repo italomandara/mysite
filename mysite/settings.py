@@ -25,11 +25,13 @@ SECRET_KEY = '80s8*6n!6iijjuymo(x-+xt(26n%4x6&i2c-h*a(xiq45b5syw'
 
 # SECURITY WARNING: don't run with debug turned on in production!
  
+"""
 if socket.gethostname() == 'itmandar.herokuapp.com':
     DEBUG = False
 else:
     DEBUG = True
-
+"""
+DEBUG = False
 TEMPLATE_DEBUG = DEBUG
 
 
