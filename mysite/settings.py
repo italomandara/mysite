@@ -27,12 +27,10 @@ SECRET_KEY = '80s8*6n!6iijjuymo(x-+xt(26n%4x6&i2c-h*a(xiq45b5syw'
  
 if socket.gethostname() == 'itmandar.herokuapp.com':
     DEBUG = False
-    TEMPLATE_DEBUG = DEBUG
-    TEMPLATE_DIRS = (
-        'C:/Users/Me/Django/mysite/templates', 
-    )
 else:
     DEBUG = True
+
+TEMPLATE_DEBUG = DEBUG
 
 
 ALLOWED_HOSTS = ['localhost', '127.0.0.1', '0.0.0.0', 'itmandar.herokuapp.com']
@@ -69,7 +67,7 @@ ROOT_URLCONF = 'mysite.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [os.path.join(BASE_DIR, 'myresume/templates/')],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -203,3 +201,5 @@ STATICFILES_FINDERS = (
     'django.contrib.staticfiles.finders.AppDirectoriesFinder',
     'compressor.finders.CompressorFinder',
 )
+
+print os.path.join(BASE_DIR, 'myresume/templates/')
