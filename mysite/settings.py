@@ -181,8 +181,6 @@ SASS_PRECISION = 8
 
 # compressor
 COMPRESS_ENABLED = DEBUG
-COMPRESS_ROOT = STATIC_ROOT
-
 
 if socket.gethostname().lower() == 'it.local':
 
@@ -192,10 +190,10 @@ if socket.gethostname().lower() == 'it.local':
 else:
     SASS_OUTPUT_STYLE = 'compressed'
 
-if socket.gethostname().lower() != 'it.local':
-    COMPRESS_OFFLINE = True
-else:
+if DEBUG:
     COMPRESS_OFFLINE = False
+else:
+    COMPRESS_OFFLINE = True
 
 STATICFILES_FINDERS = (
     'django.contrib.staticfiles.finders.FileSystemFinder',
