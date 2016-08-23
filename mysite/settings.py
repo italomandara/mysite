@@ -27,7 +27,7 @@ SECRET_KEY = '80s8*6n!6iijjuymo(x-+xt(26n%4x6&i2c-h*a(xiq45b5syw'
 
 
 if socket.gethostname().lower() != 'it.local':
-    DEBUG = False
+    DEBUG = True
 else:
     DEBUG = True
 
