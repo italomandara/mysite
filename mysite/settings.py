@@ -181,6 +181,8 @@ SASS_PRECISION = 8
 
 # compressor
 COMPRESS_ENABLED = DEBUG
+COMPRESS_ROOT = STATIC_ROOT
+
 
 if socket.gethostname().lower() == 'it.local':
 
