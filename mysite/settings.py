@@ -172,7 +172,7 @@ STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 
 STATICFILES_DIRS = [
     os.path.join(PROJECT_ROOT, 'static'),
-    os.path.join(PROJECT_ROOT, 'media'),
+    MEDIA_ROOT,
 ]
 
 #sass processor
@@ -182,18 +182,19 @@ SASS_PRECISION = 8
 # compressor
 COMPRESS_ENABLED = DEBUG
 
-if socket.gethostname().lower() == 'it.local':
-
+if DEBUG:
     #sass processor
     SASS_PROCESSOR_ENABLED = True
     SASS_OUTPUT_STYLE = 'nested'
-else:
-    SASS_OUTPUT_STYLE = 'compressed'
 
-if DEBUG:
+    #compressor
     COMPRESS_OFFLINE = False
 else:
+    SASS_OUTPUT_STYLE = 'compressed'
+    
+    #compressor
     COMPRESS_OFFLINE = True
+
 
 STATICFILES_FINDERS = (
     'django.contrib.staticfiles.finders.FileSystemFinder',
