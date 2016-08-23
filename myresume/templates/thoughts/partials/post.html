@@ -1,11 +1,12 @@
 {% load i18n %}
+{% load markup_tags %}
 
 <div class="category-{{ post.get_category }} tag-{{ post.tag }}">
 	<h3 class="">{{ post.title }}</h3>
 	<h5 class="subtitle">{{ post.subtitle }}</h5>
 	<p class="small margin bottom set-text-color to-gray"><small>{% trans 'by' %} {{ post.author }} {{ post.created_at|date:"d F Y" }}</small></p>
 
-	<p class=""><img class="margin bottom" src="{{ post.featured_image.url }}">{{ post.body }}</p>
+	<div class="margin bottom"><img class="margin bottom" src="{{ post.featured_image.url }}">{{ post.body|truncatechars:100 }}</div>
 	<p>
 		<span class="secondary label">{{ post.get_category }}</span>
 	</p>

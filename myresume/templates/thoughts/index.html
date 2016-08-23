@@ -27,14 +27,14 @@
 	<div class="row">
 		<div class="medium-masonry-1 large-masonry-3 margin bottom">{{ intro.body|apply_markup:"markdown" }}</div>
 	</div>
-	{% if posts %}
-		<div class="row">
-			{% for post in posts %}
-				{% include 'thoughts/partials/post.html' %}
-			{% endfor %}
-		</div>
-	{% endif %}
+	
 	<div class="row last">
-		<hr></hr>
+		{% if posts %}
+			<div class="medium-masonry-1 large-masonry-2 margin bottom">
+				{% for post in posts %}
+					{% include 'thoughts/partials/post.html' %}
+				{% endfor %}
+			</div>
+		{% endif %}
 	</div>
 {% endblock %}

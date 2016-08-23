@@ -27,8 +27,7 @@ SECRET_KEY = '80s8*6n!6iijjuymo(x-+xt(26n%4x6&i2c-h*a(xiq45b5syw'
 
 
 if socket.gethostname().lower() != 'it.local':
-    DEBUG = False
-    TEMPLATE_DEBUG = DEBUG
+    DEBUG = True
 else:
     DEBUG = True
 
@@ -69,6 +68,7 @@ TEMPLATES = [
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
         'DIRS': [os.path.join(BASE_DIR, 'myresume/templates/')],
         'APP_DIRS': True,
+        'DEBUG' : DEBUG,
         'OPTIONS': {
             'context_processors': [
                 'django.template.context_processors.debug',
