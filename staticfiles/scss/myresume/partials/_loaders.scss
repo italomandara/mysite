@@ -1,6 +1,9 @@
 .loader{
     @extend %loader;
     position: absolute;
+    @include breakpoint(small only) {
+        position: fixed;
+    }
 }
 
 .loader-fixed{

@@ -9,9 +9,10 @@ import socket
 
 # Create your views here.
 
-from .models import Person, Skill, MyContent, Job, Course
+from .models import Person, Skill, MyContent, Job, Course, Post
 
 def index(request):
+	template = loader.get_template('home/index.html')
 	person = Person.objects.get(name__iexact='italo')
 	skills_list = Skill.objects.all()
 	job_history = Job.objects.all().order_by('-end_date')
@@ -20,7 +21,6 @@ def index(request):
 	achievements = MyContent.objects.get(slug='achievements')
 	profile = MyContent.objects.get(slug='profile')
 	skills = MyContent.objects.get(slug='skills')
-	template = loader.get_template('home/index.html')
 	form = ContactForm()
 	skill_categories = Skill.TYPES
 	skill_subcategories = Skill.objects.values_list('subcategory').distinct()
@@ -42,6 +42,23 @@ def index(request):
 			'title': 'home',
 			'description': intro.h1 + ', ' + intro.h2 ,
 		},
+    }
+
+	return HttpResponse(template.render(context, request))
+
+def thoughts(request):
+	template = loader.get_template('thoughts/index.html')
+	person = Person.objects.get(name__iexact='italo')
+	intro = MyContent.objects.get(slug='thoughts-intro')
+	posts = Post.objects.all()
+	context = {
+		'intro': intro,
+		'posts': posts,
+		'person': person,
+		'page' : {
+			'title': 'thoughts',
+			'description': intro.h1 + ', ' + intro.h2 ,
+		},	
     }
 
 	return HttpResponse(template.render(context, request))

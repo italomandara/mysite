@@ -161,20 +161,18 @@ STATICFILES_STORAGE = 'whitenoise.django.GzipManifestStaticFilesStorage'
 
 PROJECT_ROOT = os.path.dirname(os.path.abspath(__file__))
 
+# media urls
+MEDIA_ROOT = os.path.join(PROJECT_ROOT, 'media')
+MEDIA_URL = '/media/'
+
 STATIC_URL = '/static/'
 # STATIC_ROOT = os.path.join(BASE_DIR, "static")
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 
 STATICFILES_DIRS = [
-    # os.path.join(ROOT_PATH, 'static'),
     os.path.join(PROJECT_ROOT, 'static'),
+    os.path.join(PROJECT_ROOT, 'media'),
 ]
-
-
-# Extra places for collectstatic to find static files.
-# STATICFILES_DIRS = (
-#     os.path.join(PROJECT_ROOT, 'static'),
-# )
 
 #sass processor
 SASS_PROCESSOR_ENABLED = True
@@ -201,5 +199,3 @@ STATICFILES_FINDERS = (
     'django.contrib.staticfiles.finders.AppDirectoriesFinder',
     'compressor.finders.CompressorFinder',
 )
-
-print os.path.join(BASE_DIR, 'myresume/templates/')

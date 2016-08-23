@@ -3,7 +3,7 @@ from __future__ import unicode_literals
 from django.db import models
 from django.core.validators import validate_email, RegexValidator
 
-# Create your models here.
+import datetime
 
 class Person(models.Model):
     name = models.CharField(max_length=255)
@@ -17,6 +17,7 @@ class Person(models.Model):
     def __unicode__(self):
 		return self.name
     
+
 class Skill(models.Model):
 	PRINT = 'PR'
 	DESIGN = 'DS'
@@ -103,6 +104,7 @@ class Job(models.Model):
 	def __unicode__(self):
 		return self.name
 
+
 class Course(models.Model):
 	PRINT = 'PR'
 	DESIGN = 'DS'
@@ -138,6 +140,7 @@ class Course(models.Model):
 	def __unicode__(self):
 		return self.title
 
+
 class Contact(models.Model):
 	phone_regex = RegexValidator(regex=r'^\+?1?\d{9,15}$', message="Phone number must be entered in the format: '+999999999'. Up to 15 digits allowed.")
 	name = models.CharField(max_length=100)
@@ -147,5 +150,43 @@ class Contact(models.Model):
 	message = models.CharField(max_length=1000)
 
 	def __unicode__(self):
-		
 		return self.name
+
+
+class Post(models.Model):
+	title = models.CharField(max_length=100)
+	subtitle = models.CharField(max_length=255)
+	author = models.CharField(max_length=100, blank=True)
+	TECH = 'TC'
+	LIFE = 'LF'
+	COURSES = 'CS'
+	CODING = 'CD'
+	CATEGORIES = (
+		(TECH, 'Technology'),
+		(LIFE, 'Life'),
+		(COURSES, 'Courses'),
+		(CODING,'Coding'),
+	)
+	category = models.CharField(
+    	max_length = 2,
+    	choices = CATEGORIES,
+    	default = LIFE,
+    )
+	featured_image = models.FileField(upload_to= 'mysite/media/uploads/%Y/%m/%d/')
+	article_image1 = models.FileField(upload_to= 'mysite/media/uploads/%Y/%m/%d/')
+	article_image2 = models.FileField(upload_to= 'mysite/media/uploads/%Y/%m/%d/')
+	published = models.BooleanField(default=False)
+	created_at = models.DateField(auto_now_add=True)
+	updated_at = models.DateField(auto_now=True) 
+	tag = models.CharField(max_length=50)
+	body = models.TextField(max_length=5000)
+
+	def get_category(self):
+		return dict(self.CATEGORIES)[self.category]
+
+	def get_tag(self):
+		return self.objects.values_list('tag').distinct()
+
+	def __unicode__(self):
+		return self.title
+
