@@ -142,8 +142,7 @@ USE_TZ = True
 
 
 
-# sass processor settings
-SASS_PROCESSOR_ROOT = os.path.join(ROOT_PATH, 'static')
+
 
 # Update database configuration with $DATABASE_URL.
 
@@ -180,11 +179,12 @@ STATICFILES_DIRS = [
     os.path.join(PROJECT_ROOT, 'static'),
 ]
 
-#sass processor
+# sass processor settings
+SASS_PROCESSOR_ROOT = os.path.join(ROOT_PATH, 'static')
 SASS_PRECISION = 8
 
 # compressor
-COMPRESS_ENABLED = DEBUG
+COMPRESS_ENABLED = True
 
 if DEBUG:
     #sass processor
