@@ -11,7 +11,6 @@ https://docs.djangoproject.com/en/1.10/ref/settings/
 """
 
 import os
-import socket
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -24,12 +23,6 @@ ROOT_PATH = os.path.dirname(__file__)
 SECRET_KEY = os.environ['SECRET_KEY']
 
 # SECURITY WARNING: don't run with debug turned on in production!
-
-
-# if socket.gethostname().lower() != 'it.local':
-#     DEBUG = True
-# else:
-#     DEBUG = False
 
 if os.environ['PRODUCTION'] == '1':
     DEBUG = False
@@ -46,7 +39,6 @@ INSTALLED_APPS = [
     'myresume.apps.MyresumeConfig',
     'sass_processor',
     'django_markup',
-    'template_repl',
     'compressor',
     'django.contrib.admin',
     'django.contrib.auth',
@@ -55,6 +47,8 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
 ]
+if DEBUG:
+    INSTALLED_APPS += ['template_repl']
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -168,12 +162,12 @@ FILEPICKER_API_SECRET = os.environ['FILEPICKER_API_SECRET']
 PROJECT_ROOT = os.path.dirname(os.path.abspath(__file__))
 
 # media urls
-# MEDIA_ROOT = os.path.join(PROJECT_ROOT, 'media')
-# MEDIA_URL = '/media/'
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+MEDIA_URL = '/media/'
 
-STATIC_URL = '/static/'
 # STATIC_ROOT = os.path.join(BASE_DIR, "static")
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+STATIC_URL = '/static/'
 
 STATICFILES_DIRS = [
     os.path.join(PROJECT_ROOT, 'static'),
@@ -184,7 +178,7 @@ SASS_PROCESSOR_ROOT = os.path.join(ROOT_PATH, 'static')
 SASS_PRECISION = 8
 
 # compressor
-COMPRESS_ENABLED = DEBUG
+COMPRESS_ENABLED = True
 
 if DEBUG:
     #sass processor
