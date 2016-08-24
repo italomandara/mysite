@@ -11,6 +11,10 @@ import socket
 
 from .models import Person, Skill, MyContent, Job, Course, Post
 
+def googleAuth(request):
+	template = loader.get_template('google96ecc24c7541190c.html')
+	return HttpResponse(template.render(request))
+
 def index(request):
 	template = loader.get_template('home/index.html')
 	person = Person.objects.get(name__iexact='italo')
