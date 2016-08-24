@@ -52,6 +52,42 @@ def index(request):
 
 	return HttpResponse(template.render(context, request))
 
+def more(request):
+	template = loader.get_template('home/more.html')
+	person = Person.objects.get(name__iexact='italo')
+	skills_list = Skill.objects.all()
+	job_history = Job.objects.all().order_by('-end_date')
+	education = Course.objects.all().order_by('-end_date')
+	intro = MyContent.objects.get(slug='intro')
+	achievements = MyContent.objects.get(slug='achievements')
+	profile = MyContent.objects.get(slug='profile')
+	skills = MyContent.objects.get(slug='skills')
+	form = ContactForm()
+	skill_categories = Skill.TYPES
+	skill_subcategories = Skill.objects.values_list('subcategory').distinct()
+	hostname = socket.gethostname()
+	context = {
+		'hostname': hostname,
+		'person': person,
+		'skills_list': skills_list,
+		'skill_categories': skill_categories,
+		'skill_subcategories': skill_subcategories,
+		'intro': intro,
+		'job_history': job_history,
+		'education': education,
+		'achievements': achievements,
+		'profile': profile,
+		'skills': skills,
+		'form': form,
+		'page' : {
+			'title': 'home',
+			'name': pageName(request),
+			'description': intro.h1 + ', ' + intro.h2 ,
+		},
+    }
+
+	return HttpResponse(template.render(context, request))
+
 def thoughts(request):
 	template = loader.get_template('thoughts/index.html')
 	person = Person.objects.get(name__iexact='italo')

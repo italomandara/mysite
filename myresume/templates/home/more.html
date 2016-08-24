@@ -1,0 +1,40 @@
+{% extends 'base.html' %}
+
+{% load i18n %}
+{% load markup_tags %}
+{% load static from staticfiles %}
+{% load compress %}
+
+{% block head-css %}
+	{{ block.super }}
+	{% compress css %}
+		<style>
+			#hero{
+				background-image: url({% static 'img/bg3.jpg' %});
+				background-position: bottom center;
+			}
+		</style>
+	{% endcompress %}
+{% endblock %}
+
+{% block body %}
+	<figure id="hero" class="row-wrapper cover margin bottom">
+		<div class="row">
+			<h1 class="margin top standout-text">{{ intro.h1 }}</h1><br>
+			<h4 class="margin bottom standout-text" style="margin-left: 50px">{{ intro.h2 }}</h4>
+		</div>
+	</figure>
+	<div class="row last">
+		{% if education %}
+			<h4 class="margin top bottom">{% trans "Education and Courses" %}</h4>
+			<div class="small-masonry-1 medium-masonry-2 large-masonry-3">
+				{% for school in education %}
+					{% include 'home/partials/education.html' %}
+				{% endfor %}
+			</div>
+		{% endif %}				
+		{% if achievements %}
+			{% include 'home/partials/row.html' with mycontent=achievements class="small-masonry-1 medium-masonry-2 large-masonry-3" %}
+		{% endif %}
+	</div>
+{% endblock %}

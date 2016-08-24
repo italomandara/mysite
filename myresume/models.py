@@ -176,8 +176,8 @@ class Post(models.Model):
     	default = LIFE,
     )
 	featured_image = django_filepicker.models.FPUrlField()
-	article_image1 = django_filepicker.models.FPUrlField()
-	article_image2 = django_filepicker.models.FPUrlField()
+	article_image1 = django_filepicker.models.FPUrlField(blank=True)
+	article_image2 = django_filepicker.models.FPUrlField(blank=True)
 	published = models.BooleanField(default=False)
 	created_at = models.DateField(auto_now_add=True)
 	updated_at = models.DateField(auto_now=True) 

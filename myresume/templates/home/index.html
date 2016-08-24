@@ -74,25 +74,11 @@
 			{% endif %}	
 		</div>
 	</div>
-	<div class="row last">
-		{% if education %}
-			<h4 class="margin top bottom">{% trans "Education and Courses" %}</h4>
-			<div class="small-masonry-1 medium-masonry-2 large-masonry-3">
-				{% for school in education %}
-					{% include 'home/partials/education.html' %}
-				{% endfor %}
-			</div>
-		{% endif %}				
-		{% if achievements %}
-			{% include 'home/partials/row.html' with mycontent=achievements class="large-6" %}
-		{% endif %}
-		
-			<p class="large margin top">{% trans 'Interested' %}? <a class="button" href="javascript:void(0)" {% if not person.available %}data-tooltip aria-haspopup="true" class="has-tip" data-disable-hover="false" tabindex="1" title="{{ person.unavailable_msg }}" disabled{% else %}data-open="contact" {% endif %}
-				><i class="icon i-mail"></i> {% trans 'contact me' %}</a></p>
-	</div>
-	{% trans "Contact form" as contactform %}
-	{% trans "Contact request sent" as contactformok %}
 
-	{% include 'shared/modal.html' with modal_id="contact" modal_title=contactform modal_content="forms/contact-form.html" %}
+	{% trans "Contact form" as contactform %}
+	{% include 'shared/modal.html' with modal_id="contact" modal_title=contactform modal_content="forms/contact-form.html" %}	
+	{% trans "Contact request sent" as contactformok %}
 	{% include 'shared/modal.html' with modal_id="contact-thank-you" extra_classes="tiny text-center" modal_title=contactformok modal_content="modals/contact-thank-you.html" %}
+	{% trans "Icons" as icons_text %}
+	{% include 'shared/modal.html' with modal_id="icons" extra_classes="medium text-center" modal_title=icons_text %}
 {% endblock %}

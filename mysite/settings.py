@@ -21,7 +21,7 @@ ROOT_PATH = os.path.dirname(__file__)
 # See https://docs.djangoproject.com/en/1.10/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = '80s8*6n!6iijjuymo(x-+xt(26n%4x6&i2c-h*a(xiq45b5syw'
+SECRET_KEY = os.environ['SECRET_KEY']
 
 # SECURITY WARNING: don't run with debug turned on in production!
 
@@ -94,7 +94,7 @@ DATABASES = {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
         'NAME': 'mysite',
         'USER': 'it',
-        'PASSWORD': 'ventisei091940',
+        'PASSWORD': os.environ['DB_KEY'],
         'HOST': 'localhost',
         'PORT': '',
     }
@@ -153,7 +153,8 @@ DATABASES['default'].update(db_from_env)
 STATICFILES_STORAGE = 'whitenoise.django.GzipManifestStaticFilesStorage'
 
 # django filepicker
-FILEPICKER_API_KEY = 'AXpAULNXUTw6RIbYYqi8wz'
+FILEPICKER_API_KEY = os.environ['FILEPICKER_API_KEY']
+FILEPICKER_API_SECRET = os.environ['FILEPICKER_API_SECRET']
 CWD = os.getcwd()
 MEDIA_ROOT = os.path.join(CWD, 'media')
 

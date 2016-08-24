@@ -51,7 +51,7 @@
 	};
 
 	$.fn.hideLoader = function(which) {
-		if (which='everything'){
+		if (which = 'everything') {
 			return hideLoader(false);
 		} else {
 			return hideLoader(this);
@@ -75,7 +75,7 @@
 		return o;
 	};
 
-	$.fn.attr_safe = function(attribute){
+	$.fn.attr_safe = function(attribute) {
 		console.log(this)
 		return (typeof this.attr(attribute) !== typeof undefined || !this.attr(attribute)) ? this.attr(attribute) : 'undefined';
 	}
@@ -123,8 +123,10 @@
 		if (typeof category !== typeof undefined && category.toLowerCase() === 'none') {
 			$('.js-filter').removeAttr('style');
 		} else {
-			$('.js-filter').not(el_class + ', '+ el_class_sub).css({'opacity':0.3});
-			$(el_class + ', '+ el_class_sub).removeAttr('style');
+			$('.js-filter').not(el_class + ', ' + el_class_sub).css({
+				'opacity': 0.3
+			});
+			$(el_class + ', ' + el_class_sub).removeAttr('style');
 		}
 		return true
 	};
@@ -132,19 +134,28 @@
 		.on('click', '[data-filter], [data-filter-sub]', function(e) {
 			filter_el($(this), e)
 		})
+		.on('click', '[data-reveal-ajax]', function() {
+			var reveal_id = $(this).attr('data-open'),
+			$modal = $('#' + reveal_id).find('.modal-content'),
+			reveal_content_url = $(this).attr('data-reveal-ajax');
+			$.ajax(reveal_content_url)
+				.done(function(resp) {
+					$modal.html(resp).foundation('open');
+				});
+		})
 		.on('submit', '.js-ajaxform', function(e) {
 			e.preventDefault();
 			var $t = $(this);
 			$(this).form2Ajax(false, $t.parents('.modal-content'), 'usejson', callbacks[$t.attr('data-callback')])
 		})
-		.on('keypress', function(e){
-			window.GLOBALS.listener += String.fromCharCode( e.which );
+		.on('keypress', function(e) {
+			window.GLOBALS.listener += String.fromCharCode(e.which);
 			console.log(window.GLOBALS.listener);
-			if(window.GLOBALS.listener === 'italuccio'){
+			if (window.GLOBALS.listener === 'italuccio') {
 				$('#00-eegg').removeClass('hide');
 			}
 		});
-	$(function(){ // ON DOCUMENT READY
+	$(function() { // ON DOCUMENT READY
 		$(document).foundation();
 	});
 })();

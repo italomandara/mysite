@@ -1,3 +1,4 @@
+{% load i18n %}
 {% load sass_tags %}
 {% load static from staticfiles %}
 {% load compress %}
@@ -31,6 +32,14 @@
 		{% block body %}
 		{% endblock %}
 		{% block footer-body %}
+		{% endblock %}
+		{% block modals %}
+			{% trans "Contact form" as contactform %}
+			{% include 'shared/modal.html' with modal_id="contact" modal_title=contactform modal_content="forms/contact-form.html" %}	
+			{% trans "Contact request sent" as contactformok %}
+			{% include 'shared/modal.html' with modal_id="contact-thank-you" extra_classes="tiny text-center" modal_title=contactformok modal_content="modals/contact-thank-you.html" %}
+			{% trans "Icons" as icons_text %}
+			{% include 'shared/modal.html' with modal_id="icons" extra_classes="medium text-center" modal_title=icons_text %}
 		{% endblock %}
 		{% block footer-js %}
 		{% compress js %}
