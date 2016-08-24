@@ -182,7 +182,6 @@ STATICFILES_DIRS = [
 ]
 
 #sass processor
-SASS_PROCESSOR_ENABLED = True
 SASS_PRECISION = 8
 
 # compressor
@@ -196,7 +195,7 @@ if DEBUG:
     #compressor
     COMPRESS_OFFLINE = False
 else:   
-    SASS_PROCESSOR_ENABLED = False
+    SASS_PROCESSOR_ENABLED = True
     SASS_OUTPUT_STYLE = 'compressed'
     
     #compressor
