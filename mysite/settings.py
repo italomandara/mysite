@@ -31,10 +31,11 @@ SECRET_KEY = os.environ['SECRET_KEY']
 # else:
 #     DEBUG = False
 
-if os.environ['PRODUCTION']:
+if os.environ['PRODUCTION'] == 1:
     DEBUG = False
 else:
     DEBUG = True
+    print 'DEBUG', DEBUG
 
 ALLOWED_HOSTS = ['localhost', '127.0.0.1', '0.0.0.0', 'itmandar.herokuapp.com']
 
