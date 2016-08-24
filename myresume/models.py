@@ -2,8 +2,14 @@ from __future__ import unicode_literals
 
 from django.db import models
 from django.core.validators import validate_email, RegexValidator
+from django.template.defaultfilters import slugify
 
 import datetime
+
+from gdstorage.storage import GoogleDriveStorage
+
+# Define Google Drive Storage
+gd_storage = GoogleDriveStorage()
 
 class Person(models.Model):
     name = models.CharField(max_length=255)
@@ -154,6 +160,7 @@ class Contact(models.Model):
 
 
 class Post(models.Model):
+	slug = models.SlugField(max_length=255, primary_key=True)
 	title = models.CharField(max_length=100)
 	subtitle = models.CharField(max_length=255)
 	author = models.CharField(max_length=100, blank=True)
@@ -172,9 +179,12 @@ class Post(models.Model):
     	choices = CATEGORIES,
     	default = LIFE,
     )
-	featured_image = models.FileField(upload_to= 'mysite/media/uploads/%Y/%m/%d/')
-	article_image1 = models.FileField(upload_to= 'mysite/media/uploads/%Y/%m/%d/')
-	article_image2 = models.FileField(upload_to= 'mysite/media/uploads/%Y/%m/%d/')
+	featured_image = models.FileField(upload_to= 'mysite/media/uploads/%Y/%m/%d/', storage=gd_storage)
+	article_image1 = models.FileField(upload_to= 'mysite/media/uploads/%Y/%m/%d/', storage=gd_storage)
+	article_image2 = models.FileField(upload_to= 'mysite/media/uploads/%Y/%m/%d/', storage=gd_storage)
+	# featured_image = models.FileField(upload_to= 'mysite/media/uploads/%Y/%m/%d/')
+	# article_image1 = models.FileField(upload_to= 'mysite/media/uploads/%Y/%m/%d/')
+	# article_image2 = models.FileField(upload_to= 'mysite/media/uploads/%Y/%m/%d/')
 	published = models.BooleanField(default=False)
 	created_at = models.DateField(auto_now_add=True)
 	updated_at = models.DateField(auto_now=True) 

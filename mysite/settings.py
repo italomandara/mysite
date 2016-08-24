@@ -26,10 +26,12 @@ SECRET_KEY = '80s8*6n!6iijjuymo(x-+xt(26n%4x6&i2c-h*a(xiq45b5syw'
 # SECURITY WARNING: don't run with debug turned on in production!
 
 
-if socket.gethostname().lower() != 'it.local':
-    DEBUG = True
-else:
-    DEBUG = False
+# if socket.gethostname().lower() != 'it.local':
+#     DEBUG = True
+# else:
+#     DEBUG = False
+
+DEBUG = True
 
 ALLOWED_HOSTS = ['localhost', '127.0.0.1', '0.0.0.0', 'itmandar.herokuapp.com']
 
@@ -42,6 +44,7 @@ INSTALLED_APPS = [
     'django_markup',
     'template_repl',
     'compressor',
+    'gdstorage',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -83,16 +86,16 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'mysite.wsgi.application'
 
+#
+# Google Drive Storage Settings
+#
+
+GOOGLE_DRIVE_STORAGE_JSON_KEY_FILE = os.path.join(BASE_DIR, 'k.json')
+GOOGLE_DRIVE_STORAGE_SERVICE_EMAIL = 'myresume@fiery-surf-141222.iam.gserviceaccount.com'
 
 # Database
 # https://docs.djangoproject.com/en/1.10/ref/settings/#databases
 
-# DATABASES = {
-#     'default': {
-#         'ENGINE': 'django.db.backends.sqlite3',
-#         'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
-#     }
-# }
 
 DATABASES = {
     'default': {

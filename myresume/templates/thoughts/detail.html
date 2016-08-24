@@ -1,0 +1,38 @@
+{% extends 'base.html' %}
+
+{% load i18n %}
+{% load markup_tags %}
+{% load static from staticfiles %}
+{% load compress %}
+
+{% block head-css %}
+	{{ block.super }}
+	{% compress css %}
+		<style>
+			#hero{
+				background-image: url({{ post.featured_image.url }});
+				background-position: bottom center;
+			}
+		</style>
+	{% endcompress %}
+{% endblock %}
+
+{% block body %}
+	<figure id="hero" class="row-wrapper cover margin bottom">
+		<div class="row">
+			<h1 class="margin top standout-text">{{ post.title }}</h1><br>
+			<h4 class="margin bottom standout-text" style="margin-left: 50px">{{ post.subtitle }}</h4>
+		</div>
+	</figure>
+	
+	<div class="row last">
+		<div class="category-{{ post.get_category }} tag-{{ post.tag }}">
+			<p class="small margin bottom set-text-color to-gray"><small>{% trans 'by' %} {{ post.author }} {{ post.created_at|date:"d F Y" }}</small></p>
+
+			<div class="medium-masonry-2 large-masonry-3 small margin bottom"><img class="margin bottom thumbnail xsmall margin bottom" src="{{ post.article_image1.url }}">{{ post.body|apply_markup:"markdown" }}</div>
+			<p>
+				<span class="secondary label">{{ post.get_category }}</span>
+			</p>
+		</div>
+	</div>
+{% endblock %}

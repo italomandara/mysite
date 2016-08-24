@@ -50,7 +50,7 @@ def thoughts(request):
 	template = loader.get_template('thoughts/index.html')
 	person = Person.objects.get(name__iexact='italo')
 	intro = MyContent.objects.get(slug='thoughts-intro')
-	posts = Post.objects.all()
+	posts = Post.objects.filter(published=True)
 	context = {
 		'intro': intro,
 		'posts': posts,
@@ -58,6 +58,21 @@ def thoughts(request):
 		'page' : {
 			'title': 'thoughts',
 			'description': intro.h1 + ', ' + intro.h2 ,
+		},	
+    }
+
+	return HttpResponse(template.render(context, request))
+
+def thoughtsDetail(request, slug):
+	template = loader.get_template('thoughts/detail.html')
+	person = Person.objects.get(name__iexact='italo')
+	post = Post.objects.get(published=True, slug=slug)
+	context = {
+		'post': post,
+		'person': person,
+		'page' : {
+			'title': post.title,
+			'description': post.subtitle,
 		},	
     }
 
