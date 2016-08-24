@@ -31,7 +31,7 @@ SECRET_KEY = '80s8*6n!6iijjuymo(x-+xt(26n%4x6&i2c-h*a(xiq45b5syw'
 # else:
 #     DEBUG = False
 
-DEBUG = False
+DEBUG = True
 
 ALLOWED_HOSTS = ['localhost', '127.0.0.1', '0.0.0.0', 'itmandar.herokuapp.com']
 
@@ -44,7 +44,6 @@ INSTALLED_APPS = [
     'django_markup',
     'template_repl',
     'compressor',
-    'gdstorage',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -86,12 +85,6 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'mysite.wsgi.application'
 
-#
-# Google Drive Storage Settings
-#
-
-GOOGLE_DRIVE_STORAGE_JSON_KEY_FILE = os.path.join(BASE_DIR, 'k.json')
-GOOGLE_DRIVE_STORAGE_SERVICE_EMAIL = 'myresume@fiery-surf-141222.iam.gserviceaccount.com'
 # Database
 # https://docs.djangoproject.com/en/1.10/ref/settings/#databases
 
@@ -159,13 +152,19 @@ DATABASES['default'].update(db_from_env)
 
 STATICFILES_STORAGE = 'whitenoise.django.GzipManifestStaticFilesStorage'
 
+# django filepicker
+FILEPICKER_API_KEY = 'AXpAULNXUTw6RIbYYqi8wz'
+CWD = os.getcwd()
+MEDIA_ROOT = os.path.join(CWD, 'media')
+
+
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/1.9/howto/static-files/
 
 PROJECT_ROOT = os.path.dirname(os.path.abspath(__file__))
 
 # media urls
-MEDIA_ROOT = os.path.join(PROJECT_ROOT, 'media')
+# MEDIA_ROOT = os.path.join(PROJECT_ROOT, 'media')
 MEDIA_URL = '/media/'
 
 STATIC_URL = '/static/'

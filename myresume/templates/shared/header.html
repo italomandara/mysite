@@ -6,14 +6,15 @@
 				<li id="00-eegg" style="position:relative" class="hide">
 					<a href="#"><i class="icon i-cog"></i> @ {{ hostname }}</a>
 					<ul class="menu vertical">
+			'name': resolve(request.path_info).url_name,
 						<li><a href="javascript: void(0)" onclick="$('body').showLoader(false);" >Open loader</a></li>
 					</ul>
 				</li>
 				<li>
-					<a href="{% url 'index' %}">Home</a>	
+					<a {% if page.name == 'index'%}class="active"{% endif %} href="{% url 'index' %}">Home</a>	
 				</li>
 				<li>
-					<a href="{% url 'thoughts' %}">Thoughts</a>
+					<a {% if page.name == 'thoughts' or page.name == 'thoughts-detail' %}class="active"{% endif %} href="{% url 'thoughts' %}">Thoughts</a>
 				</li>
 			</ul>
 		</div>

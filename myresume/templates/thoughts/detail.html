@@ -10,7 +10,7 @@
 	{% compress css %}
 		<style>
 			#hero{
-				background-image: url({{ post.featured_image.url }});
+				background-image: url({{ post.featured_image }});
 				background-position: bottom center;
 			}
 		</style>
@@ -29,7 +29,7 @@
 		<div class="category-{{ post.get_category }} tag-{{ post.tag }}">
 			<p class="small margin bottom set-text-color to-gray"><small>{% trans 'by' %} {{ post.author }} {{ post.created_at|date:"d F Y" }}</small></p>
 
-			<div class="medium-masonry-2 large-masonry-3 small margin bottom"><img class="margin bottom thumbnail xsmall margin bottom" src="{{ post.article_image1.url }}">{{ post.body|apply_markup:"markdown" }}</div>
+			<div class="medium-masonry-2 large-masonry-3 small margin bottom"><img class="margin bottom thumbnail xsmall margin bottom" src="{{ post.article_image1 }}">{{ post.body|apply_markup:"markdown" }}</div>
 			<p>
 				<span class="secondary label">{{ post.get_category }}</span>
 			</p>

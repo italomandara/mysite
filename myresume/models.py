@@ -5,11 +5,7 @@ from django.core.validators import validate_email, RegexValidator
 from django.template.defaultfilters import slugify
 
 import datetime
-
-from gdstorage.storage import GoogleDriveStorage
-
-# Define Google Drive Storage
-gd_storage = GoogleDriveStorage()
+import django_filepicker
 
 class Person(models.Model):
     name = models.CharField(max_length=255)
@@ -179,12 +175,9 @@ class Post(models.Model):
     	choices = CATEGORIES,
     	default = LIFE,
     )
-	featured_image = models.FileField(upload_to= 'mysite/media/uploads/%Y/%m/%d/', storage=gd_storage)
-	article_image1 = models.FileField(upload_to= 'mysite/media/uploads/%Y/%m/%d/', storage=gd_storage)
-	article_image2 = models.FileField(upload_to= 'mysite/media/uploads/%Y/%m/%d/', storage=gd_storage)
-	# featured_image = models.FileField(upload_to= 'mysite/media/uploads/%Y/%m/%d/')
-	# article_image1 = models.FileField(upload_to= 'mysite/media/uploads/%Y/%m/%d/')
-	# article_image2 = models.FileField(upload_to= 'mysite/media/uploads/%Y/%m/%d/')
+	featured_image = django_filepicker.models.FPUrlField()
+	article_image1 = django_filepicker.models.FPUrlField()
+	article_image2 = django_filepicker.models.FPUrlField()
 	published = models.BooleanField(default=False)
 	created_at = models.DateField(auto_now_add=True)
 	updated_at = models.DateField(auto_now=True) 

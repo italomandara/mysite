@@ -1,0 +1,7 @@
+.top-bar .menu > li > a{
+	color: $dark-gray;
+	font-size: rem-calc(14);
+	&.active{
+		color: $black;
+	}
+}

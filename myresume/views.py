@@ -3,6 +3,8 @@ from django.template import loader
 
 from django.shortcuts import render
 from .forms import ContactForm
+from django.core.urlresolvers import resolve
+
 import json
 
 import socket
@@ -10,6 +12,9 @@ import socket
 # Create your views here.
 
 from .models import Person, Skill, MyContent, Job, Course, Post
+
+def pageName(request):
+	return resolve(request.path_info).url_name
 
 def index(request):
 	template = loader.get_template('home/index.html')
@@ -40,6 +45,7 @@ def index(request):
 		'form': form,
 		'page' : {
 			'title': 'home',
+			'name': pageName(request),
 			'description': intro.h1 + ', ' + intro.h2 ,
 		},
     }
@@ -57,6 +63,7 @@ def thoughts(request):
 		'person': person,
 		'page' : {
 			'title': 'thoughts',
+			'name': pageName(request),
 			'description': intro.h1 + ', ' + intro.h2 ,
 		},	
     }
@@ -72,6 +79,7 @@ def thoughtsDetail(request, slug):
 		'person': person,
 		'page' : {
 			'title': post.title,
+			'name': pageName(request),
 			'description': post.subtitle,
 		},	
     }
