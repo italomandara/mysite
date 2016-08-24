@@ -178,17 +178,16 @@ SASS_PROCESSOR_ROOT = os.path.join(ROOT_PATH, 'static')
 SASS_PRECISION = 8
 
 # compressor
-COMPRESS_ENABLED = True
+COMPRESS_ENABLED = DEBUG
+SASS_PROCESSOR_ENABLED = DEBUG
 
 if DEBUG:
     #sass processor
-    SASS_PROCESSOR_ENABLED = True
     SASS_OUTPUT_STYLE = 'nested'
 
     #compressor
     COMPRESS_OFFLINE = False
 else:   
-    SASS_PROCESSOR_ENABLED = True
     SASS_OUTPUT_STYLE = 'compressed'
     
     #compressor
