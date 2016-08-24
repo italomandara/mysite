@@ -31,7 +31,7 @@ SECRET_KEY = os.environ['SECRET_KEY']
 # else:
 #     DEBUG = False
 
-if os.environ['PRODUCTION'] == 1:
+if os.environ['PRODUCTION'] == '1':
     DEBUG = False
 else:
     DEBUG = True
@@ -159,8 +159,8 @@ STATICFILES_STORAGE = 'whitenoise.django.GzipManifestStaticFilesStorage'
 # django filepicker
 FILEPICKER_API_KEY = os.environ['FILEPICKER_API_KEY']
 FILEPICKER_API_SECRET = os.environ['FILEPICKER_API_SECRET']
-CWD = os.getcwd()
-MEDIA_ROOT = os.path.join(CWD, 'media')
+# CWD = os.getcwd()
+# MEDIA_ROOT = os.path.join(CWD, 'media')
 
 
 # Static files (CSS, JavaScript, Images)
@@ -170,7 +170,7 @@ PROJECT_ROOT = os.path.dirname(os.path.abspath(__file__))
 
 # media urls
 # MEDIA_ROOT = os.path.join(PROJECT_ROOT, 'media')
-MEDIA_URL = '/media/'
+# MEDIA_URL = '/media/'
 
 STATIC_URL = '/static/'
 # STATIC_ROOT = os.path.join(BASE_DIR, "static")
@@ -178,7 +178,6 @@ STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 
 STATICFILES_DIRS = [
     os.path.join(PROJECT_ROOT, 'static'),
-    MEDIA_ROOT,
 ]
 
 #sass processor
