@@ -91,8 +91,7 @@ WSGI_APPLICATION = 'mysite.wsgi.application'
 #
 
 GOOGLE_DRIVE_STORAGE_JSON_KEY_FILE = os.path.join(BASE_DIR, 'k.json')
-# GOOGLE_DRIVE_STORAGE_SERVICE_EMAIL = 'myresume@fiery-surf-141222.iam.gserviceaccount.com'
-GOOGLE_DRIVE_STORAGE_SERVICE_EMAIL = 'fiery-surf-141222@appspot.gserviceaccount.com'
+GOOGLE_DRIVE_STORAGE_SERVICE_EMAIL = 'myresume@fiery-surf-141222.iam.gserviceaccount.com'
 # Database
 # https://docs.djangoproject.com/en/1.10/ref/settings/#databases
 
