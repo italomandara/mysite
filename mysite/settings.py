@@ -45,6 +45,7 @@ INSTALLED_APPS = [
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
+    'whitenoise.runserver_nostatic',
     'django.contrib.staticfiles',
 ]
 if DEBUG:
@@ -147,13 +148,14 @@ DATABASES['default'].update(db_from_env)
 # Simplified static file serving.
 # https://warehouse.python.org/project/whitenoise/
 
-# STATICFILES_STORAGE = 'whitenoise.django.GzipManifestStaticFilesStorage'
+STATICFILES_STORAGE = 'whitenoise.django.GzipManifestStaticFilesStorage'
+# STATICFILES_STORAGE = 'django.contrib.staticfiles.storage.ManifestStaticFilesStorage'
 
 # django filepicker
 FILEPICKER_API_KEY = os.environ['FILEPICKER_API_KEY']
 FILEPICKER_API_SECRET = os.environ['FILEPICKER_API_SECRET']
-# CWD = os.getcwd()
-# MEDIA_ROOT = os.path.join(CWD, 'media')
+CWD = os.getcwd()
+MEDIA_ROOT = os.path.join(CWD, 'media')
 
 
 # Static files (CSS, JavaScript, Images)
@@ -162,7 +164,7 @@ FILEPICKER_API_SECRET = os.environ['FILEPICKER_API_SECRET']
 PROJECT_ROOT = os.path.dirname(os.path.abspath(__file__))
 
 # media urls
-MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+# MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 MEDIA_URL = '/media/'
 
 # STATIC_ROOT = os.path.join(BASE_DIR, "static")
