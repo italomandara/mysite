@@ -55,29 +55,19 @@ def index(request):
 def more(request):
 	template = loader.get_template('home/more.html')
 	person = Person.objects.get(name__iexact='italo')
-	skills_list = Skill.objects.all()
-	job_history = Job.objects.all().order_by('-end_date')
 	education = Course.objects.all().order_by('-end_date')
 	intro = MyContent.objects.get(slug='intro')
 	achievements = MyContent.objects.get(slug='achievements')
 	profile = MyContent.objects.get(slug='profile')
-	skills = MyContent.objects.get(slug='skills')
 	form = ContactForm()
-	skill_categories = Skill.TYPES
-	skill_subcategories = Skill.objects.values_list('subcategory').distinct()
 	hostname = socket.gethostname()
 	context = {
 		'hostname': hostname,
 		'person': person,
-		'skills_list': skills_list,
-		'skill_categories': skill_categories,
-		'skill_subcategories': skill_subcategories,
 		'intro': intro,
-		'job_history': job_history,
 		'education': education,
 		'achievements': achievements,
 		'profile': profile,
-		'skills': skills,
 		'form': form,
 		'page' : {
 			'title': 'home',
@@ -93,10 +83,12 @@ def thoughts(request):
 	person = Person.objects.get(name__iexact='italo')
 	intro = MyContent.objects.get(slug='thoughts-intro')
 	posts = Post.objects.filter(published=True)
+	form = ContactForm()
 	context = {
 		'intro': intro,
 		'posts': posts,
 		'person': person,
+		'form': form,
 		'page' : {
 			'title': 'thoughts',
 			'name': pageName(request),
@@ -110,9 +102,11 @@ def thoughtsDetail(request, slug):
 	template = loader.get_template('thoughts/detail.html')
 	person = Person.objects.get(name__iexact='italo')
 	post = Post.objects.get(published=True, slug=slug)
+	form = ContactForm()
 	context = {
 		'post': post,
 		'person': person,
+		'form': form,
 		'page' : {
 			'title': post.title,
 			'name': pageName(request),

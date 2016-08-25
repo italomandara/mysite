@@ -3388,16 +3388,16 @@ table.hover tr:nth-of-type(even):hover {
     top: 50%;
     transform: translateY(-50%); }
 
-.top-bar {
+.top-bar, .top-bar ul:not(.is-dropdown-submenu) {
   padding: 0.5rem 15px; }
-  .top-bar::before, .top-bar::after {
+  .top-bar::before, .top-bar ul:not(.is-dropdown-submenu)::before, .top-bar::after, .top-bar ul:not(.is-dropdown-submenu)::after {
     content: ' ';
     display: table; }
-  .top-bar::after {
+  .top-bar::after, .top-bar ul:not(.is-dropdown-submenu)::after {
     clear: both; }
-  .top-bar, .top-bar ul {
-    background-color: white; }
-  .top-bar input {
+  .top-bar, .top-bar ul:not(.is-dropdown-submenu), .top-bar ul, .top-bar ul:not(.is-dropdown-submenu) ul {
+    background-color: rgba(255, 255, 255, 0.95); }
+  .top-bar input, .top-bar ul:not(.is-dropdown-submenu) input {
     width: 200px;
     margin-right: 1rem; }
 
@@ -3430,7 +3430,7 @@ table.hover tr:nth-of-type(even):hover {
     height: 100%;
     vertical-align: middle; }
 
-.row-wrapper .row, .top-bar.in-grid .row {
+.row-wrapper .row, .top-bar.in-grid .row, .top-bar ul.in-grid:not(.is-dropdown-submenu) .row {
   padding-left: 30px;
   padding-right: 30px;
   margin: 0 auto; }
@@ -3787,19 +3787,29 @@ i.icon {
 .loader-fixed {
   position: fixed; }
 
-.top-bar.in-grid {
+.top-bar.in-grid, .top-bar ul.in-grid:not(.is-dropdown-submenu) {
   padding-left: 0;
   padding-right: 0; }
-  .top-bar.in-grid .menu-text {
+  .top-bar.in-grid .menu-text, .top-bar ul.in-grid:not(.is-dropdown-submenu) .menu-text {
     padding-left: 0; }
 
-.top-bar .menu > li > a {
+.top-bar .menu > li > a, .top-bar ul:not(.is-dropdown-submenu) .menu > li > a {
   color: #8a8a8a;
   font-size: 0.875rem; }
-  .top-bar .menu > li > a.active {
+  .top-bar .menu > li > a.active, .top-bar ul:not(.is-dropdown-submenu) .menu > li > a.active {
     color: #222222; }
-  .top-bar .menu > li > a:hover {
+  .top-bar .menu > li > a:hover, .top-bar ul:not(.is-dropdown-submenu) .menu > li > a:hover {
     color: #ec9b4b; }
+
+.top-bar .is-dropdown-submenu, .top-bar ul:not(.is-dropdown-submenu) .is-dropdown-submenu {
+  background-color: rgba(255, 255, 255, 0.95); }
+
+.top-bar ul:not(.is-dropdown-submenu) {
+  background-color: transparent !important; }
+
+.top-bar-right ul.dropdown.menu, .top-bar-left ul.dropdown.menu {
+  padding-top: 0;
+  padding-bottom: 0; }
 
 .background-color-1 {
   background-color: #8a8a8a; }
@@ -3827,6 +3837,9 @@ i.icon {
   background-color: transparent;
   border-color: #ec5840;
   color: #ec5840; }
+
+.hero {
+  padding: 50px 0; }
 
 .cover {
   background-position: center center;

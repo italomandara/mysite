@@ -135,13 +135,6 @@ USE_L10N = True
 USE_TZ = True
 
 
-# Static files (CSS, JavaScript, Images)
-# https://docs.djangoproject.com/en/1.10/howto/static-files/
-
-
-
-
-
 # Update database configuration with $DATABASE_URL.
 db_from_env = dj_database_url.config()
 DATABASES['default'].update(db_from_env)
@@ -188,7 +181,7 @@ SASS_PRECISION = 8
 
 # compressor
 # COMPRESS_ENABLED = DEBUG
-COMPRESS_ENABLED = False # BECAUSE THIS SHIT IS NOT GONNA WORK
+# COMPRESS_ENABLED = False
 # COMPRESS_STORAGE = STATICFILES_STORAGE
 # COMPRESS_ROOT = STATIC_ROOT
 # COMPRESS_URL = STATIC_URL

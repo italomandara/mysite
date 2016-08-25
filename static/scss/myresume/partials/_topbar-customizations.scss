@@ -23,3 +23,12 @@
         color: $primary-color;
     }
 }
+
+.top-bar .is-dropdown-submenu{
+    background-color: $topbar-background;
+}
+
+.top-bar ul:not(.is-dropdown-submenu){
+    @extend .top-bar;
+    background-color: transparent !important;    
+}
