@@ -11,6 +11,9 @@ https://docs.djangoproject.com/en/1.10/ref/settings/
 """
 
 import os
+import dj_database_url
+import compressor
+import socket
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -26,12 +29,13 @@ SECRET_KEY = os.environ['SECRET_KEY']
 
 if os.environ['PRODUCTION'] == '1':
     DEBUG = False
+    # ALLOWED_HOSTS = ['itmandar.herokuapp.com']
 else:
     DEBUG = True
-    print 'DEBUG', DEBUG
+    # ALLOWED_HOSTS = ["localhost", "127.0.0.1",]
+    print 'DEBUG', DEBUG, 'assuming we\'re not in production'
 
-ALLOWED_HOSTS = ['localhost', '127.0.0.1', '0.0.0.0', 'itmandar.herokuapp.com']
-
+ALLOWED_HOSTS = ['*']
 
 # Application definition
 
@@ -45,7 +49,6 @@ INSTALLED_APPS = [
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
-    'whitenoise.runserver_nostatic',
     'django.contrib.staticfiles',
 ]
 if DEBUG:
@@ -140,16 +143,11 @@ USE_TZ = True
 
 
 # Update database configuration with $DATABASE_URL.
-
-import dj_database_url
 db_from_env = dj_database_url.config()
 DATABASES['default'].update(db_from_env)
 
 # Simplified static file serving.
 # https://warehouse.python.org/project/whitenoise/
-
-STATICFILES_STORAGE = 'whitenoise.django.GzipManifestStaticFilesStorage'
-# STATICFILES_STORAGE = 'django.contrib.staticfiles.storage.ManifestStaticFilesStorage'
 
 # django filepicker
 FILEPICKER_API_KEY = os.environ['FILEPICKER_API_KEY']
@@ -163,41 +161,44 @@ MEDIA_ROOT = os.path.join(CWD, 'media')
 
 PROJECT_ROOT = os.path.dirname(os.path.abspath(__file__))
 
-# media urls
-# MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
-MEDIA_URL = '/media/'
-
-# STATIC_ROOT = os.path.join(BASE_DIR, "static")
-STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+STATICFILES_STORAGE = 'whitenoise.django.GzipManifestStaticFilesStorage'
+# STATICFILES_STORAGE = 'django.contrib.staticfiles.storage.ManifestStaticFilesStorage'
+STATIC_ROOT = os.path.join(BASE_DIR, "static")
 STATIC_URL = '/static/'
-
-STATICFILES_DIRS = [
-    os.path.join(PROJECT_ROOT, 'static'),
-]
-
-# sass processor settings
-SASS_PROCESSOR_ROOT = os.path.join(ROOT_PATH, 'static')
-SASS_PRECISION = 8
-
-# compressor
-COMPRESS_ENABLED = True
-SASS_PROCESSOR_ENABLED = DEBUG
-
-if DEBUG:
-    #sass processor
-    SASS_OUTPUT_STYLE = 'nested'
-
-    #compressor
-    COMPRESS_OFFLINE = False
-else:   
-    SASS_OUTPUT_STYLE = 'compressed'
-    
-    #compressor
-    COMPRESS_OFFLINE = True
-
 
 STATICFILES_FINDERS = (
     'django.contrib.staticfiles.finders.FileSystemFinder',
     'django.contrib.staticfiles.finders.AppDirectoriesFinder',
     'compressor.finders.CompressorFinder',
 )
+
+# media urls
+# MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+MEDIA_URL = '/media/'
+
+
+
+STATICFILES_DIRS = [
+    os.path.join(PROJECT_ROOT, 'static'),
+]
+
+# sass processor settings
+# SASS_PROCESSOR_ROOT = os.path.join(ROOT_PATH, 'static')
+SASS_PRECISION = 8
+
+# compressor
+# COMPRESS_ENABLED = DEBUG
+COMPRESS_ENABLED = False # BECAUSE THIS SHIT IS NOT GONNA WORK
+# COMPRESS_STORAGE = STATICFILES_STORAGE
+# COMPRESS_ROOT = STATIC_ROOT
+# COMPRESS_URL = STATIC_URL
+SASS_PROCESSOR_ENABLED = DEBUG
+COMPRESS_JS_FILTERS = ['compressor.filters.jsmin.JSMinFilter']
+COMPRESS_OFFLINE = not DEBUG
+
+if DEBUG:
+    #sass processor
+    SASS_OUTPUT_STYLE = 'nested'
+else:   
+    #sass processor
+    SASS_OUTPUT_STYLE = 'compressed'

@@ -54,7 +54,7 @@ $alert-color: #ec5840;
 $light-gray: #e6e6e6;
 $medium-gray: #cacaca;
 $dark-gray: #8a8a8a;
-$black: #0a0a0a;
+$black: #222222;
 $white: #fefefe;
 $body-background: $white;
 $body-font-color: $black;
@@ -143,7 +143,7 @@ $list-style-type: disc;
 $list-style-position: outside;
 $list-side-margin: 1.25rem;
 $list-nested-side-margin: 1.25rem;
-$defnlist-margin-bottom: 1.5rem;
+$defnlist-margin-bottom: 1rem;
 $defnlist-term-weight: $global-weight-bold;
 $defnlist-term-margin-bottom: 0.3rem;
 $blockquote-color: $dark-gray;
@@ -296,7 +296,7 @@ $dropdown-sizes: (
 $dropdownmenu-arrows: true;
 $dropdownmenu-min-width: 200px;
 $dropdownmenu-background: $white;
-$dropdown-border: 1px solid $medium-gray;
+$dropdown-border: none;
 
 // 18. Flex Video
 // --------------
@@ -384,9 +384,9 @@ $maincontent-prevent-scroll: true;
 // 24. Orbit
 // ---------
 
-$orbit-bullet-background: $medium-gray;
-$orbit-bullet-background-active: $dark-gray;
-$orbit-bullet-diameter: 1.2rem;
+$orbit-bullet-background: rgba($black,0.3);
+$orbit-bullet-background-active: rgba($black,0.5);
+$orbit-bullet-diameter: 0.5rem;
 $orbit-bullet-margin: 0.1rem;
 $orbit-bullet-margin-top: 0.8rem;
 $orbit-bullet-margin-bottom: 0.8rem;
@@ -501,10 +501,10 @@ $tab-content-padding: 1rem;
 // 32. Thumbnail
 // -------------
 
-$thumbnail-border: solid 4px $white;
-$thumbnail-margin-bottom: $global-margin;
-$thumbnail-shadow: 0 0 0 1px rgba($black, 0.2);
-$thumbnail-shadow-hover: 0 0 6px 1px rgba($primary-color, 0.5);
+$thumbnail-border: 4px solid rgba(black, 0.2);
+$thumbnail-margin-bottom: 0;
+$thumbnail-shadow: none;
+$thumbnail-shadow-hover: none;
 $thumbnail-transition: box-shadow 200ms ease-out;
 $thumbnail-radius: $global-radius;
 
@@ -523,8 +523,8 @@ $tooltip-radius: $global-radius;
 // 34. Top Bar
 // -----------
 
-$topbar-padding: 0.8rem $grid-column-gutter/2;
-$topbar-background: $primary-color;
+$topbar-padding: 0.5rem $grid-column-gutter/2;
+$topbar-background: white;
 $topbar-link-color: $black;
 $topbar-input-width: 200px;
 
