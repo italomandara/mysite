@@ -3845,6 +3845,18 @@ i.icon {
 .off-canvas-wrapper-inner.is-off-canvas-open {
   overflow-y: visible; }
 
+.vertical.menu {
+  padding: 10px 5px; }
+  .vertical.menu > li > a {
+    color: #8a8a8a;
+    font-weight: bold;
+    font-size: 0.875rem;
+    padding: 0.5rem 1rem; }
+    .vertical.menu > li > a.active {
+      color: #ec9b4b; }
+    .vertical.menu > li > a:hover {
+      color: #ec9b4b; }
+
 .callout.alert {
   background-color: transparent;
   border-color: #ec5840;
@@ -3852,6 +3864,9 @@ i.icon {
 
 .hero {
   padding: 50px 0; }
+  @media screen and (min-width: 0em) and (max-width: 31.9375em) {
+    .hero {
+      padding: 0; } }
 
 .cover {
   background-position: center center;

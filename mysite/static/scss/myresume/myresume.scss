@@ -12,7 +12,7 @@
 @import 'partials/topbar-customizations';
 @import 'partials/backgrounds';
 @import 'partials/orbit';
-@import 'partials/_off-canvas';
+@import 'partials/off-canvas';
 
 
 .callout.alert{
@@ -24,6 +24,9 @@
 
 .hero{
     padding: 50px 0;
+    @include breakpoint(small only) {
+        padding: 0;
+    }
 }
 
 .cover{

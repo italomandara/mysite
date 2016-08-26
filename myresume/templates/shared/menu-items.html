@@ -2,7 +2,7 @@
     <a {% if page.name == 'index' %}class="active" {% endif %} href="{% url 'index' %}">Home</a>
 </li>
 <li>
-    <a {% if page.name == 'index' %}class="active" {% endif %} href="{% url 'more' %}">More</a>
+    <a {% if page.name == 'more' %}class="active" {% endif %} href="{% url 'more' %}">More</a>
 </li>
 <li>
     <a {% if page.name == 'thoughts' or page.name == 'thoughts-detail' %}class="active" {% endif %} href="{% url 'thoughts' %}">Thoughts</a>
