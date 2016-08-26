@@ -103,7 +103,6 @@ def thoughtsDetail(request, slug):
 	template = loader.get_template('thoughts/detail.html')
 	person = Person.objects.get(name__iexact='italo')
 	post = Post.objects.get(published=True, slug=slug)
-	intro = MyContent.objects.get(slug=slug)
 	form = ContactForm()
 	post_categories = Post.CATEGORIES
 	context = {
@@ -130,7 +129,7 @@ def thoughtsCategory(request, slug):
 	current_category_key = get_tuple_key_from_slug(Post.CATEGORIES,slug)
 	template = loader.get_template('thoughts/category.html')
 	person = Person.objects.get(name__iexact='italo')
-	intro = MyContent.objects.get(slug='thoughts-intro')
+	intro = MyContent.objects.get(slug=slug)
 	posts = Post.objects.filter(published=True, category=current_category_key)
 	post_categories = Post.CATEGORIES
 	form = ContactForm()
@@ -139,6 +138,7 @@ def thoughtsCategory(request, slug):
 		'person': person,
 		'post_categories': post_categories,
 		'form': form,
+		'intro': intro,
 		'page' : {
 			'title': slug,
 			'name': pageName(request),

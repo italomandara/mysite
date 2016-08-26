@@ -10,7 +10,7 @@
 	{% compress css %}
 		<style>
 			#hero{
-				background-image: url({% static 'img/bg3.jpg' %});
+				background-image: url({% if intro.image_primary %}{{ intro.image_primary }}{% else %}{% static 'img/bg3.jpg' %}{% endif %});
 				background-position: bottom center;
 			}
 		</style>

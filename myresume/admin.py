@@ -24,5 +24,22 @@ class PostAdmin(admin.ModelAdmin):
         js = (["//api.filepicker.io/v1/filepicker.js"])
 
 
-admin.site.register([Person, Skill, MyContent, Job, Course, Contact])
+class MyContentAdminForm(forms.ModelForm):
+	class Meta:
+		model = MyContent
+		fields = '__all__'
+		widgets = {
+			'image_primary': FPFileWidget(attrs={'type':'filepicker'}),
+			'image_secondary': FPFileWidget(attrs={'type':'filepicker'}),
+		}
+
+class MyContentAdmin(admin.ModelAdmin):
+    form = MyContentAdminForm
+
+    class Media:
+        js = (["//api.filepicker.io/v1/filepicker.js"])
+
+
+admin.site.register([Person, Skill, Job, Course, Contact])
 admin.site.register(Post, PostAdmin)
+admin.site.register(MyContent, MyContentAdmin)

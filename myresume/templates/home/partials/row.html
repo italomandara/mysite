@@ -3,5 +3,5 @@
 <div class="{{ class }}">
 	<h3 class="margin top">{{ mycontent.h1 }}</h3>
 	<h4 class="small margin bottom">{{ mycontent.h2 }}</h4>
-	<p class="margin bottom">{{ mycontent.body|apply_markup:"markdown" }}</p>
+	{{ mycontent.body|apply_markup:"markdown" }}
 </div>
