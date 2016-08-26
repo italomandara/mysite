@@ -4,14 +4,13 @@ from django.template import loader
 from django.shortcuts import render
 from .forms import ContactForm
 from django.core.urlresolvers import resolve
+from django.template.defaultfilters import slugify
+from .models import Person, Skill, MyContent, Job, Course, Post
 
 import json
-
 import socket
 
 # Create your views here.
-
-from .models import Person, Skill, MyContent, Job, Course, Post
 
 def pageName(request):
 	return resolve(request.path_info).url_name
@@ -105,14 +104,44 @@ def thoughtsDetail(request, slug):
 	person = Person.objects.get(name__iexact='italo')
 	post = Post.objects.get(published=True, slug=slug)
 	form = ContactForm()
+	post_categories = Post.CATEGORIES
 	context = {
 		'post': post,
 		'person': person,
+		'post_categories': post_categories,
 		'form': form,
 		'page' : {
-			'title': post.title,
+			'title': slug,
 			'name': pageName(request),
 			'description': post.subtitle,
+		},	
+    }
+
+	return HttpResponse(template.render(context, request))
+
+def thoughtsCategory(request, slug):
+	
+	def get_tuple_key_from_slug(source_tuple, source_slug):
+		for key, value in dict(source_tuple).iteritems():
+		    if slugify(value) == source_slug:
+				return key
+
+	current_category_key = get_tuple_key_from_slug(Post.CATEGORIES,slug)
+	template = loader.get_template('thoughts/category.html')
+	person = Person.objects.get(name__iexact='italo')
+	intro = MyContent.objects.get(slug='thoughts-intro')
+	posts = Post.objects.filter(published=True, category=current_category_key)
+	post_categories = Post.CATEGORIES
+	form = ContactForm()
+	context = {
+		'posts': posts,
+		'person': person,
+		'post_categories': post_categories,
+		'form': form,
+		'page' : {
+			'title': slug,
+			'name': pageName(request),
+			'description': 'category',
 		},	
     }
 

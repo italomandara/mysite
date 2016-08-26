@@ -3435,6 +3435,11 @@ table.hover tr:nth-of-type(even):hover {
   padding-right: 30px;
   margin: 0 auto; }
 
+.title-bar-title {
+  width: 100%;
+  padding-left: 50px;
+  margin-left: -50px; }
+
 .margin.adjust-top {
   margin-top: -0.4em; }
 
@@ -3819,6 +3824,9 @@ i.icon {
   .title-bar .menu-icon::after {
     background: #222222;
     box-shadow: 0 7px 0 #222222, 0 14px 0 #222222; }
+
+.title-bar-title {
+  text-align: center; }
 
 .background-color-1 {
   background-color: #8a8a8a; }

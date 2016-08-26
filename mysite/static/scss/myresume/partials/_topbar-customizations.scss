@@ -47,3 +47,8 @@
         box-shadow: 0 7px 0 $black, 0 14px 0 $black;
     }
 }
+
+.title-bar-title{
+    @extend %has-icon-left;
+    text-align: center;
+}

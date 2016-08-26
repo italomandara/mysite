@@ -9,7 +9,7 @@
 	{% if post_categories %}
 	<ul class="menu vertical">
 		{% for post_category in post_categories %}
-		<li><a href="">{{ post_category.1 }}</a></li>
+		<li><a href="{% url 'thoughts' %}categories/{{ post_category.1|slugify }}">{{ post_category.1 }}</a></li>
 		{% endfor %}
 	</ul>
 	{% endif %}
