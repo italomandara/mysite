@@ -103,6 +103,7 @@ def thoughtsDetail(request, slug):
 	template = loader.get_template('thoughts/detail.html')
 	person = Person.objects.get(name__iexact='italo')
 	post = Post.objects.get(published=True, slug=slug)
+	intro = MyContent.objects.get(slug=slug)
 	form = ContactForm()
 	post_categories = Post.CATEGORIES
 	context = {

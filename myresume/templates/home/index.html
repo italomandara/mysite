@@ -17,13 +17,11 @@
 	{% endcompress %}
 {% endblock %}
 
+{% block hero %}
+    {% include 'shared/hero.html' with hero_title=intro.h1 hero_subtitle=intro.h2 %}
+{% endblock %}
+
 {% block body %}
-	<figure id="hero" class="row-wrapper cover margin bottom hero">
-		<div class="row">
-			<h1 class="margin top standout-text">{{ intro.h1 }}</h1><br>
-			<h4 class="margin bottom standout-text" style="margin-left: 50px">{{ intro.h2 }}</h4>
-		</div>
-	</figure>
 	<div class="row">
 		<div class="medium-masonry-1 large-masonry-3 margin bottom">{{ intro.body|apply_markup:"markdown" }}</div>
 		<div class="row">
