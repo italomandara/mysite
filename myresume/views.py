@@ -83,10 +83,12 @@ def thoughts(request):
 	person = Person.objects.get(name__iexact='italo')
 	intro = MyContent.objects.get(slug='thoughts-intro')
 	posts = Post.objects.filter(published=True)
+	post_categories = Post.CATEGORIES
 	form = ContactForm()
 	context = {
 		'intro': intro,
 		'posts': posts,
+		'post_categories': post_categories,
 		'person': person,
 		'form': form,
 		'page' : {

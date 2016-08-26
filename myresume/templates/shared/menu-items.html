@@ -4,8 +4,15 @@
 <li>
     <a {% if page.name == 'more' %}class="active" {% endif %} href="{% url 'more' %}">More</a>
 </li>
-<li>
-    <a {% if page.name == 'thoughts' or page.name == 'thoughts-detail' %}class="active" {% endif %} href="{% url 'thoughts' %}">Thoughts</a>
+<li style="position:relative">
+	<a {% if page.name == 'thoughts' or page.name == 'thoughts-detail' %}class="active" {% endif %} href="{% url 'thoughts' %}">Thoughts</a>
+	{% if post_categories %}
+	<ul class="menu vertical">
+		{% for post_category in post_categories %}
+		<li><a href="">{{ post_category.1 }}</a></li>
+		{% endfor %}
+	</ul>
+	{% endif %}
 </li>
 <li>
     <a href="javascript:void(0)" {% if not person.available %}data-tooltip aria-haspopup="true" class="has-tip" data-disable-hover="false" tabindex="1" title="{{ person.unavailable_msg }}" disabled{% else %}data-open="contact" {% endif %}><span class="hide-for-small-only"><i class="icon i-mail"></i></span><span class="show-for-small-only">Contact</span></a>

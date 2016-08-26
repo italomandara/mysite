@@ -2706,37 +2706,37 @@ body {
   [data-whatinput="mouse"] .off-canvas {
     outline: 0; }
   .off-canvas.position-left {
-    left: -300px;
+    left: -200px;
     top: 0;
-    width: 300px; }
+    width: 200px; }
     .is-open-left {
-      transform: translateX(300px); }
+      transform: translateX(200px); }
   .off-canvas.position-right {
-    right: -300px;
+    right: -200px;
     top: 0;
-    width: 300px; }
+    width: 200px; }
     .is-open-right {
-      transform: translateX(-300px); }
+      transform: translateX(-200px); }
 
 @media screen and (min-width: 32em) {
   .position-left.reveal-for-medium {
     left: 0; }
     .position-left.reveal-for-medium ~ .main-content {
-      margin-left: 300px; }
+      margin-left: 200px; }
   .position-right.reveal-for-medium {
     right: 0; }
     .position-right.reveal-for-medium ~ .main-content {
-      margin-right: 300px; } }
+      margin-right: 200px; } }
 
 @media screen and (min-width: 64em) {
   .position-left.reveal-for-large {
     left: 0; }
     .position-left.reveal-for-large ~ .main-content {
-      margin-left: 300px; }
+      margin-left: 200px; }
   .position-right.reveal-for-large {
     right: 0; }
     .position-right.reveal-for-large ~ .main-content {
-      margin-right: 300px; } }
+      margin-right: 200px; } }
 
 .orbit {
   position: relative; }
