@@ -41,9 +41,9 @@ ALLOWED_HOSTS = ['*']
 
 INSTALLED_APPS = [
     'myresume.apps.MyresumeConfig',
-    'sass_processor',
     'django_markup',
     'compressor',
+    'sass_processor',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -181,7 +181,7 @@ SASS_PRECISION = 8
 
 # compressor
 # COMPRESS_ENABLED = DEBUG
-COMPRESS_ENABLED = False
+COMPRESS_ENABLED = DEBUG
 # COMPRESS_STORAGE = STATICFILES_STORAGE
 # COMPRESS_ROOT = STATIC_ROOT
 # COMPRESS_URL = STATIC_URL

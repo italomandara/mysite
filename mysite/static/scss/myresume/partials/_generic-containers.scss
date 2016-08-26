@@ -1,5 +1,8 @@
 body {
-    >.row, >div:not(.row)>.row {
+    >.row,
+    > div:not(.row) > .row,
+    .off-canvas-content > .row,
+    .off-canvas-content > div:not(.row) > .row {
     	padding: 0 $my-minimum-row-margin;
     }
 }

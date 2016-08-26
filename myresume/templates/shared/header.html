@@ -1,10 +1,11 @@
 {% load i18n %}
-<div class="title-bar" data-responsive-toggle="full-menu" data-hide-for="medium">
-  <button class="menu-icon" type="button" data-toggle></button>
+
+<div class="title-bar show-for-small-only">
+  <button class="menu-icon" type="button" data-toggle="offCanvas"></button>
   <div class="title-bar-title">{{ person.name }} {{ person.lastname }}'s resume</div>
 </div>
 
-<div id="full-menu" class="small-12" data-sticky-container>
+<div id="full-menu" class="small-12 hide-for-small-only" data-sticky-container>
 	<div class="top-bar in-grid small-12 top-bar" data-sticky data-margin-top="0">
 		<div class="row">
 			<div class="top-bar-left">
@@ -17,19 +18,7 @@
 							<li><a href="javascript: void(0)" onclick="$('body').showLoader(false);" >Open loader</a></li>
 						</ul>
 					</li>
-					<li>
-						<a {% if page.name == 'index'%}class="active"{% endif %} href="{% url 'index' %}">Home</a>	
-					</li>
-					<li>
-						<a {% if page.name == 'index'%}class="active"{% endif %} href="{% url 'more' %}">More</a>	
-					</li>
-					<li>
-						<a {% if page.name == 'thoughts' or page.name == 'thoughts-detail' %}class="active"{% endif %} href="{% url 'thoughts' %}">Thoughts</a>
-					</li>
-					<li>
-						<a href="javascript:void(0)" {% if not person.available %}data-tooltip aria-haspopup="true" class="has-tip" data-disable-hover="false" tabindex="1" title="{{ person.unavailable_msg }}" disabled{% else %}data-open="contact" {% endif %}
-					><i class="icon i-mail"></i></a>
-					</li>
+	                {% include 'shared/menu-items.html' %}
 				</ul>
 			</div>
 		</div>

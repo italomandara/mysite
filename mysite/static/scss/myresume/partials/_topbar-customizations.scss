@@ -1,8 +1,5 @@
 .top-bar.in-grid{
-    padding: {
-        left: 0;
-        right: 0; 
-    }
+    padding: 0;
     .row{
         @extend %row-template;
     }
@@ -39,5 +36,14 @@
             top: 0;
             bottom: 0;
         }
+    }
+}
+
+.title-bar{
+    background: $white;
+    color: $black;
+    .menu-icon::after{
+        background: $black;
+        box-shadow: 0 7px 0 $black, 0 14px 0 $black;
     }
 }

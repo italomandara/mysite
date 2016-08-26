@@ -1,68 +1,27 @@
-{% load i18n %}
-{% load sass_tags %}
-{% load static from staticfiles %}
-{% load compress %}
+{% extends 'core.html' %}
 
-<!DOCTYPE html>
-<html>
-	<head>
-		{% block head %}
-			<meta charset="utf-8">
-			<meta http-equiv="X-UA-Compatible" content="IE=edge">
-			<meta name="viewport" content="width=device-width, initial-scale=1.0">
- 			{% block page-title%}
-			<title>{% block page-title-prefix%}{{ page.title }}{% endblock %} @ Italo Mandara cv</title>
-			{% endblock %}
-			{% block page-meta%}
-			<meta name="description" content="{% block page-meta-description%}{{ page.description }}{% endblock %}">
-			{% endblock %}
-			{% block head-css %}
-			<link href="{% sass_src 'scss/app.scss' %}" rel="stylesheet" type="text/css" />
-			<link href="https://fonts.googleapis.com/css?family=Roboto:300,300italic,700" rel="stylesheet">
-			<link href="https://fonts.googleapis.com/css?family=Oswald" rel="stylesheet">
-			{% endblock %}
-			{% block head-js%}
-			{% endblock %}
-		{% endblock %}
-	</head>
-	<body>
-		{% block header-body %}
-		{% include 'shared/header.html' %}
-		{% endblock %}
-		{% block body %}
-		{% endblock %}
-		{% block footer-body %}
-		{% endblock %}
-		{% block modals %}
-			{% trans "Contact form" as contactform %}
-			{% include 'shared/modal.html' with modal_id="contact" modal_title=contactform modal_content="forms/contact-form.html" %}	
-			{% trans "Contact request sent" as contactformok %}
-			{% include 'shared/modal.html' with modal_id="contact-thank-you" extra_classes="tiny text-center" modal_title=contactformok modal_content="modals/contact-thank-you.html" %}
-			{% trans "Icons" as icons_text %}
-			{% include 'shared/modal.html' with modal_id="icons" extra_classes="medium text-center" modal_title=icons_text %}
-		{% endblock %}
-		{% block footer-js %}
-		{% compress js %}
-			<script>
-				var GLOBALS = {
-					csrf: '{{ csrf_token }}',
-					ajaxCache: true,
-				};
-				var django = {
-					_static: function(path) {
-						return '{% static '' %}' + path;
-					}
-				};
-				
-			</script>
-			<script type="text/javascript" src="{% static 'js/jquery.js' %}"></script>
-			<script type="text/javascript" src="{% static 'js/foundation.js' %}"></script>
-			<script type="text/javascript" src="{% static 'js/what-input.js' %}"></script>
-			<script type="text/javascript" src="{% static 'js/app.js' %}"></script>
-		{% endcompress %}
-
-		{% endblock %}
-	</body>
-</html>
-
-
+{% block outer-body %}
+<div class="off-canvas-wrapper">
+    <div class="off-canvas-wrapper-inner" data-off-canvas-wrapper>
+        <div class="off-canvas position-left" id="offCanvas" data-off-canvas>
+            <!-- Close button -->
+            <button class="close-button" aria-label="Close menu" type="button" data-close>
+                <span aria-hidden="true">&times;</span>
+            </button>
+            <!-- Menu -->
+            <ul class="vertical menu">
+                {% include 'shared/menu-items.html' %}
+            </ul>
+        </div>
+        <div class="off-canvas-content" data-off-canvas-content>
+            {% block header-body %}
+                {% include 'shared/header.html' %}
+            {% endblock %}
+            {% block body %}
+            {% endblock %}
+            {% block footer-body %}
+            {% endblock %}
+        </div>
+    </div>
+</div>
+{% endblock %}
