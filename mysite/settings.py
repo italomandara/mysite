@@ -94,8 +94,8 @@ WSGI_APPLICATION = 'mysite.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'mysite',
-        'USER': 'it',
+        'NAME': 'mysite2',
+        'USER': 'italo',
         'PASSWORD': os.environ['DB_KEY'],
         'HOST': 'localhost',
         'PORT': '',
@@ -177,17 +177,16 @@ STATICFILES_DIRS = [
 
 # sass processor settings
 # SASS_PROCESSOR_ROOT = os.path.join(ROOT_PATH, 'static')
-SASS_PRECISION = 8
+# SASS_PRECISION = 8
 
 # compressor
 # COMPRESS_ENABLED = DEBUG
-COMPRESS_ENABLED = DEBUG
 # COMPRESS_STORAGE = STATICFILES_STORAGE
 # COMPRESS_ROOT = STATIC_ROOT
 # COMPRESS_URL = STATIC_URL
 SASS_PROCESSOR_ENABLED = DEBUG
-COMPRESS_JS_FILTERS = ['compressor.filters.jsmin.JSMinFilter']
-COMPRESS_OFFLINE = not DEBUG
+# COMPRESS_JS_FILTERS = ['compressor.filters.jsmin.JSMinFilter']
+# COMPRESS_OFFLINE = not DEBUG
 
 if DEBUG:
     #sass processor
@@ -195,3 +194,23 @@ if DEBUG:
 else:   
     #sass processor
     SASS_OUTPUT_STYLE = 'compressed'
+
+
+LOGGING = {
+    'version': 1,
+    'disable_existing_loggers': False,
+    'handlers': {
+        'file': {
+            'level': 'DEBUG',
+            'class': 'logging.FileHandler',
+            'filename': 'debug.log',
+        },
+    },
+    'loggers': {
+        'django': {
+            'handlers': ['file'],
+            'level': 'DEBUG',
+            'propagate': True,
+        },
+    },
+}

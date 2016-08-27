@@ -1,0 +1,10 @@
+.button.secondary.active{
+    // background-color: $secondary-active-color;
+    color: $primary-color;
+    border-color: $primary-color;
+}
+
+.button{
+    // border-bottom: 2px solid $primary-color;
+    font-weight: $global-weight-bold;
+}

@@ -13,7 +13,7 @@
 @import 'partials/backgrounds';
 @import 'partials/orbit';
 @import 'partials/off-canvas';
-
+@import 'partials/buttons';
 
 .callout.alert{
     background-color: transparent;
@@ -27,12 +27,6 @@
     @include breakpoint(small only) {
         padding: 0;
     }
-}
-
-.cover{
-    background-position: center center;
-    background-repeat: no-repeat;
-    background-size: cover;
 }
 
 .opacity-filter{
@@ -57,10 +51,6 @@
         padding: 0;
         margin: 0;
     }
-}
-
-.button.secondary.active{
-    background-color: $secondary-active-color;
 }
 
 .scroll-lock{
