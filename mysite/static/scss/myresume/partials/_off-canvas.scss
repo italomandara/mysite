@@ -1,5 +1,10 @@
-.off-canvas-wrapper-inner.is-off-canvas-open {
-    overflow-y: visible;
+.off-canvas-wrapper{
+	height: 100%;
+	.off-canvas-wrapper-inner {
+		&.is-off-canvas-open {
+		    overflow-y: visible;
+		}
+	}
 }
 
 .vertical.menu{

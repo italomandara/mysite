@@ -8,7 +8,7 @@ body {
 }
 
 .row.last{
-    padding-bottom: $my-minimum-row-margin;
+    padding-bottom: $my-minimum-row-margin !important;
 }
 
 .row-wrapper{

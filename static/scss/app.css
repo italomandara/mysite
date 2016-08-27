@@ -3760,7 +3760,7 @@ body .off-canvas-content > div:not(.row) > .row {
   padding: 0 30px; }
 
 .row.last {
-  padding-bottom: 30px; }
+  padding-bottom: 30px !important; }
 
 .row-wrapper {
   margin: 0;
@@ -3850,8 +3850,10 @@ i.icon {
     background-color: rgba(10, 10, 10, 0.3);
     border-radius: 0; } }
 
-.off-canvas-wrapper-inner.is-off-canvas-open {
-  overflow-y: visible; }
+.off-canvas-wrapper {
+  height: 100%; }
+  .off-canvas-wrapper .off-canvas-wrapper-inner.is-off-canvas-open {
+    overflow-y: visible; }
 
 .vertical.menu {
   padding: 10px 5px; }
