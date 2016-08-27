@@ -4,7 +4,7 @@
 <li>
     <a {% if page.name == 'more' %}class="active" {% endif %} href="{% url 'more' %}">More</a>
 </li>
-<li style="position:relative">
+<li style="position:relative" role="menuitem" class="is-dropdown-submenu-parent opens-right" aria-haspopup="true" aria-expanded="false" aria-label="Thoughts">
 	<a {% if page.name == 'thoughts' or page.name == 'thoughts-detail' %}class="active" {% endif %} href="{% url 'thoughts' %}">Thoughts</a>
 	{% if post_categories %}
 	<ul class="menu vertical">
