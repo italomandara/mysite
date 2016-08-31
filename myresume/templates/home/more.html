@@ -18,10 +18,17 @@
 {% endblock %}
 
 {% block hero %}
-    {% include 'shared/hero.html' with hero_title=intro.h1 hero_subtitle=intro.h2 %}
+    {% include 'shared/hero.html' with hero_title=intro.h1 hero_subtitle=intro.h2 class="margin bottom none" %}
 {% endblock %}
 
 {% block body %}
+	<div class="background-color-1">
+		<div class="row last">
+			{% if skills %}
+				{% include 'home/partials/row.html' with mycontent=skills class="set-text-color to-white" %}
+			{% endif %}
+		</div>
+	</div>
 	<div class="row last">
 		{% if education %}
 			<h4 class="margin top bottom">{% trans "Education and Courses" %}</h4>

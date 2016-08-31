@@ -24,15 +24,9 @@
 {% block body %}
 	<div class="row">
 		<div class="medium-masonry-1 large-masonry-3 margin bottom">{{ intro.body|apply_markup:"markdown" }}</div>
-		<div class="row">
-			{% if profile %}
-				{% include 'home/partials/row.html' with mycontent=profile class="medium-6 column" %}
-			{% endif %}		
-
-			{% if skills %}
-				{% include 'home/partials/row.html' with mycontent=skills class="medium-6 column" %}
-			{% endif %}
-		</div>
+		{% if profile %}
+			{% include 'home/partials/row.html' with mycontent=profile  %}
+		{% endif %}		
 	</div>
 	<div class="background-color-1 pad on-top margin top">
 		<div class="row">
@@ -55,7 +49,7 @@
 		<div class="row">
 			{% if job_history|length %}
 				<h4 class="margin bottom">{% trans "Job History" %}</h4>
-				<div class="orbit" role="region" aria-label="Favorite Space Pictures" data-orbit data-options="animInFromLeft:hinge-in-from-middle-x; animInFromRight:hinge-in-from-middle-x; animOutToLeft:hinge-out-from-middle-x; animOutToRight:hinge-out-from-middle-x;">
+				<div class="orbit" role="region" aria-label="Favorite Space Pictures" data-orbit data-options="animInFromLeft:fade-in; animInFromRight:fade-in; animOutToLeft:fade-out; animOutToRight:fade-out;">
 					<ul class="orbit-container auto-height-for-small-only">
 						{% for job in job_history %}
 							<li class="orbit-slide {% if forloop.counter0 == 0 %}is-active{% endif %}">

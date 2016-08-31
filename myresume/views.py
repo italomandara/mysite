@@ -24,7 +24,6 @@ def index(request):
 	intro = MyContent.objects.get(slug='intro')
 	achievements = MyContent.objects.get(slug='achievements')
 	profile = MyContent.objects.get(slug='profile')
-	skills = MyContent.objects.get(slug='skills')
 	form = ContactForm()
 	skill_categories = Skill.TYPES
 	skill_subcategories = Skill.objects.values_list('subcategory').distinct()
@@ -40,7 +39,6 @@ def index(request):
 		'education': education,
 		'achievements': achievements,
 		'profile': profile,
-		'skills': skills,
 		'form': form,
 		'page' : {
 			'title': 'home',
@@ -56,6 +54,7 @@ def more(request):
 	person = Person.objects.get(name__iexact='italo')
 	education = Course.objects.all().order_by('-end_date')
 	intro = MyContent.objects.get(slug='intro')
+	skills = MyContent.objects.get(slug='skills')
 	achievements = MyContent.objects.get(slug='achievements')
 	profile = MyContent.objects.get(slug='profile')
 	form = ContactForm()
@@ -64,6 +63,7 @@ def more(request):
 		'hostname': hostname,
 		'person': person,
 		'intro': intro,
+		'skills': skills,
 		'education': education,
 		'achievements': achievements,
 		'profile': profile,

@@ -1,7 +1,7 @@
 {% load markup_tags %}
 
 <div class="{{ class }}">
-	<h3 class="margin top">{{ mycontent.h1 }}</h3>
-	<h4 class="small margin bottom">{{ mycontent.h2 }}</h4>
+	<h4 class="margin top">{{ mycontent.h1 }}</h4>
+	<h5 class="small margin bottom">{{ mycontent.h2 }}</h5>
 	{{ mycontent.body|apply_markup:"markdown" }}
 </div>
