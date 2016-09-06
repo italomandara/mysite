@@ -63,21 +63,21 @@
 
 .pad{
     padding: $my-global-margin;
-    &.on-top{
+    &.pad-top{
         padding: {
             left: 0;
             right: 0;
             bottom: 0;
         }
     }
-    &.on-bottom{
+    &.pad-bottom{
         padding: {
             left: 0;
             right: 0;
             top: 0;
         }
     }
-    &.horizontal{
+    &.pad-horizontal{
         padding: {
             left: 0;
             right: 0;

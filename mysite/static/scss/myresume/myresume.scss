@@ -72,6 +72,22 @@
 :focus {
     outline: none;
 }
+.captcha-container{
+    display: block;
+    width: 100%;
+    >span, >.captcha ,>input {
+        vertical-align: bottom;
+    }
+    >.captcha{
+        margin-left: $my-global-margin/4;
+        display: inline-block;
+        width: 3em;
+    }
+    >input{
+        display: inline-block;
+        width: 3em;
+    }
+}
 
 .menu .has-tip{
     border-bottom: none;

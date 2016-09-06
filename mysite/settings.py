@@ -40,6 +40,7 @@ ALLOWED_HOSTS = ['*']
 # Application definition
 
 INSTALLED_APPS = [
+    'captcha',
     'myresume.apps.MyresumeConfig',
     'django_markup',
     'compressor',
@@ -195,6 +196,10 @@ else:
     #sass processor
     SASS_OUTPUT_STYLE = 'compressed'
 
+# Simple Captcha
+CAPTCHA_CHALLENGE_FUNCT = 'captcha.helpers.math_challenge'
+CAPTCHA_NOISE_FUNCTIONS = ('captcha.helpers.noise_null',)
+CAPTCHA_FOREGROUND_COLOR = '#CCCCCC'
 
 LOGGING = {
     'version': 1,

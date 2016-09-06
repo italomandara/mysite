@@ -3464,15 +3464,15 @@ table.hover tr:nth-of-type(even):hover {
 
 .pad {
   padding: 30px; }
-  .pad.on-top {
+  .pad.pad-top {
     padding-left: 0;
     padding-right: 0;
     padding-bottom: 0; }
-  .pad.on-bottom {
+  .pad.pad-bottom {
     padding-left: 0;
     padding-right: 0;
     padding-top: 0; }
-  .pad.horizontal {
+  .pad.pad-horizontal {
     padding-left: 0;
     padding-right: 0; }
 
@@ -3510,6 +3510,12 @@ li p:last-child {
 @media screen and (min-width: 0em) and (max-width: 31.9375em) {
   .text-center-for-small-only {
     text-align: center; } }
+
+.no-color, .no-color-hover {
+  color: inherit; }
+
+.no-color-hover:hover {
+  color: inherit; }
 
 input[type=text], input[type=number], input[type=password], input[type=email] {
   border-top: none;
@@ -3897,6 +3903,19 @@ i.icon {
 
 :focus {
   outline: none; }
+
+.captcha-container {
+  display: block;
+  width: 100%; }
+  .captcha-container > span, .captcha-container > .captcha, .captcha-container > input {
+    vertical-align: bottom; }
+  .captcha-container > .captcha {
+    margin-left: 7.5px;
+    display: inline-block;
+    width: 3em; }
+  .captcha-container > input {
+    display: inline-block;
+    width: 3em; }
 
 .menu .has-tip {
   border-bottom: none; }

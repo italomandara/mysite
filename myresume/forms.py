@@ -1,10 +1,14 @@
 from django.forms import ModelForm, TextInput, Textarea
+from captcha.fields import CaptchaField
+
 from .models import Contact
 
 class ContactForm(ModelForm):
+	captcha = CaptchaField()
 	class Meta:
 		model = Contact
-		fields = ['name', 'company', 'phone', 'email', 'message']
+		fields = ['name', 'company', 'phone', 'email', 'message', 'captcha']
+		
 		widgets = {
 			'name' : TextInput(attrs={'required': True}),
 			'company' : TextInput(),

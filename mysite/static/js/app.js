@@ -2,6 +2,9 @@
 	window.GLOBALS.listener = '';
 	var callbacks = {
 		openThankYou: function(data, $loader) {
+			if (GLOBALS.debug){
+				console.log(data, $loader)
+			}
 			if (!!data.stored) {
 				$loader.hideLoader()
 				$('#contact-thank-you').foundation('open');
@@ -9,7 +12,11 @@
 			} else {
 				$loader.hideLoader()
 				for (var idx in data.form_errors) {
-					$('#mailform').foundation('addErrorClasses', $('[name=' + idx + ']'));
+					if($('[name=' + idx + ']').length){
+						$('#mailform').foundation('addErrorClasses', $('[name=' + idx + ']'));
+					} else {
+						$('#mailform').foundation('addErrorClasses', $('[name^=' + idx + ']').not(':hidden'));
+					}
 				}
 			}
 		},

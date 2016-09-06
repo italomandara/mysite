@@ -33,3 +33,14 @@
         text-align: center;
     }
 }
+
+.no-color{
+    color: inherit;
+}
+
+.no-color-hover{
+    @extend .no-color;
+    &:hover{
+        color: inherit;
+    }
+}

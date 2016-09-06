@@ -100,7 +100,7 @@ def thoughts(request):
 	return HttpResponse(template.render(context, request))
 
 def thoughtsDetail(request, slug):
-	template = loader.get_template('thoughts/detail.html')
+	template = loader.get_template('thoughts/post.html')
 	person = Person.objects.get(name__iexact='italo')
 	post = Post.objects.get(published=True, slug=slug)
 	form = ContactForm()

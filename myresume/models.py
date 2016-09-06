@@ -3,6 +3,7 @@ from __future__ import unicode_literals
 from django.db import models
 from django.core.validators import validate_email, RegexValidator
 from django.template.defaultfilters import slugify
+from captcha.fields import CaptchaField
 
 import datetime
 import django_filepicker
@@ -150,6 +151,7 @@ class Contact(models.Model):
 	phone = models.CharField(max_length=15, validators=[phone_regex], blank=True)
 	email = models.CharField(max_length=100, validators=[validate_email])
 	message = models.CharField(max_length=1000)
+	captcha = CaptchaField()
 
 	def __unicode__(self):
 		return self.name
