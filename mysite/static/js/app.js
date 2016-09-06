@@ -137,9 +137,19 @@
 		}
 		return true
 	};
+	var refreshCaptcha = function($this){
+	    $form = $this.parents('form');
+	    $.getJSON(GLOBALS.captcha, {}, function(json) {
+	        console.log(json);
+	    });
+	    return false;
+	};
 	$(document)
 		.on('click', '[data-filter], [data-filter-sub]', function(e) {
 			filter_el($(this), e)
+		})
+		.on('click', '.captcha', function(){
+			refreshCaptcha($(this));
 		})
 		.on('click', '[data-reveal-ajax]', function() {
 			var reveal_id = $(this).attr('data-open'),

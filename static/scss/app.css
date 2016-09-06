@@ -3915,7 +3915,8 @@ i.icon {
     width: 3em; }
   .captcha-container > input {
     display: inline-block;
-    width: 3em; }
+    width: 3em;
+    margin-bottom: 0; }
 
 .menu .has-tip {
   border-bottom: none; }
