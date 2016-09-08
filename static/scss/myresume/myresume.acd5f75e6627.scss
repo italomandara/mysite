@@ -93,20 +93,3 @@
 .menu .has-tip{
     border-bottom: none;
 }
-
-.background-video{
-    position: relative;
-    overflow: hidden;
-    video{
-        top:50%;
-        transform: translateY(-50%);
-        left:0;
-        z-index: 0;
-        position: absolute;
-        min-width: 100%;
-        min-height: 100%;
-        width: auto;
-        height: auto;
-    }
-
-}

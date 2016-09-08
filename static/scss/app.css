@@ -3499,7 +3499,7 @@ li p:last-child {
 
 .standout-text {
   display: inline-block;
-  background: rgba(254, 254, 254, 0.85);
+  background: rgba(254, 254, 254, 0.5);
   padding: 0.5rem 1rem;
   margin-bottom: 0; }
 
@@ -3516,6 +3516,9 @@ li p:last-child {
 
 .no-color-hover:hover {
   color: inherit; }
+
+body {
+  font-size: 0.9375rem; }
 
 input[type=text], input[type=number], input[type=password], input[type=email] {
   border-top: none;
@@ -3920,6 +3923,20 @@ i.icon {
 
 .menu .has-tip {
   border-bottom: none; }
+
+.background-video {
+  position: relative;
+  overflow: hidden; }
+  .background-video video {
+    top: 50%;
+    transform: translateY(-50%);
+    left: 0;
+    z-index: 0;
+    position: absolute;
+    min-width: 100%;
+    min-height: 100%;
+    width: auto;
+    height: auto; }
 
 @font-face {
   font-family: 'fontello';
