@@ -39,6 +39,14 @@
     }
 }
 
+.top-bar-left{
+    ul.dropdown.menu{
+        padding: {
+            left: 0;
+        }
+    }
+}
+
 .title-bar{
     background: $white;
     color: $black;

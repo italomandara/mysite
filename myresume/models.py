@@ -59,6 +59,7 @@ class Skill(models.Model):
 class MyContent(models.Model):
 	slug = models.SlugField(max_length=255, primary_key=True)
 	image_primary = django_filepicker.models.FPUrlField(blank=True)
+	video_primary = django_filepicker.models.FPUrlField(blank=True)
 	image_secondary = django_filepicker.models.FPUrlField(blank=True)
  	h1 = models.CharField(max_length=255, blank=True)
 	h2 = models.CharField(max_length=255, blank=True)

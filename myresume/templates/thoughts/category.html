@@ -18,7 +18,7 @@
 {% endblock %}
 
 {% block hero %}
-	<figure id="hero" class="row-wrapper cover margin bottom hero">
+	<figure id="hero" class="row-wrapper cover hero">
 		<div class="row">
 			<h3 class="margin top bottom standout-text" >{{ page.title }} <small>{% trans 'Category' %}</small></h3>
 		</div>
@@ -28,7 +28,7 @@
 {% block body %}
 	{% if intro.body %}
 		<div class="row">
-			<div class="medium-masonry-1 large-masonry-3 large margin bottom">{{ intro.body|apply_markup:"markdown" }}</div>
+			<div class="medium-masonry-1 large-masonry-3 large margin bottom top">{{ intro.body|apply_markup:"markdown" }}</div>
 		</div>
 	{% endif %}
 	<div class="row last">

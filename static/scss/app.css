@@ -3372,7 +3372,7 @@ table.hover tr:nth-of-type(even):hover {
   .top-bar::after, .top-bar ul:not(.is-dropdown-submenu)::after {
     clear: both; }
   .top-bar, .top-bar ul:not(.is-dropdown-submenu), .top-bar ul, .top-bar ul:not(.is-dropdown-submenu) ul {
-    background-color: rgba(255, 255, 255, 0.95); }
+    background-color: rgba(230, 230, 230, 0.95); }
   .top-bar input, .top-bar ul:not(.is-dropdown-submenu) input {
     width: 200px;
     margin-right: 1rem; }
@@ -3516,9 +3516,6 @@ li p:last-child {
 
 .no-color-hover:hover {
   color: inherit; }
-
-body {
-  font-size: 0.9375rem; }
 
 input[type=text], input[type=number], input[type=password], input[type=email] {
   border-top: none;
@@ -3794,7 +3791,7 @@ i.icon {
     color: #ec9b4b; }
 
 .top-bar .is-dropdown-submenu, .top-bar ul:not(.is-dropdown-submenu) .is-dropdown-submenu {
-  background-color: rgba(255, 255, 255, 0.95); }
+  background-color: rgba(230, 230, 230, 0.95); }
 
 .top-bar ul:not(.is-dropdown-submenu) {
   background-color: transparent !important; }
@@ -3802,6 +3799,9 @@ i.icon {
 .top-bar-right ul.dropdown.menu, .top-bar-left ul.dropdown.menu {
   padding-top: 0;
   padding-bottom: 0; }
+
+.top-bar-left ul.dropdown.menu {
+  padding-left: 0; }
 
 .title-bar {
   background: #fefefe;
@@ -3840,10 +3840,8 @@ i.icon {
     background-color: rgba(10, 10, 10, 0.3);
     border-radius: 0; } }
 
-.off-canvas-wrapper {
-  height: 100%; }
-  .off-canvas-wrapper .off-canvas-wrapper-inner.is-off-canvas-open {
-    overflow-y: visible; }
+.off-canvas-wrapper .off-canvas-wrapper-inner.is-off-canvas-open {
+  overflow-y: visible; }
 
 .vertical.menu {
   padding: 10px 5px; }
@@ -3929,14 +3927,16 @@ i.icon {
   overflow: hidden; }
   .background-video video {
     top: 50%;
-    transform: translateY(-50%);
-    left: 0;
+    -webkit-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+    left: 50%;
     z-index: 0;
     position: absolute;
     min-width: 100%;
     min-height: 100%;
     width: auto;
-    height: auto; }
+    height: auto;
+    overflow: hidden; }
 
 @font-face {
   font-family: 'fontello';

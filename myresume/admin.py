@@ -29,6 +29,7 @@ class MyContentAdminForm(forms.ModelForm):
 		model = MyContent
 		fields = '__all__'
 		widgets = {
+			'video_primary': FPFileWidget(attrs={'type':'filepicker'}),
 			'image_primary': FPFileWidget(attrs={'type':'filepicker'}),
 			'image_secondary': FPFileWidget(attrs={'type':'filepicker'}),
 		}

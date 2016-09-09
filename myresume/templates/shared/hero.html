@@ -1,6 +1,7 @@
-<figure id="hero" class="row-wrapper cover {% if class %} {{ class }} {% else %}margin bottom{% endif %} hero">
+<figure id="hero" class="row-wrapper cover {% if class %} {{ class }} {% else %}{% endif %} hero">
 	{% if type == 'video' %}
-	<video src="{{ intro.image_primary }}" autoplay preload loop>
+	<video autoplay preload loop>
+		<source src="{{ intro.video_primary }}" type="video/mp4">
 	</video>
 	{% endif %}
 	<div class="row" style="position: relative;">

@@ -18,14 +18,14 @@
 {% endblock %}
 
 {% block hero %}
-    {% include 'shared/hero.html' with hero_title=intro.h1 hero_subtitle=intro.h2 type="video" class='background-video margin bottom'%}
+    {% include 'shared/hero.html' with hero_title=intro.h1 hero_subtitle=intro.h2 type="video" class='background-video'%}
 {% endblock %}
 
 {% block body %}
 	<div class="row">
-		<div class="medium-masonry-1 large-masonry-3 margin bottom">{{ intro.body|apply_markup:"markdown" }}</div>
+		<div class="medium-masonry-1 large-masonry-3 margin bottom top">{{ intro.body|apply_markup:"markdown" }}</div>
 		{% if profile %}
-			{% include 'home/partials/row.html' with mycontent=profile  %}
+			{% include 'home/partials/row.html' with mycontent=profile %}
 		{% endif %}		
 	</div>
 	<div class="background-color-1 pad pad-top margin top">
