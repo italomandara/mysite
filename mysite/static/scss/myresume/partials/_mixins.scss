@@ -33,3 +33,14 @@
         }
     }
 }
+
+@mixin s-transition($transition, $transition2: null)
+{
+    @if ($transition2) {
+        -webkit-transition: $transition, $transition2;
+        transition: $transition, $transition2;
+    } @else {
+        -webkit-transition: $transition;
+        transition: $transition;
+    }
+}

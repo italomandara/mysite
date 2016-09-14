@@ -29,6 +29,7 @@ $foundation-version: '6.0.0-alpha.1';
 @import 'components/close-button';
 @import 'components/drilldown';
 @import 'components/dropdown-menu';
+@import 'myresume/overrides/_dropdown-menu_override.scss';
 @import 'components/dropdown';
 @import 'components/flex-video';
 @import 'components/label';
