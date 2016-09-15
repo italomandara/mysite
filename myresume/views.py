@@ -28,7 +28,9 @@ def index(request):
 	skill_categories = Skill.TYPES
 	skill_subcategories = Skill.objects.values_list('subcategory').distinct()
 	hostname = socket.gethostname()
+	post_categories = Post.CATEGORIES
 	context = {
+		'post_categories': post_categories,
 		'hostname': hostname,
 		'person': person,
 		'skills_list': skills_list,
@@ -59,7 +61,9 @@ def more(request):
 	profile = MyContent.objects.get(slug='profile')
 	form = ContactForm()
 	hostname = socket.gethostname()
+	post_categories = Post.CATEGORIES
 	context = {
+		'post_categories': post_categories,
 		'hostname': hostname,
 		'person': person,
 		'intro': intro,
@@ -82,12 +86,12 @@ def thoughts(request):
 	person = Person.objects.get(name__iexact='italo')
 	intro = MyContent.objects.get(slug='thoughts-intro')
 	posts = Post.objects.filter(published=True)
-	post_categories = Post.CATEGORIES
 	form = ContactForm()
+	post_categories = Post.CATEGORIES
 	context = {
+		'post_categories': post_categories,
 		'intro': intro,
 		'posts': posts,
-		'post_categories': post_categories,
 		'person': person,
 		'form': form,
 		'page' : {
