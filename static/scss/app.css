@@ -2445,8 +2445,8 @@ select {
     top: 100%; }
 
 .dropdown.menu .submenu {
-  -webkit-transition: opacity 0.25s ease-in-out, visibility 0 0.25s linear;
-  transition: opacity 0.25s ease-in-out, visibility 0 0.25s linear;
+  -webkit-transition: opacity 0.25s ease-in-out, visibility 0s 0.25s linear;
+  transition: opacity 0.25s ease-in-out, visibility 0s 0.25s linear;
   opacity: 0;
   visibility: collapse;
   position: absolute;
