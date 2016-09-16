@@ -27,13 +27,13 @@ SECRET_KEY = os.environ['SECRET_KEY']
 
 # SECURITY WARNING: don't run with debug turned on in production!
 
-if os.environ['PRODUCTION'] == '1':
+if os.environ['PRODUCTION'] == '0':
     DEBUG = False
-    ALLOWED_HOSTS = ['itmandar.herokuapp.com']
+    ALLOWED_HOSTS = [os.environ['HOST']]
 else:
     DEBUG = True
     ALLOWED_HOSTS = ["localhost", "127.0.0.1",]
-    print 'DEBUG', DEBUG, 'assuming we\'re not in production'
+    print os.environ['PRODUCTION'], 'DEBUG', DEBUG, 'assuming we\'re not in production'
 
 
 # Application definition
@@ -177,15 +177,15 @@ STATICFILES_DIRS = [
 
 # sass processor settings
 # SASS_PROCESSOR_ROOT = os.path.join(ROOT_PATH, 'static')
-# SASS_PRECISION = 8
+SASS_PRECISION = 8
 
 # compressor
 # COMPRESS_ENABLED = DEBUG
 # COMPRESS_STORAGE = STATICFILES_STORAGE
 # COMPRESS_ROOT = STATIC_ROOT
 # COMPRESS_URL = STATIC_URL
-SASS_PROCESSOR_ENABLED = DEBUG
-COMPRESS_CSS_FILTERS = ['compressor.filters.cssmin.CSSCompressorFilter']
+SASS_PROCESSOR_ENABLED = True
+COMPRESS_CSS_FILTERS = ['compressor.filters.cssmin.rCSSMinFilter']
 # COMPRESS_OFFLINE = not DEBUG
 
 if DEBUG:
