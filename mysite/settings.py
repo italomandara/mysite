@@ -29,13 +29,12 @@ SECRET_KEY = os.environ['SECRET_KEY']
 
 if os.environ['PRODUCTION'] == '1':
     DEBUG = False
-    # ALLOWED_HOSTS = ['itmandar.herokuapp.com']
+    ALLOWED_HOSTS = ['itmandar.herokuapp.com']
 else:
     DEBUG = True
-    # ALLOWED_HOSTS = ["localhost", "127.0.0.1",]
+    ALLOWED_HOSTS = ["localhost", "127.0.0.1",]
     print 'DEBUG', DEBUG, 'assuming we\'re not in production'
 
-ALLOWED_HOSTS = ['*']
 
 # Application definition
 

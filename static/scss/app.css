@@ -3945,6 +3945,19 @@ i.icon {
     height: auto;
     overflow: hidden; }
 
+.fixed {
+  position: fixed; }
+
+.fit-vertical {
+  top: 0;
+  bottom: 0; }
+
+.fit-in {
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0; }
+
 @font-face {
   font-family: 'fontello';
   src: url("/static/scss/font/font/fontello.eot?21371692");
