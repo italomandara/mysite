@@ -188,6 +188,13 @@ SASS_PROCESSOR_ENABLED = True
 COMPRESS_CSS_FILTERS = ['compressor.filters.cssmin.rCSSMinFilter']
 # COMPRESS_OFFLINE = not DEBUG
 
+GZIP_CONTENT_TYPES = (
+    'text/css',
+    'application/javascript',
+    'application/x-javascript',
+    'text/javascript'
+)
+
 if DEBUG:
     #sass processor
     SASS_OUTPUT_STYLE = 'nested'
