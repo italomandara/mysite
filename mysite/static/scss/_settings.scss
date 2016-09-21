@@ -46,10 +46,10 @@
 $global-width: rem-calc(1200);
 $global-font-size: 100%;
 $global-lineheight: 1.5;
-$primary-color: #ec9b4b;
-$secondary-color: #777;
-$success-color: #3adb76;
-$warning-color: #ffae00;
+$primary-color: $my-red;
+$secondary-color: $my-beige;
+$success-color: $my-success;
+$warning-color: $my-warning;
 $alert-color: #ec5840;
 $light-gray: #e6e6e6;
 $medium-gray: #cacaca;
