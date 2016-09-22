@@ -6,6 +6,22 @@
 <!DOCTYPE html>
 <html>
 	<head>
+		<style type="text/css">
+			.loader, .loader-fixed {
+				z-index: 1005;
+				background-color: rgb(255, 169, 83);
+				color: white;
+				text-align: center;
+				font-size: 1rem
+			}
+
+			.loader:before, .loader-fixed:before {
+				content: '';
+				display: inline-block;
+				height: 100%;
+				vertical-align: middle
+			}	
+		</style>
 		{% block head %}
 			<meta charset="utf-8">
 			<meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -33,10 +49,6 @@
 			{% include 'shared/modal.html' with modal_id="contact-thank-you" extra_classes="tiny text-center" modal_title=contactformok modal_content="modals/contact-thank-you.html" %}
 			{% trans "Icons" as icons_text %}
 			{% include 'shared/modal.html' with modal_id="icons" extra_classes="medium text-center" modal_title=icons_text %}
-		{% endblock %}
-		{% block footer-css %}
-			<link href="{% sass_src 'scss/app.scss' %}" rel="stylesheet" type="text/css" />
-			<link href="https://fonts.googleapis.com/css?family=Roboto:300,300italic,700|Oswald" rel="stylesheet">
 		{% endblock %}
 		{% block footer-js %}
 		{% compress js %}
@@ -84,6 +96,10 @@
 			<script type="text/javascript" src="{% static 'js/what-input.js' %}"></script>
 			<script type="text/javascript" src="{% static 'js/app.js' %}"></script>
 		{% endcompress %}
+		{% endblock %}
+		{% block footer-css %}
+			<link href="{% sass_src 'scss/app.scss' %}" rel="stylesheet" type="text/css" />
+			<link href="https://fonts.googleapis.com/css?family=Roboto:300,300italic,700|Oswald" rel="stylesheet">
 		{% endblock %}
 	</body>
 </html>
