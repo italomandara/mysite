@@ -39,7 +39,6 @@
 			{% endblock %}
 			{% block head-css %}
 				<link href="{% sass_src 'scss/app.scss' %}" rel="stylesheet" type="text/css" />
-				<link href="https://fonts.googleapis.com/css?family=Roboto:300,300italic,700|Oswald" rel="stylesheet">
 			{% endblock %}
 			{% block head-js%}
 			{% endblock %}
@@ -57,6 +56,9 @@
 			{% trans "Icons" as icons_text %}
 			{% include 'shared/modal.html' with modal_id="icons" extra_classes="medium text-center" modal_title=icons_text %}
 		{% endblock %}
+		{% block footer-css %}
+			<link href="https://fonts.googleapis.com/css?family=Roboto:300,300italic,700|Oswald" rel="stylesheet" />
+		{% endblock %}
 		{% block footer-js %}
 			{% compress js %}
 				<script>
@@ -71,8 +73,8 @@
 					};
 				</script>
 				<script type="text/javascript" src="{% static 'js/jquery.js' %}"></script>
-				{# <script type="text/javascript" src="{% static 'js/foundation.js' %}"></script> #}
 				<script type="text/javascript" src="{% static 'js/foundation.core.js' %}"></script>
+				<script type="text/javascript" src="{% static 'js/foundation.sticky.js' %}"></script>
 				<script type="text/javascript" src="{% static 'js/foundation.abide.js' %}"></script>
 				<script type="text/javascript" src="{% static 'js/foundation.accordion.js' %}"></script>
 				<script type="text/javascript" src="{% static 'js/foundation.accordionMenu.js' %}"></script>
@@ -88,7 +90,6 @@
 				<script type="text/javascript" src="{% static 'js/foundation.responsiveToggle.js' %}"></script>
 				<script type="text/javascript" src="{% static 'js/foundation.reveal.js' %}"></script>
 				<script type="text/javascript" src="{% static 'js/foundation.slider.js' %}"></script>
-				<script type="text/javascript" src="{% static 'js/foundation.sticky.js' %}"></script>
 				<script type="text/javascript" src="{% static 'js/foundation.tabs.js' %}"></script>
 				<script type="text/javascript" src="{% static 'js/foundation.toggler.js' %}"></script>
 				<script type="text/javascript" src="{% static 'js/foundation.tooltip.js' %}"></script>
@@ -103,8 +104,6 @@
 				<script type="text/javascript" src="{% static 'js/what-input.js' %}"></script>
 				<script type="text/javascript" src="{% static 'js/app.js' %}"></script>
 			{% endcompress %}
-		{% endblock %}
-		{% block footer-css %}
 		{% endblock %}
 	</body>
 </html>
