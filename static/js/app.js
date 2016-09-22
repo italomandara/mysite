@@ -175,6 +175,5 @@
 	$(function() { // ON DOCUMENT READY
 		$(document).foundation();
 		hideLoader();
-		$(body).css('visibility', 'visible');
 	});
 })();
