@@ -1,48 +1,48 @@
-%filter-transitions{
-    -webkit-transition: opacity $global-transition-time ease-in-out, padding $global-transition-time ease-in-out, margin $global-transition-time ease-in-out, max-height $global-transition-time ease-in-out, max-width $global-transition-time ease-in-out ;
-    -moz-transition: opacity $global-transition-time ease-in-out, padding $global-transition-time ease-in-out, margin $global-transition-time ease-in-out, max-height $global-transition-time ease-in-out, max-width $global-transition-time ease-in-out ;
-    transition: opacity $global-transition-time ease-in-out, padding $global-transition-time ease-in-out, margin $global-transition-time ease-in-out, max-height $global-transition-time ease-in-out, max-width $global-transition-time ease-in-out ;
+%filter-transitions {
+    -webkit-transition: opacity $global-transition-time ease-in-out, padding $global-transition-time ease-in-out, margin $global-transition-time ease-in-out, max-height $global-transition-time ease-in-out, max-width $global-transition-time ease-in-out;
+    -moz-transition: opacity $global-transition-time ease-in-out, padding $global-transition-time ease-in-out, margin $global-transition-time ease-in-out, max-height $global-transition-time ease-in-out, max-width $global-transition-time ease-in-out;
+    transition: opacity $global-transition-time ease-in-out, padding $global-transition-time ease-in-out, margin $global-transition-time ease-in-out, max-height $global-transition-time ease-in-out, max-width $global-transition-time ease-in-out;
 }
 
-%fit-in-container{
-	top: 0;
-	bottom: 0;
-	left: 0;
-	right: 0;
+%fit-in-container {
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
 }
 
-%loader{
+%loader {
     // @extend .icon;
     // @extend .i-hourglass;
     @extend %fit-in-container;
     z-index: $reveal-zindex;
-
     background-color: rgba($primary-color, $local-overlay-opacity);
     color: white;
     text-align: center;
     font-size: 1rem;
 
-    &:before{
+    &:before {
         content: '';
         display: inline-block;
         height: 100%;
         vertical-align: middle;
     }
-    img{
+
+    img {
         @extend .spin-cw;
-        @extend .infinite
+        @extend .infinite;
     }
 }
 
-%row-template{
-        padding: {
+%row-template {
+    padding: {
         left: $my-minimum-row-margin;
-        right: $my-minimum-row-margin; 
-    }
+        right: $my-minimum-row-margin;
+    };
     margin: 0 auto;
 }
 
-%has-icon-left{
+%has-icon-left {
     width: 100%;
     padding-left: 50px;
     margin-left: -50px;
