@@ -17,15 +17,13 @@
 			<meta name="description" content="{% block page-meta-description%}{{ page.description }}{% endblock %}">
 			{% endblock %}
 			{% block head-css %}
-				<link href="{% sass_src 'scss/app.scss' %}" rel="stylesheet" type="text/css" />
-				<link href="https://fonts.googleapis.com/css?family=Roboto:300,300italic,700" rel="stylesheet">
-				<link href="https://fonts.googleapis.com/css?family=Oswald" rel="stylesheet">
 			{% endblock %}
 			{% block head-js%}
 			{% endblock %}
 		{% endblock %}
 	</head>
 	<body>
+		<div class="loader-fixed"><img src="{% static 'img/loader.svg' %}"/></div>
 		{% block outer-body %}
 		{% endblock %}
 		{% block modals %}
@@ -35,6 +33,10 @@
 			{% include 'shared/modal.html' with modal_id="contact-thank-you" extra_classes="tiny text-center" modal_title=contactformok modal_content="modals/contact-thank-you.html" %}
 			{% trans "Icons" as icons_text %}
 			{% include 'shared/modal.html' with modal_id="icons" extra_classes="medium text-center" modal_title=icons_text %}
+		{% endblock %}
+		{% block footer-css %}
+			<link href="{% sass_src 'scss/app.scss' %}" rel="stylesheet" type="text/css" />
+			<link href="https://fonts.googleapis.com/css?family=Roboto:300,300italic,700|Oswald" rel="stylesheet">
 		{% endblock %}
 		{% block footer-js %}
 		{% compress js %}
@@ -48,14 +50,40 @@
 						return '{% static '' %}' + path;
 					}
 				};
-				
 			</script>
 			<script type="text/javascript" src="{% static 'js/jquery.js' %}"></script>
-			<script type="text/javascript" src="{% static 'js/foundation.js' %}"></script>
+			{# <script type="text/javascript" src="{% static 'js/foundation.js' %}"></script> #}
+			<script type="text/javascript" src="{% static 'js/foundation.core.js' %}"></script>
+			<script type="text/javascript" src="{% static 'js/foundation.abide.js' %}"></script>
+			<script type="text/javascript" src="{% static 'js/foundation.accordion.js' %}"></script>
+			<script type="text/javascript" src="{% static 'js/foundation.accordionMenu.js' %}"></script>
+			<script type="text/javascript" src="{% static 'js/foundation.drilldown.js' %}"></script>
+			<script type="text/javascript" src="{% static 'js/foundation.dropdown.js' %}"></script>
+			<script type="text/javascript" src="{% static 'js/foundation.dropdownMenu.js' %}"></script>
+			<script type="text/javascript" src="{% static 'js/foundation.equalizer.js' %}"></script>
+			<script type="text/javascript" src="{% static 'js/foundation.interchange.js' %}"></script>
+			<script type="text/javascript" src="{% static 'js/foundation.magellan.js' %}"></script>
+			<script type="text/javascript" src="{% static 'js/foundation.offcanvas.js' %}"></script>
+			<script type="text/javascript" src="{% static 'js/foundation.orbit.js' %}"></script>
+			<script type="text/javascript" src="{% static 'js/foundation.responsiveMenu.js' %}"></script>
+			<script type="text/javascript" src="{% static 'js/foundation.responsiveToggle.js' %}"></script>
+			<script type="text/javascript" src="{% static 'js/foundation.reveal.js' %}"></script>
+			<script type="text/javascript" src="{% static 'js/foundation.slider.js' %}"></script>
+			<script type="text/javascript" src="{% static 'js/foundation.sticky.js' %}"></script>
+			<script type="text/javascript" src="{% static 'js/foundation.tabs.js' %}"></script>
+			<script type="text/javascript" src="{% static 'js/foundation.toggler.js' %}"></script>
+			<script type="text/javascript" src="{% static 'js/foundation.tooltip.js' %}"></script>
+			<script type="text/javascript" src="{% static 'js/foundation.util.box.js' %}"></script>
+			<script type="text/javascript" src="{% static 'js/foundation.util.keyboard.js' %}"></script>
+			<script type="text/javascript" src="{% static 'js/foundation.util.mediaQuery.js' %}"></script>
+			<script type="text/javascript" src="{% static 'js/foundation.util.motion.js' %}"></script>
+			<script type="text/javascript" src="{% static 'js/foundation.util.nest.js' %}"></script>
+			<script type="text/javascript" src="{% static 'js/foundation.util.timerAndImageLoader.js' %}"></script>
+			<script type="text/javascript" src="{% static 'js/foundation.util.touch.js' %}"></script>
+			<script type="text/javascript" src="{% static 'js/foundation.util.triggers.js' %}"></script>
 			<script type="text/javascript" src="{% static 'js/what-input.js' %}"></script>
 			<script type="text/javascript" src="{% static 'js/app.js' %}"></script>
 		{% endcompress %}
-
 		{% endblock %}
 	</body>
 </html>

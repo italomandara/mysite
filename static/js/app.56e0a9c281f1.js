@@ -1,4 +1,3 @@
-$(document).foundation();
 (function() {
 	window.GLOBALS.listener = '';
 	var callbacks = {
@@ -174,6 +173,6 @@ $(document).foundation();
 			}
 		});
 	$(function() { // ON DOCUMENT READY
-		hideLoader();
+		$(document).foundation();
 	});
 })();

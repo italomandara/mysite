@@ -2,17 +2,17 @@
 	window.GLOBALS.listener = '';
 	var callbacks = {
 		openThankYou: function(data, $loader) {
-			if (GLOBALS.debug){
-				console.log(data, $loader)
+			if (GLOBALS.debug) {
+				console.log(data, $loader);
 			}
 			if (!!data.stored) {
-				$loader.hideLoader()
+				$loader.hideLoader();
 				$('#contact-thank-you').foundation('open');
 				$('#mailform').foundation('resetForm');
 			} else {
-				$loader.hideLoader()
+				$loader.hideLoader();
 				for (var idx in data.form_errors) {
-					if($('[name=' + idx + ']').length){
+					if ($('[name=' + idx + ']').length) {
 						$('#mailform').foundation('addErrorClasses', $('[name=' + idx + ']'));
 					} else {
 						$('#mailform').foundation('addErrorClasses', $('[name^=' + idx + ']').not(':hidden'));
@@ -20,14 +20,14 @@
 				}
 			}
 		},
-	}
+	};
 
 	function Loaders(path) {
 		var src = '<img src="' + django._static(path) + '"/>';
 		return {
 			normal: '<div class="loader">' + src + '</div>',
 			fixed: '<div class="loader-fixed">' + src + '</div>',
-		}
+		};
 	}
 	var loader = Loaders('img/loader.svg');
 
@@ -36,7 +36,7 @@
 			$this.css('position', 'relative').append(loader.normal);
 			return $this;
 		} else {
-			$('body').append(loader.fixed)
+			$('body').append(loader.fixed);
 			$('html').addClass('scroll-lock');
 			return $('body');
 		}
@@ -58,7 +58,7 @@
 	};
 
 	$.fn.hideLoader = function(which) {
-		if (which = 'everything') {
+		if (which === 'everything') {
 			return hideLoader(false);
 		} else {
 			return hideLoader(this);
@@ -83,9 +83,9 @@
 	};
 
 	$.fn.attr_safe = function(attribute) {
-		console.log(this)
+		console.log(this);
 		return (typeof this.attr(attribute) !== typeof undefined || !this.attr(attribute)) ? this.attr(attribute) : 'undefined';
-	}
+	};
 
 	$.fn.form2Ajax = function($target, $loader, usejson, doneCallBack) {
 		var data = {
@@ -126,7 +126,7 @@
 		var el_class = '.category-' + category;
 		var el_class_sub = '.subcategory-' + subcategory;
 
-		'.subcategory-' + el_class_sub
+		// '.subcategory-' + el_class_sub;
 		if (typeof category !== typeof undefined && category.toLowerCase() === 'none') {
 			$('.js-filter').removeAttr('style');
 		} else {
@@ -135,26 +135,26 @@
 			});
 			$(el_class + ', ' + el_class_sub).removeAttr('style');
 		}
-		return true
+		return true;
 	};
-	var refreshCaptcha = function($this){
-	    $form = $this.parents('form');
-	    $.getJSON(GLOBALS.captcha, {}, function(json) {
-	        console.log(json);
-	    });
-	    return false;
+	var refreshCaptcha = function($this) {
+		$form = $this.parents('form');
+		$.getJSON(GLOBALS.captcha, {}, function(json) {
+			console.log(json);
+		});
+		return false;
 	};
 	$(document)
 		.on('click', '[data-filter], [data-filter-sub]', function(e) {
-			filter_el($(this), e)
+			filter_el($(this), e);
 		})
-		.on('click', '.captcha', function(){
+		.on('click', '.captcha', function() {
 			refreshCaptcha($(this));
 		})
 		.on('click', '[data-reveal-ajax]', function() {
 			var reveal_id = $(this).attr('data-open'),
-			$modal = $('#' + reveal_id).find('.modal-content'),
-			reveal_content_url = $(this).attr('data-reveal-ajax');
+				$modal = $('#' + reveal_id).find('.modal-content'),
+				reveal_content_url = $(this).attr('data-reveal-ajax');
 			$.ajax(reveal_content_url)
 				.done(function(resp) {
 					$modal.html(resp).foundation('open');
@@ -163,7 +163,7 @@
 		.on('submit', '.js-ajaxform', function(e) {
 			e.preventDefault();
 			var $t = $(this);
-			$(this).form2Ajax(false, $t.parents('.modal-content'), 'usejson', callbacks[$t.attr('data-callback')])
+			$(this).form2Ajax(false, $t.parents('.modal-content'), 'usejson', callbacks[$t.attr('data-callback')]);
 		})
 		.on('keypress', function(e) {
 			window.GLOBALS.listener += String.fromCharCode(e.which);
@@ -174,5 +174,7 @@
 		});
 	$(function() { // ON DOCUMENT READY
 		$(document).foundation();
+		hideLoader();
+		$(body).css('visibility', 'visible');
 	});
 })();
