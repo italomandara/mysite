@@ -1,3 +1,4 @@
+{% load i18n %}
 <li>
     <a {% if page.name == 'index' %}class="active" {% endif %} href="{% url 'index' %}">Home</a>
 </li>
@@ -5,9 +6,10 @@
     <a {% if page.name == 'more' %}class="active" {% endif %} href="{% url 'more' %}">More</a>
 </li>
 <li style="position:relative" role="menuitem" class="is-dropdown-submenu-parent opens-right" aria-haspopup="true" aria-expanded="false" aria-label="Thoughts">
-	<a {% if page.name == 'thoughts' or page.name == 'thoughts-detail' %}class="active" {% endif %} href="{% url 'thoughts' %}">Thoughts</a>
+	<a {% if page.name == 'thoughts' or page.name == 'thoughts-detail' %}class="active" {% endif %} href="{% url 'thoughts' %}">{% trans "Thoughts" %}</a>
 	{% if post_categories %}
-	<ul class="menu vertical submenu">
+	<ul class="menu vertical submenu nested">
+		{% if is_accordion %}<li><a href="{% url 'thoughts' %}">{% trans "Thoughts" %}</a></li>{% endif %}
 		{% for post_category in post_categories %}
 		<li><a href="{% url 'thoughts' %}categories/{{ post_category.1|slugify }}">{{ post_category.1 }}</a></li>
 		{% endfor %}

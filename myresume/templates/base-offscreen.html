@@ -9,8 +9,8 @@
                 <span aria-hidden="true">&times;</span>
             </button>
             <!-- Menu -->
-            <ul class="vertical menu">
-                {% include 'shared/menu-items.html' %}
+            <ul class="vertical menu" data-accordion-menu>
+                {% include 'shared/menu-items.html' with is_accordion=True %}
             </ul>
         </div>
     </div>
