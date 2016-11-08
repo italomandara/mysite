@@ -2095,6 +2095,15 @@ select {
 .clearfix::after {
   clear: both; }
 
+.is-accordion-submenu-parent > a {
+  position: relative; }
+  .is-accordion-submenu-parent > a::after, .is-accordion-submenu-parent > a::before {
+    margin-left: 0 !important; }
+
+.is-accordion-submenu-parent[aria-expanded="true"] > a::after {
+  transform-origin: 50% 50%;
+  transform: scaleY(-1); }
+
 .callout {
   margin: 0 0 1rem 0;
   padding: 1rem;
@@ -3487,7 +3496,7 @@ i.icon {
   }
 }
 */
-.icon:before {
+.icon:before, .is-accordion-submenu-parent > a:before {
   font-family: "fontello";
   font-style: normal;
   font-weight: normal;
@@ -4042,7 +4051,7 @@ i.icon {
   content: '\f106'; }
 
 /* '' */
-.i-angle-down:before {
+.i-angle-down:before, .is-accordion-submenu-parent > a:before {
   content: '\f107'; }
 
 /* '' */
