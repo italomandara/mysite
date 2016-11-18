@@ -1,10 +1,10 @@
 @include responsiveMasonry();
 
-.masonry{
-    > .widget, > div > .widget{
-        margin: $global-shadow-size;
-    }
-}
+// .masonry{
+//     > .widget, > div > .widget{
+//         margin: $global-shadow-size;
+//     }
+// }
 
 .widget{
     padding: $callout-padding;
@@ -13,11 +13,11 @@
     width: 100%;
     vertical-align: middle;
     border: none;
-    box-shadow: 0 0 $global-shadow-size $global-shadow-color;
-    &:nth-child(odd){
-        border-radius: $local-radius 0 $local-radius 0;
-    }
-    &:nth-child(even){
-        border-radius: 0 $local-radius 0 $local-radius;
-    }
+    // box-shadow: 0 0 $global-shadow-size $global-shadow-color;
+    // &:nth-child(odd){
+    //     border-radius: $local-radius 0 $local-radius 0;
+    // }
+    // &:nth-child(even){
+    //     border-radius: 0 $local-radius 0 $local-radius;
+    // }
 }

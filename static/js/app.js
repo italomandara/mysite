@@ -2,7 +2,7 @@
 	window.GLOBALS.listener = '';
 	var callbacks = {
 		openThankYou: function(data, $loader) {
-			if (GLOBALS.debug) {
+			if (GLOBALS.debug){
 				console.log(data, $loader);
 			}
 			if (!!data.stored) {
@@ -12,7 +12,7 @@
 			} else {
 				$loader.hideLoader();
 				for (var idx in data.form_errors) {
-					if ($('[name=' + idx + ']').length) {
+					if($('[name=' + idx + ']').length){
 						$('#mailform').foundation('addErrorClasses', $('[name=' + idx + ']'));
 					} else {
 						$('#mailform').foundation('addErrorClasses', $('[name^=' + idx + ']').not(':hidden'));
@@ -126,35 +126,35 @@
 		var el_class = '.category-' + category;
 		var el_class_sub = '.subcategory-' + subcategory;
 
-		// '.subcategory-' + el_class_sub;
+		// '.subcategory-' + el_class_sub
 		if (typeof category !== typeof undefined && category.toLowerCase() === 'none') {
 			$('.js-filter').removeAttr('style');
 		} else {
 			$('.js-filter').not(el_class + ', ' + el_class_sub).css({
-				'opacity': 0.3
+				'opacity': 0.3,
 			});
 			$(el_class + ', ' + el_class_sub).removeAttr('style');
 		}
 		return true;
 	};
-	var refreshCaptcha = function($this) {
-		$form = $this.parents('form');
-		$.getJSON(GLOBALS.captcha, {}, function(json) {
-			console.log(json);
-		});
-		return false;
+	var refreshCaptcha = function($this){
+	    $form = $this.parents('form');
+	    $.getJSON(GLOBALS.captcha, {}, function(json) {
+	        console.log(json);
+	    });
+	    return false;
 	};
 	$(document)
 		.on('click', '[data-filter], [data-filter-sub]', function(e) {
 			filter_el($(this), e);
 		})
-		.on('click', '.captcha', function() {
+		.on('click', '.captcha', function(){
 			refreshCaptcha($(this));
 		})
 		.on('click', '[data-reveal-ajax]', function() {
 			var reveal_id = $(this).attr('data-open'),
-				$modal = $('#' + reveal_id).find('.modal-content'),
-				reveal_content_url = $(this).attr('data-reveal-ajax');
+			$modal = $('#' + reveal_id).find('.modal-content'),
+			reveal_content_url = $(this).attr('data-reveal-ajax');
 			$.ajax(reveal_content_url)
 				.done(function(resp) {
 					$modal.html(resp).foundation('open');

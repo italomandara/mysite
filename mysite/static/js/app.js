@@ -131,7 +131,7 @@
 			$('.js-filter').removeAttr('style');
 		} else {
 			$('.js-filter').not(el_class + ', ' + el_class_sub).css({
-				'opacity': 0.3
+				'opacity': 0.3,
 			});
 			$(el_class + ', ' + el_class_sub).removeAttr('style');
 		}
