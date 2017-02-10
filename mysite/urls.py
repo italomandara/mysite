@@ -20,10 +20,7 @@ from django.conf import settings
 urlpatterns = [
 	url(r'^', include('myresume.urls')),
     url(r'^admin/', admin.site.urls),
-]
-
-urlpatterns += [
-    url(r'^captcha/', include('captcha.urls'))
+    url(r'^captcha/', include('captcha.urls')),
 ]
 
 if settings.DEBUG:

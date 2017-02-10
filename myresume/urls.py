@@ -1,5 +1,6 @@
-from django.conf.urls import url
+from django.conf.urls import include, url
 from . import views
+from .routers import *
 
 urlpatterns = [
     url(r'^$', views.index, name='index'),
@@ -9,4 +10,10 @@ urlpatterns = [
     url(r'thoughts/$', views.thoughts, name='thoughts'),
     url(r'thoughts/posts/(?P<slug>[\w-]+)/$', views.thoughtsDetail, name='thoughts-detail'),
     url(r'thoughts/categories/(?P<slug>[\w-]+)/$', views.thoughtsCategory, name='thoughts-category'),
+    # url(r'api/', include('rest_framework.urls', namespace='rest_framework')),
+    url(r'api/', include(router.urls), name='api'),
 ]
+
+# urlpatterns = [
+#      url(r'^$', views.index_angular, name='index'),
+# ]

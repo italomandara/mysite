@@ -8,7 +8,7 @@
 	</a>
 	<p class="small margin bottom set-text-color to-gray"><small>{% trans 'by' %} {{ post.author }} {{ post.created_at|date:"d F Y" }}</small></p>
 
-	<div class="small margin bottom"><a href="{% url 'thoughts' %}posts/{{ post.slug }}"><img class="margin bottom" src="{{ post.featured_image }}"></a>{{ post.body|truncatechars:100 }} <a href="{% url 'thoughts' %}posts/{{ post.slug }}">Read more.</a></div>
+	<div class="small margin bottom"><a href="{% url 'thoughts' %}posts/{{ post.slug }}"><img class="margin bottom js-lazy" src="" data-original="{{ post.featured_image }}"></a>{{ post.body|truncatechars:100 }} <a href="{% url 'thoughts' %}posts/{{ post.slug }}">Read more.</a></div>
 	<p>
 		<span class="secondary label">{{ post.get_category }}</span>
 	</p>

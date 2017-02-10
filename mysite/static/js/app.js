@@ -174,6 +174,8 @@
 		});
 	$(function() { // ON DOCUMENT READY
 		$(document).foundation();
-		hideLoader();
+		$(".js-lazy").lazyload({
+			effect: "fadeIn"
+		});
 	});
 })();

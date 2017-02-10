@@ -1,5 +1,9 @@
 from django.http import HttpResponse, HttpResponseRedirect
 from django.template import loader
+from django.views.decorators.csrf import csrf_exempt
+from rest_framework.renderers import JSONRenderer
+from rest_framework.parsers import JSONParser
+from .serializers import *
 
 from django.shortcuts import render
 from .forms import ContactForm
@@ -50,6 +54,9 @@ def index(request):
     }
 
 	return HttpResponse(template.render(context, request))
+
+def index_angular(request):
+	template = loader.get_template('home/index_angular.html')
 
 def more(request):
 	template = loader.get_template('home/more.html')
@@ -190,7 +197,6 @@ def ajaxContactForm(request):
 		)
 
 def icons(request):
-
 	template = loader.get_template('icons.html')
 	person = Person.objects.get(name__iexact='italo')
 	context = { 
