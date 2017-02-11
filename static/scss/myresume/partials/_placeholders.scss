@@ -36,9 +36,17 @@
 
 %row-template {
     padding: {
-        left: $my-minimum-row-margin;
-        right: $my-minimum-row-margin;
+        left: $my-minimum-row-margin/2;
+        right: $my-minimum-row-margin/2;
     };
+
+    @include breakpoint(medium up) {
+        padding: {
+            left: $my-minimum-row-margin;
+            right: $my-minimum-row-margin;
+        };
+    }
+
     margin: 0 auto;
 }
 

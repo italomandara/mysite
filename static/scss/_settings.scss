@@ -45,7 +45,7 @@
 
 $global-width: rem-calc(1200);
 $global-font-size: 100%;
-$global-lineheight: 1.5;
+$global-lineheight: 1.4;
 $primary-color: $my-red;
 $secondary-color: $my-beige;
 $success-color: $my-success;
@@ -63,7 +63,6 @@ $body-antialiased: true;
 $text-direction: ltr;
 $global-margin: 1rem;
 $global-padding: 1rem;
-$global-margin: 1rem;
 $global-weight-normal: normal;
 $global-weight-bold: bold;
 $global-radius: 0;
@@ -88,7 +87,7 @@ $breakpoint-classes: (small medium large);
 
 $grid-row-width: $global-width;
 $grid-column-count: 12;
-$grid-column-gutter: 30px;
+$grid-column-gutter: 25px;
 
 // 4. Base Typography
 // ------------------

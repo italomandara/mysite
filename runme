@@ -1,5 +1,4 @@
 source ../venv/bin/activate
 export $(< .env)
-export PRODUCTION="0"
 export HOST="localhost"
 python manage.py runserver

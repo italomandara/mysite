@@ -172,8 +172,8 @@
 				$('#00-eegg').removeClass('hide');
 			}
 		});
+	$(document).foundation();
 	$(function() { // ON DOCUMENT READY
-		$(document).foundation();
 		$(".js-lazy").lazyload();
 	});
 })();
