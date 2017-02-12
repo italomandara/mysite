@@ -45,5 +45,5 @@ Thumbs.db
 *.pyc
 
 #staticfiles
-*/staticfiles/*
+*staticfiles/*
 *.css

@@ -40,20 +40,33 @@ var skill_categories = {
 		'CS': 'Courses',
 		'CD': 'Coding',
 	};
-	
-app.controller('homeController', ['$scope', '$http', function($scope, $http) {
+
+app.controller('navController', ['$rootScope', '$scope', '$http', function($rootScope, $scope, $http) {
 	$http.get([window.location.origin, '/api/person/', '?name=Italo&format=json'].join('')).then(function(person) {
-		$scope.person = person.data[0];
+		$rootScope.person = person.data[0];
+		$scope.nav_title = [$rootScope.person.name , $rootScope.person.lastname , "'s resume"].join('');
 	});
+}]);
+
+app.controller('homeController', ['$scope', '$http', function($scope, $http) {
+
 	$http.get([window.location.origin, '/api/skill/', '?format=json'].join('')).then(function(skills_list) {
 		$scope.skills_list = skills_list.data;
+		$scope.skills_subcategories = $scope.skills_list.map(function(list) {
+				return list.subcategory.toLowerCase();
+			}).filter(function(elem, index, self) {
+				return index == self.indexOf(elem);
+			});
+		$scope.get_skill_category = function(a) {return skill_categories[a]};
+
 	});
-	$scope.skill_categories;
+	$scope.skill_categories = skill_categories;
 
 	$http.get([window.location.origin, '/api/job/', '?format=json'].join('')).then(function(job_history) {
 		$scope.job_history = job_history.data;
 	});
 	$scope.job_categories = job_categories;
+	$scope.get_job_category = function(a) {return job_categories[a]};
 
 	$http.get([window.location.origin, '/api/course/', '?format=json'].join('')).then(function(course) {
 		$scope.course = course.data;
@@ -76,4 +89,27 @@ app.controller('homeController', ['$scope', '$http', function($scope, $http) {
 	});
 	$scope.post_categories = post_categories;
 	$scope.hero_class='background-video';
+
+	$scope.filter_el = function(e) {
+		var $el = $(e.target);
+		if (typeof e !== typeof undefined) {
+			e.preventDefault();
+		}
+		$el.addClass('active').siblings('[data-filter], [data-filter-sub]').removeClass('active');
+		var category = $el.attr_safe('data-filter');
+		var subcategory = $el.attr_safe('data-filter-sub');
+		var el_class = '.category-' + category;
+		var el_class_sub = '.subcategory-' + subcategory;
+
+		// '.subcategory-' + el_class_sub
+		if (typeof category !== typeof undefined && category.toLowerCase() === 'none') {
+			$('.js-filter').removeAttr('style');
+		} else {
+			$('.js-filter').not(el_class + ', ' + el_class_sub).css({
+				'opacity': 0.3,
+			});
+			$(el_class + ', ' + el_class_sub).removeAttr('style');
+		}
+		return true;
+	};
 }])

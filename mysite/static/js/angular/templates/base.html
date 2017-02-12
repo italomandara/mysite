@@ -12,9 +12,6 @@
 </div>
 <div class="off-canvas-wrapper-inner" data-off-canvas-wrapper>
     <div id="offCanvas" class="hide" data-off-canvas></div>
-    <div class="off-canvas-content" data-off-canvas-content >
-		<div include-replace ng-include="'static/js/angular/templates/hero_video.html'"></div>
-        <div include-replace ng-include="'static/js/angular/templates/nav.html'"></div>
-        <div include-replace ng-include="'static/js/angular/templates/home.html'"></div>
+    <div class="off-canvas-content" data-off-canvas-content ng-view>
     </div>
 </div>

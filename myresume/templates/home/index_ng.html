@@ -50,6 +50,7 @@
 			<script type="text/javascript" src="{% static 'js/foundation.util.touch.js' %}"></script>
 			<script type="text/javascript" src="{% static 'js/foundation.util.triggers.js' %}"></script>
 			<script type="text/javascript" src="{% static 'js/what-input.js' %}"></script>
+			<script type="text/javascript" src="{% static 'js/angular/marked.js' %}"></script>
 			<script type="text/javascript" src="{% static 'js/angular/angular.js' %}"></script>
 			<script type="text/javascript" src="{% static 'js/angular/angular-route.js' %}"></script>
 			<script type="text/javascript" src="{% static 'js/angular/angular-sanitize.js' %}"></script>
@@ -58,7 +59,7 @@
 		{% endcompress %}
 	</head>
 	<body ng-app="myResume">
-		<div class="off-canvas-wrapper" ng-view>
+		<div class="off-canvas-wrapper" ng-include="'static/js/angular/templates/base.html'">
 		</div>
 	</body>
 </html>

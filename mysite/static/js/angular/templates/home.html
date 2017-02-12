@@ -1,15 +1,17 @@
+<div include-replace ng-include="'static/js/angular/templates/hero_video.html'"></div>
+<div include-replace ng-controller="navController" ng-include="'static/js/angular/templates/nav.html'"></div>
 <div class="row">
-    <div class="medium-masonry-1 large-masonry-3 margin bottom top" >{{ intro.body }}</div>
+    <div class="medium-masonry-1 large-masonry-3 margin bottom top" ng-bind-html="markdown(intro.body)" ></div>
     <div ng-include="'static/js/angular/templates/row.html'" include-replace></div>
 </div>
 <div class="background-color-1 pad pad-top margin top">
     <div class="row">
         <h4 class="margin bottom set-text-color to-white">Skills list</h4>
-            <a ng-repeat="skill_category in skill_categories" href="#" class="button small secondary" data-filter="{{ skill_category }}">{{ skill_category }}</a>
-            <a ng-repeat="skill_subcategory in skill_subcategories" href="#" class="button small secondary" data-filter-sub="{{ skill_subcategory }}">{{ skill_subcategory.0 }}</a>
-            <a href="#" class="button small secondary active" data-filter="none">All</a>
+        <a ng-click="filter_el($event)" ng-repeat="skill_category in skill_categories" class="button small secondary" data-filter="{{ skill_category|slugify }}">{{ skill_category }}</a>
+        <a ng-click="filter_el($event)" ng-repeat="skill_subcategory in skills_subcategories" class="button small secondary" data-filter-sub="{{ skill_subcategory|slugify }}">{{ skill_subcategory }}</a>
+        <a ng-click="filter_el($event)" class="button small secondary active" data-filter="none">All</a>
         <div class="masonry small-masonry-1 medium-masonry-2 large-masonry-4">
-            <div class="js-filter filter size-filter category-{{ skill.get_skill_category }} subcategory-{{ skill.subcategory }}" ng-repeat="skill in skills_list" ng-include="'static/js/angular/templates/skill.html'"></div>
+            <div class="js-filter filter size-filter category-{{ skill.category|slugify }} subcategory-{{ skill.subcategory|slugify }}" ng-repeat="skill in skills_list" ng-include="'static/js/angular/templates/skill.html'"></div>
         </div>
     </div>
 </div>

@@ -5,7 +5,7 @@
 		<p class="set-text-color to-white margin bottom none"><em>{{ job.company }} {{ job.location }}</em></p>
 		<p class="set-text-color to-white margin bottom xsmall"><small>{{ job.start_date|date:'MMM yyyy' }} - {{ job.end_date|date:'MMM yyyy' }}</small></p>
 		<p>
-			<span class="secondary label">{{ job.get_job_category }}</span>
+			<span class="secondary label">{{ get_job_category(job.category) }}</span>
 		</p>
 	</div>
 	<div class="small-12 medium-8 large-9 column">
