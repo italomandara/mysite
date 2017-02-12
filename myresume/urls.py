@@ -4,6 +4,7 @@ from .routers import *
 
 urlpatterns = [
     url(r'^$', views.index, name='index'),
+    url(r'ng$', views.index_ng, name='index_ng'),
     url(r'more$', views.more, name='more'),
     url(r'icons$', views.icons, name='icons'),
     url(r'contact-form$', views.ajaxContactForm, name='contact-form'),

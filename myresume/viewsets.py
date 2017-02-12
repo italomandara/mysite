@@ -42,4 +42,3 @@ class PostViewSet(viewsets.ModelViewSet):
 	serializer_class = PostSerializer
 	permissions_classes = (IsOwnerOrReadOnly,)
 	filter_backends = (django_filters.rest_framework.DjangoFilterBackend,)
-	
