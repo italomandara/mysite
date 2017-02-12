@@ -1,0 +1,20 @@
+<div class="off-canvas-wrapper-inner fixed fit-vertical" data-off-canvas-wrapper>
+    <div class="off-canvas position-left" id="offCanvasMenu" data-off-canvas>
+        <!-- Close button -->
+        <button class="close-button" type="button" data-toggle="offCanvas">
+            <span aria-hidden="true">&times;</span>
+        </button>
+        <!-- Menu -->
+        <ul class="vertical menu" data-accordion-menu>
+            <div include-replace ng-include="'static/js/angular/templates/menu-items-a.html'" ></div>
+        </ul>
+    </div>
+</div>
+<div class="off-canvas-wrapper-inner" data-off-canvas-wrapper>
+    <div id="offCanvas" class="hide" data-off-canvas></div>
+    <div class="off-canvas-content" data-off-canvas-content >
+		<div include-replace ng-include="'static/js/angular/templates/hero_video.html'"></div>
+        <div include-replace ng-include="'static/js/angular/templates/nav.html'"></div>
+        <div include-replace ng-include="'static/js/angular/templates/home.html'"></div>
+    </div>
+</div>

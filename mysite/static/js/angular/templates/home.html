@@ -1,0 +1,29 @@
+<div class="row">
+    <div class="medium-masonry-1 large-masonry-3 margin bottom top" >{{ intro.body }}</div>
+    <div ng-include="'static/js/angular/templates/row.html'" include-replace></div>
+</div>
+<div class="background-color-1 pad pad-top margin top">
+    <div class="row">
+        <h4 class="margin bottom set-text-color to-white">Skills list</h4>
+            <a ng-repeat="skill_category in skill_categories" href="#" class="button small secondary" data-filter="{{ skill_category }}">{{ skill_category }}</a>
+            <a ng-repeat="skill_subcategory in skill_subcategories" href="#" class="button small secondary" data-filter-sub="{{ skill_subcategory }}">{{ skill_subcategory.0 }}</a>
+            <a href="#" class="button small secondary active" data-filter="none">All</a>
+        <div class="masonry small-masonry-1 medium-masonry-2 large-masonry-4">
+            <div class="js-filter filter size-filter category-{{ skill.get_skill_category }} subcategory-{{ skill.subcategory }}" ng-repeat="skill in skills_list" ng-include="'static/js/angular/templates/skill.html'"></div>
+        </div>
+    </div>
+</div>
+<div class="background-color-2 pad pad-top">
+    <div class="row">
+            <div class="orbit" role="region" aria-label="Favorite Space Pictures" data-orbit data-options="animInFromLeft:fade-in; animInFromRight:fade-in; animOutToLeft:fade-out; animOutToRight:fade-out;">
+                <ul class="orbit-container auto-height-for-small-only">
+                    <li ng-repeat="job in job_history" class="orbit-slide {% if forloop.counter0 == 0 %}is-active{% endif %}">
+                        <div class="row category-{{ job.get_skill_category }} subcategory-{{ job.subcategory }}" ng-include="'static/js/angular/templates/job.html'"></div>
+                    </li>
+                </ul>
+                <nav class="orbit-bullets">
+                    <button ng-repeat="job in job_history" class="{% if forloop.counter0 == 0 %}is-active{% endif %}" data-slide="{{ forloop.counter0 }}"><span class="show-for-sr">First slide details.</span><span class="show-for-sr">Current Slide</span></button>
+                </nav>
+            </div>
+    </div>
+</div>

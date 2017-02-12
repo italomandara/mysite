@@ -1,0 +1,18 @@
+<li>
+    <a class="active" href="">Home</a>
+</li>
+<li>
+    <a class="active" href="">More</a>
+</li>
+<li style="position:relative" role="menuitem" class="is-dropdown-submenu-parent opens-right" aria-haspopup="true" aria-expanded="false" aria-label="Thoughts">
+	<a class="active" href="">Thoughts</a>
+	
+	<ul class="menu vertical submenu nested">
+		<li><a href="">Thoughts</a></li>
+		<li ng-repeat="post_category in post_categories"><a href="categories/{{ post_category }}">{{ post_category }}</a></li>
+	</ul>
+	
+</li>
+<li>
+    <a href="javascript:void(0)" data-open="contact">Contact</a>
+</li>
