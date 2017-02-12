@@ -40,7 +40,7 @@ var skill_categories = {
 		'CS': 'Courses',
 		'CD': 'Coding',
 	};
-
+	
 app.controller('homeController', ['$scope', '$http', function($scope, $http) {
 	$http.get([window.location.origin, '/api/person/', '?name=Italo&format=json'].join('')).then(function(person) {
 		$scope.person = person.data[0];
@@ -76,7 +76,4 @@ app.controller('homeController', ['$scope', '$http', function($scope, $http) {
 	});
 	$scope.post_categories = post_categories;
 	$scope.hero_class='background-video';
-	$scope.$on('$viewContentLoaded', function(event) {
-		$(document).foundation();
-	});
 }])

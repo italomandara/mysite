@@ -26,3 +26,8 @@ app.directive('includeReplace', function() {
 	};
 });
 
+app.run(function($timeout){
+    $timeout(function() {
+        $(document).foundation();
+    }, 500);
+});
