@@ -58,7 +58,7 @@ def index(request):
 def index_ng(request):
 	template = loader.get_template('home/index_ng.html')
 
-	return HttpResponse(template.render(request))
+	return HttpResponse(template.render({},request))
 
 def more(request):
 	template = loader.get_template('home/more.html')

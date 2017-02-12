@@ -1,6 +1,6 @@
-{% load sass_tags %}
 {% load static from staticfiles %}
 {% load compress %}
+{% load sass_tags %}
 
 <!DOCTYPE html>
 <html>
@@ -55,7 +55,6 @@
 			<script type="text/javascript" src="{% static 'js/angular/angular-sanitize.js' %}"></script>
 			<script type="text/javascript" src="{% static 'js/angular/app.js' %}"></script>
 			<script type="text/javascript" src="{% static 'js/angular/controllers/controllers.js' %}"></script>
-
 		{% endcompress %}
 	</head>
 	<body ng-app="myResume">
