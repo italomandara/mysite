@@ -13,6 +13,10 @@
 		<link href="https://fonts.googleapis.com/css?family=Roboto:300,300italic,700|Oswald" rel="stylesheet" />
 		<link href="{% sass_src 'scss/app.scss' %}" rel="stylesheet" type="text/css" />
 		<link rel="icon" href="{% static "favicon.ico" %}" type="image/x-icon">
+	</head>
+	<body>
+		<div class="off-canvas-wrapper" ng-app="myResume" ng-include="'static/js/angular/templates/base.html'">
+		</div>
 		{% compress js %}
 			<script>
 				var DJ = {};
@@ -57,10 +61,6 @@
 			<script type="text/javascript" src="{% static 'js/angular/app.js' %}"></script>
 			<script type="text/javascript" src="{% static 'js/angular/controllers/controllers.js' %}"></script>
 		{% endcompress %}
-	</head>
-	<body ng-app="myResume">
-		<div class="off-canvas-wrapper" ng-include="'static/js/angular/templates/base.html'">
-		</div>
 	</body>
 </html>
 
