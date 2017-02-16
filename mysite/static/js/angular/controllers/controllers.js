@@ -1,27 +1,3 @@
-// template = loader.get_template('home/index.html')
-// person = Person.objects.get(name__iexact='italo')
-// skills_list = Skill.objects.all()
-// job_history = Job.objects.all().order_by('-end_date')
-// education = Course.objects.all().order_by('-end_date')
-// intro = MyContent.objects.get(slug='intro')
-// achievements = MyContent.objects.get(slug='achievements')
-// profile = MyContent.objects.get(slug='profile')
-// form = ContactForm()
-// skill_categories = Skill.TYPES
-// skill_subcategories = Skill.objects.values_list('subcategory').distinct()
-// hostname = socket.gethostname()
-// post_categories = Post.CATEGORIES
-
-// var resumeControllers = angular.module('resumecontrollers', []);
-
-// resumeControllers.resumeControllers('personController', ['$scope', '$routeParams', '$http',
-// 	function($scope, $routeParams, $http) {
-// 		$http.get([window.location.origin,'/api/person/', '/?format=json'].join('')).success(function(data){
-// 			$scope.person = data;
-// 		})
-// 	}
-// ])
-
 var skill_categories = {
 		'PR': 'Print',
 		'DS': 'Design',
@@ -39,27 +15,44 @@ var skill_categories = {
 		'LF': 'Life',
 		'CS': 'Courses',
 		'CD': 'Coding',
+	},
+	course_categories = {
+		'PR': 'Print',
+		'DS': 'Design',
+		'CO': 'Coding',
+		'HU': 'Human',
+		'SC': 'School'
 	};
-
 app.controller('navController', ['$rootScope', '$scope', '$http', function($rootScope, $scope, $http) {
+	$rootScope.is_video = true;
 	$http.get([window.location.origin, '/api/person/', '?name=Italo&format=json'].join('')).then(function(person) {
 		$rootScope.person = person.data[0];
-		$scope.nav_title = [$rootScope.person.name , $rootScope.person.lastname , "'s resume"].join('');
+		$rootScope.nav_title = [$rootScope.person.name , $rootScope.person.lastname , "'s resume"].join('');
 	});
+
+	$http.get([window.location.origin, '/api/mycontent/', '?slug=intro&format=json'].join('')).then(function(intro) {
+		$rootScope.intro = intro.data[0];
+		$rootScope.hero_title = $rootScope.intro.h1;
+		$rootScope.hero_subtitle = $rootScope.intro.h2;
+		$rootScope.hero_image = $rootScope.intro.image_primary;
+	});
+	$rootScope.post_categories = post_categories;
+	$rootScope.hero_class='background-video';
 }]);
 
-app.controller('homeController', ['$scope', '$http', function($scope, $http) {
-
+app.controller('homeController', ['$rootScope', '$scope', '$http', function($rootScope, $scope, $http) {
+	$rootScope.is_video = true;
 	$http.get([window.location.origin, '/api/skill/', '?format=json'].join('')).then(function(skills_list) {
 		$scope.skills_list = skills_list.data;
 		$scope.skills_subcategories = $scope.skills_list.map(function(list) {
-				return list.subcategory.toLowerCase();
-			}).filter(function(elem, index, self) {
-				return index == self.indexOf(elem);
-			});
-		$scope.get_skill_category = function(a) {return skill_categories[a]};
-
+			return list.subcategory.toLowerCase();
+		}).filter(function(elem, index, self) {
+			return index == self.indexOf(elem);
+		});
 	});
+	$scope.get_skill_category = function(a) {
+		return skill_categories[a]
+	};
 	$scope.skill_categories = skill_categories;
 
 	$http.get([window.location.origin, '/api/job/', '?format=json'].join('')).then(function(job_history) {
@@ -75,11 +68,7 @@ app.controller('homeController', ['$scope', '$http', function($scope, $http) {
 		$scope.intro = intro.data[0];
 		$scope.hero_title = $scope.intro.h1;
 		$scope.hero_subtitle = $scope.intro.h2;
-		if (!!$scope.intro.image_primary) {
-			$scope.hero_image = $scope.intro.image_primary;
-		} else {
-			$scope.hero_image = DJ.static('img/bg3.jpg');
-		}
+		$scope.hero_image = $scope.intro.image_primary;
 	});
 	$http.get([window.location.origin, '/api/mycontent/', '?slug=achievements&format=json'].join('')).then(function(achievements) {
 		$scope.achievements = achievements.data;
@@ -87,7 +76,6 @@ app.controller('homeController', ['$scope', '$http', function($scope, $http) {
 	$http.get([window.location.origin, '/api/mycontent/', '?slug=profile&format=json'].join('')).then(function(profile) {
 		$scope.profile = profile.data[0];
 	});
-	$scope.post_categories = post_categories;
 	$scope.hero_class='background-video';
 
 	$scope.filter_el = function(e) {
@@ -112,4 +100,27 @@ app.controller('homeController', ['$scope', '$http', function($scope, $http) {
 		}
 		return true;
 	};
+}])
+
+app.controller('moreController', ['$rootScope','$scope', '$http', function($rootScope, $scope, $http) {
+	$rootScope.is_video = false;
+	$http.get([window.location.origin, '/api/course/', '?format=json'].join('')).then(function(courses) {
+		$scope.courses = courses.data;
+	});
+	$scope.course_categories = course_categories;
+	$scope.get_course_category = function(a) {return course_categories[a]};
+
+	$http.get([window.location.origin, '/api/mycontent/', '?slug=skills&format=json'].join('')).then(function(skills) {
+		$scope.skills = skills.data[0];
+	});
+	$http.get([window.location.origin, '/api/mycontent/', '?slug=achievements&format=json'].join('')).then(function(achievements) {
+		$scope.achievements = achievements.data[0];
+	});
+
+	$http.get([window.location.origin, '/api/mycontent/', '?slug=intro&format=json'].join('')).then(function(intro) {
+		$rootScope.intro = intro.data[0];
+		$rootScope.hero_title = $rootScope.intro.h1;
+		$rootScope.hero_subtitle = $rootScope.intro.h2;
+		$rootScope.hero_image = DJ.static('img/bg.jpg');
+	});
 }])

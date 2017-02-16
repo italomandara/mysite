@@ -14,12 +14,25 @@ app.filter('slugify', function() {
 	};
 });
 
-app.config(['$routeProvider',
-	function($routeProvider) {
-		$routeProvider.
-		when('/', {
+app.filter('markdown', function(){
+	return function(item) {
+		var output_string = marked(item)
+		return output_string;
+	};
+});
+
+app.config(['$locationProvider', '$routeProvider',
+    function config($locationProvider, $routeProvider) {
+		// $locationProvider.html5Mode(true);
+		$locationProvider.hashPrefix('');
+		$routeProvider
+		.when('/', {
 			templateUrl: DJ.static('js/angular/templates/home.html'),
 			controller: 'homeController'
+		})
+		.when('/more', {
+			templateUrl: DJ.static('js/angular/templates/more.html'),
+			controller: 'moreController'
 		})
 	}
 ])
@@ -29,21 +42,10 @@ app.config(['$httpProvider', function($httpProvider) {
 	$httpProvider.defaults.xsrfHeaderName = 'X-CSRFToken';
 }]);
 
-app.directive('includeReplace', function() {
-	return {
-		require: 'ngInclude',
-		restrict: 'A',
-		/* optional */
-		link: function(scope, el, attrs) {
-			el.replaceWith(el.children());
-		}
-	};
-});
-
 app.run(function($timeout, $rootScope){
     $timeout(function() {
         $(document).foundation();
-    }, 500);
+    }, 1000);
 
     $rootScope.markdown = function(item) {
 		var item_defined = typeof item !== typeof undefined;

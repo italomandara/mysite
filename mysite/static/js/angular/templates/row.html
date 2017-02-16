@@ -1,5 +1,5 @@
-<div class="{{ class }}">
-	<h4 class="margin top">{{ profile.h1 }}</h4>
-	<h5 class="small margin bottom">{{ profile.h2 }}</h5>
-	<div >{{ profile.body }}</div>
+<div class="{{ customclass }}">
+	<h4 class="margin top">{{ mycontent.h1 }}</h4>
+	<h5 class="small margin bottom">{{ mycontent.h2 }}</h5>
+	<div ng-bind-html="mycontent.body | markdown" style="display:inline"></div>
 </div>
