@@ -25,6 +25,14 @@ app.directive('job', function() {
   }; 
 });
 
+app.directive('post', function() { 
+  return { 
+    restrict: 'E', 
+    templateUrl: DJ.static('js/angular/templates/thoughts/partials/post.html'),
+    replace: true
+  }; 
+});
+
 app.directive('row', function() { 
   return { 
     restrict: 'E',

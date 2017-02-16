@@ -10,12 +10,12 @@
         </ul>
     </div>
 </div>
-<div class="off-canvas-wrapper-inner" data-off-canvas-wrapper>
+<div class="off-canvas-wrapper-inner" data-off-canvas-wrapper >
     <div id="offCanvas" class="hide" data-off-canvas></div>
     <div class="off-canvas-content" data-off-canvas-content>
         <div include-replace ng-include="'static/js/angular/templates/hero.html'"  ng-controller="navController"></div>
         <div include-replace ng-controller="navController" ng-include="'static/js/angular/templates/nav.html'"></div>
-        <ng-view class="row-wrapper">            
+        <ng-view class="row-wrapper" ng-cloak>            
         </ng-view>
     </div>
 </div>

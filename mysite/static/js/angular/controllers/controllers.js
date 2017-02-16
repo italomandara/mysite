@@ -25,6 +25,7 @@ var skill_categories = {
 	};
 app.controller('navController', ['$rootScope', '$scope', '$http', function($rootScope, $scope, $http) {
 	$rootScope.is_video = true;
+
 	$http.get([window.location.origin, '/api/person/', '?name=Italo&format=json'].join('')).then(function(person) {
 		$rootScope.person = person.data[0];
 		$rootScope.nav_title = [$rootScope.person.name , $rootScope.person.lastname , "'s resume"].join('');
@@ -35,6 +36,11 @@ app.controller('navController', ['$rootScope', '$scope', '$http', function($root
 		$rootScope.hero_title = $rootScope.intro.h1;
 		$rootScope.hero_subtitle = $rootScope.intro.h2;
 		$rootScope.hero_image = $rootScope.intro.image_primary;
+		$rootScope.page = {
+			'title': 'home',
+			'name': 'home',
+			'description': intro.h1 + ', ' + intro.h2 ,
+		}
 	});
 	$rootScope.post_categories = post_categories;
 	$rootScope.hero_class='background-video';
@@ -100,7 +106,7 @@ app.controller('homeController', ['$rootScope', '$scope', '$http', function($roo
 		}
 		return true;
 	};
-}])
+}]);
 
 app.controller('moreController', ['$rootScope','$scope', '$http', function($rootScope, $scope, $http) {
 	$rootScope.is_video = false;
@@ -122,5 +128,37 @@ app.controller('moreController', ['$rootScope','$scope', '$http', function($root
 		$rootScope.hero_title = $rootScope.intro.h1;
 		$rootScope.hero_subtitle = $rootScope.intro.h2;
 		$rootScope.hero_image = DJ.static('img/bg.jpg');
+		$rootScope.page = {
+			'title': 'more',
+			'name': 'more',
+			'description': intro.h1 + ', ' + intro.h2,
+		}
 	});
-}])
+}]);
+
+app.controller('thoughtsController', ['$rootScope', '$scope', '$http', function($rootScope, $scope, $http) {
+	$rootScope.is_video = false;
+	$http.get([window.location.origin, '/api/post/', '?format=json'].join('')).then(function(posts) {
+		$scope.posts = posts.data;
+	});
+	$scope.post_categories = course_categories;
+	$scope.get_post_category = function(a) {
+		return post_categories[a]
+	};
+
+	$http.get([window.location.origin, '/api/mycontent/', '?slug=thoughts-intro&format=json'].join('')).then(function(intro) {
+		$rootScope.intro = intro.data[0];
+		$rootScope.hero_title = $rootScope.intro.h1;
+		$rootScope.hero_subtitle = $rootScope.intro.h2;
+		if (intro.image_primary) {
+			$rootScope.hero_image = intro.image_primary;
+		} else {
+			$rootScope.hero_image = DJ.static('img/bg_blog.jpg');
+		}
+		$rootScope.page = {
+			'title': 'thoughts',
+			'name': 'blog',
+			'description': intro.h1 + ', ' + intro.h2,
+		}
+	});
+}]);
