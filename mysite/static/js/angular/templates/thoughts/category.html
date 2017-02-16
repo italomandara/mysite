@@ -1,0 +1,46 @@
+{% extends 'thoughts/index.html' %}
+
+{% load i18n %}
+{% load markup_tags %}
+{% load static from staticfiles %}
+{% load compress %}
+
+{% block head-css %}
+	{{ block.super }}
+	{% compress css %}
+		<style>
+			#hero{
+				background-image: url({% if intro.image_primary %}{{ intro.image_primary }}{% else %}{% static 'img/bg_blog.jpg' %}{% endif %});
+				background-position: center center;
+			}
+		</style>
+	{% endcompress %}
+{% endblock %}
+
+{% block hero %}
+	<figure id="hero" class="row-wrapper cover hero">
+		<div class="row">
+			<h3 class="margin top bottom standout-text" >{{ page.title }} <small>{% trans 'Category' %}</small></h3>
+		</div>
+	</figure>
+{% endblock %}
+
+{% block body %}
+	{% if intro.body %}
+		<div class="row">
+			<div class="medium-masonry-1 large-masonry-3 large margin bottom top">{{ intro.body|apply_markup:"markdown" }}</div>
+		</div>
+	{% endif %}
+	<div class="row last">
+		{% if posts %}
+			<div class="medium-masonry-1 large-masonry-2 margin bottom">
+				{% for post in posts %}
+					{% include 'thoughts/partials/post.html' %}
+				{% endfor %}
+			</div>
+		{% else %}
+			<h4>{% trans "Sorry" %},</h4>
+			<p class="large margin bottom">{% trans "Couldn't find any post under this category" %}</p>
+		{% endif %}
+	</div>
+{% endblock %}
