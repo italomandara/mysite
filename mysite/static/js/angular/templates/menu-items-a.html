@@ -9,7 +9,7 @@
 	
 	<ul class="menu vertical submenu nested">
 		<li><a class="{{ page.thoughts }}" href="#thoughts">Thoughts</a></li>
-		<li ng-repeat="post_category in post_categories"><a href="#thoughts/categories/{{ post_category|slugify }}">{{ post_category }}</a></li>
+		<li ng-repeat="post_category in post_categories"><a class="{{ page[post_category] }}" href="#thoughts/categories/{{ post_category|slugify }}">{{ post_category }}</a></li>
 	</ul>
 	
 </li>

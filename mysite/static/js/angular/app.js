@@ -4,7 +4,7 @@ markdown = function(item) {
 	if (item_defined && item_is_string) {
 		return marked(item);
 	} else {
-		return 'Error processing markdown content: input is not a string';
+		return '';
 	}
 };
 
