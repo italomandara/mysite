@@ -1,15 +1,14 @@
-<figure id="hero"  class="row-wrapper cover {{ hero_class }} hero" style="background-image: url({{ hero_image }}); background-position: center center;">
+<figure id="hero" class="row-wrapper cover {{ hero_class }} hero" style="background-image: url({{ hero_image }}); background-position: center center;">
 	<video autoplay preload loop ng-if="is_video">
 		<source ng-src="{{ intro.video_primary }}" type="video/mp4">
 	</video>
-	<div class="row" style="position: relative;">
+	<div class="row" style="position: relative;" ng-if="is_standard_hero">
 		<h1 class="margin top standout-text">{{ hero_title }}</h1><br>
 		<h4 class="margin bottom standout-text" style="margin-left: 50px">{{ hero_subtitle }}</h4>
 	</div>
-</figure>
-
-<figure id="hero" ng-if="is_category_hero" class="row-wrapper cover hero" style="background-image: url({{ hero_image }})">
-	<div class="row">
+	<div class="row" ng-if="!is_video && !is_standard_hero">
 		<h3 class="margin top bottom standout-text" >{{ page.title }} <small>Category</small></h3>
 	</div>
 </figure>
+
+

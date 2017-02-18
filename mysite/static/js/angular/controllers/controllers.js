@@ -92,6 +92,7 @@ app.controller('navController', ['$rootScope', '$scope', '$http', function($root
 
 app.controller('homeController', ['$rootScope', '$scope', '$http', function($rootScope, $scope, $http) {
 	$rootScope.is_video = true;
+	$rootScope.is_standard_hero = true;
 	$http.get([window.location.origin, '/api/skill/', '?format=json'].join('')).then(function(skills_list) {
 		$scope.skills_list = skills_list.data;
 		$scope.skills_subcategories = $scope.skills_list.map(function(list) {
@@ -118,7 +119,7 @@ app.controller('homeController', ['$rootScope', '$scope', '$http', function($roo
 		$scope.intro = intro.data[0];
 		$scope.hero_title = $scope.intro.h1;
 		$scope.hero_subtitle = $scope.intro.h2;
-		$scope.hero_image = $scope.intro.image_primary;
+		$rootScope.hero_image = $scope.intro.image_primary;
 		$rootScope.page = {
 			'title': 'home',
 			'name': 'home',
@@ -160,6 +161,7 @@ app.controller('homeController', ['$rootScope', '$scope', '$http', function($roo
 
 app.controller('moreController', ['$rootScope','$scope', '$http', function($rootScope, $scope, $http) {
 	$rootScope.is_video = false;
+	$rootScope.is_standard_hero = true;
 	$http.get([window.location.origin, '/api/course/', '?format=json'].join('')).then(function(courses) {
 		$scope.courses = courses.data;
 	});
@@ -217,6 +219,7 @@ app.controller('thoughtsController', ['$rootScope', '$scope', '$http', function(
 
 app.controller('postCategoriesController', ['$rootScope', '$scope', '$http', '$routeParams', function($rootScope, $scope, $http, $routeParams) {
 	$rootScope.is_video = false;
+	$rootScope.is_standard_hero = false;
 	var cat = $routeParams.category;
 	var category = getCategoryIdFromSlug(post_categories,cat);
 	$http.get([window.location.origin, '/api/post/', '?category=', category, '&format=json'].join('')).then(function(posts) {
@@ -227,12 +230,12 @@ app.controller('postCategoriesController', ['$rootScope', '$scope', '$http', '$r
 		return post_categories[a]
 	};
 
-	$http.get([window.location.origin, '/api/mycontent/', '?slug=thoughts-intro&format=json'].join('')).then(function(intro) {
+	$http.get([window.location.origin, '/api/mycontent/', '?slug=', slugify(cat), '&format=json'].join('')).then(function(intro) {
 		$rootScope.intro = intro.data[0];
 		$rootScope.hero_title = $rootScope.intro.h1;
 		$rootScope.hero_subtitle = $rootScope.intro.h2;
-		if (intro.image_primary) {
-			$rootScope.hero_image = intro.image_primary;
+		if ($rootScope.intro.image_primary) {
+			$rootScope.hero_image = $rootScope.intro.image_primary;
 		} else {
 			$rootScope.hero_image = DJ.static('img/bg_blog.jpg');
 		}
