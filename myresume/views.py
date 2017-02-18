@@ -1,3 +1,4 @@
+from django.conf import settings
 from django.http import HttpResponse, HttpResponseRedirect
 from django.template import loader
 from django.views.decorators.csrf import csrf_exempt
@@ -57,8 +58,10 @@ def index(request):
 
 def index_ng(request):
 	template = loader.get_template('home/index_ng.html')
-
-	return HttpResponse(template.render({},request))
+	context = {
+		'settings': {'FILEPICKER_API_KEY': settings.FILEPICKER_API_KEY},
+	}
+	return HttpResponse(template.render(context,request))
 
 def more(request):
 	template = loader.get_template('home/more.html')

@@ -22,9 +22,52 @@ var skill_categories = {
 		'CO': 'Coding',
 		'HU': 'Human',
 		'SC': 'School'
-	};
+	},
+	active_navigation_class = 'active';
+
+app.controller('headController', ['$rootScope', '$scope', '$http', function($rootScope, $scope, $http) {
+	$http.get([window.location.origin, '/api/mycontent/', '?slug=intro&format=json'].join('')).then(function(intro) {
+		$rootScope.intro = intro.data[0];
+		$rootScope.page = {
+			'title': 'home',
+			'name': 'home',
+			'index': active_navigation_class,
+			'description': $rootScope.intro.h1 + ', ' + $rootScope.intro.h2,
+		}
+	});
+}]);
+
+app.controller('postController', ['$rootScope', '$scope', '$http', '$routeParams', function($rootScope, $scope, $http, $routeParams) {
+    var slug = $routeParams.slug;
+    // self.qStrName = $routeParams.name;
+    // self.qStrAge = $routeParams.age;
+
+	$http.get([window.location.origin, '/api/post/', slug ,'/?format=json'].join('')).then(function(post) {
+		$scope.post = post.data;
+	    $rootScope.hero_title=$scope.post.title;
+	    $rootScope.hero_subtitle=$scope.post.subtitle;
+	    $rootScope.hero_image=$scope.post.featured_image;
+    	$scope.post.get_category = function(a) {
+			return post_categories[a];
+		}($scope.post.category);
+	});
+
+	$http.get([window.location.origin, '/api/mycontent/', '?slug=intro&format=json'].join('')).then(function(intro) {
+		$rootScope.intro.h1 = intro.data[0].h1;
+		$rootScope.intro.h2 = intro.data[0].h2;
+		$rootScope.page = {
+			'title': 'home',
+			'name': 'home',
+			'index': active_navigation_class,
+			'description': $rootScope.intro.h1 + ', ' + $rootScope.intro.h2,
+		}
+	});
+                          
+}]);
+
 app.controller('navController', ['$rootScope', '$scope', '$http', function($rootScope, $scope, $http) {
 	$rootScope.is_video = true;
+	$rootScope.is_standard_hero = true;
 
 	$http.get([window.location.origin, '/api/person/', '?name=Italo&format=json'].join('')).then(function(person) {
 		$rootScope.person = person.data[0];
@@ -39,6 +82,7 @@ app.controller('navController', ['$rootScope', '$scope', '$http', function($root
 		$rootScope.page = {
 			'title': 'home',
 			'name': 'home',
+			'index': active_navigation_class,
 			'description': intro.h1 + ', ' + intro.h2 ,
 		}
 	});
@@ -75,6 +119,12 @@ app.controller('homeController', ['$rootScope', '$scope', '$http', function($roo
 		$scope.hero_title = $scope.intro.h1;
 		$scope.hero_subtitle = $scope.intro.h2;
 		$scope.hero_image = $scope.intro.image_primary;
+		$rootScope.page = {
+			'title': 'home',
+			'name': 'home',
+			'index': active_navigation_class,
+			'description': intro.h1 + ', ' + intro.h2,
+		}
 	});
 	$http.get([window.location.origin, '/api/mycontent/', '?slug=achievements&format=json'].join('')).then(function(achievements) {
 		$scope.achievements = achievements.data;
@@ -131,6 +181,7 @@ app.controller('moreController', ['$rootScope','$scope', '$http', function($root
 		$rootScope.page = {
 			'title': 'more',
 			'name': 'more',
+			'more': active_navigation_class,
 			'description': intro.h1 + ', ' + intro.h2,
 		}
 	});
@@ -156,8 +207,39 @@ app.controller('thoughtsController', ['$rootScope', '$scope', '$http', function(
 			$rootScope.hero_image = DJ.static('img/bg_blog.jpg');
 		}
 		$rootScope.page = {
-			'title': 'thoughts',
-			'name': 'blog',
+			'title': 'blog',
+			'name': 'thoughts',
+			'thoughts': active_navigation_class,
+			'description': intro.h1 + ', ' + intro.h2,
+		}
+	});
+}]);
+
+app.controller('postCategoriesController', ['$rootScope', '$scope', '$http', '$routeParams', function($rootScope, $scope, $http, $routeParams) {
+	$rootScope.is_video = false;
+	var cat = $routeParams.category;
+	var category = getCategoryIdFromSlug(post_categories,cat);
+	$http.get([window.location.origin, '/api/post/', '?category=', category, '&format=json'].join('')).then(function(posts) {
+		$scope.posts = posts.data;
+	});
+	$scope.post_categories = post_categories;
+	$scope.get_post_category = function(a) {
+		return post_categories[a]
+	};
+
+	$http.get([window.location.origin, '/api/mycontent/', '?slug=thoughts-intro&format=json'].join('')).then(function(intro) {
+		$rootScope.intro = intro.data[0];
+		$rootScope.hero_title = $rootScope.intro.h1;
+		$rootScope.hero_subtitle = $rootScope.intro.h2;
+		if (intro.image_primary) {
+			$rootScope.hero_image = intro.image_primary;
+		} else {
+			$rootScope.hero_image = DJ.static('img/bg_blog.jpg');
+		}
+		$rootScope.page = {
+			'title': 'blog',
+			'name': 'thoughts',
+			'thoughts': active_navigation_class,
 			'description': intro.h1 + ', ' + intro.h2,
 		}
 	});

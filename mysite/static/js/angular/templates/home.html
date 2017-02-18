@@ -2,7 +2,7 @@
     <div class="medium-masonry-1 large-masonry-3 margin bottom top" ng-bind-html="markdown(intro.body)" ></div>
     <row mycontent=mycontent></row>
 </div>
-<div class="background-color-1 pad pad-top margin top">
+<div class="background background-color-1 pad pad-top margin top">
     <div class="row">
         <h4 class="margin bottom set-text-color to-white">Skills list</h4>
         <a ng-click="filter_el($event)" ng-repeat="skill_category in skill_categories" class="button small secondary" data-filter="{{ skill_category|slugify }}">{{ skill_category }}</a>
@@ -15,7 +15,7 @@
         </div>
     </div>
 </div>
-<div class="background-color-2 pad pad-top">
+<div class="background background-color-2 pad pad-top">
     <div class="row">
             <div class="orbit" role="region" aria-label="Favorite Space Pictures" data-orbit data-options="animInFromLeft:fade-in; animInFromRight:fade-in; animOutToLeft:fade-out; animOutToRight:fade-out;">
                 <ul class="orbit-container auto-height-for-small-only">

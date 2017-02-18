@@ -30,4 +30,19 @@ class CourseSerializer(serializers.HyperlinkedModelSerializer):
 class PostSerializer(serializers.HyperlinkedModelSerializer):
     class Meta:
         model = Post
-        fields = ('__all__')
+        fields = (
+        'slug', 
+        'url',
+        'title',
+        'subtitle',
+        'author',
+        'category',
+        'featured_image',
+        'article_image1',
+        'article_image2',
+        'published',
+        'created_at',
+        'updated_at',
+        'tag',
+        'body'
+        )

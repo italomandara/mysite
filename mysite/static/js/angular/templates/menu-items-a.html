@@ -1,15 +1,15 @@
 <li>
-    <a class="active" href="#">Home</a>
+    <a class="{{ page.index }}" href="#">Home</a>
 </li>
 <li>
-    <a class="active" href="#more">More</a>
+    <a class="{{ page.more }}" href="#more">More</a>
 </li>
 <li style="position:relative" role="menuitem" class="is-dropdown-submenu-parent opens-right" aria-haspopup="true" aria-expanded="false" aria-label="Thoughts">
-	<a class="active" href="#thoughts">Thoughts</a>
+	<a class="{{ page.thoughts }}" href="#thoughts">Thoughts</a>
 	
 	<ul class="menu vertical submenu nested">
-		<li><a href="#thoughts">Thoughts</a></li>
-		<li ng-repeat="post_category in post_categories"><a href="#categories/{{ post_category|slugify }}">{{ post_category }}</a></li>
+		<li><a class="{{ page.thoughts }}" href="#thoughts">Thoughts</a></li>
+		<li ng-repeat="post_category in post_categories"><a href="#thoughts/categories/{{ post_category|slugify }}">{{ post_category }}</a></li>
 	</ul>
 	
 </li>

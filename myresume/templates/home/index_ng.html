@@ -3,25 +3,16 @@
 {% load sass_tags %}
 
 <!DOCTYPE html>
-<html>
-	<head>
-		<meta charset="utf-8">
-		<meta http-equiv="X-UA-Compatible" content="IE=edge">
-		<meta name="viewport" content="width=device-width, initial-scale=1.0">
-		<title>Italo Mandara cv</title>
-		<meta name="description" content="">
-		<link href="https://fonts.googleapis.com/css?family=Roboto:300,300italic,700|Oswald" rel="stylesheet" />
-		<link href="{% sass_src 'scss/app.scss' %}" rel="stylesheet" type="text/css" />
-		<link rel="icon" href="{% static "favicon.ico" %}" type="image/x-icon">
-	</head>
-	<body>
-		<div class="off-canvas-wrapper" ng-app="myResume" ng-include="'static/js/angular/templates/base.html'">
-		</div>
+<html ng-app="myResume">
+	<head ng-controller="headController">
 		{% compress js %}
 			<script>
-				var DJ = {};
+				var DJ = {}, settings = {};
 				DJ.static = function(url) {
 					return ['{% static "/" %}',url].join('');
+				};
+				settings = {
+					FILEPICKER_API_KEY: '{{ settings.FILEPICKER_API_KEY }}'
 				};
 			</script>
 			<script type="text/javascript" src="{% static 'js/jquery.js' %}"></script>
@@ -55,6 +46,7 @@
 			<script type="text/javascript" src="{% static 'js/foundation.util.triggers.js' %}"></script>
 			<script type="text/javascript" src="{% static 'js/what-input.js' %}"></script>
 			<script type="text/javascript" src="{% static 'js/angular/marked.js' %}"></script>
+			<script type="text/javascript" src="{% static 'js/jquery.lazyload.js' %}"></script>
 			<script type="text/javascript" src="{% static 'js/angular/angular.js' %}"></script>
 			<script type="text/javascript" src="{% static 'js/angular/angular-route.js' %}"></script>
 			<script type="text/javascript" src="{% static 'js/angular/angular-sanitize.js' %}"></script>
@@ -62,6 +54,20 @@
 			<script type="text/javascript" src="{% static 'js/angular/directives/main.js' %}"></script>
 			<script type="text/javascript" src="{% static 'js/angular/controllers/controllers.js' %}"></script>
 		{% endcompress %}
+		{% verbatim %}
+		<meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<title>{{ page.title }} | Italo Mandara cv</title>
+		<meta name="description" content="{{ page.description }}">
+		<link href="https://fonts.googleapis.com/css?family=Roboto:300,300italic,700|Oswald" rel="stylesheet" />
+		{% endverbatim %}
+		<link href="{% sass_src 'scss/app.scss' %}" rel="stylesheet" type="text/css" />
+		<link rel="icon" href="{% static "favicon.ico" %}" type="image/x-icon">
+	</head>
+	<body>
+		<div class="off-canvas-wrapper" ng-include="'static/js/angular/templates/base.html'">
+		</div>
 	</body>
 </html>
 
