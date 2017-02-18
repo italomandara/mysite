@@ -223,7 +223,7 @@ app.controller('postCategoriesController', ['$rootScope', '$location', '$scope',
 			// 'thoughts': active_navigation_class,
 			'description': $rootScope.intro.h1 + ', ' + $rootScope.intro.h2,
 		}
-		$rootScope.pagea[cat] = active_navigation_class;
+		$rootScope.page[cat] = active_navigation_class;
 	});
 }]);
 
