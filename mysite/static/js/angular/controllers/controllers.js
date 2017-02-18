@@ -230,7 +230,7 @@ app.controller('postCategoriesController', ['$rootScope', '$location', '$scope',
 app.controller('postController', ['$rootScope', '$location', '$scope', '$http', '$routeParams', function($rootScope, $location, $scope, $http, $routeParams) {
 	var slug = $routeParams.slug;
 	$rootScope.is_video = false;
-	$rootScope.is_standard_hero = false;
+	$rootScope.is_standard_hero = true;
 	// self.qStrName = $routeParams.name;
 	// self.qStrAge = $routeParams.age;
 
