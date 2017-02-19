@@ -29,7 +29,7 @@ SECRET_KEY = os.environ['SECRET_KEY']
 
 if os.environ['PRODUCTION'] == '1':
     DEBUG = False
-    ALLOWED_HOSTS = [os.environ['HOST']]
+    ALLOWED_HOSTS = [os.environ['HOST'], u'localhost']
 else:
     DEBUG = True
     ALLOWED_HOSTS = ["localhost", "127.0.0.1",]

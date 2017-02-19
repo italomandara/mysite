@@ -14,7 +14,7 @@ body {
 .row-wrapper{
     margin: 0;
     width: 100%;
-    >.row, >.background>.row{
+    .row{
         @extend %row-template;
     }
 }

@@ -63,22 +63,6 @@ var MediaQuery = {
   },
 
   /**
-   * Checks if the screen matches to a breakpoint.
-   * @function
-   * @param {String} size - Name of the breakpoint to check, either 'small only' or 'small'. Omitting 'only' falls back to using atLeast() method.
-   * @returns {Boolean} `true` if the breakpoint matches, `false` if it does not.
-   */
-  is(size) {
-    size = size.trim().split(' ');
-    if(size.length > 1 && size[1] === 'only') {
-      if(size[0] === this._getCurrentSize()) return true;
-    } else {
-      return this.atLeast(size[0]);
-    }
-    return false;
-  },
-
-  /**
    * Gets the media query of a breakpoint.
    * @function
    * @param {String} size - Name of the breakpoint to get.
@@ -158,7 +142,7 @@ window.matchMedia || (window.matchMedia = function() {
     style.type  = 'text/css';
     style.id    = 'matchmediajs-test';
 
-    script && script.parentNode && script.parentNode.insertBefore(style, script);
+    script.parentNode.insertBefore(style, script);
 
     // 'style.currentStyle' is used by IE <= 8 and 'window.getComputedStyle' for all other browsers
     info = ('getComputedStyle' in window) && window.getComputedStyle(style, null) || style.currentStyle;

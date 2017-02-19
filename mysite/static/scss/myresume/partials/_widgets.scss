@@ -13,8 +13,8 @@
     display: inline-block;
     width: 100%;
     vertical-align: middle;
-    border-bottom: 1px solid #777;
-    border-right: 1px solid #777;
+    border-bottom: 1px solid $my-dark;
+    border-right: 1px solid $my-dark;
     // box-shadow: 0 0 $global-shadow-size $global-shadow-color;
     // &:nth-child(odd){
     //     border-radius: $local-radius 0 $local-radius 0;

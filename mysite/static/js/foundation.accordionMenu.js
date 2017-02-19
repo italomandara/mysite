@@ -34,7 +34,9 @@ class AccordionMenu {
       'ARROW_UP': 'up',
       'ARROW_DOWN': 'down',
       'ARROW_LEFT': 'close',
-      'ESCAPE': 'closeAll'
+      'ESCAPE': 'closeAll',
+      'TAB': 'down',
+      'SHIFT_TAB': 'up'
     });
   }
 
@@ -47,7 +49,7 @@ class AccordionMenu {
   _init() {
     this.$element.find('[data-submenu]').not('.is-active').slideUp(0);//.find('a').css('padding-left', '1rem');
     this.$element.attr({
-      'role': 'menu',
+      'role': 'tablist',
       'aria-multiselectable': this.options.multiOpen
     });
 
@@ -61,13 +63,13 @@ class AccordionMenu {
       $elem.attr({
         'aria-controls': subId,
         'aria-expanded': isActive,
-        'role': 'menuitem',
+        'role': 'tab',
         'id': linkId
       });
       $sub.attr({
         'aria-labelledby': linkId,
         'aria-hidden': !isActive,
-        'role': 'menu',
+        'role': 'tabpanel',
         'id': subId
       });
     });
@@ -115,8 +117,8 @@ class AccordionMenu {
           }
           if ($(this).is(':first-child')) { // is first element of sub menu
             $prevElement = $element.parents('li').first().find('a').first();
-          } else if ($prevElement.parents('li').first().children('[data-submenu]:visible').length) { // if previous element has open sub menu
-            $prevElement = $prevElement.parents('li').find('li:last-child').find('a').first();
+          } else if ($prevElement.children('[data-submenu]:visible').length) { // if previous element has open sub menu
+            $prevElement = $prevElement.find('li:last-child').find('a').first();
           }
           if ($(this).is(':last-child')) { // is last element of sub menu
             $nextElement = $element.parents('li').first().next('li').find('a').first();
@@ -125,7 +127,6 @@ class AccordionMenu {
           return;
         }
       });
-
       Foundation.Keyboard.handleKey(e, 'AccordionMenu', {
         open: function() {
           if ($target.is(':hidden')) {
@@ -142,11 +143,11 @@ class AccordionMenu {
           }
         },
         up: function() {
-          $prevElement.focus();
+          $prevElement.attr('tabindex', -1).focus();
           return true;
         },
         down: function() {
-          $nextElement.focus();
+          $nextElement.attr('tabindex', -1).focus();
           return true;
         },
         toggle: function() {
@@ -172,15 +173,7 @@ class AccordionMenu {
    * @function
    */
   hideAll() {
-    this.up(this.$element.find('[data-submenu]'));
-  }
-
-  /**
-   * Opens all panes of the menu.
-   * @function
-   */
-  showAll() {
-    this.down(this.$element.find('[data-submenu]'));
+    this.$element.find('[data-submenu]').slideUp(this.options.slideSpeed);
   }
 
   /**

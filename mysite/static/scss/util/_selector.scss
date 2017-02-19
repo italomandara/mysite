@@ -7,10 +7,8 @@
 ////
 
 /// Generates a selector with every text input type. You can also filter the list to only output a subset of those selectors.
-///
 /// @param {List|Keyword} $types [()] - A list of text input types to use. Leave blank to use all of them.
-/// @param {Keyword} $modifier [''] - A modifier to be applied to each text input type (e.g. a class or a pseudo-class). Leave blank to ignore.
-@function text-inputs($types: (), $modifier: '') {
+@function text-inputs($types: ()) {
   $return: ();
 
   $all-types:
@@ -29,12 +27,12 @@
     url
     color;
 
-  @if not has-value($types) {
+  @if not(hasvalue($types)) {
     $types: $all-types;
   }
 
   @each $type in $types {
-    $return: append($return, unquote('[type=\'#{$type}\']#{$modifier}'), comma);
+    $return: append($return, unquote('[type="#{$type}"]'), comma);
   }
 
   @return $return;

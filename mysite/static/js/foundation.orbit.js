@@ -43,20 +43,10 @@ class Orbit {
   * @private
   */
   _init() {
-    // @TODO: consider discussion on PR #9278 about DOM pollution by changeSlide
-    this._reset();
-
     this.$wrapper = this.$element.find(`.${this.options.containerClass}`);
     this.$slides = this.$element.find(`.${this.options.slideClass}`);
-
     var $images = this.$element.find('img'),
-        initActive = this.$slides.filter('.is-active'),
-        id = this.$element[0].id || Foundation.GetYoDigits(6, 'orbit');
-
-    this.$element.attr({
-      'data-resize': id,
-      'id': id
-    });
+    initActive = this.$slides.filter('.is-active');
 
     if (!initActive.length) {
       this.$slides.eq(0).addClass('is-active');
@@ -121,7 +111,9 @@ class Orbit {
   */
   _prepareForOrbit() {
     var _this = this;
-    this._setWrapperHeight();
+    this._setWrapperHeight(function(max){
+      _this._setSlideHeight(max);
+    });
   }
 
   /**
@@ -131,13 +123,13 @@ class Orbit {
   * @param {Function} cb - a callback function to fire when complete.
   */
   _setWrapperHeight(cb) {//rewrite this to `for` loop
-    var max = 0, temp, counter = 0, _this = this;
+    var max = 0, temp, counter = 0;
 
     this.$slides.each(function() {
       temp = this.getBoundingClientRect().height;
       $(this).attr('data-slide', counter);
 
-      if (_this.$slides.filter('.is-active')[0] !== _this.$slides.eq(counter)[0]) {//if not the active slide, set css position and display property
+      if (counter) {//if not the first slide, set css position and display property
         $(this).css({'position': 'relative', 'display': 'none'});
       }
       max = temp > max ? temp : max;
@@ -146,7 +138,7 @@ class Orbit {
 
     if (counter === this.$slides.length) {
       this.$wrapper.css({'height': max}); //only change the wrapper height property once.
-      if(cb) {cb(max);} //fire callback with max height dimension.
+      cb(max); //fire callback with max height dimension.
     }
   }
 
@@ -173,10 +165,6 @@ class Orbit {
     //**Now using custom event - thanks to:**
     //**      Yohai Ararat of Toronto      **
     //***************************************
-    //
-    this.$element.off('.resizeme.zf.trigger').on({
-      'resizeme.zf.trigger': this._prepareForOrbit.bind(this)
-    })
     if (this.$slides.length > 1) {
 
       if (this.options.swipe) {
@@ -229,62 +217,22 @@ class Orbit {
         });
       }
 
-      if (this.options.accessible) {
-        this.$wrapper.add(this.$bullets).on('keydown.zf.orbit', function(e) {
-          // handle keyboard event with keyboard util
-          Foundation.Keyboard.handleKey(e, 'Orbit', {
-            next: function() {
-              _this.changeSlide(true);
-            },
-            previous: function() {
-              _this.changeSlide(false);
-            },
-            handled: function() { // if bullet is focused, make sure focus moves
-              if ($(e.target).is(_this.$bullets)) {
-                _this.$bullets.filter('.is-active').focus();
-              }
+      this.$wrapper.add(this.$bullets).on('keydown.zf.orbit', function(e) {
+        // handle keyboard event with keyboard util
+        Foundation.Keyboard.handleKey(e, 'Orbit', {
+          next: function() {
+            _this.changeSlide(true);
+          },
+          previous: function() {
+            _this.changeSlide(false);
+          },
+          handled: function() { // if bullet is focused, make sure focus moves
+            if ($(e.target).is(_this.$bullets)) {
+              _this.$bullets.filter('.is-active').focus();
             }
-          });
+          }
         });
-      }
-    }
-  }
-
-  /**
-   * Resets Orbit so it can be reinitialized
-   */
-  _reset() {
-    // Don't do anything if there are no slides (first run)
-    if (typeof this.$slides == 'undefined') {
-      return;
-    }
-
-    if (this.$slides.length > 1) {
-      // Remove old events
-      this.$element.off('.zf.orbit').find('*').off('.zf.orbit')
-
-      // Restart timer if autoPlay is enabled
-      if (this.options.autoPlay) {
-        this.timer.restart();
-      }
-
-      // Reset all sliddes
-      this.$slides.each(function(el) {
-        $(el).removeClass('is-active is-active is-in')
-          .removeAttr('aria-live')
-          .hide();
       });
-
-      // Show the first slide
-      this.$slides.first().addClass('is-active').show();
-
-      // Triggers when the slide has finished animating
-      this.$element.trigger('slidechange.zf.orbit', [this.$slides.first()]);
-
-      // Select first bullet if bullets are present
-      if (this.options.bullets) {
-        this._updateBullets(0);
-      }
     }
   }
 
@@ -297,7 +245,6 @@ class Orbit {
   * @fires Orbit#slidechange
   */
   changeSlide(isLTR, chosenSlide, idx) {
-    if (!this.$slides) {return; } // Don't freak out if we're in the middle of cleanup
     var $curSlide = this.$slides.filter('.is-active').eq(0);
 
     if (/mui/g.test($curSlide[0].className)) { return false; } //if the slide is currently animating, kick out of the function
@@ -319,18 +266,12 @@ class Orbit {
     }
 
     if ($newSlide.length) {
-      /**
-      * Triggers before the next slide starts animating in and only if a next slide has been found.
-      * @event Orbit#beforeslidechange
-      */
-      this.$element.trigger('beforeslidechange.zf.orbit', [$curSlide, $newSlide]);
-
       if (this.options.bullets) {
         idx = idx || this.$slides.index($newSlide); //grab index to update bullets
         this._updateBullets(idx);
       }
 
-      if (this.options.useMUI && !this.$element.is(':hidden')) {
+      if (this.options.useMUI) {
         Foundation.Motion.animateIn(
           $newSlide.addClass('is-active').css({'position': 'absolute', 'top': 0}),
           this.options[`animInFrom${dirIn}`],

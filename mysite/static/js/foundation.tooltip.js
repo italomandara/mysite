@@ -6,7 +6,6 @@
  * Tooltip module.
  * @module foundation.tooltip
  * @requires foundation.util.box
- * @requires foundation.util.mediaQuery
  * @requires foundation.util.triggers
  */
 
@@ -40,15 +39,9 @@ class Tooltip {
     this.options.tipText = this.options.tipText || this.$element.attr('title');
     this.template = this.options.template ? $(this.options.template) : this._buildTemplate(elemId);
 
-    if (this.options.allowHtml) {
-      this.template.appendTo(document.body)
-        .html(this.options.tipText)
-        .hide();
-    } else {
-      this.template.appendTo(document.body)
+    this.template.appendTo(document.body)
         .text(this.options.tipText)
         .hide();
-    }
 
     this.$element.attr({
       'title': '',
@@ -56,7 +49,7 @@ class Tooltip {
       'data-yeti-box': elemId,
       'data-toggle': elemId,
       'data-resize': elemId
-    }).addClass(this.options.triggerClass);
+    }).addClass(this.triggerClass);
 
     //helper variables to track movement on collisions
     this.usedPositions = [];
@@ -171,7 +164,7 @@ class Tooltip {
    * @function
    */
   show() {
-    if (this.options.showOn !== 'all' && !Foundation.MediaQuery.is(this.options.showOn)) {
+    if (this.options.showOn !== 'all' && !Foundation.MediaQuery.atLeast(this.options.showOn)) {
       // console.error('The screen is too small to display this tooltip');
       return false;
     }
@@ -339,9 +332,12 @@ class Tooltip {
    */
   destroy() {
     this.$element.attr('title', this.template.text())
-                 .off('.zf.trigger .zf.tooltip')
-                 .removeClass('has-tip top right left')
-                 .removeAttr('aria-describedby aria-haspopup data-disable-hover data-resize data-toggle data-tooltip data-yeti-box');
+                 .off('.zf.trigger .zf.tootip')
+                //  .removeClass('has-tip')
+                 .removeAttr('aria-describedby')
+                 .removeAttr('data-yeti-box')
+                 .removeAttr('data-toggle')
+                 .removeAttr('data-resize');
 
     this.template.remove();
 
@@ -435,14 +431,7 @@ Tooltip.defaults = {
    * @option
    * @example 12
    */
-  hOffset: 12,
-    /**
-   * Allow HTML in tooltip. Warning: If you are loading user-generated content into tooltips,
-   * allowing HTML may open yourself up to XSS attacks.
-   * @option
-   * @example false
-   */
-  allowHtml: false
+  hOffset: 12
 };
 
 /**
