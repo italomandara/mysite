@@ -6,15 +6,6 @@
 <html ng-app="myResume">
 	<head>
 		{% compress js %}
-			<script>
-				var DJ = {}, settings = {};
-				DJ.static = function(url) {
-					return ['{% static "/" %}',url].join('');
-				};
-				settings = {
-					FILEPICKER_API_KEY: '{{ settings.FILEPICKER_API_KEY }}'
-				};
-			</script>
 			<script type="text/javascript" src="{% static 'js/jquery.js' %}"></script>
 			<script type="text/javascript" src="{% static 'js/foundation.core.js' %}"></script>
 			<script type="text/javascript" src="{% static 'js/foundation.sticky.js' %}"></script>
@@ -47,6 +38,15 @@
 			<script type="text/javascript" src="{% static 'js/what-input.js' %}"></script>
 			<script type="text/javascript" src="{% static 'js/angular/marked.js' %}"></script>
 			<script type="text/javascript" src="{% static 'js/jquery.lazyload.js' %}"></script>
+			<script>
+				var DJ = {}, settings = {};
+				DJ.static = function(url) {
+					return ['{% static "/" %}',url].join('');
+				};
+				settings = {
+					FILEPICKER_API_KEY: '{{ settings.FILEPICKER_API_KEY }}'
+				};
+			</script>
 			<script type="text/javascript" src="{% static 'js/angular/angular.js' %}"></script>
 			<script type="text/javascript" src="{% static 'js/angular/angular-route.js' %}"></script>
 			<script type="text/javascript" src="{% static 'js/angular/angular-sanitize.js' %}"></script>
