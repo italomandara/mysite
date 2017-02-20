@@ -61,19 +61,12 @@ app.factory('navUpdate', ['$rootScope', '$location', '$http', function($rootScop
 		var h1 = obj.intro.h1 || obj.intro.title,
 		h2 = obj.intro.h2 || obj.intro.subtitle,
 		hero_image = obj.intro.image_primary || obj.intro.featured_image;
-		$rootScope.nav = $rootScope.nav || {};
-		$rootScope.nav = obj;
+		$rootScope.nav = angular.extend($rootScope.nav, obj);
 		$rootScope.nav.post_categories = Categories.post;
 		$rootScope.nav.hero_title = h1;
 		$rootScope.nav.hero_subtitle = h2;
 		$rootScope.nav.hero_image = hero_image;
 		$rootScope.nav.page.description = h1 + ', ' + h2;
-		if(!$rootScope.nav.person){
-			$http.get([$location.origin, '/api/person/', '?name=Italo&format=json'].join('')).then(function(person) {
-				$rootScope.nav.person = person.data[0];
-				$rootScope.nav.title = [$rootScope.nav.person.name, $rootScope.nav.person.lastname, "'s resume"].join('');
-			});
-		}
 	}
 }])
 
@@ -143,7 +136,15 @@ app.config(['$httpProvider', function($httpProvider) {
 	$httpProvider.defaults.xsrfHeaderName = 'X-CSRFToken';
 }]);
 
-app.run(function($timeout, $rootScope) {
+app.run(function($timeout, $rootScope, $http, $location) {
+
+	$rootScope.nav = $rootScope.nav || {};
+	$http.get([$location.origin, '/api/person/', '?name=Italo&format=json'].join('')).then(function(person) {
+		$rootScope.nav.person = person.data[0];
+		$rootScope.nav.title = [$rootScope.nav.person.name, $rootScope.nav.person.lastname, "'s resume"].join('');
+	});
+
+
 	$rootScope.$on('$viewContentLoaded', function() {
 		$timeout(function() {
 			$(document).foundation()

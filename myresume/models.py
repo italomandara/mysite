@@ -159,10 +159,6 @@ class Contact(models.Model):
 
 
 class Post(models.Model):
-	slug = models.SlugField(max_length=255, primary_key=True)
-	title = models.CharField(max_length=100)
-	subtitle = models.CharField(max_length=255)
-	author = models.CharField(max_length=100, blank=True)
 	TECH = 'TC'
 	LIFE = 'LF'
 	COURSES = 'CS'
@@ -178,7 +174,12 @@ class Post(models.Model):
     	choices = CATEGORIES,
     	default = LIFE,
     )
-	featured_image = django_filepicker.models.FPUrlField()
+	slug = models.SlugField(max_length=255, primary_key=True)
+	title = models.CharField(max_length=100)
+	subtitle = models.CharField(max_length=255)
+	author = models.CharField(max_length=100, blank=True)
+
+	featured_image = django_filepicker.models.FPUrlField(blank=True)
 	article_image1 = django_filepicker.models.FPUrlField(blank=True)
 	article_image2 = django_filepicker.models.FPUrlField(blank=True)
 	published = models.BooleanField(default=False)
