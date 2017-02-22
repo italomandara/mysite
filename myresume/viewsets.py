@@ -49,4 +49,3 @@ class ContactViewSet(mixins.CreateModelMixin, mixins.ListModelMixin, viewsets.Ge
 	queryset = Contact.objects.all()
 	serializer_class = ContactSerializer
 	http_method_names = ['post', 'options']
-	permissions_classes = (IsOwnerOrReadOnly,)
