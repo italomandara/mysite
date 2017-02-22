@@ -1,48 +1,38 @@
 from rest_framework import serializers
-from .models import Person, Skill, MyContent, Job, Course, Post
+from .models import Person, Skill, MyContent, Job, Course, Post, Contact
 
 # Serializers define the API representation.
-class PersonSerializer(serializers.HyperlinkedModelSerializer):
+class PersonSerializer(serializers.ModelSerializer):
     class Meta:
         model = Person
         fields = ('__all__')
 
-class SkillSerializer(serializers.HyperlinkedModelSerializer):
+class SkillSerializer(serializers.ModelSerializer):
     class Meta:
         model = Skill
         fields = ('__all__')
 
-class MyContentSerializer(serializers.HyperlinkedModelSerializer):
+class MyContentSerializer(serializers.ModelSerializer):
     class Meta:
         model = MyContent
         fields = ('__all__')
 
-class JobSerializer(serializers.HyperlinkedModelSerializer):
+class JobSerializer(serializers.ModelSerializer):
     class Meta:
         model = Job
         fields = ('__all__')
 
-class CourseSerializer(serializers.HyperlinkedModelSerializer):
+class CourseSerializer(serializers.ModelSerializer):
     class Meta:
         model = Course
         fields = ('__all__')
 
-class PostSerializer(serializers.HyperlinkedModelSerializer):
+class PostSerializer(serializers.ModelSerializer):
     class Meta:
         model = Post
-        fields = (
-        'slug', 
-        'url',
-        'title',
-        'subtitle',
-        'author',
-        'category',
-        'featured_image',
-        'article_image1',
-        'article_image2',
-        'published',
-        'created_at',
-        'updated_at',
-        'tag',
-        'body'
-        )
+        fields = ('__all__')
+
+class ContactSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Contact
+        fields = ('__all__')

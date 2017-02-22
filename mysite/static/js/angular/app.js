@@ -30,6 +30,7 @@ active_navigation_class = 'active';
 $.fn.attr_safe = function(attribute) {
 	return (typeof this.attr(attribute) !== typeof undefined || !this.attr(attribute)) ? this.attr(attribute) : 'undefined';
 };
+
 var markdown = function(item) {
 	var item_defined = typeof item !== typeof undefined;
 	var item_is_string = typeof item === typeof "a";

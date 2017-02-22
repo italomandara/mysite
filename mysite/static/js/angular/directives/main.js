@@ -53,6 +53,14 @@ app.directive('course', function() {
   }; 
 });
 
+app.directive('course', function() { 
+  return { 
+    restrict: 'E',
+    templateUrl: DJ.static('js/angular/templates/error.html'),
+    replace: true
+  }; 
+});
+
 app.directive('backgroundimage', function(){
     return function(scope, element, attrs){
         var url = attrs.backgroundimage;

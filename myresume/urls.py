@@ -15,5 +15,5 @@ urlpatterns = [
 urlpatterns += [
     url(r'ng$', views.index_ng, name='index_ng'),
     # url(r'api/', include('rest_framework.urls', namespace='rest_framework')),
-    url(r'api/', include(router.urls), name='api'),
+    url(r'api/', include(router.urls), name='api')
 ]

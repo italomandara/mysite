@@ -6,8 +6,5 @@
 	<div ng-if="posts.length" class="medium-masonry-1 large-masonry-2 margin bottom">
 		<post ng-repeat="post in posts"></post>
 	</div>
-	<div ng-if="!posts.length" class="medium-masonry-1 large-masonry-2 margin bottom">
-		<h4>Sorry,</h4>
-		<p class="large margin bottom">Couldn't find any post under this category</p>
-	</div>
+	<error></error>
 </div>

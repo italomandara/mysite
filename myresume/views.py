@@ -200,6 +200,7 @@ def ajaxContactForm(request):
 			json.dumps({"stored": 0, "error": 1}),
 			content_type="application/json"
 		)
+		
 
 def icons(request):
 	template = loader.get_template('icons.html')

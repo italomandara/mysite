@@ -1,8 +1,8 @@
 import django_filters.rest_framework
 
-from rest_framework import viewsets,generics
-from .models import Person, Skill, MyContent, Job, Course, Post
-from .serializers import PersonSerializer, SkillSerializer, MyContentSerializer, JobSerializer, CourseSerializer, PostSerializer
+from rest_framework import viewsets, filters, mixins
+from .models import Person, Skill, MyContent, Job, Course, Post, Contact
+from .serializers import PersonSerializer, SkillSerializer, MyContentSerializer, JobSerializer, CourseSerializer, PostSerializer, ContactSerializer
 from .permissions import IsOwnerOrReadOnly
 
 # ViewSets define the view behavior.
@@ -41,4 +41,12 @@ class PostViewSet(viewsets.ModelViewSet):
 	queryset = Post.objects.all()
 	serializer_class = PostSerializer
 	permissions_classes = (IsOwnerOrReadOnly,)
-	filter_backends = (django_filters.rest_framework.DjangoFilterBackend,)
+	filter_fields = ('__all__')
+	filter_backends = (filters.OrderingFilter, django_filters.rest_framework.DjangoFilterBackend)
+	ordering_fields = ('__all__')
+
+class ContactViewSet(mixins.CreateModelMixin, mixins.ListModelMixin, viewsets.GenericViewSet):
+	queryset = Contact.objects.all()
+	serializer_class = ContactSerializer
+	http_method_names = ['post', 'options']
+	permissions_classes = (IsOwnerOrReadOnly,)

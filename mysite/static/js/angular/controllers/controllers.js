@@ -105,7 +105,7 @@ app.controller('moreController', ['$rootScope', '$location', '$scope', '$http', 
 }]);
 
 app.controller('thoughtsController', ['$rootScope', '$location', '$scope', '$http', 'navUpdate', function($rootScope, $location, $scope, $http, navUpdate) {
-	$http.get([$location.origin, '/api/post/', '?format=json'].join('')).then(function(posts) {
+	$http.get([$location.origin, '/api/post/', '?ordering=-created_at&format=json'].join('')).then(function(posts) {
 		$scope.posts = posts.data;
 	});
 	$scope.post_categories = Categories.post;
@@ -132,8 +132,14 @@ app.controller('thoughtsController', ['$rootScope', '$location', '$scope', '$htt
 app.controller('postCategoriesController', ['$rootScope', '$location', '$scope', '$http', '$routeParams', 'navUpdate', function($rootScope, $location, $scope, $http, $routeParams, navUpdate) {
 	var cat = $routeParams.category;
 	var category = getCategoryIdFromSlug(Categories.post, cat);
-	$http.get([$location.origin, '/api/post/', '?category=', category, '&format=json'].join('')).then(function(posts) {
+	$http.get([$location.origin, '/api/post/', '?ordering=-created_at&category=', category, '&format=json'].join('')).then(function(posts) {
 		$scope.posts = posts.data;
+		if(!posts.data.length) {
+			$scope.error = {
+				title : 'Sorry,',
+				description: "couldn't find any posts in this category" 
+			}
+		}
 	});
 	$scope.post_categories = Categories.post;
 	$scope.get_post_category = function(a) {
