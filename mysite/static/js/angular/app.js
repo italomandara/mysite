@@ -57,7 +57,7 @@ slugify = function(item) {
 },
 app = angular.module('myResume', ['ngRoute', 'ngSanitize']);
 
-app.factory('navUpdate', ['$rootScope', '$location', '$http', function($rootScope, $location, $http){
+app.factory('navUpdate', ['$rootScope', function($rootScope){
 	return function(obj) {
 		var h1 = obj.intro.h1 || obj.intro.title,
 		h2 = obj.intro.h2 || obj.intro.subtitle,
@@ -69,7 +69,20 @@ app.factory('navUpdate', ['$rootScope', '$location', '$http', function($rootScop
 		$rootScope.nav.hero_image = hero_image;
 		$rootScope.nav.page.description = h1 + ', ' + h2;
 	}
-}])
+}]);
+
+app.factory('postJSON', ['$location', '$http', function($location, $http) {
+	return function(obj, url) {
+		$http({
+			method: "POST",
+			url: [$location.origin, url].join(''),
+			withCredentials: true,
+			data: obj,
+		}).then(function(data) {
+			console.log(data)
+		});
+	}
+}]);
 
 app.filter('slugify', function() {
 	return function(item) {	
@@ -137,14 +150,14 @@ app.config(['$httpProvider', function($httpProvider) {
 	$httpProvider.defaults.xsrfHeaderName = 'X-CSRFToken';
 }]);
 
-app.run(function($timeout, $rootScope, $http, $location) {
+app.run(function($timeout, $rootScope, $http, $location, postJSON) {
 
 	$rootScope.nav = $rootScope.nav || {};
 	$http.get([$location.origin, '/api/person/', '?name=Italo&format=json'].join('')).then(function(person) {
 		$rootScope.nav.person = person.data[0];
 		$rootScope.nav.title = [$rootScope.nav.person.name, $rootScope.nav.person.lastname, "'s resume"].join('');
+		console.log($rootScope)
 	});
-
 
 	$rootScope.$on('$viewContentLoaded', function() {
 		$timeout(function() {

@@ -1,0 +1,7 @@
+<label>
+	<span ng-bind-html="field.required ? field.label + '&nbsp;<span>*</span> ' : field.label"></span>
+	<input ng-if="field.type !== 'textarea' && !field.read_only" type="{{field.type === 'string' ? 'text' : field.type}}" ng-required="field.required" ng-model="model[name]">
+	<textarea ng-if="field.type === 'textarea' && !field.read_only" ng-model="model[name]" ng-required="field.required"></textarea>
+	<span class="form-error">
+	</span>
+</label>

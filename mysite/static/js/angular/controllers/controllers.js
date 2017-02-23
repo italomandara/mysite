@@ -185,3 +185,22 @@ app.controller('postController', ['$rootScope', '$location', '$scope', '$http', 
 		});
 	});
 }]);
+
+app.controller('contactController', ['$location', '$scope', '$http', 'postJSON', function($location, $scope, $http, postJSON) {
+	var url = '/api/contact/'
+	$http({
+		method: "OPTIONS",
+		url: [$location.origin, url].join(''),
+		withCredentials: true,
+	}).then(function(form) {
+		$scope.form = form.data.actions.POST;
+		$scope.form.message.type = 'textarea';
+		$scope.form.email.type = 'email';
+	});
+	$scope.model = { };
+	$scope.postJSON = function(is_valid) {
+		$scope.submitted = true;
+		if(is_valid){postJSON($scope.model,url);}
+	};
+}]);
+

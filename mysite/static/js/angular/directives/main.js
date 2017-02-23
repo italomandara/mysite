@@ -53,11 +53,42 @@ app.directive('course', function() {
   }; 
 });
 
-app.directive('course', function() { 
+app.directive('error', function() { 
   return { 
     restrict: 'E',
     templateUrl: DJ.static('js/angular/templates/error.html'),
     replace: true
+  }; 
+});
+
+app.directive('field', function() { 
+  return { 
+    restrict: 'E',
+    templateUrl: DJ.static('js/angular/templates/shared/field.html'),
+    scope: { 
+      field: '=',
+      error: '=',
+      model: '=',
+      name: '='
+    },
+    replace: true
+  }; 
+});
+
+app.directive('modal', function() { 
+  return { 
+    restrict: 'E',
+    scope: { 
+      modal: '=',
+      form: '=',
+      model: '=',
+      modalid: '=',
+      title: '=',
+      extraclass: '=',
+    },
+    templateUrl: DJ.static('js/angular/templates/shared/modal.html'),
+    replace: true,
+    transclude: true,
   }; 
 });
 
