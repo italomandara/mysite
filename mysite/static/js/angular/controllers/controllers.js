@@ -197,10 +197,14 @@ app.controller('contactController', ['$location', '$scope', '$http', 'postJSON',
 		$scope.form.message.type = 'textarea';
 		$scope.form.email.type = 'email';
 	});
-	$scope.model = { };
-	$scope.postJSON = function(is_valid) {
+	$scope.model = {};
+	$scope.postJSON = function(is_valid, e) {
 		$scope.submitted = true;
-		if(is_valid){postJSON($scope.model,url);}
+		if (is_valid) {
+			postJSON($scope.model, url, function(data) {
+				$('#contact-thank-you').foundation('open');
+			});
+		}
 	};
 }]);
 

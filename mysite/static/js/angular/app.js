@@ -72,14 +72,16 @@ app.factory('navUpdate', ['$rootScope', function($rootScope){
 }]);
 
 app.factory('postJSON', ['$location', '$http', function($location, $http) {
-	return function(obj, url) {
+	return function(obj, url, callback) {
 		$http({
 			method: "POST",
 			url: [$location.origin, url].join(''),
 			withCredentials: true,
 			data: obj,
 		}).then(function(data) {
-			console.log(data)
+			if (typeof callback !== undefined) {
+				callback(data);
+			}
 		});
 	}
 }]);

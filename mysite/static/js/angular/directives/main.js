@@ -82,7 +82,7 @@ app.directive('modal', function() {
       modal: '=',
       form: '=',
       model: '=',
-      modalid: '=',
+      mid: '=',
       title: '=',
       extraclass: '=',
     },
