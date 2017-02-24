@@ -55,7 +55,7 @@ slugify = function(item) {
 		.replace(/ +/g, '-')
 	return output_string;
 },
-app = angular.module('myResume', ['ngRoute', 'ngSanitize']);
+app = angular.module('myResume', ['ngRoute', 'ngSanitize','ngTouch','mm.foundation', 'ngAnimate']);
 
 app.factory('navUpdate', ['$rootScope', function($rootScope){
 	return function(obj) {
@@ -158,13 +158,11 @@ app.run(function($timeout, $rootScope, $http, $location, postJSON) {
 	$http.get([$location.origin, '/api/person/', '?name=Italo&format=json'].join('')).then(function(person) {
 		$rootScope.nav.person = person.data[0];
 		$rootScope.nav.title = [$rootScope.nav.person.name, $rootScope.nav.person.lastname, "'s resume"].join('');
-		console.log($rootScope)
 	});
 
 	$rootScope.$on('$viewContentLoaded', function() {
 		$timeout(function() {
-			$(document).foundation()
-				.on('click', 'a[href].active', function(e) {
+			$(document).on('click', 'a[href].active', function(e) {
 					e.preventDefault();
 				});
 			$('.js-lazy').lazyload();

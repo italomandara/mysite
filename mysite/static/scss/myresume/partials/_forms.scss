@@ -18,11 +18,5 @@ input[type=text], input[type=number], input[type=password], input[type=email]{
 
 textarea{
     resize: vertical;
-}
-
-form.ng-invalid {
-    // @extend .form-error;
-    .form-error {
-        @include form-input-error;
-    }
+    min-height: 8em;
 }

@@ -7,11 +7,11 @@
 <li style="position:relative" role="menuitem" class="is-dropdown-submenu-parent opens-right" aria-haspopup="true" aria-expanded="false" aria-label="Thoughts">
 	<a class="{{ nav.page.thoughts }}" href="#thoughts">Thoughts</a>
 	
-	<ul class="menu vertical submenu nested">
+	<ul class="menu vertical submenu nested first-sub">
 		<li ng-repeat="item in nav.post_categories"><a class="{{ nav.page[item] }}" href="#thoughts/categories/{{ item|slugify }}">{{ item }}</a></li>
 	</ul>
 	
 </li>
-<li ng-show="nav.person.available">
-    <a href="javascript:void(0)" data-open="contact">Contact</a>
+<li ng-show="nav.person.available" ng-controller="contactController">
+    <a href="javascript:void(0)" ng-click="open()">Contact</a>
 </li>
