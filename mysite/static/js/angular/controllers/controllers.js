@@ -6,6 +6,9 @@ app.controller('alertController', ['$rootScope', function($rootScope) {
 	};
 }]);
 
+app.controller('orbitController', ['$scope', function($scope) {
+}]);
+
 app.controller('offCanvasController', ['$scope', function($scope) {
 }]);
 

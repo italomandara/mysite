@@ -20,6 +20,15 @@
     color: $alert-color;
 }
 
+.callout.success{
+    background-color: transparent;
+    border-color: $success-color;
+    // border-width: 3px;
+    &, .close-button {
+        color: $success-color;
+    }
+}
+
 .hero{
     padding: 50px 0;
     @include breakpoint(small only) {
