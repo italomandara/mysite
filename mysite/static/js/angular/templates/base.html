@@ -12,7 +12,7 @@
                 </ul>
             </div>
             <div class="off-canvas-content">
-                <div ng-controller="alertController">
+                <div class="top-callout fixed small-12" ng-controller="alertController">
                     <alert ng-repeat="alert in alerts" type="alert.type" close="closeAlert($index)">{{alert.msg}}</alert>
                 </div>
                 <div include-replace ng-include="'static/js/angular/templates/hero.html'"></div>
