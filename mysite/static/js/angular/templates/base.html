@@ -1,6 +1,6 @@
 <div ng-controller="offCanvasController">
     <div class="off-canvas-wrapper">
-        <div class="off-canvas-wrapper-inner fixed fit-vertical" data-off-canvas-wrapper>
+        <div class="off-canvas-wrapper-inner" data-off-canvas-wrapper>
             <div class="off-canvas position-left" id="offCanvasMenu" data-off-canvas>
                 <!-- Close button -->
                 <a class="left-off-canvas-toggle close-button" >
@@ -11,13 +11,15 @@
                     <ng-include src="'static/js/angular/templates/menu-items.html'" include-replace></ng-include>
                 </ul>
             </div>
-            <div ng-controller="alertController">
-                <alert ng-repeat="alert in alerts" type="alert.type" close="closeAlert($index)">{{alert.msg}}</alert>
+            <div class="off-canvas-content">
+                <div ng-controller="alertController">
+                    <alert ng-repeat="alert in alerts" type="alert.type" close="closeAlert($index)">{{alert.msg}}</alert>
+                </div>
+                <div include-replace ng-include="'static/js/angular/templates/hero.html'"></div>
+                <div include-replace ng-include="'static/js/angular/templates/nav.html'"></div>
+                <ng-view class="row-wrapper">
+                </ng-view>
             </div>
-            <div include-replace ng-include="'static/js/angular/templates/hero.html'"></div>
-            <div include-replace ng-include="'static/js/angular/templates/nav.html'"></div>
-            <ng-view class="row-wrapper">
-            </ng-view>
         </div>
     </div>
 </div>

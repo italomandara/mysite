@@ -1,4 +1,4 @@
-.off-canvas-wrapper.advanced{
+.off-canvas-wrapper{
 	// height: 100%;
 	.off-canvas-wrapper-inner {
 		&.is-off-canvas-open {
@@ -13,7 +13,7 @@
 	    color: $dark-gray;
 	    font-weight: $global-weight-bold;
 	    font-size: rem-calc(14);
-	    // padding: 0.5rem 1rem;
+	    padding: 0.5rem 1rem;
 	    &.active{
 	        color: $primary-color;
 	    }
