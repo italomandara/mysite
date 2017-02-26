@@ -5,9 +5,9 @@
 <div class="background background-color-1 pad pad-top margin top">
     <div class="row">
         <h4 class="margin bottom set-text-color to-white">Skills list</h4>
-        <a ng-click="filter_el($event)" ng-repeat="skill_category in skill_categories" class="button small secondary" data-filter="{{ skill_category }}">{{ skill_category }}</a>
-        <a ng-click="filter_el($event)" ng-repeat="skill_subcategory in skills_subcategories" class="button small secondary" data-filter-sub="{{ skill_subcategory|slugify }}">{{ skill_subcategory }}</a>
-        <a ng-click="filter_el($event)" class="button small secondary active" data-filter="none">All</a>
+        <a ng-click="filter_el($event)" ng-repeat="skill_category in skill_categories" class="button filter small" data-filter="{{ skill_category }}">{{ skill_category }}</a>
+        <a ng-click="filter_el($event)" ng-repeat="skill_subcategory in skills_subcategories" class="button filter small" data-filter-sub="{{ skill_subcategory|slugify }}">{{ skill_subcategory }}</a>
+        <a ng-click="filter_el($event)" class="button filter small active" data-filter="none">All</a>
         <div class="masonry small-masonry-1 medium-masonry-2 large-masonry-4">
             <div class="js-filter filter size-filter category-{{ get_skill_category(skill.category) }} subcategory-{{ skill.subcategory|slugify }}" ng-repeat="skill in skills_list">
                 <skill></skill>
