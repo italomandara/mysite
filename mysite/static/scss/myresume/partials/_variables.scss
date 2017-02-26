@@ -1,10 +1,14 @@
 $global-border-radius: 1px;
 $global-shadow-size: 3px;
 $global-shadow-color: rgba(0,0,0,0.7);
-$my-global-margin-small: nth(nth($grid-column-gutter,1),2);
-$my-global-margin: nth(nth($grid-column-gutter,2),2);
-$my-gutter-small: $my-global-margin-small;
-$my-gutter: $my-global-margin;
+
+$my-gutter-small: nth(nth($grid-column-gutter,1),2);
+$my-gutter: nth(nth($grid-column-gutter,2),2);
+
+$my-global-margin-small: $my-gutter-small;
+$my-global-margin: $my-gutter;
+
+
 $my-minimum-row-margin-small: $my-global-margin-small*4;
 $my-minimum-row-margin: $my-global-margin*4;
 $global-transition-time: 0.5s;
