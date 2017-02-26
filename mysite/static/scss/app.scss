@@ -2,13 +2,12 @@
 
 @import 'myresume/partials/colors';
 
-@import 'foundation';
-@import 'motion-ui';
-@import 'settings';
+@import 'foundation-sites/scss/app.scss';
+
 @import 'myresume/partials/variables';
 @import 'myresume/partials/mixins';
-@import 'myresume/overrides/dropdown-menu_override';
-@import 'myresume/overrides/accordion-menu_override';
+// @import 'myresume/overrides/dropdown-menu_override';
+// @import 'myresume/overrides/accordion-menu_override';
 
 @include foundation-everything();
 
