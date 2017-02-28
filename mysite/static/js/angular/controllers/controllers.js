@@ -143,7 +143,7 @@ app.controller('thoughtsController', ['$rootScope', '$location', '$scope', '$htt
 	});
 }]);
 
-app.controller('postCategoriesController', ['$rootScope', '$location', '$scope', '$http', '$routeParams', 'navUpdate', function($rootScope, $location, $scope, $http, $routeParams, navUpdate) {
+app.controller('postCategoriesController', ['$rootScope', '$location', '$scope', '$http', '$routeParams', 'navUpdate', 'slugify', 'getCategoryIdFromSlug',  function($rootScope, $location, $scope, $http, $routeParams, navUpdate, slugify, getCategoryIdFromSlug) {
 	var cat = $routeParams.category;
 	var category = getCategoryIdFromSlug(Categories.post, cat);
 	$http.get([$location.origin, '/api/post/', '?ordering=-created_at&category=', category, '&format=json'].join('')).then(function(posts) {

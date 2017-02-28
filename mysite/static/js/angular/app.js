@@ -31,31 +31,41 @@ $.fn.attr_safe = function(attribute) {
 	return (typeof this.attr(attribute) !== typeof undefined || !this.attr(attribute)) ? this.attr(attribute) : 'undefined';
 };
 
-var markdown = function(item) {
-	var item_defined = typeof item !== typeof undefined;
-	var item_is_string = typeof item === typeof "a";
-	if (item_defined && item_is_string) {
-		return marked(item);
-	} else {
-		return '';
+
+app = angular.module('myResume', ['ngRoute', 'ngSanitize', 'mm.foundation', 'ngTouch', 'ngAnimate']);
+
+app.factory('markdown', function() {
+	return function(item) {
+		var item_defined = typeof item !== typeof undefined;
+		var item_is_string = typeof item === typeof "a";
+		if (item_defined && item_is_string) {
+			return marked(item);
+		} else {
+			return '';
+		}
 	}
-},
-getCategoryIdFromSlug = function( obj, value ) {
+});
+
+app.factory('slugify', function() {
+	return function(item) {
+		var output_string = item
+			.toLowerCase()
+			.replace(/[^\w ]+/g, '')
+			.replace(/ +/g, '-')
+		return output_string;
+	}
+});
+
+app.factory('getCategoryIdFromSlug', ['slugify', function(slugify){
+	return function( obj, value ) {
     for( var prop in obj ) {
         if( obj.hasOwnProperty( prop ) ) {
              if( slugify(obj[ prop ]) === value )
                  return prop;
         }
     }
-},
-slugify = function(item) {
-	var output_string = item
-		.toLowerCase()
-		.replace(/[^\w ]+/g, '')
-		.replace(/ +/g, '-')
-	return output_string;
-},
-app = angular.module('myResume', ['ngRoute', 'ngSanitize', 'mm.foundation', 'ngTouch', 'ngAnimate']);
+}
+}]);
 
 app.factory('navUpdate', ['$rootScope', function($rootScope){
 	return function(obj) {
@@ -86,29 +96,29 @@ app.factory('postJSON', ['$location', '$http', function($location, $http) {
 	}
 }]);
 
-app.filter('slugify', function() {
+app.filter('slugify', ['slugify', function(slugify) {
 	return function(item) {	
 		return slugify(item);
 	};
-});
+}]);
 
-app.filter('markdown', function() {
+app.filter('markdown', ['markdown', function(markdown) {
 	return function(item) {
 		var output_string = markdown(item)
 		return output_string;
 	};
-});
+}]);
 
 app.filter('effect', function() {
 	return function(value, arg) {
-		var output_string = "https://process.filestackapi.com/" + settings.FILEPICKER_API_KEY + "/" + arg + "/" + value
+		var output_string = "https://process.filestackapi.com/" + settings.FILEPICKER_API_KEY + "/" + encodeURI(arg) + "/" + value
 		return !!value && !!arg ? output_string: '';
 	};
 });
 
 app.filter('resize', function() {
 	return function(value, arg) {
-		var output_string = "https://process.filestackapi.com/" + settings.FILEPICKER_API_KEY + "/resize=" + arg + "/" + value
+		var output_string = "https://process.filestackapi.com/" + settings.FILEPICKER_API_KEY + "/resize=" + encodeURI(arg) + "/" + value
 		return !!value && !!arg ? output_string: '';
 	};
 });

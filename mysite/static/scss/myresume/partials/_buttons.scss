@@ -1,7 +1,7 @@
 .button.filter{
 	@extend .hollow;
-    color: $white;
-    border-color: $white;
+    color: $darker-gray;
+    border-color: $darker-gray;
     &:hover {
 	    color: $my-petrol;
 	    border-color: $my-petrol;
