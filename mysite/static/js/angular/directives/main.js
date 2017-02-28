@@ -71,7 +71,8 @@ app.directive('field', function() {
       form: '=',
       error: '=',
       model: '=',
-      name: '='
+      name: '=',
+      pattern: '=',
     },
     replace: true,
     transclude: true,

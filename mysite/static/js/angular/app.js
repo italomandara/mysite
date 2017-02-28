@@ -55,7 +55,7 @@ slugify = function(item) {
 		.replace(/ +/g, '-')
 	return output_string;
 },
-app = angular.module('myResume', ['ngRoute', 'ngSanitize','ngTouch','ngAnimate', 'mm.foundation']);
+app = angular.module('myResume', ['ngRoute', 'ngSanitize', 'mm.foundation', 'ngTouch', 'ngAnimate']);
 
 app.factory('navUpdate', ['$rootScope', function($rootScope){
 	return function(obj) {

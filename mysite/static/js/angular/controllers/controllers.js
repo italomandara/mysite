@@ -163,7 +163,7 @@ app.controller('postCategoriesController', ['$rootScope', '$location', '$scope',
 	$http.get([$location.origin, '/api/mycontent/', '?slug=', slugify(cat), '&format=json'].join('')).then(function(intro) {
 		$scope.intro = intro.data[0];
 		var page = {
-			'title': 'blog',
+			'title': cat,
 			'name': 'thoughts',
 			'thoughts': active_navigation_class,
 		}
@@ -213,6 +213,7 @@ app.controller('contactController', ['$location', '$scope', '$rootScope', '$moda
 				}).then(function(form) {
 					$scope.form = form.data.actions.POST;
 					$scope.form.message.type = 'textarea';
+					$scope.form.phone.pattern = /[0-9]{10,15}/i;
 					$scope.form.email.type = 'email';
 				});
 				$scope.model = {};
