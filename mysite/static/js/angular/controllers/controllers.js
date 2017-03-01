@@ -12,7 +12,7 @@ app.controller('orbitController', ['$scope', function($scope) {
 app.controller('offCanvasController', ['$scope', function($scope) {
 }]);
 
-app.controller('homeController', ['$rootScope', '$location', '$scope', '$http', 'navUpdate', function($rootScope, $location, $scope, $http, navUpdate) {
+app.controller('homeController', ['$rootScope', '$location', '$scope', '$http', 'navUpdate', 'Categories', function($rootScope, $location, $scope, $http, navUpdate, Categories) {
 	$http.get([$location.origin, '/api/skill/', '?format=json'].join('')).then(function(skills_list) {
 		$scope.skills_list = skills_list.data;
 		$scope.skills_subcategories = $scope.skills_list.map(function(list) {
@@ -84,7 +84,7 @@ app.controller('homeController', ['$rootScope', '$location', '$scope', '$http', 
 	};
 }]);
 
-app.controller('moreController', ['$rootScope', '$location', '$scope', '$http', 'navUpdate', function($rootScope, $location, $scope, $http, navUpdate) {
+app.controller('moreController', ['$rootScope', '$location', '$scope', '$http', 'navUpdate', 'Categories', function($rootScope, $location, $scope, $http, navUpdate, Categories) {
 	$http.get([$location.origin, '/api/course/', '?format=json'].join('')).then(function(courses) {
 		$scope.courses = courses.data;
 	});
@@ -118,7 +118,7 @@ app.controller('moreController', ['$rootScope', '$location', '$scope', '$http', 
 	});
 }]);
 
-app.controller('thoughtsController', ['$rootScope', '$location', '$scope', '$http', 'navUpdate', function($rootScope, $location, $scope, $http, navUpdate) {
+app.controller('thoughtsController', ['$rootScope', '$location', '$scope', '$http', 'navUpdate', 'Categories', function($rootScope, $location, $scope, $http, navUpdate, Categories) {
 	$http.get([$location.origin, '/api/post/', '?ordering=-created_at&format=json'].join('')).then(function(posts) {
 		$scope.posts = posts.data;
 	});
@@ -143,7 +143,7 @@ app.controller('thoughtsController', ['$rootScope', '$location', '$scope', '$htt
 	});
 }]);
 
-app.controller('postCategoriesController', ['$rootScope', '$location', '$scope', '$http', '$routeParams', 'navUpdate', 'slugify', 'getCategoryIdFromSlug',  function($rootScope, $location, $scope, $http, $routeParams, navUpdate, slugify, getCategoryIdFromSlug) {
+app.controller('postCategoriesController', ['$rootScope', '$location', '$scope', '$http', '$routeParams', 'navUpdate', 'slugify', 'getCategoryIdFromSlug', 'Categories', function($rootScope, $location, $scope, $http, $routeParams, navUpdate, slugify, getCategoryIdFromSlug, Categories) {
 	var cat = $routeParams.category;
 	var category = getCategoryIdFromSlug(Categories.post, cat);
 	$http.get([$location.origin, '/api/post/', '?ordering=-created_at&category=', category, '&format=json'].join('')).then(function(posts) {
@@ -178,7 +178,7 @@ app.controller('postCategoriesController', ['$rootScope', '$location', '$scope',
 	});
 }]);
 
-app.controller('postController', ['$rootScope', '$location', '$scope', '$http', '$routeParams', 'navUpdate', function($rootScope, $location, $scope, $http, $routeParams, navUpdate) {
+app.controller('postController', ['$rootScope', '$location', '$scope', '$http', '$routeParams', 'navUpdate', 'Categories', function($rootScope, $location, $scope, $http, $routeParams, navUpdate, Categories) {
 	var slug = $routeParams.slug;
 
 	$http.get([$location.origin, '/api/post/', slug, '/?format=json'].join('')).then(function(post) {

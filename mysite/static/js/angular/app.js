@@ -1,4 +1,11 @@
-var Categories = {
+var active_navigation_class = 'active';
+
+$.fn.attr_safe = function(attribute) {
+	return (typeof this.attr(attribute) !== typeof undefined || !this.attr(attribute)) ? this.attr(attribute) : 'undefined';
+};
+
+app = angular.module('myResume', ['ngRoute', 'ngSanitize', 'mm.foundation', 'ngTouch', 'ngAnimate'])
+.constant('Categories', {
 	skill: {
 		'PR': 'Print',
 		'DS': 'Design',
@@ -24,17 +31,8 @@ var Categories = {
 		'HU': 'Human',
 		'SC': 'School'
 	}
-},
-active_navigation_class = 'active';
-
-$.fn.attr_safe = function(attribute) {
-	return (typeof this.attr(attribute) !== typeof undefined || !this.attr(attribute)) ? this.attr(attribute) : 'undefined';
-};
-
-
-app = angular.module('myResume', ['ngRoute', 'ngSanitize', 'mm.foundation', 'ngTouch', 'ngAnimate']);
-
-app.factory('markdown', function() {
+})
+.factory('markdown', function() {
 	return function(item) {
 		var item_defined = typeof item !== typeof undefined;
 		var item_is_string = typeof item === typeof "a";
@@ -44,9 +42,8 @@ app.factory('markdown', function() {
 			return '';
 		}
 	}
-});
-
-app.factory('slugify', function() {
+})
+.factory('slugify', function() {
 	return function(item) {
 		var output_string = item
 			.toLowerCase()
@@ -54,9 +51,8 @@ app.factory('slugify', function() {
 			.replace(/ +/g, '-')
 		return output_string;
 	}
-});
-
-app.factory('getCategoryIdFromSlug', ['slugify', function(slugify){
+})
+.factory('getCategoryIdFromSlug', ['slugify', function(slugify){
 	return function( obj, value ) {
     for( var prop in obj ) {
         if( obj.hasOwnProperty( prop ) ) {
@@ -65,9 +61,8 @@ app.factory('getCategoryIdFromSlug', ['slugify', function(slugify){
         }
     }
 }
-}]);
-
-app.factory('navUpdate', ['$rootScope', function($rootScope){
+}])
+.factory('navUpdate', ['$rootScope', 'Categories', function($rootScope, Categories){
 	return function(obj) {
 		var h1 = obj.intro.h1 || obj.intro.title,
 		h2 = obj.intro.h2 || obj.intro.subtitle,
@@ -79,9 +74,8 @@ app.factory('navUpdate', ['$rootScope', function($rootScope){
 		$rootScope.nav.hero_image = hero_image;
 		$rootScope.nav.page.description = h1 + ', ' + h2;
 	}
-}]);
-
-app.factory('postJSON', ['$location', '$http', function($location, $http) {
+}])
+.factory('postJSON', ['$location', '$http', function($location, $http) {
 	return function(obj, url, callback) {
 		$http({
 			method: "POST",
@@ -94,36 +88,31 @@ app.factory('postJSON', ['$location', '$http', function($location, $http) {
 			}
 		});
 	}
-}]);
-
-app.filter('slugify', ['slugify', function(slugify) {
+}])
+.filter('slugify', ['slugify', function(slugify) {
 	return function(item) {	
 		return slugify(item);
 	};
-}]);
-
-app.filter('markdown', ['markdown', function(markdown) {
+}])
+.filter('markdown', ['markdown', function(markdown) {
 	return function(item) {
 		var output_string = markdown(item)
 		return output_string;
 	};
-}]);
-
-app.filter('effect', function() {
+}])
+.filter('effect', function() {
 	return function(value, arg) {
 		var output_string = "https://process.filestackapi.com/" + settings.FILEPICKER_API_KEY + "/" + encodeURI(arg) + "/" + value
 		return !!value && !!arg ? output_string: '';
 	};
-});
-
-app.filter('resize', function() {
+})
+.filter('resize', function() {
 	return function(value, arg) {
 		var output_string = "https://process.filestackapi.com/" + settings.FILEPICKER_API_KEY + "/resize=" + encodeURI(arg) + "/" + value
 		return !!value && !!arg ? output_string: '';
 	};
-});
-
-app.config(['$locationProvider', '$routeProvider',
+})
+.config(['$locationProvider', '$routeProvider',
 	function config($locationProvider, $routeProvider) {
 		// $locationProvider.html5Mode(true);
 		$locationProvider.hashPrefix('');
@@ -156,13 +145,11 @@ app.config(['$locationProvider', '$routeProvider',
 			.otherwise({redirectTo:'/404'});
 	}
 ])
-
-app.config(['$httpProvider', function($httpProvider) {
+.config(['$httpProvider', function($httpProvider) {
 	$httpProvider.defaults.xsrfCookieName = 'csrftoken';
 	$httpProvider.defaults.xsrfHeaderName = 'X-CSRFToken';
-}]);
-
-app.run(function($timeout, $rootScope, $http, $location, postJSON) {
+}])
+.run(function($timeout, $rootScope, $http, $location, postJSON) {
 
 	$rootScope.nav = $rootScope.nav || {};
 	$http.get([$location.origin, '/api/person/', '?name=Italo&format=json'].join('')).then(function(person) {
@@ -172,14 +159,10 @@ app.run(function($timeout, $rootScope, $http, $location, postJSON) {
 
 	$rootScope.$on('$viewContentLoaded', function() {
 		$timeout(function() {
-			$(document).on('click', 'a[href].active', function(e) {
-					e.preventDefault();
-				});
+			// $(document).on('click', 'a[href].active', function(e) {
+			// 		e.preventDefault();
+			// 	});
 			$('.js-lazy').lazyload();
 		}, 500);
 	});
-
-	$rootScope.markdown = function(item) {
-		return markdown(item);
-	};
 });
