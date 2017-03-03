@@ -1,9 +1,13 @@
 var active_navigation_class = 'active';
-
-$.fn.attr_safe = function(attribute) {
+var $$ = function(selector) {
+	return angular.element(document.body.querySelectorAll(selector) || []);
+}
+angular.element.prototype.attr_safe = function(attribute) {
 	return (typeof this.attr(attribute) !== typeof undefined || !this.attr(attribute)) ? this.attr(attribute) : 'undefined';
 };
-
+angular.element.prototype.siblings = function(selector) {
+	return this.parent().children(selector);
+};
 app = angular.module('myResume', ['ngRoute', 'ngSanitize', 'mm.foundation', 'ngTouch', 'ngAnimate'])
 .constant('Categories', {
 	skill: {
@@ -150,19 +154,18 @@ app = angular.module('myResume', ['ngRoute', 'ngSanitize', 'mm.foundation', 'ngT
 	$httpProvider.defaults.xsrfHeaderName = 'X-CSRFToken';
 }])
 .run(function($timeout, $rootScope, $http, $location, postJSON) {
-
 	$rootScope.nav = $rootScope.nav || {};
 	$http.get([$location.origin, '/api/person/', '?name=Italo&format=json'].join('')).then(function(person) {
 		$rootScope.nav.person = person.data[0];
 		$rootScope.nav.title = [$rootScope.nav.person.name, $rootScope.nav.person.lastname, "'s resume"].join('');
 	});
-
 	$rootScope.$on('$viewContentLoaded', function() {
 		$timeout(function() {
-			// $(document).on('click', 'a[href].active', function(e) {
-			// 		e.preventDefault();
-			// 	});
-			$('.js-lazy').lazyload();
+			var myLazyLoad = new LazyLoad({
+			    threshold: 500,
+			    elements_selector: ".js-lazy",
+			    throttle: 200,
+			});
 		}, 500);
 	});
 });

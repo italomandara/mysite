@@ -4,15 +4,12 @@ app.controller('alertController', ['$rootScope', function($rootScope) {
 	$rootScope.closeAlert = function(index) {
 		$rootScope.alerts.splice(index, 1);
 	};
-}]);
-
-app.controller('orbitController', ['$scope', function($scope) {
-}]);
-
-app.controller('offCanvasController', ['$scope', function($scope) {
-}]);
-
-app.controller('homeController', ['$rootScope', '$location', '$scope', '$http', 'navUpdate', 'Categories', function($rootScope, $location, $scope, $http, navUpdate, Categories) {
+}])
+.controller('orbitController', ['$scope', function($scope) {
+}])
+.controller('offCanvasController', ['$scope', function($scope) {
+}])
+.controller('homeController', ['$rootScope', '$location', '$scope', '$http', 'navUpdate', 'Categories', function($rootScope, $location, $scope, $http, navUpdate, Categories) {
 	$http.get([$location.origin, '/api/skill/', '?format=json'].join('')).then(function(skills_list) {
 		$scope.skills_list = skills_list.data;
 		$scope.skills_subcategories = $scope.skills_list.map(function(list) {
@@ -61,11 +58,12 @@ app.controller('homeController', ['$rootScope', '$location', '$scope', '$http', 
 	});
 
 	$scope.filter_el = function(e) {
-		var $el = $(e.target);
+		var $el = angular.element(e.target);
 		if (typeof e !== typeof undefined) {
 			e.preventDefault();
 		}
-		$el.addClass('active').siblings('[data-filter], [data-filter-sub]').removeClass('active');
+		$el.siblings('[data-filter], [data-filter-sub]').removeClass('active');
+		$el.addClass('active');
 		var category = $el.attr_safe('data-filter');
 		var subcategory = $el.attr_safe('data-filter-sub');
 		var el_class = '.category-' + category;
@@ -73,18 +71,17 @@ app.controller('homeController', ['$rootScope', '$location', '$scope', '$http', 
 
 		// '.subcategory-' + el_class_sub
 		if (typeof category !== typeof undefined && category.toLowerCase() === 'none') {
-			$('.js-filter').removeAttr('style');
+			$$('.js-filter').css('opacity', 1);
 		} else {
-			$('.js-filter').not(el_class + ', ' + el_class_sub).css({
+			$$('.js-filter:not('+el_class + ', ' + el_class_sub+')').css({
 				'opacity': 0.3,
 			});
-			$(el_class + ', ' + el_class_sub).removeAttr('style');
+			$$(el_class + ', ' + el_class_sub).css('opacity', 1);
 		}
 		return true;
 	};
-}]);
-
-app.controller('moreController', ['$rootScope', '$location', '$scope', '$http', 'navUpdate', 'Categories', function($rootScope, $location, $scope, $http, navUpdate, Categories) {
+}])
+.controller('moreController', ['$rootScope', '$location', '$scope', '$http', 'navUpdate', 'Categories', function($rootScope, $location, $scope, $http, navUpdate, Categories) {
 	$http.get([$location.origin, '/api/course/', '?format=json'].join('')).then(function(courses) {
 		$scope.courses = courses.data;
 	});
@@ -116,9 +113,8 @@ app.controller('moreController', ['$rootScope', '$location', '$scope', '$http', 
 			}
 		});
 	});
-}]);
-
-app.controller('thoughtsController', ['$rootScope', '$location', '$scope', '$http', 'navUpdate', 'Categories', function($rootScope, $location, $scope, $http, navUpdate, Categories) {
+}])
+.controller('thoughtsController', ['$rootScope', '$location', '$scope', '$http', 'navUpdate', 'Categories', function($rootScope, $location, $scope, $http, navUpdate, Categories) {
 	$http.get([$location.origin, '/api/post/', '?ordering=-created_at&format=json'].join('')).then(function(posts) {
 		$scope.posts = posts.data;
 	});
@@ -141,9 +137,8 @@ app.controller('thoughtsController', ['$rootScope', '$location', '$scope', '$htt
 			}
 		});
 	});
-}]);
-
-app.controller('postCategoriesController', ['$rootScope', '$location', '$scope', '$http', '$routeParams', 'navUpdate', 'slugify', 'getCategoryIdFromSlug', 'Categories', function($rootScope, $location, $scope, $http, $routeParams, navUpdate, slugify, getCategoryIdFromSlug, Categories) {
+}])
+.controller('postCategoriesController', ['$rootScope', '$location', '$scope', '$http', '$routeParams', 'navUpdate', 'slugify', 'getCategoryIdFromSlug', 'Categories', function($rootScope, $location, $scope, $http, $routeParams, navUpdate, slugify, getCategoryIdFromSlug, Categories) {
 	var cat = $routeParams.category;
 	var category = getCategoryIdFromSlug(Categories.post, cat);
 	$http.get([$location.origin, '/api/post/', '?ordering=-created_at&category=', category, '&format=json'].join('')).then(function(posts) {
@@ -176,9 +171,8 @@ app.controller('postCategoriesController', ['$rootScope', '$location', '$scope',
 			page: page
 		});
 	});
-}]);
-
-app.controller('postController', ['$rootScope', '$location', '$scope', '$http', '$routeParams', 'navUpdate', 'Categories', function($rootScope, $location, $scope, $http, $routeParams, navUpdate, Categories) {
+}])
+.controller('postController', ['$rootScope', '$location', '$scope', '$http', '$routeParams', 'navUpdate', 'Categories', function($rootScope, $location, $scope, $http, $routeParams, navUpdate, Categories) {
 	var slug = $routeParams.slug;
 
 	$http.get([$location.origin, '/api/post/', slug, '/?format=json'].join('')).then(function(post) {
@@ -198,10 +192,9 @@ app.controller('postController', ['$rootScope', '$location', '$scope', '$http', 
 			}
 		});
 	});
-}]);
-
-app.controller('contactController', ['$location', '$scope', '$rootScope', '$modal', '$http', '$log', 'postJSON', function($location, $scope, $rootScope,$modal, $http, postJSON, $log) {
-	var open = function() {
+}])
+.controller('contactController', ['$location', '$scope', '$rootScope', '$modal', '$http', 'postJSON', function($location, $scope, $rootScope,$modal, $http, postJSON) {
+	$scope.open = function() {
 		var params = {
 			templateUrl: DJ.static('js/angular/templates/shared/modal.html'),
 			controller: function($scope, $rootScope, $modalInstance, $http, postJSON) {
@@ -240,5 +233,4 @@ app.controller('contactController', ['$location', '$scope', '$rootScope', '$moda
 			$rootScope.alerts.push({type:'success', msg:"Thank you for contacting me, I'll read the notification along with your contact data and get back to you, see you soon!"});
 		},function(){});
 	};
-	$scope.open = open;
 }]);
