@@ -59,7 +59,7 @@ app.controller('alertController', ['$rootScope', function($rootScope) {
 
 	$scope.filter_el = function(e) {
 		var $el = angular.element(e.target);
-		if (typeof e !== typeof undefined) {
+		if (!angular.isUndefined(e)) {
 			e.preventDefault();
 		}
 		$el.siblings('[data-filter], [data-filter-sub]').removeClass('active');
@@ -70,7 +70,7 @@ app.controller('alertController', ['$rootScope', function($rootScope) {
 		var el_class_sub = '.subcategory-' + subcategory;
 
 		// '.subcategory-' + el_class_sub
-		if (typeof category !== typeof undefined && category.toLowerCase() === 'none') {
+		if (!angular.isUndefined(category) && category.toLowerCase() === 'none') {
 			$$('.js-filter').css('opacity', 1);
 		} else {
 			$$('.js-filter:not('+el_class + ', ' + el_class_sub+')').css({

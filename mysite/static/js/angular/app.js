@@ -3,7 +3,7 @@ var $$ = function(selector) {
 	return angular.element(document.body.querySelectorAll(selector) || []);
 }
 angular.element.prototype.attr_safe = function(attribute) {
-	return (typeof this.attr(attribute) !== typeof undefined || !this.attr(attribute)) ? this.attr(attribute) : 'undefined';
+	return (!angular.isUndefined(this.attr(attribute)) || !this.attr(attribute)) ? this.attr(attribute) : 'undefined';
 };
 angular.element.prototype.siblings = function(selector) {
 	return this.parent().children(selector);
@@ -38,9 +38,8 @@ app = angular.module('myResume', ['ngRoute', 'ngSanitize', 'mm.foundation', 'ngT
 })
 .factory('markdown', function() {
 	return function(item) {
-		var item_defined = typeof item !== typeof undefined;
 		var item_is_string = typeof item === typeof "a";
-		if (item_defined && item_is_string) {
+		if (!angular.isUndefined(item) && item_is_string) {
 			return marked(item);
 		} else {
 			return '';
@@ -87,7 +86,7 @@ app = angular.module('myResume', ['ngRoute', 'ngSanitize', 'mm.foundation', 'ngT
 			withCredentials: true,
 			data: obj,
 		}).then(function(data) {
-			if (typeof callback !== undefined) {
+			if (!angular.isUndefined(callback)) {
 				callback(data);
 			}
 		});

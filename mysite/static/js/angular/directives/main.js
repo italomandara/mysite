@@ -2,38 +2,33 @@ app.directive('includeReplace', function() {
   return {
     require: 'ngInclude',
     restrict: 'A',
-    /* optional */
     link: function(scope, el, attrs) {
       el.replaceWith(el.children());
     }
   };
-});
-
-app.directive('skill', function() { 
+})
+.directive('skill', function() { 
   return { 
     restrict: 'E', 
     templateUrl: DJ.static('js/angular/templates/skill.html'),
     replace: true
   }; 
-});
-
-app.directive('job', function() { 
+})
+.directive('job', function() { 
   return { 
     restrict: 'E', 
     templateUrl: DJ.static('js/angular/templates/job.html'),
     replace: true
   }; 
-});
-
-app.directive('post', function() { 
+})
+.directive('post', function() { 
   return { 
     restrict: 'E', 
     templateUrl: DJ.static('js/angular/templates/thoughts/partials/post.html'),
     replace: true
   }; 
-});
-
-app.directive('row', function() { 
+})
+.directive('row', function() { 
   return { 
     restrict: 'E',
     scope: { 
@@ -43,25 +38,22 @@ app.directive('row', function() {
     templateUrl: DJ.static('js/angular/templates/row.html'),
     replace: true
   }; 
-});
-
-app.directive('course', function() { 
+})
+.directive('course', function() { 
   return { 
     restrict: 'E',
     templateUrl: DJ.static('js/angular/templates/course.html'),
     replace: true
   }; 
-});
-
-app.directive('error', function() { 
+})
+.directive('error', function() { 
   return { 
     restrict: 'E',
     templateUrl: DJ.static('js/angular/templates/error.html'),
     replace: true
   }; 
-});
-
-app.directive('field', function() { 
+})
+.directive('field', function() { 
   return { 
     restrict: 'E',
     templateUrl: DJ.static('js/angular/templates/shared/field.html'),
@@ -77,25 +69,8 @@ app.directive('field', function() {
     replace: true,
     transclude: true,
   }; 
-});
-
-// app.directive('modal', function() { 
-//   return { 
-//     restrict: 'E',
-//     scope: { 
-//       modal: '=',
-//       form: '=',
-//       model: '=',
-//       title: '=',
-//       extraclass: '=',
-//     },
-//     templateUrl: DJ.static('js/angular/templates/shared/modal.html'),
-//     replace: true,
-//     transclude: true,
-//   }; 
-// });
-
-app.directive('backgroundimage', function(){
+})
+.directive('backgroundimage', function(){
     return function(scope, element, attrs){
         var url = attrs.backgroundimage;
         element.css({
