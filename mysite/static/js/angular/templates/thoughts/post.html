@@ -7,7 +7,7 @@
 			</div>
 			<div class="margin top" ng-controller="orbitController">
 				<div class="orbit" role="region" aria-label='Posted by {{ post.author }} on {{ post.created_at|date:"d MMM yyyy" }}' data-orbit>
-					<ul class="orbit-container slide-in-left slow ease-in-out mui-enter mui-enter ">
+					<ul class="orbit-container slide-in-left slow ease-in-out mui-enter mui-enter " style="transform: translateX(0)" >
 						<li ng-if="post.article_image1" class="orbit-slide is-active"><img class="js-lazy margin bottom xsmall" ng-src="{{ post.article_image1|resize:'width:1000,height:500,fit:crop' }}"></li>
 						<li ng-if="post.article_image2" class="orbit-slide"><img class="js-lazy margin bottom xsmall" ng-src="{{ post.article_image2|resize:'width:1000,height:500,fit:crop' }}"></li>
 					</ul>
