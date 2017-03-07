@@ -1,15 +1,15 @@
 <li>
-    <a class="{{ nav.page.index }}" href="#">Home</a>
+    <a ng-class="nav.page.index" href="#">Home</a>
 </li>
 <li>
-    <a ng-class="{{ nav.page.more }}" href="#more">More</a>
+    <a ng-class="nav.page.more" href="#more">More</a>
 </li>
 <li style="position:relative" role="menuitem" class="is-dropdown-submenu-parent opens-right" aria-haspopup="true" aria-expanded="false" aria-label="Thoughts">
-	<a ng-class="{{ nav.page.thoughts }}" href="#thoughts">Thoughts</a>
+	<a ng-class="nav.page.thoughts" href="#thoughts">Thoughts</a>
 	
 	<ul class="menu vertical submenu nested first-sub">
-		<li class="hide-for-medium"><a class="{{ nav.page.thoughts }}" href="#thoughts">All</a></li>
-		<li ng-repeat="item in nav.post_categories"><a class="{{ nav.page[item] }}" href="#thoughts/categories/{{ item|slugify }}">{{ item }}</a></li>
+		<li class="hide-for-medium"><a ng-class="nav.page.thoughts" href="#thoughts">All</a></li>
+		<li ng-repeat="item in nav.post_categories"><a ng-class="nav.page[item]" href="#thoughts/categories/{{ item|slugify }}">{{ item }}</a></li>
 	</ul>
 	
 </li>
