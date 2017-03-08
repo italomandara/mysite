@@ -139,7 +139,7 @@ app.controller('alertController', ['$rootScope', function($rootScope) {
 	});
 }])
 .controller('postCategoriesController', ['$rootScope', '$location', '$scope', '$http', '$stateParams', 'navUpdate', 'slugify', 'getCategoryIdFromSlug', 'Categories', function($rootScope, $location, $scope, $http, $stateParams, navUpdate, slugify, getCategoryIdFromSlug, Categories) {
-	var cat = slugify($stateParams.category);
+	var cat = $stateParams.category;
 	var category = getCategoryIdFromSlug(Categories.post, cat);
 	$http.get([$location.origin, '/api/post/', '?ordering=-created_at&category=', category, '&format=json'].join('')).then(function(posts) {
 		$scope.posts = posts.data;
@@ -174,7 +174,6 @@ app.controller('alertController', ['$rootScope', function($rootScope) {
 }])
 .controller('postController', ['$rootScope', '$location', '$scope', '$http', '$stateParams', 'navUpdate', 'Categories', function($rootScope, $location, $scope, $http, $stateParams, navUpdate, Categories) {
 	var slug = $stateParams.slug;
-	console.log(slug);
 	$http.get([$location.origin, '/api/post/', slug, '/?format=json'].join('')).then(function(post) {
 		$scope.post = post.data;
 		$scope.post.get_category = function(a) {
