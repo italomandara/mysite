@@ -7,7 +7,13 @@
 	<head>
 		{% compress js %}
 			<script type="text/javascript" src="{% static 'js/jquery.js' %}"></script>
-			<script type="text/javascript" src="{% static 'js/jquery.lazyload.js' %}"></script>
+			<script type="text/javascript" src="{% static 'js/angular/angular.js' %}"></script>
+			<script type="text/javascript" src="{% static 'js/angular/marked.js' %}"></script>
+			<script type="text/javascript" src="{% static 'js/angular/angular-animate.js' %}"></script>
+			<script type="text/javascript" src="{% static 'js/angular/angular-foundation.js' %}"></script>
+			<script type="text/javascript" src="{% static 'js/angular/angular-touch.js' %}"></script>
+			<script type="text/javascript" src="{% static 'js/angular/angular-ui-router.js' %}"></script>
+			<script type="text/javascript" src="{% static 'js/angular/angular-sanitize.js' %}"></script>
 			<script>
 				var DJ = {}, settings = {};
 				DJ.static = function(url) {
@@ -17,16 +23,19 @@
 					FILEPICKER_API_KEY: '{{ settings.FILEPICKER_API_KEY }}'
 				};
 			</script>
-			<script type="text/javascript" src="{% static 'js/angular/angular.js' %}"></script>
-			<script type="text/javascript" src="{% static 'js/angular/marked.js' %}"></script>
-			<script type="text/javascript" src="{% static 'js/angular/angular-animate.js' %}"></script>
-			<script type="text/javascript" src="{% static 'js/angular/angular-foundation.js' %}"></script>
-			<script type="text/javascript" src="{% static 'js/angular/angular-touch.js' %}"></script>
-			<script type="text/javascript" src="{% static 'js/angular/angular-route.js' %}"></script>
-			<script type="text/javascript" src="{% static 'js/angular/angular-sanitize.js' %}"></script>
+			<script type="text/javascript" src="{% static 'js/angular/config.js' %}"></script>
 			<script type="text/javascript" src="{% static 'js/angular/app.js' %}"></script>
-			<script type="text/javascript" src="{% static 'js/angular/directives/main.js' %}"></script>
+			<script type="text/javascript" src="{% static 'js/angular/directives/_directives.js' %}"></script>
+			<script type="text/javascript" src="{% static 'js/angular/directives/course.js' %}"></script>
+			<script type="text/javascript" src="{% static 'js/angular/directives/field.js' %}"></script>
+			<script type="text/javascript" src="{% static 'js/angular/directives/row.js' %}"></script>
+			<script type="text/javascript" src="{% static 'js/angular/directives/error.js' %}"></script>
+			<script type="text/javascript" src="{% static 'js/angular/directives/job.js' %}"></script>
+			<script type="text/javascript" src="{% static 'js/angular/directives/post.js' %}"></script>
+			<script type="text/javascript" src="{% static 'js/angular/directives/skill.js' %}"></script>
 			<script type="text/javascript" src="{% static 'js/angular/controllers/controllers.js' %}"></script>
+			<script type="text/javascript" src="{% static 'js/lazyload.js' %}"></script>
+
 		{% endcompress %}
 		{% verbatim %}
 		<meta charset="utf-8">

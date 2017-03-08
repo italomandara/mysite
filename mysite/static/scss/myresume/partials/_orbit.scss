@@ -4,6 +4,10 @@
     }
 }
 
+.orbit-container {
+	height: auto;
+}
+
 .orbit-bullets button{
 		@include breakpoint(small only) {
 		width: 1.5rem;

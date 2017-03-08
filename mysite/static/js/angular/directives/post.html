@@ -1,0 +1,12 @@
+<div class="category-{{ get_post_category(post.category)|slugify }} tag-{{ post.tag }}">
+	<a class="no-color-hover" ui-sref="posts({slug: post.slug})">
+		<h3 class="">{{ post.title }}</h3>
+		<h5 class="subtitle">{{ post.subtitle }}</h5>
+	</a>
+	<p class="small margin bottom set-text-color to-gray"><small>by {{ post.author }} {{ post.created_at|date:'dd MMM yyyy' }}</small></p>
+
+	<div class="small margin bottom"><a ui-sref="posts({slug: post.slug})"><img class="margin bottom js-lazy" ng-src="{{post.featured_image|effect:'resize=width:350/output=q:30/'}}" data-original="{{ post.featured_image|resize:'width:700' }}"></a>{{ post.body| limitTo:100 }} <a ui-sref="posts({slug: post.slug})">Read more.</a></div>
+	<p>
+		<span class="secondary label">{{ get_post_category(post.category) }}</span>
+	</p>
+</div>

@@ -33,12 +33,12 @@
 			{% if skills_list|length %}
 				<h4 class="margin bottom set-text-color to-white">{% trans "Skills list" %}</h4>
 				{% for skill_category in skill_categories %}
-					<a href="#" class="button small secondary" data-filter="{{ skill_category.1|slugify }}">{{ skill_category.1 }}</a>
+					<a href="#" class="button filter small secondary" data-filter="{{ skill_category.1|slugify }}">{{ skill_category.1 }}</a>
 				{% endfor %}
 				{% for skill_subcategory in skill_subcategories %}
-					<a href="#" class="button small secondary" data-filter-sub="{{ skill_subcategory.0|slugify }}">{{ skill_subcategory.0 }}</a>
+					<a href="#" class="button filter small secondary" data-filter-sub="{{ skill_subcategory.0|slugify }}">{{ skill_subcategory.0 }}</a>
 				{% endfor %}
-					<a href="#" class="button small secondary active" data-filter="none">{% trans 'All' %}</a>
+					<a href="#" class="button filter small secondary active" data-filter="none">{% trans 'All' %}</a>
 				<div class="masonry small-masonry-1 medium-masonry-2 large-masonry-4">
 					{% for skill in skills_list %}{% include 'home/partials/skill.html' %}{% endfor %}
 				</div>
