@@ -1,4 +1,4 @@
-<figure id="hero" class="row-wrapper cover {{ nav.hero_class }} hero" style="background-image: url({{ nav.hero_image }}); background-position: center center;">
+<figure id="hero" class="js-non-lazy row-wrapper cover {{ nav.hero_class }} hero" style="background-image: url({{ nav.hero_image|effect:'output=q:90/' }}); background-position: center center;" data-original="{{nav.hero_image}}">
 	<video autoplay preload loop ng-if="nav.is_video">
 		<source ng-src="{{ nav.intro.video_primary }}" type="video/mp4">
 	</video>

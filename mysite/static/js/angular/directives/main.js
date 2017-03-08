@@ -67,30 +67,32 @@ app.directive('field', function() {
     templateUrl: DJ.static('js/angular/templates/shared/field.html'),
     scope: { 
       field: '=',
+      submitted: '=',
+      form: '=',
       error: '=',
       model: '=',
       name: '='
     },
-    replace: true
-  }; 
-});
-
-app.directive('modal', function() { 
-  return { 
-    restrict: 'E',
-    scope: { 
-      modal: '=',
-      form: '=',
-      model: '=',
-      mid: '=',
-      title: '=',
-      extraclass: '=',
-    },
-    templateUrl: DJ.static('js/angular/templates/shared/modal.html'),
     replace: true,
     transclude: true,
   }; 
 });
+
+// app.directive('modal', function() { 
+//   return { 
+//     restrict: 'E',
+//     scope: { 
+//       modal: '=',
+//       form: '=',
+//       model: '=',
+//       title: '=',
+//       extraclass: '=',
+//     },
+//     templateUrl: DJ.static('js/angular/templates/shared/modal.html'),
+//     replace: true,
+//     transclude: true,
+//   }; 
+// });
 
 app.directive('backgroundimage', function(){
     return function(scope, element, attrs){

@@ -1,3 +1,17 @@
+app.controller('alertController', ['$rootScope', function($rootScope) {
+	$rootScope.alerts = [];
+
+	$rootScope.closeAlert = function(index) {
+		$rootScope.alerts.splice(index, 1);
+	};
+}]);
+
+app.controller('orbitController', ['$scope', function($scope) {
+}]);
+
+app.controller('offCanvasController', ['$scope', function($scope) {
+}]);
+
 app.controller('homeController', ['$rootScope', '$location', '$scope', '$http', 'navUpdate', function($rootScope, $location, $scope, $http, navUpdate) {
 	$http.get([$location.origin, '/api/skill/', '?format=json'].join('')).then(function(skills_list) {
 		$scope.skills_list = skills_list.data;
@@ -186,25 +200,44 @@ app.controller('postController', ['$rootScope', '$location', '$scope', '$http', 
 	});
 }]);
 
-app.controller('contactController', ['$location', '$scope', '$http', 'postJSON', function($location, $scope, $http, postJSON) {
-	var url = '/api/contact/'
-	$http({
-		method: "OPTIONS",
-		url: [$location.origin, url].join(''),
-		withCredentials: true,
-	}).then(function(form) {
-		$scope.form = form.data.actions.POST;
-		$scope.form.message.type = 'textarea';
-		$scope.form.email.type = 'email';
-	});
-	$scope.model = {};
-	$scope.postJSON = function(is_valid, e) {
-		$scope.submitted = true;
-		if (is_valid) {
-			postJSON($scope.model, url, function(data) {
-				$('#contact-thank-you').foundation('open');
-			});
-		}
+app.controller('contactController', ['$location', '$scope', '$rootScope', '$modal', '$http', '$log', 'postJSON', function($location, $scope, $rootScope,$modal, $http, postJSON, $log) {
+	var open = function() {
+		var params = {
+			templateUrl: DJ.static('js/angular/templates/shared/modal.html'),
+			controller: function($scope, $rootScope, $modalInstance, $http, postJSON) {
+				var url = '/api/contact/'
+				$http({
+					method: "OPTIONS",
+					url: [$location.origin, url].join(''),
+					withCredentials: true,
+				}).then(function(form) {
+					$scope.form = form.data.actions.POST;
+					$scope.form.message.type = 'textarea';
+					$scope.form.email.type = 'email';
+				});
+				$scope.model = {};
+				$scope.title = 'Contact form';
+				$scope.modal_content = DJ.static('js/angular/templates/modals/contact.html');
+				$scope.ok = function(is_valid, e) {
+					$scope.submitted = true;
+					if (is_valid) {
+						postJSON($scope.model, url, function($rootScope) {
+							$modalInstance.close();
+						});
+					}
+				};
+				$scope.email = "please enter a valid email address";
+				$scope.required = "this field is required";
+				$scope.phone = "please enter a valid phone number";
+				$scope.cancel = function() {
+					$modalInstance.dismiss('cancel');
+				};
+			}
+		};
+		var modalInstance = $modal.open(params);
+		modalInstance.result.then(function() {
+			$rootScope.alerts.push({type:'success', msg:"Thank you for contacting me, I'll read the notification along with your contact data and get back to you, see you soon!"});
+		},function(){});
 	};
+	$scope.open = open;
 }]);
-

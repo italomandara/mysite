@@ -29,7 +29,10 @@
             right: -$grid-column-gutter/2;
         } 
     }
-    
+    @extend .vertical-center-container;
+    [ng-transclude]{
+        @extend .vertical-center;
+    }
 }
 .modal-wrapper{
     text-align: left;

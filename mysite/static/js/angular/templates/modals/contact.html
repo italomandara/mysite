@@ -1,4 +1,4 @@
-<form name="contactform" class="simple-form" ng-submit="postJSON(contactform.$valid, $event)" style="width: 100%;" data-abide novalidate>
+<form name="contactform" class="simple-form" ng-submit="ok(contactform.$valid, $event)" style="width: 100%;" novalidate>
     <p>
         To send me a contact request please fill in all fields and submit the form. Fields marked with a
         <span class="hilight">*</span>
@@ -9,23 +9,23 @@
     </div>
     <div class="row">
         <div class="medium-6 column">
-            <field model=model name="'name'" field="form.name" error="required" >
+            <field model=model name="'name'" submitted="submitted" form="contactform" field="form.name" error="required" ></field>
         </div>
         <div class="medium-6 column">
-            <field model=model name="'phone'" field="form.phone" error="phone" >
+            <field model=model name="'phone'" submitted="submitted" form="contactform" field="form.phone" error="phone" ></field>
         </div>
     </div>
     <div class="row margin bottom">
         <div class="medium-6 column">
-            <field model=model name="'company'" field="form.company" >
+            <field model=model name="'company'" submitted="submitted" form="contactform" field="form.company" ></field>
         </div>
         <div class="medium-6 column">
-            <field model=model name="'email'" field="form.email" error="email" >
+            <field model=model name="'email'" submitted="submitted" form="contactform" field="form.email" error="email" ></field>
         </div>
     </div>
     <div class="row">
         <div class="small-12 column">
-            <field model=model name="'message'" field="form.message" error="required" >
+            <field model=model name="'message'" submitted="submitted" form="contactform" field="form.message" error="required" ></field>
         </div>
         <div class="small-12 medium-2 column">
             <button type="submit" class="button expand" >Send</button>

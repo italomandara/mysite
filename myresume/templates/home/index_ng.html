@@ -7,36 +7,6 @@
 	<head>
 		{% compress js %}
 			<script type="text/javascript" src="{% static 'js/jquery.js' %}"></script>
-			<script type="text/javascript" src="{% static 'js/foundation.core.js' %}"></script>
-			<script type="text/javascript" src="{% static 'js/foundation.sticky.js' %}"></script>
-			<script type="text/javascript" src="{% static 'js/foundation.abide.js' %}"></script>
-			<script type="text/javascript" src="{% static 'js/foundation.accordion.js' %}"></script>
-			<script type="text/javascript" src="{% static 'js/foundation.accordionMenu.js' %}"></script>
-			<script type="text/javascript" src="{% static 'js/foundation.drilldown.js' %}"></script>
-			<script type="text/javascript" src="{% static 'js/foundation.dropdown.js' %}"></script>
-			<script type="text/javascript" src="{% static 'js/foundation.dropdownMenu.js' %}"></script>
-			<script type="text/javascript" src="{% static 'js/foundation.equalizer.js' %}"></script>
-			<script type="text/javascript" src="{% static 'js/foundation.interchange.js' %}"></script>
-			<script type="text/javascript" src="{% static 'js/foundation.magellan.js' %}"></script>
-			<script type="text/javascript" src="{% static 'js/foundation.offcanvas.js' %}"></script>
-			<script type="text/javascript" src="{% static 'js/foundation.orbit.js' %}"></script>
-			<script type="text/javascript" src="{% static 'js/foundation.responsiveMenu.js' %}"></script>
-			<script type="text/javascript" src="{% static 'js/foundation.responsiveToggle.js' %}"></script>
-			<script type="text/javascript" src="{% static 'js/foundation.reveal.js' %}"></script>
-			<script type="text/javascript" src="{% static 'js/foundation.slider.js' %}"></script>
-			<script type="text/javascript" src="{% static 'js/foundation.tabs.js' %}"></script>
-			<script type="text/javascript" src="{% static 'js/foundation.toggler.js' %}"></script>
-			<script type="text/javascript" src="{% static 'js/foundation.tooltip.js' %}"></script>
-			<script type="text/javascript" src="{% static 'js/foundation.util.box.js' %}"></script>
-			<script type="text/javascript" src="{% static 'js/foundation.util.keyboard.js' %}"></script>
-			<script type="text/javascript" src="{% static 'js/foundation.util.mediaQuery.js' %}"></script>
-			<script type="text/javascript" src="{% static 'js/foundation.util.motion.js' %}"></script>
-			<script type="text/javascript" src="{% static 'js/foundation.util.nest.js' %}"></script>
-			<script type="text/javascript" src="{% static 'js/foundation.util.timerAndImageLoader.js' %}"></script>
-			<script type="text/javascript" src="{% static 'js/foundation.util.touch.js' %}"></script>
-			<script type="text/javascript" src="{% static 'js/foundation.util.triggers.js' %}"></script>
-			<script type="text/javascript" src="{% static 'js/what-input.js' %}"></script>
-			<script type="text/javascript" src="{% static 'js/angular/marked.js' %}"></script>
 			<script type="text/javascript" src="{% static 'js/jquery.lazyload.js' %}"></script>
 			<script>
 				var DJ = {}, settings = {};
@@ -48,6 +18,10 @@
 				};
 			</script>
 			<script type="text/javascript" src="{% static 'js/angular/angular.js' %}"></script>
+			<script type="text/javascript" src="{% static 'js/angular/marked.js' %}"></script>
+			<script type="text/javascript" src="{% static 'js/angular/angular-animate.js' %}"></script>
+			<script type="text/javascript" src="{% static 'js/angular/angular-foundation.js' %}"></script>
+			<script type="text/javascript" src="{% static 'js/angular/angular-touch.js' %}"></script>
 			<script type="text/javascript" src="{% static 'js/angular/angular-route.js' %}"></script>
 			<script type="text/javascript" src="{% static 'js/angular/angular-sanitize.js' %}"></script>
 			<script type="text/javascript" src="{% static 'js/angular/app.js' %}"></script>
@@ -60,9 +34,9 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
 		<title>{{ nav.page.title }} | Italo Mandara cv</title>
 		<meta name="description" content="{{ nav.page.description }}">
-		<link href="https://fonts.googleapis.com/css?family=Roboto:300,300italic,700|Oswald" rel="stylesheet" />
 		{% endverbatim %}
-		<link href="{% sass_src 'scss/app.scss' %}" rel="stylesheet" type="text/css" />
+		<link href="https://fonts.googleapis.com/css?family=Roboto:300,300italic,700|Oswald" rel="stylesheet" />
+		<link href="{% sass_src 'scss/app_ng.scss' %}" rel="stylesheet" type="text/css" />
 		<link rel="icon" href="{% static "favicon.ico" %}" type="image/x-icon">
 	</head>
 	<body>
