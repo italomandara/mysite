@@ -1,15 +1,4 @@
-var active_navigation_class = 'active';
-var $$ = function(selector) {
-	return angular.element(document.body.querySelectorAll(selector) || []);
-}
-angular.element.prototype.attr_safe = function(attribute) {
-	return (!angular.isUndefined(this.attr(attribute)) || !this.attr(attribute)) ? this.attr(attribute) : 'undefined';
-};
-angular.element.prototype.siblings = function(selector) {
-	return this.parent().children(selector);
-};
-app = angular.module('myResume', ['ngRoute', 'ngSanitize', 'mm.foundation', 'ngTouch', 'ngAnimate'])
-.constant('Categories', {
+app.constant('Categories', {
 	skill: {
 		'PR': 'Print',
 		'DS': 'Design',
@@ -115,43 +104,6 @@ app = angular.module('myResume', ['ngRoute', 'ngSanitize', 'mm.foundation', 'ngT
 		return !!value && !!arg ? output_string: '';
 	};
 })
-.config(['$locationProvider', '$routeProvider',
-	function config($locationProvider, $routeProvider) {
-		// $locationProvider.html5Mode(true);
-		$locationProvider.hashPrefix('');
-		// $locationProvider.html5Mode(true);
-		$routeProvider
-			.when('/', {
-				templateUrl: DJ.static('js/angular/templates/home.html'),
-				controller: 'homeController'
-			})
-			.when('/more', {
-				templateUrl: DJ.static('js/angular/templates/more.html'),
-				controller: 'moreController'
-			})
-			.when('/thoughts', {
-				templateUrl: DJ.static('js/angular/templates/thoughts/index.html'),
-				controller: 'thoughtsController'
-			})
-			.when('/thoughts/categories/:category', {
-				templateUrl: DJ.static('js/angular/templates/thoughts/category.html'),
-				controller: 'postCategoriesController'
-			})
-			.when('/thoughts/posts/:slug', {
-				templateUrl: DJ.static('js/angular/templates/thoughts/post.html'),
-				controller: 'postController'
-			})
-			.when('/404', {
-				templateUrl: DJ.static('js/angular/templates/404.html'),
-				controller: 'homeController'
-			})
-			.otherwise({redirectTo:'/404'});
-	}
-])
-.config(['$httpProvider', function($httpProvider) {
-	$httpProvider.defaults.xsrfCookieName = 'csrftoken';
-	$httpProvider.defaults.xsrfHeaderName = 'X-CSRFToken';
-}])
 .run(function($timeout, $rootScope, $http, $location, postJSON) {
 	$rootScope.nav = $rootScope.nav || {};
 	$http.get([$location.origin, '/api/person/', '?name=Italo&format=json'].join('')).then(function(person) {
