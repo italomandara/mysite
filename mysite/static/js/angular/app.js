@@ -156,7 +156,7 @@ app = angular.module('myResume', ['ngRoute', 'ngSanitize', 'mm.foundation', 'ngT
 	$rootScope.nav = $rootScope.nav || {};
 	$http.get([$location.origin, '/api/person/', '?name=Italo&format=json'].join('')).then(function(person) {
 		$rootScope.nav.person = person.data[0];
-		$rootScope.nav.title = [$rootScope.nav.person.name, $rootScope.nav.person.lastname, "'s resume"].join('');
+		$rootScope.nav.title = [$rootScope.nav.person.name, ' ', $rootScope.nav.person.lastname, "'s resume"].join('');
 	});
 	$rootScope.$on('$viewContentLoaded', function() {
 		$timeout(function() {
