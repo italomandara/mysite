@@ -9,7 +9,7 @@
 	
 	<ul class="menu vertical submenu nested first-sub">
 		<li class="hide-for-medium"><a ng-class="nav.page.thoughts" ui-sref="thoughts">All</a></li>
-		<li ng-repeat="item in nav.post_categories"><a ng-class="nav.page[item]" ui-sref="category({category: slugify(item) })">{{ item }}</a></li>
+		<li ng-repeat="item in nav.post_categories"><a ng-class="nav.page[item]" ui-sref="category({category: item })">{{ item }}</a></li>
 	</ul>
 	
 </li>
