@@ -17,12 +17,6 @@ app.constant('Categories', {
 		'CS': 'Courses',
 		'CD': 'Coding',
 	},
-	post_categories_slugs: {
-		'TC': {slug:'technology', name: 'Technology'},
-		'LF': {slug:'life', name: 'Life'},
-		'CS': {slug:'courses', name: 'Courses'},
-		'CD': {slug:'coding', name: 'Coding'},
-	},
 	course: {
 		'PR': 'Print',
 		'DS': 'Design',
@@ -50,6 +44,17 @@ app.constant('Categories', {
 		return output_string;
 	}
 })
+.factory('getCategoriesSlugs', ['Categories', 'slugify', function(Categories, slugify) {
+	return function(mymodel) {
+		var obj = {};
+		var categories = Categories[mymodel];
+		for (var idx in categories) {
+			var cat = categories[idx]
+			obj[idx] = {slug: slugify(cat), name: cat};
+		}
+		return obj;
+	};
+}])
 .factory('getCategoryIdFromSlug', ['slugify', function(slugify){
 	return function( obj, value ) {
     for( var prop in obj ) {
@@ -60,13 +65,13 @@ app.constant('Categories', {
     }
 }
 }])
-.factory('navUpdate', ['$rootScope', 'Categories', function($rootScope, Categories){
+.factory('navUpdate', ['$rootScope', 'getCategoriesSlugs', function($rootScope, getCategoriesSlugs){
 	return function(obj) {
 		var h1 = obj.intro.h1 || obj.intro.title,
 		h2 = obj.intro.h2 || obj.intro.subtitle,
 		hero_image = obj.intro.image_primary || obj.intro.featured_image;
 		$rootScope.nav = angular.extend($rootScope.nav, obj);
-		$rootScope.nav.post_categories = Categories.post_categories_slugs;
+		$rootScope.nav.post_categories = getCategoriesSlugs('post');
 		$rootScope.nav.hero_title = h1;
 		$rootScope.nav.hero_subtitle = h2;
 		$rootScope.nav.hero_image = hero_image;
