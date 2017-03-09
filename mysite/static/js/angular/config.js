@@ -9,9 +9,10 @@ angular.element.prototype.siblings = function(selector) {
 	return this.parent().children(selector);
 };
 app = angular.module('myResume', ['ui.router', 'ngSanitize', 'mm.foundation', 'ngTouch', 'ngAnimate'])
-.config(['$stateProvider', '$urlRouterProvider',
-	function($stateProvider, $urlRouterProvider) {
+.config(['$stateProvider', '$urlRouterProvider', '$locationProvider',
+	function($stateProvider, $urlRouterProvider, $locationProvider) {
 
+		$locationProvider.hashPrefix('');
 		$urlRouterProvider.otherwise('/');
 
 			$stateProvider.state('home', {

@@ -46,7 +46,6 @@ app.controller('alertController', ['$rootScope', function($rootScope) {
 			page: {
 				'title': 'home',
 				'name': 'home',
-				'index': active_navigation_class,
 			}
 		});
 	});
@@ -109,7 +108,6 @@ app.controller('alertController', ['$rootScope', function($rootScope) {
 			page: {
 				'title': 'more',
 				'name': 'more',
-				'more': active_navigation_class,
 			}
 		});
 	});
@@ -133,7 +131,6 @@ app.controller('alertController', ['$rootScope', function($rootScope) {
 			page: {
 				'title': 'blog',
 				'name': 'thoughts',
-				'thoughts': active_navigation_class,
 			}
 		});
 	});
@@ -160,7 +157,6 @@ app.controller('alertController', ['$rootScope', function($rootScope) {
 		var page = {
 			'title': cat,
 			'name': 'thoughts',
-			'thoughts': active_navigation_class,
 		}
 		page[Categories.post[category]] = active_navigation_class;
 		navUpdate({
@@ -187,7 +183,6 @@ app.controller('alertController', ['$rootScope', function($rootScope) {
 			page: {
 				'title': 'Post | ' + $scope.post.title,
 				'name': 'Blog post',
-				'thoughts': active_navigation_class,
 			}
 		});
 	});
