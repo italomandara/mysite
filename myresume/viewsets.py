@@ -4,6 +4,9 @@ from rest_framework.views import APIView
 from rest_framework.response import Response
 from rest_framework import status
 from rest_framework import viewsets, filters, mixins
+
+from django.conf import settings
+from django.contrib.staticfiles.templatetags.staticfiles import static
 from .models import Person, Skill, MyContent, Job, Course, Post, Contact
 from .serializers import PersonSerializer, SkillSerializer, MyContentSerializer, JobSerializer, CourseSerializer, PostSerializer, ContactSerializer
 from .permissions import IsOwnerOrReadOnly
@@ -59,40 +62,7 @@ class ContactViewSet(mixins.CreateModelMixin, mixins.ListModelMixin, viewsets.Ge
 	serializer_class = ContactSerializer
 	http_method_names = ['post', 'options']
 
-class SkillCategoryViewSet(APIView):
-
-	def get(self, request, *args, **kw):
-		myClass = Skill(*args, **kw)
-		result = myClass.get_categories()
-		response = Response(result, status=status.HTTP_200_OK)
-		return response
-
-class JobCategoryViewSet(APIView):
-
-	def get(self, request, *args, **kw):
-		myClass = Job(*args, **kw)
-		result = myClass.get_categories()
-		response = Response(result, status=status.HTTP_200_OK)
-		return response
-
-class CourseCategoryViewSet(APIView):
-
-	def get(self, request, *args, **kw):
-		myClass = Course(*args, **kw)
-		result = myClass.get_categories()
-		response = Response(result, status=status.HTTP_200_OK)
-		return response
-
-class PostCategoryViewSet(APIView):
-
-	def get(self, request, *args, **kw):
-		myClass = Post(*args, **kw)
-		result = myClass.get_categories()
-		response = Response(result, status=status.HTTP_200_OK)
-		return response
-
 class AllCategoryViewSet(APIView):
-
 	def get(self, request, *args, **kw):
 		skillCategories = Skill(*args, **kw)
 		jobCategories = Job(*args, **kw)
@@ -103,6 +73,15 @@ class AllCategoryViewSet(APIView):
 			'job': jobCategories.get_categories(),
 			'course': courseCategories.get_categories(),
 			'post': postCategories.get_categories()
+		}
+		response = Response(result, status=status.HTTP_200_OK)
+		return response
+
+class SettingsViewSet(APIView):
+	def get(self, request, *args, **kw):
+		result = {
+			'STATIC_ROOT': static(''),
+			'FILEPICKER_API_KEY': settings.FILEPICKER_API_KEY,
 		}
 		response = Response(result, status=status.HTTP_200_OK)
 		return response

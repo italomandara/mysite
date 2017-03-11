@@ -1,7 +1,7 @@
-app.directive('field', function() { 
+app.directive('field', ['static', function(static) { 
   return { 
     restrict: 'E',
-    templateUrl: DJ.static('js/angular/directives/field.html'),
+    templateUrl: static('js/angular/directives/field.html'),
     scope: { 
       field: '=',
       submitted: '=',
@@ -14,4 +14,4 @@ app.directive('field', function() {
     replace: true,
     transclude: true,
   }; 
-});
+}]);

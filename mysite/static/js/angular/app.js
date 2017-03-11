@@ -8,6 +8,11 @@ app.factory('markdown', function() {
 		}
 	}
 })
+.factory('static', ['SETTINGS', function(SETTINGS) {
+	return function(item) {
+		return [SETTINGS.STATIC_ROOT, item].join('');
+	}
+}])
 .factory('slugify', function() {
 	return function(item) {
 		var output_string = item
@@ -76,18 +81,18 @@ app.factory('markdown', function() {
 		return output_string;
 	};
 }])
-.filter('effect', function() {
+.filter('effect', ['SETTINGS', function(SETTINGS) {
 	return function(value, arg) {
-		var output_string = "https://process.filestackapi.com/" + settings.FILEPICKER_API_KEY + "/" + encodeURI(arg) + "/" + value
+		var output_string = "https://process.filestackapi.com/" + SETTINGS.FILEPICKER_API_KEY + "/" + encodeURI(arg) + "/" + value
 		return !!value && !!arg ? output_string: '';
 	};
-})
-.filter('resize', function() {
+}])
+.filter('resize', ['SETTINGS', function(SETTINGS) {
 	return function(value, arg) {
-		var output_string = "https://process.filestackapi.com/" + settings.FILEPICKER_API_KEY + "/resize=" + encodeURI(arg) + "/" + value
+		var output_string = "https://process.filestackapi.com/" + SETTINGS.FILEPICKER_API_KEY + "/resize=" + encodeURI(arg) + "/" + value
 		return !!value && !!arg ? output_string: '';
 	};
-})
+}])
 .run(function($timeout, $rootScope, $http, $location, postJSON) {
 	$rootScope.nav = $rootScope.nav || {};
 	$http.get([$location.origin, '/api/person/', '?name=Italo&format=json'].join('')).then(function(person) {

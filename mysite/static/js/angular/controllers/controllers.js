@@ -80,7 +80,7 @@ app.controller('alertController', ['$rootScope', function($rootScope) {
 		return true;
 	};
 }])
-.controller('moreController', ['$rootScope', '$location', '$scope', '$http', 'navUpdate', 'CATEGORIES', function($rootScope, $location, $scope, $http, navUpdate, CATEGORIES) {
+.controller('moreController', ['$rootScope', '$location', '$scope', '$http', 'navUpdate', 'CATEGORIES', 'static', function($rootScope, $location, $scope, $http, navUpdate, CATEGORIES, static) {
 	$http.get([$location.origin, '/api/course/', '?format=json'].join('')).then(function(courses) {
 		$scope.courses = courses.data;
 	});
@@ -104,7 +104,7 @@ app.controller('alertController', ['$rootScope', function($rootScope) {
 			is_standard_hero: true,
 			intro: $scope.intro,
 			hero_class: '',
-			hero_image: DJ.static('img/bg.jpg'),
+			hero_image: static('img/bg.jpg'),
 			page: {
 				'title': 'more',
 				'name': 'more',
@@ -187,10 +187,10 @@ app.controller('alertController', ['$rootScope', function($rootScope) {
 		});
 	});
 }])
-.controller('contactController', ['$location', '$scope', '$rootScope', '$modal', '$http', 'postJSON', function($location, $scope, $rootScope,$modal, $http, postJSON) {
+.controller('contactController', ['$location', '$scope', '$rootScope', '$modal', '$http', 'postJSON', 'static', function($location, $scope, $rootScope,$modal, $http, postJSON, static) {
 	$scope.open = function() {
 		var params = {
-			templateUrl: DJ.static('js/angular/templates/shared/modal.html'),
+			templateUrl: static('js/angular/templates/shared/modal.html'),
 			controller: function($scope, $rootScope, $modalInstance, $http, postJSON) {
 				var url = '/api/contact/'
 				$http({
@@ -205,7 +205,7 @@ app.controller('alertController', ['$rootScope', function($rootScope) {
 				});
 				$scope.model = {};
 				$scope.title = 'Contact form';
-				$scope.modal_content = DJ.static('js/angular/templates/modals/contact.html');
+				$scope.modal_content = static('js/angular/templates/modals/contact.html');
 				$scope.ok = function(is_valid, e) {
 					$scope.submitted = true;
 					if (is_valid) {

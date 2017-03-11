@@ -1,11 +1,11 @@
-app.directive('row', function() { 
+app.directive('row', ['static', function(static) {
   return { 
     restrict: 'E',
     scope: { 
       mycontent: '=',
       customclass: '='
     },
-    templateUrl: DJ.static('js/angular/directives/row.html'),
+    templateUrl: static('js/angular/directives/row.html'),
     replace: true
   }; 
-});
+}]);

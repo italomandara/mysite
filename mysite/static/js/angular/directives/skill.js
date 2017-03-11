@@ -1,9 +1,9 @@
-app.directive('skill', function() { 
+app.directive('skill', ['static', function(static) { 
   return { 
     restrict: 'E', 
-    templateUrl: DJ.static('js/angular/directives/skill.html'),
+    templateUrl: static('js/angular/directives/skill.html'),
     replace: true
   }; 
-});
+}]);
 
 

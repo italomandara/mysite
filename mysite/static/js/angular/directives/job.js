@@ -1,7 +1,7 @@
-app.directive('job', function() { 
+app.directive('job', ['static', function(static) { 
   return { 
     restrict: 'E', 
-    templateUrl: DJ.static('js/angular/directives/job.html'),
+    templateUrl: static('js/angular/directives/job.html'),
     replace: true
   }; 
-});
+}]);
