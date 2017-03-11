@@ -29,8 +29,8 @@ class Skill(models.Model):
 	TYPES = (
         (PRINT , 'Print'),
         (DESIGN , 'Design'),
-        (CODING , 'Coding'),
-        (HUMAN , 'Human')
+        (CODING , 'Programming'),
+        (HUMAN , 'Other')
     )
 	category = models.CharField(
     	max_length = 2,
@@ -80,8 +80,8 @@ class Job(models.Model):
 	TYPES = (
         (PRINT , 'Print'),
         (DESIGN , 'Design'),
-        (CODING , 'Coding'),
-        (OTHER , 'Human')
+        (CODING , 'Programming'),
+        (OTHER , 'Other')
     )
 	category = models.CharField(
     	max_length = 2,
@@ -121,8 +121,8 @@ class Course(models.Model):
 	TYPES = (
         (PRINT , 'Print'),
         (DESIGN , 'Design'),
-        (CODING , 'Coding'),
-        (HUMAN , 'Human'),
+        (CODING , 'Programming'),
+        (HUMAN , 'Other'),
         (SCHOOL , 'School')
     )
 	category = models.CharField(
@@ -173,7 +173,7 @@ class Post(models.Model):
 		(TECH, 'Technology'),
 		(LIFE, 'Life'),
 		(COURSES, 'Courses'),
-		(CODING,'Coding'),
+		(CODING,'Programming'),
 	)
 	category = models.CharField(
     	max_length = 2,

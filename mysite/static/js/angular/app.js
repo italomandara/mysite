@@ -1,4 +1,5 @@
-app.factory('markdown', function() {
+app
+.factory('markdown', function() {
 	return function(item) {
 		var item_is_string = typeof item === typeof "a";
 		if (!angular.isUndefined(item) && item_is_string) {

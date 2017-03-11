@@ -13,6 +13,7 @@
 	</ul>
 	
 </li>
-<li ng-show="nav.person.available" ng-controller="contactController">
-    <a href="javascript:void(0)" ng-click="open()">Contact</a>
+<li ng-controller="contactController">
+    <a ng-if="nav.person.available" href="javascript:void(0)" ng-click="open()">Contact</a>
+    <a ng-show="!nav.person.available" href="javascript:void(0)" class="has-tip" tooltip-placement="top" tooltip="{{ nav.person.unavailable_msg }}">Contact</a>
 </li>
