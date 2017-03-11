@@ -48,7 +48,7 @@ class Skill(models.Model):
 		return dict(self.TYPES)[self.category]
 
 	def get_categories(self):
-		return self.TYPES
+		return dict(self.TYPES)
 
 	def get_subcategories(self):
 		return self.objects.values_list('subcategory').distinct()
@@ -105,6 +105,9 @@ class Job(models.Model):
 	def get_job_category(self):
 		return dict(self.TYPES)[self.category]
 
+	def get_categories(self):
+		return dict(self.TYPES)
+
 	def __unicode__(self):
 		return self.name
 
@@ -140,6 +143,9 @@ class Course(models.Model):
 
 	def get_course_category(self):
 		return dict(self.TYPES)[self.category]
+
+	def get_categories(self):
+		return dict(self.TYPES)
 
 	def __unicode__(self):
 		return self.title
@@ -190,6 +196,9 @@ class Post(models.Model):
 
 	def get_category(self):
 		return dict(self.CATEGORIES)[self.category]
+
+	def get_categories(self):
+		return dict(self.CATEGORIES)
 
 	def get_tag(self):
 		return self.objects.values_list('tag').distinct()

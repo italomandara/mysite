@@ -1,5 +1,5 @@
 from django.conf.urls import include, url
-from . import views
+from . import views, viewsets
 from .routers import *
 
 urlpatterns = [
@@ -15,5 +15,10 @@ urlpatterns = [
 urlpatterns += [
     url(r'^$', views.index_ng, name='index_ng'),
     # url(r'api/', include('rest_framework.urls', namespace='rest_framework')),
-    url(r'api/', include(router.urls), name='api')
+    url(r'api/', include(router.urls), name='api'),
+    url(r'api/categories/', AllCategoryViewSet.as_view(), name='all_categories'),
+    url(r'api/categories/job', JobCategoryViewSet.as_view(), name='job_categories'),
+    url(r'api/categories/course', CourseCategoryViewSet.as_view(), name='course_categories'),
+    url(r'api/categories/post', PostCategoryViewSet.as_view(), name='post_categories'),
+    url(r'api/categories/post', PostCategoryViewSet.as_view(), name='post_categories'),
 ]

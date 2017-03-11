@@ -8,6 +8,17 @@ angular.element.prototype.attr_safe = function(attribute) {
 angular.element.prototype.siblings = function(selector) {
 	return this.parent().children(selector);
 };
+
+deferredBootstrapper.bootstrap({
+  element: document.documentElement,
+  module: 'myResume',
+  resolve: {
+	CATEGORIES: ['$http', '$location', function ($http, $location) {
+		return $http.get([$location.origin, '/api/categories/', '?format=json'].join(''));
+	}],
+  }
+});
+
 app = angular.module('myResume', ['ui.router', 'ngSanitize', 'mm.foundation', 'ngTouch', 'ngAnimate'])
 .config(['$stateProvider', '$urlRouterProvider', '$locationProvider',
 	function($stateProvider, $urlRouterProvider, $locationProvider) {
