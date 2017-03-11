@@ -1,31 +1,4 @@
-app.constant('Categories', {
-	skill: {
-		'PR': 'Print',
-		'DS': 'Design',
-		'CO': 'Coding',
-		'HU': 'Human',
-	},
-	job: {
-		'PR': 'Print',
-		'DS': 'Design',
-		'CO': 'Coding',
-		'OT': 'Human'
-	},
-	post: {
-		'TC': 'Technology',
-		'LF': 'Life',
-		'CS': 'Courses',
-		'CD': 'Coding',
-	},
-	course: {
-		'PR': 'Print',
-		'DS': 'Design',
-		'CO': 'Coding',
-		'HU': 'Human',
-		'SC': 'School'
-	}
-})
-.factory('markdown', function() {
+app.factory('markdown', function() {
 	return function(item) {
 		var item_is_string = typeof item === typeof "a";
 		if (!angular.isUndefined(item) && item_is_string) {
@@ -44,10 +17,10 @@ app.constant('Categories', {
 		return output_string;
 	}
 })
-.factory('getCategoriesSlugs', ['Categories', 'slugify', function(Categories, slugify) {
+.factory('getCategoriesSlugs', ['CATEGORIES', 'slugify', function(CATEGORIES, slugify) {
 	return function(mymodel) {
 		var obj = {};
-		var categories = Categories[mymodel];
+		var categories = CATEGORIES[mymodel];
 		for (var idx in categories) {
 			var cat = categories[idx]
 			obj[idx] = {slug: slugify(cat), name: cat};
