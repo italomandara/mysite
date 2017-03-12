@@ -33,3 +33,16 @@ body {
     vertical-align: middle;
     white-space: initial;
 }
+
+.place-wrap {
+    position:relative;
+    .place {
+        position:absolute;
+        &.place-top {
+            top:0;
+        }
+        &.place-bottom {
+            bottom:0;
+        }
+    }
+}
