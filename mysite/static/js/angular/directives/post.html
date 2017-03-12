@@ -1,9 +1,7 @@
 <div class="large margin bottom" ui-sref="posts({slug: post.slug})">
 	<div class="category-{{ get_post_category(post.category)|slugify }} tag-{{ post.tag }} place-wrap small margin bottom">
-		<a class="no-color-hover place place-top set-text-color small-12 medium-9 pad" ui-sref="posts({slug: post.slug})">
-			<h3 class="standout-text upper">{{ post.title }}</h3><br>
-			<h5 class="subtitle standout-text lower">{{ post.subtitle }}</h5><br>
-			<p class="small margin bottom standout-text lower"><small>by {{ post.author }} {{ post.created_at|date:'dd MMM yyyy' }}</small></p>
+		<a class="no-color-hover place place-top set-text-color has-tip" tooltip-placement="bottom" tooltip="{{ post.subtitle }} by {{ post.author }} {{ post.created_at|date:'dd MMM yyyy' }}">
+			<h5 class="standout-text">{{ post.title }}</h3>
 		</a>
 
 		<img class="js-lazy" ng-src="{{post.featured_image|effect:'resize=width:350/output=q:30/'}}" data-original="{{ post.featured_image|resize:'width:700' }}">
