@@ -20,5 +20,5 @@ urlpatterns += [
     url(r'api/categories/', AllCategoryViewSet.as_view(), name='all_categories'),
     url(r'api/s/', SettingsViewSet.as_view(), name='settings'),
     url(r'^google96ecc24c7541190c\.html$', lambda r: HttpResponse("google-site-verification: google96ecc24c7541190c.html", content_type="text/plain")),
-
+    # url(r'^robots\.txt$', lambda r: HttpResponse("User-agent: *\nDisallow: ", mimetype="text/plain")),
 ]
