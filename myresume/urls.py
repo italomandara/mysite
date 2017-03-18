@@ -18,4 +18,6 @@ urlpatterns += [
     url(r'api/', include(router.urls), name='api'),
     url(r'api/categories/', AllCategoryViewSet.as_view(), name='all_categories'),
     url(r'api/s/', SettingsViewSet.as_view(), name='settings'),
+    (r'^google96ecc24c7541190c\.html$', lambda r: HttpResponse("google-site-verification: google96ecc24c7541190c.html", mimetype="text/plain")),
+
 ]
