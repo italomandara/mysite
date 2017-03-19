@@ -94,12 +94,14 @@ app
 		return !!value && !!arg ? output_string: '';
 	};
 }])
-.run(function($timeout, $rootScope, $http, $location, postJSON) {
+.run(function($timeout, $rootScope, $http, $location, $state, postJSON) {
 	$rootScope.nav = $rootScope.nav || {};
 	$http.get([$location.origin, '/api/person/', '?name=Italo&format=json'].join('')).then(function(person) {
 		$rootScope.nav.person = person.data[0];
 		$rootScope.nav.title = [$rootScope.nav.person.name, ' ', $rootScope.nav.person.lastname, "'s resume"].join('');
 	});
+	console.log($state.get());
+
 	$rootScope.$on('$viewContentLoaded', function() {
 		$timeout(function() {
 			var myLazyLoad = new LazyLoad({
