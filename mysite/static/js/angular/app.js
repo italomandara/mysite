@@ -100,7 +100,6 @@ app
 		$rootScope.nav.person = person.data[0];
 		$rootScope.nav.title = [$rootScope.nav.person.name, ' ', $rootScope.nav.person.lastname, "'s resume"].join('');
 	});
-	console.log($state.get());
 
 	$rootScope.$on('$viewContentLoaded', function() {
 		$timeout(function() {
