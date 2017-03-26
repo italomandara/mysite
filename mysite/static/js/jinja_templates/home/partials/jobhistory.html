@@ -1,0 +1,20 @@
+		<div class="row">
+			{# {% if jobhistory|length %} #}
+				<h4 class="margin bottom">Job History</h4>
+				<div class="orbit" role="region" aria-label="Favorite Space Pictures" data-orbit data-options="animInFromLeft:fade-in; animInFromRight:fade-in; animOutToLeft:fade-out; animOutToRight:fade-out;">
+					<ul class="orbit-container auto-height-for-small-only">
+						{% for job in jobhistory %}
+							<li class="orbit-slide {# {% if forloop.counter0 == 0 %}is-active{% endif %} #}">
+								{% include 'home/partials/job.html' %}
+							</li>
+						{% endfor %}
+					</ul>
+					<nav class="orbit-bullets">
+						{% for job in jobhistory %}
+							<button class="{# {% if forloop.counter0 == 0 %}is-active{% endif %} #}" data-slide=""><span class="show-for-sr">First slide details.</span><span class="show-for-sr">Current Slide</span></button>
+						{% endfor %}
+					</nav>
+				</div>
+			{# {% endif %}	 #}
+		</div>
+		

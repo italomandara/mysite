@@ -1,0 +1,18 @@
+{% extends 'base-simple.html' %}
+
+{% load i18n %}
+{% load static from staticfiles %}
+
+{% block header-body %}
+{% endblock %}
+
+{% block body %}
+	<div class="row text-center vertical-center-container" style="height: 100%">
+		<div class="vertical-center">
+			{% block error_msg %}
+				<h1>403:</h1>
+				<h3>Forbidden, no you can't do whatever you tried to do.</h3></div>
+			{% endblock %}
+		</div>
+	</div>
+{% endblock %}

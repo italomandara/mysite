@@ -1,0 +1,38 @@
+{% extends 'base.html' %}
+
+{% load i18n %}
+{% load markup_tags %}
+{% load static from staticfiles %}
+{% load compress %}
+
+{% block head-css %}
+	{{ block.super }}
+	{% compress css %}
+		<style>
+			#hero{
+				background-image: url({% if intro.image_primary %}{{ intro.image_primary }}{% else %}{% static 'img/bg_blog.jpg' %}{% endif %});
+				background-position: center center;
+			}
+		</style>
+	{% endcompress %}
+{% endblock %}
+
+{% block hero %}
+    {% include 'shared/hero.html' with hero_title=intro.h1 hero_subtitle=intro.h2 %}
+{% endblock %}
+
+{% block body %}
+	<div class="row">
+		<div class="medium-masonry-1 large-masonry-3 large margin bottom top">{{ intro.body|apply_markup:"markdown" }}</div>
+	</div>
+	
+	<div class="row last">
+		{% if posts %}
+			<div class="medium-masonry-1 large-masonry-2 margin bottom">
+				{% for post in posts %}
+					{% include 'thoughts/partials/post.html' %}
+				{% endfor %}
+			</div>
+		{% endif %}
+	</div>
+{% endblock %}

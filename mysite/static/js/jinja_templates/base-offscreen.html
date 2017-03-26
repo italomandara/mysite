@@ -1,0 +1,33 @@
+{% extends 'core.html' %}
+
+{% block outerBody %}
+<div class="off-canvas-wrapper advanced">
+    <div class="off-canvas-wrapper-inner fixed fit-vertical" data-off-canvas-wrapper>
+        <div class="off-canvas position-left" id="offCanvasMenu" data-off-canvas>
+            <!-- Close button -->
+            <button class="close-button" type="button" data-toggle="offCanvas">
+                <span aria-hidden="true">&times;</span>
+            </button>
+            <!-- Menu -->
+            <ul class="vertical menu" data-accordion-menu>
+                {% include 'shared/menu-items.html' with is_accordion=True %}
+            </ul>
+        </div>
+    </div>
+    <div class="off-canvas-wrapper-inner" data-off-canvas-wrapper>
+        <div id="offCanvas" class="hide" data-off-canvas></div>
+        <div class="off-canvas-content" data-off-canvas-content >
+            {% block hero %}
+            {% endblock %}
+            {% block header-body %}
+                {% include 'shared/header.html' %}
+            {% endblock %}
+
+            {% block body %}
+            {% endblock %}
+            {% block footer-body %}
+            {% endblock %}
+        </div>
+    </div>
+</div>
+{% endblock %}

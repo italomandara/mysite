@@ -1,0 +1,15 @@
+<div class="row category-{{ job.get_skill_category }} subcategory-{{ job.subcategory }}">
+	<div class="small-12 medium-4 large-3 column text-right text-left-for-small-only">
+
+		<h5 class="margin bottom xsmall set-text-color to-white">{{ job.name }}</h5>
+		<p class="set-text-color to-white margin bottom none"><em>{{ job.company }} {{ job.location }}</em></p>
+		<p class="set-text-color to-white margin bottom xsmall"><small>{{ job.start_date|date:"M Y" }} - {{ job.end_date|date:"M Y" }}</small></p>
+		<p>
+			<span class="secondary label">{{ job.get_job_category }}</span>
+		</p>
+	</div>
+	<div class="small-12 medium-8 large-9 column">
+		<p>{{ job.description }}</p>
+	</div>
+
+</div>
