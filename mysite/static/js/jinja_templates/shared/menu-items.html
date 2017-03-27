@@ -12,6 +12,7 @@
 			<li><a href="thoughts">Thoughts</a></li>
 		{# {% endif %} #}
 		{% for postcategory in postcategories %}
+		{{ postcategories | dump }}
 		<li><a href="">{{ post_category[1] }}</a></li>
 		{% endfor %}
 	</ul>

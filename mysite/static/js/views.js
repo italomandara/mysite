@@ -2,6 +2,7 @@ nunjucks.installJinjaCompat();
 var env = nunjucks.configure('/static/js/jinja_templates/', {
 	autoescape: true
 });
+var bootstrap = function(){};
 window.viewready = function() {};
 
 function Static() {
@@ -99,6 +100,9 @@ env.addExtension('url', new DjUrl());
 env.addFilter('date', function(str, type) {
     return str;
 });
+env.addFilter('slugify', function(str) {
+    return str;
+});
 
 var indexView = function(template, context) {
 
@@ -167,24 +171,29 @@ var indexView = function(template, context) {
 		url: '/api/contact/?format=json',
 	});
 
+	bootstrap = function(err,res){
+		return function(){$(document).foundation;}
+		console.log(window.ct = context);
+	};
+
 	$.when(settings, person, categories, skill, intro, job, education, contact)
 		.then(function(settings, person, categories, skill, intro, job, education, contact) {
 			$.extend(context, {
 				settings: settings[0],
-				person: person[0],
+				person: person[0][0],
 				categories: categories[0],
 				skillslist: skill[0],
 				skillcategories: categories[0].skill,
-				skillsubcategories: [],
-				intro: intro[0],
+				skillsubcategories: ['test1','test2'],
+				intro: intro[0][0],
 				postcategories: categories[0].post,
 				jobhistory: job[0],
 				education: education[0],
 				form: contact[0].actions.POST,
 			});
-			$('body').append(nunjucks.render(template, context));
+			$('body').append(nunjucks.render(template, context)).foundation();
 		})
-	return nunjucks.render(template, context);
+	return true;
 }
 
 indexView();

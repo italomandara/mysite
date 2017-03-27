@@ -1,62 +1,6 @@
-{# {% load i18n %}
-{% load sass_tags %}
-{% load static from staticfiles %}
-{% load compress %} #}
 
-<!DOCTYPE html>
-<html>
-	<head>
-		{% block head %}
-			<meta charset="utf-8">
-			<meta http-equiv="X-UA-Compatible" content="IE=edge">
-			<meta name="viewport" content="width=device-width, initial-scale=1.0">
- 			{% block pageTitle%}
-			<title>{% block pageTitlePrefix%}{{ page.title }}{% endblock %} @ Italo Mandara cv</title>
-			{% endblock %}
-			{% block pageMeta%}
-			<meta name="description" content="{% block pageMetaDescription%}{{ page.description }}{% endblock %}">
-			{% endblock %}
-			{% block headCss %}
-				<link href="static/app.css'" rel="stylesheet" type="text/css" />
-			{% endblock %}
-			{% block headJs%}
-				{# {% compress js %} #}
-					<script type="text/javascript" src="static/js/jquery.js"/>
-					<script type="text/javascript" src="static/js/foundation/foundation.core.js"/>
-					<script type="text/javascript" src="static/js/foundation/foundation.abide.js"/>
-					<script type="text/javascript" src="static/js/foundation/foundation.accordion.js"/>
-					<script type="text/javascript" src="static/js/foundation/foundation.accordionMenu.js"/>
-					<script type="text/javascript" src="static/js/foundation/foundation.drilldown.js"/>
-					<script type="text/javascript" src="static/js/foundation/foundation.dropdown.js"/>
-					<script type="text/javascript" src="static/js/foundation/foundation.dropdownMenu.js"/>
-					<script type="text/javascript" src="static/js/foundation/foundation.equalizer.js"/>
-					<script type="text/javascript" src="static/js/foundation/foundation.interchange.js"/>
-					<script type="text/javascript" src="static/js/foundation/foundation.magellan.js"/>
-					<script type="text/javascript" src="static/js/foundation/foundation.offcanvas.js"/>
-					<script type="text/javascript" src="static/js/foundation/foundation.orbit.js"/>
-					<script type="text/javascript" src="static/js/foundation/foundation.responsiveMenu.js"/>
-					<script type="text/javascript" src="static/js/foundation/foundation.responsiveToggle.js"/>
-					<script type="text/javascript" src="static/js/foundation/foundation.reveal.js"/>
-					<script type="text/javascript" src="static/js/foundation/foundation.slider.js"/>
-					<script type="text/javascript" src="static/js/foundation/foundation.sticky.js"/>
-					<script type="text/javascript" src="static/js/foundation/foundation.tabs.js"/>
-					<script type="text/javascript" src="static/js/foundation/foundation.toggler.js"/>
-					<script type="text/javascript" src="static/js/foundation/foundation.tooltip.js"/>
-					<script type="text/javascript" src="static/js/foundation/foundation.util.box.js"/>
-					<script type="text/javascript" src="static/js/foundation/foundation.util.keyboard.js"/>
-					<script type="text/javascript" src="static/js/foundation/foundation.util.mediaQuery.js"/>
-					<script type="text/javascript" src="static/js/foundation/foundation.util.motion.js"/>
-					<script type="text/javascript" src="static/js/foundation/foundation.util.nest.js"/>
-					<script type="text/javascript" src="static/js/foundation/foundation.util.timerAndImageLoader.js"/>
-					<script type="text/javascript" src="static/js/foundation/foundation.util.touch.js"/>
-					<script type="text/javascript" src="static/js/foundation/foundation.util.triggers.js"/>
-					<script type="text/javascript" src="static/js/foundation/foundation.zf.responsiveAccordionTabs.js"/>
-					<script type="text/javascript" src="static/js/what-input.js"/>
-				{# {% endcompress %} #}
-			{% endblock %}
-		{% endblock %}
-	</head>
-	<body>
+
+
 		{% block outerBody %}
 		{% endblock %}
 		{% block modals %}
@@ -86,7 +30,6 @@
 				{# <script type="text/javascript" src="static/js/app.js"/> #}
 			{# {% endcompress %} #}
 		{% endblock %}
-	</body>
-</html>
+
 
 

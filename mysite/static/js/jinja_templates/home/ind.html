@@ -1,20 +1,23 @@
 {% extends 'base.html' %}
+{% block hero %}
+{% set hero_title=intro.h1 %}
+{% set hero_subtitle=intro.h2 %}
+{% set type="video" %}
+{% set class="background-video" %}
+    {% include 'shared/hero.html' %}
+{% endblock %}
 {% block body %}
-		<div class="row">
-				<h4 class="margin bottom">Job History</h4>
-				<div class="orbit" role="region" aria-label="Favorite Space Pictures" data-orbit data-options="animInFromLeft:fade-in; animInFromRight:fade-in; animOutToLeft:fade-out; animOutToRight:fade-out;">
-					<ul class="orbit-container auto-height-for-small-only">
-						{% for job in jobhistory %}
-							<li class="orbit-slide {# {% if forloop.counter0 == 0 %}is-active{% endif %} #}">
-								{% include 'home/partials/job.html' %}
-							</li>
-						{% endfor %}
-					</ul>
-					<nav class="orbit-bullets">
-						{% for job in jobhistory %}
-							<button class="{# {% if forloop.counter0 == 0 %}is-active{% endif %} #}" data-slide=""><span class="show-for-sr">First slide details.</span><span class="show-for-sr">Current Slide</span></button>
-						{% endfor %}
-					</nav>
-				</div>
-		</div>
+	<div class="row">
+		<div class="medium-masonry-1 large-masonry-3 margin bottom top">{{ intro.body }}</div>
+		{# {% if profile %} #}
+			{% set mycontent=profile %}
+			{% include 'home/partials/row.html' %}
+		{# {% endif %}		 #}
+	</div>
+	<div class="background background-color-1 pad pad-top margin top">
+		{% include 'home/partials/skillslist.html' %}
+	</div>
+	<div class="background background-color-2 pad pad-top">
+		{% include 'home/partials/jobhistory.html' %}
+	</div>
 {% endblock %}
