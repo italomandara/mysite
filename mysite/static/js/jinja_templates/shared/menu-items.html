@@ -6,17 +6,16 @@
 </li>
 <li style="position:relative" role="menuitem" class="is-dropdown-submenu-parent opens-right" aria-haspopup="true" aria-expanded="false" aria-label="Thoughts">
 	<a href="thoughts">Thoughts</a>
-	{# {% if postcategories %} #}
+	{% if postcategories %}
 	<ul class="menu vertical submenu nested">
-		{# {% if is_accordion %} #}
+		{% if is_accordion %}
 			<li><a href="thoughts">Thoughts</a></li>
-		{# {% endif %} #}
+		{% endif %}
 		{% for postcategory in postcategories %}
-		{{ postcategories | dump }}
-		<li><a href="">{{ post_category[1] }}</a></li>
+			<li><a href="">{{ postcategory.name }}</a></li>
 		{% endfor %}
 	</ul>
-	{# {% endif %} #}
+	{% endif %}
 </li>
 <li>
     <a href="#" >Contact</a>

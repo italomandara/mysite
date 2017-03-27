@@ -76,24 +76,34 @@ function Trans() {
 		var args = parser.parseSignature(null, true);
 		parser.advanceAfterBlockEnd(tok.value);
 
-		// parse the body and possibly the error block, which is optional
-		var body = parser.parseUntilBlocks('error', 'endremote');
-		var errorBody = null;
-
-		if (parser.skipSymbol('error')) {
-			parser.skip(lexer.TOKEN_BLOCK_END);
-			errorBody = parser.parseUntilBlocks('endremote');
-		}
-
-		parser.advanceAfterBlockEnd();
-
 		// See above for notes about CallExtension
-		return new nodes.CallExtension(this, 'run', args, [body, errorBody]);
+		return new nodes.CallExtension(this, 'run', args);
 	};
-	this.run = function(context, url, body, errorBody) {
-		return url;
+	this.run = function(context, argument, body, errorBody) {
+		return argument;
 	}
 }
+
+function Load() {
+	this.tags = ['load'];
+	this.parse = function(parser, nodes, lexer) {
+		// get the tag token
+		var tok = parser.nextToken();
+
+		// parse the args and move after the block end. passing true
+		// as the second arg is required if there are no parentheses
+		var args = parser.parseSignature(null, true);
+		parser.advanceAfterBlockEnd(tok.value);
+
+		// See above for notes about CallExtension
+		return new nodes.CallExtension(this, 'run', args);
+	};
+	this.run = function(context, argument, body, errorBody) {
+		console.log(argument)
+		return '';
+	}
+}
+
 env.addExtension('static', new Static());
 env.addExtension('trans', new Trans());
 env.addExtension('url', new DjUrl());
@@ -178,20 +188,28 @@ var indexView = function(template, context) {
 
 	$.when(settings, person, categories, skill, intro, job, education, contact)
 		.then(function(settings, person, categories, skill, intro, job, education, contact) {
+			var skillcategories = [], postcategories = [];
+			for (var idx in categories[0].skill) {
+				skillcategories.push({slug: idx, name: categories[0].skill[idx]})
+			}
+			for (var idx in categories[0].post) {
+				postcategories.push({slug: idx, name: categories[0].post[idx]})
+			}
 			$.extend(context, {
 				settings: settings[0],
 				person: person[0][0],
 				categories: categories[0],
 				skillslist: skill[0],
-				skillcategories: categories[0].skill,
-				skillsubcategories: ['test1','test2'],
+				skillcategories: skillcategories,
+				skillsubcategories: [{name: 'test1'}, {name: 'test2'}],
 				intro: intro[0][0],
-				postcategories: categories[0].post,
+				postcategories: postcategories,
 				jobhistory: job[0],
 				education: education[0],
 				form: contact[0].actions.POST,
 			});
-			$('body').append(nunjucks.render(template, context)).foundation();
+			$('body').append(nunjucks.render(template, context));
+			$(document).foundation();
 		})
 	return true;
 }
