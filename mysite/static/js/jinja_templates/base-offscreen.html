@@ -10,7 +10,8 @@
             </button>
             <!-- Menu -->
             <ul class="vertical menu" data-accordion-menu>
-                {% include 'shared/menu-items.html' with is_accordion=True %}
+                {% set is_accordion=true %}
+                {% include 'shared/menu-items.html' %}
             </ul>
         </div>
     </div>
@@ -19,13 +20,13 @@
         <div class="off-canvas-content" data-off-canvas-content >
             {% block hero %}
             {% endblock %}
-            {% block header-body %}
+            {% block headerBody %}
                 {% include 'shared/header.html' %}
             {% endblock %}
 
             {% block body %}
             {% endblock %}
-            {% block footer-body %}
+            {% block footerBody %}
             {% endblock %}
         </div>
     </div>

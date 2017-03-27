@@ -4,13 +4,6 @@
 			<div class="top-bar-left">
 				<ul class="dropdown menu" data-dropdown-menu>
 					<li class="menu-text">{{ person.name }} {{ person.lastname }}'s resume</li>
-					<li id="00-eegg" style="position:relative" class="hide">
-						<a href="#"><i class="icon i-cog"></i> @ {{ hostname }}</a>
-						<ul class="menu vertical submenu">
-							<li><a href="javascript: void(0)" data-open="icons" data-reveal-ajax="{% url 'icons' %}" >Show Icons</a></li>
-							<li><a href="javascript: void(0)" onclick="$('body').showLoader(false);" >Open loader</a></li>
-						</ul>
-					</li>
 	                {% include 'shared/menu-items.html' %}
 				</ul>
 			</div>

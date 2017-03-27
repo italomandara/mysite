@@ -1,9 +1,8 @@
-{% load i18n %}
 
-{% trans "This field is required" as required %}
-{% trans "Must be a valid phone number" as phone %}
-{% trans "Must be a valid email" as email %}
-{% trans "Check if your captcha code is correct" as captcha %}
+{% set required="This field is required" %}
+{% set phone="Must be a valid phone number" %}
+{% set email="Must be a valid email" %}
+{% set captcha="Check if your captcha code is correct" %}
 
 <form id="mailform" data-callback="openThankYou" action="{% url 'contact-form' %}" method="POST" class="js-ajaxform" style="width: 100%;" data-abide novalidate>
     {% csrf_token %}
