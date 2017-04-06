@@ -1,32 +1,25 @@
-<div class="off-canvas-wrapper-inner fixed fit-vertical" data-off-canvas-wrapper>
-    <div class="off-canvas position-left" id="offCanvasMenu" data-off-canvas>
-        <!-- Close button -->
-        <button class="close-button" type="button" data-toggle="offCanvas">
-            <span aria-hidden="true">&times;</span>
-        </button>
-        <!-- Menu -->
-        <ul class="vertical menu" data-accordion-menu>
-            <ng-include src="'static/js/angular/templates/menu-items-a.html'" include-replace></ng-include>
-        </ul>
+<div ng-controller="offCanvasController">
+    <div class="off-canvas-wrapper">
+        <div class="off-canvas-wrapper-inner" data-off-canvas-wrapper>
+            <div class="off-canvas position-left" id="offCanvasMenu" data-off-canvas>
+                <!-- Close button -->
+                <a class="left-off-canvas-toggle close-button" >
+                    <span aria-hidden="true">&times;</span>
+                </a>
+                <!-- Menu -->
+                <ul class="mobile-ofc vertical menu">
+                    <ng-include src="'static/js/angular/templates/menu-items.html'" include-replace></ng-include>
+                </ul>
+            </div>
+            <div class="off-canvas-content">
+                <div class="top-callout fixed small-12" ng-controller="alertController">
+                    <alert ng-repeat="alert in alerts" type="alert.type" close="closeAlert($index)">{{alert.msg}}</alert>
+                </div>
+                <div include-replace ng-include="'static/js/angular/templates/hero.html'"></div>
+                <div include-replace ng-include="'static/js/angular/templates/nav.html'"></div>
+                <ng-view class="row-wrapper">
+                </ng-view>
+            </div>
+        </div>
     </div>
 </div>
-<div class="off-canvas-wrapper-inner" data-off-canvas-wrapper >
-    <div id="offCanvas" class="hide" data-off-canvas></div>
-    <div class="off-canvas-content" data-off-canvas-content>
-        <div include-replace ng-include="'static/js/angular/templates/hero.html'"></div>
-        <div include-replace ng-include="'static/js/angular/templates/nav.html'"></div>
-        <ng-view class="row-wrapper">            
-        </ng-view>
-    </div>
-</div>
-
-<div ng-controller="contactController">
-    <modal mid="'contact'" title="'Contact form'">
-        <div ng-include="'static/js/angular/templates/modals/contact.html'" include-replace>
-    </modal>
-</div>
-
-<modal mid="'contact-thank-you'" title="'Contact request sent'" extraclass="'tiny text-center'">
-    <div ng-include="'static/js/angular/templates/modals/contact-thank-you.html'" include-replace>        
-</modal>
-

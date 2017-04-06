@@ -1,7 +1,10 @@
 @include responsiveMasonry();
 
-// .masonry{
-//     > .widget, > div > .widget{
-//         margin: $global-shadow-size;
-//     }
-// }
+.masonry{
+    // > .widget, > div > .widget{
+    //     margin: $global-shadow-size;
+    // }
+    >div {
+    	display: inline-block;
+    }
+}

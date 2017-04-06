@@ -1,4 +1,9 @@
 input[type=text], input[type=number], input[type=password], input[type=email]{
+    padding-top: 0;
+    padding-left: 0;
+    padding-right: 0;
+    height: ($input-font-size - 0.2rem) + $fieldset-padding;
+
     border:{
         top: none;
         left: none;
@@ -18,11 +23,5 @@ input[type=text], input[type=number], input[type=password], input[type=email]{
 
 textarea{
     resize: vertical;
-}
-
-form.ng-invalid {
-    // @extend .form-error;
-    .form-error {
-        @include form-input-error;
-    }
+    min-height: 8em;
 }
