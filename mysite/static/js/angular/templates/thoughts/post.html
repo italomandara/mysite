@@ -3,17 +3,22 @@
 		<p class="column margin top">Category: <span class="secondary label">{{ post.get_category }}</span></p>
 		<p class="column small margin bottom set-text-color to-gray"><small>Posted by {{ post.author }} on <em>{{ post.created_at|date:"d MMM yyyy" }}</em></small></p>
 		<div class="small-12 column small margin bottom">
-			<div class="medium-masonry-1 large-masonry-2 small margin bottom" ng-bind-html="post.body | markdown">
-			</div>
-			<div class="margin top" ng-controller="orbitController">
+			<div class="masonry medium-masonry-1 large-masonry-2 small margin bottom" >
+			<div class="margin bottom" ng-controller="orbitController">
 				<div class="orbit" role="region" aria-label='Posted by {{ post.author }} on {{ post.created_at|date:"d MMM yyyy" }}' data-orbit>
 					<ul class="orbit-container slide-in-left slow ease-in-out mui-enter mui-enter " style="transform: translateX(0)" >
 						<li ng-if="post.article_image1" class="orbit-slide is-active"><img class="js-lazy margin bottom xsmall" ng-src="{{ post.article_image1|resize:'width:1000,height:500,fit:crop' }}"></li>
 						<li ng-if="post.article_image2" class="orbit-slide"><img class="js-lazy margin bottom xsmall" ng-src="{{ post.article_image2|resize:'width:1000,height:500,fit:crop' }}"></li>
+						<li ng-if="post.article_image3" class="orbit-slide"><img class="js-lazy margin bottom xsmall" ng-src="{{ post.article_image3|resize:'width:1000,height:500,fit:crop' }}"></li>
+						<li ng-if="post.article_image4" class="orbit-slide"><img class="js-lazy margin bottom xsmall" ng-src="{{ post.article_image4|resize:'width:1000,height:500,fit:crop' }}"></li>
+						<li ng-if="post.article_image5" class="orbit-slide"><img class="js-lazy margin bottom xsmall" ng-src="{{ post.article_image5|resize:'width:1000,height:500,fit:crop' }}"></li>
+						<li ng-if="post.article_image6" class="orbit-slide"><img class="js-lazy margin bottom xsmall" ng-src="{{ post.article_image6|resize:'width:1000,height:500,fit:crop' }}"></li>
 					</ul>
 					<nav class="orbit-bullets">
 					</nav>
 				</div>
+			</div>
+			<div ng-bind-html="post.body | markdown"></div>
 			</div>
 		</div>
 	</div>

@@ -3,26 +3,19 @@
 {% load sass_tags %}
 
 <!DOCTYPE html>
-<html ng-app="myResume">
+<html id="app" disabled-ng-app="myResume">
 	<head>
 		{% compress js %}
 			<script type="text/javascript" src="{% static 'js/jquery.js' %}"></script>
 			<script type="text/javascript" src="{% static 'js/angular/angular.js' %}"></script>
 			<script type="text/javascript" src="{% static 'js/angular/marked.js' %}"></script>
+			<script type="text/javascript" src="{% static 'js/angular/angular-deferred-bootstrap.js' %}"></script>		
 			<script type="text/javascript" src="{% static 'js/angular/angular-animate.js' %}"></script>
 			<script type="text/javascript" src="{% static 'js/angular/angular-foundation.js' %}"></script>
 			<script type="text/javascript" src="{% static 'js/angular/angular-touch.js' %}"></script>
-			<script type="text/javascript" src="{% static 'js/angular/angular-route.js' %}"></script>
+			<script type="text/javascript" src="{% static 'js/angular/angular-ui-router.js' %}"></script>
 			<script type="text/javascript" src="{% static 'js/angular/angular-sanitize.js' %}"></script>
-			<script>
-				var DJ = {}, settings = {};
-				DJ.static = function(url) {
-					return ['{% static "/" %}',url].join('');
-				};
-				settings = {
-					FILEPICKER_API_KEY: '{{ settings.FILEPICKER_API_KEY }}'
-				};
-			</script>
+			<script type="text/javascript" src="{% static 'js/angular/config.js' %}"></script>
 			<script type="text/javascript" src="{% static 'js/angular/app.js' %}"></script>
 			<script type="text/javascript" src="{% static 'js/angular/directives/_directives.js' %}"></script>
 			<script type="text/javascript" src="{% static 'js/angular/directives/course.js' %}"></script>

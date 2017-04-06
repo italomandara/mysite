@@ -1,7 +1,7 @@
-app.directive('course', function() { 
+app.directive('course', ['static', function(static) {
   return { 
     restrict: 'E',
-    templateUrl: DJ.static('js/angular/directives/course.html'),
+    templateUrl: static('js/angular/directives/course.html'),
     replace: true
   }; 
-});
+}]);

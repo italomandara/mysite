@@ -6,12 +6,6 @@
        -moz-column-gap: $masonry-gutter;
     -webkit-column-gap: $masonry-gutter;
             column-gap: $masonry-gutter;
-    > div
-    {
-        display: inline-block;
-        width: 100%;
-        margin-bottom: $masonry-gutter;
-    }
 }
 
 @mixin responsiveMasonry($max-columns-masonry: 4) {

@@ -1,7 +1,7 @@
-app.directive('post', function() { 
+app.directive('post', ['static', function(static) { 
   return { 
     restrict: 'E', 
-    templateUrl: DJ.static('js/angular/directives/post.html'),
+    templateUrl: static('js/angular/directives/post.html'),
     replace: true
   }; 
-});
+}]);

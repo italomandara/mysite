@@ -29,8 +29,8 @@ class Skill(models.Model):
 	TYPES = (
         (PRINT , 'Print'),
         (DESIGN , 'Design'),
-        (CODING , 'Coding'),
-        (HUMAN , 'Human')
+        (CODING , 'Programming'),
+        (HUMAN , 'Other')
     )
 	category = models.CharField(
     	max_length = 2,
@@ -48,7 +48,7 @@ class Skill(models.Model):
 		return dict(self.TYPES)[self.category]
 
 	def get_categories(self):
-		return self.TYPES
+		return dict(self.TYPES)
 
 	def get_subcategories(self):
 		return self.objects.values_list('subcategory').distinct()
@@ -80,8 +80,8 @@ class Job(models.Model):
 	TYPES = (
         (PRINT , 'Print'),
         (DESIGN , 'Design'),
-        (CODING , 'Coding'),
-        (OTHER , 'Human')
+        (CODING , 'Programming'),
+        (OTHER , 'Other')
     )
 	category = models.CharField(
     	max_length = 2,
@@ -105,6 +105,9 @@ class Job(models.Model):
 	def get_job_category(self):
 		return dict(self.TYPES)[self.category]
 
+	def get_categories(self):
+		return dict(self.TYPES)
+
 	def __unicode__(self):
 		return self.name
 
@@ -118,8 +121,8 @@ class Course(models.Model):
 	TYPES = (
         (PRINT , 'Print'),
         (DESIGN , 'Design'),
-        (CODING , 'Coding'),
-        (HUMAN , 'Human'),
+        (CODING , 'Programming'),
+        (HUMAN , 'Other'),
         (SCHOOL , 'School')
     )
 	category = models.CharField(
@@ -140,6 +143,9 @@ class Course(models.Model):
 
 	def get_course_category(self):
 		return dict(self.TYPES)[self.category]
+
+	def get_categories(self):
+		return dict(self.TYPES)
 
 	def __unicode__(self):
 		return self.title
@@ -167,7 +173,7 @@ class Post(models.Model):
 		(TECH, 'Technology'),
 		(LIFE, 'Life'),
 		(COURSES, 'Courses'),
-		(CODING,'Coding'),
+		(CODING,'Programming'),
 	)
 	category = models.CharField(
     	max_length = 2,
@@ -182,6 +188,10 @@ class Post(models.Model):
 	featured_image = django_filepicker.models.FPUrlField(blank=True)
 	article_image1 = django_filepicker.models.FPUrlField(blank=True)
 	article_image2 = django_filepicker.models.FPUrlField(blank=True)
+	article_image3 = django_filepicker.models.FPUrlField(blank=True)
+	article_image4 = django_filepicker.models.FPUrlField(blank=True)
+	article_image5 = django_filepicker.models.FPUrlField(blank=True)
+	article_image6 = django_filepicker.models.FPUrlField(blank=True)
 	published = models.BooleanField(default=False)
 	created_at = models.DateField(auto_now_add=True)
 	updated_at = models.DateField(auto_now=True) 
@@ -190,6 +200,9 @@ class Post(models.Model):
 
 	def get_category(self):
 		return dict(self.CATEGORIES)[self.category]
+
+	def get_categories(self):
+		return dict(self.CATEGORIES)
 
 	def get_tag(self):
 		return self.objects.values_list('tag').distinct()

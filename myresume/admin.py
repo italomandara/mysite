@@ -15,6 +15,11 @@ class PostAdminForm(forms.ModelForm):
 			'featured_image': FPFileWidget(attrs={'type':'filepicker'}),
 			'article_image1': FPFileWidget(attrs={'type':'filepicker'}),
 			'article_image2': FPFileWidget(attrs={'type':'filepicker'}),
+			'article_image3': FPFileWidget(attrs={'type':'filepicker'}),
+			'article_image4': FPFileWidget(attrs={'type':'filepicker'}),
+			'article_image5': FPFileWidget(attrs={'type':'filepicker'}),
+			'article_image6': FPFileWidget(attrs={'type':'filepicker'}),
+
 		}
 
 class PostAdmin(admin.ModelAdmin):

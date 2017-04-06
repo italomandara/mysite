@@ -21,6 +21,16 @@
     background: rgba($white, 0.50);
     padding: 0.5rem 1rem;
     margin-bottom: 0;
+    &.upper {
+        padding-bottom:0;
+    }
+    &.middle {
+        padding-top:0;
+        padding-bottom:0;
+    }
+    &.lower {
+        padding-top:0;
+    }
 }
 
 .text-left-for-small-only {

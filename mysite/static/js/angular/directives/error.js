@@ -1,7 +1,7 @@
-app.directive('error', function() { 
+app.directive('error', ['static', function(static) { 
   return { 
     restrict: 'E',
-    templateUrl: DJ.static('js/angular/directives/error.html'),
+    templateUrl: static('js/angular/directives/error.html'),
     replace: true
   }; 
-});
+}]);
