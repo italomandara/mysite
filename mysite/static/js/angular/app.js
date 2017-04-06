@@ -1,4 +1,15 @@
-var Categories = {
+var active_navigation_class = 'active';
+var $$ = function(selector) {
+	return angular.element(document.body.querySelectorAll(selector) || []);
+}
+angular.element.prototype.attr_safe = function(attribute) {
+	return (!angular.isUndefined(this.attr(attribute)) || !this.attr(attribute)) ? this.attr(attribute) : 'undefined';
+};
+angular.element.prototype.siblings = function(selector) {
+	return this.parent().children(selector);
+};
+app = angular.module('myResume', ['ngRoute', 'ngSanitize', 'mm.foundation', 'ngTouch', 'ngAnimate'])
+.constant('Categories', {
 	skill: {
 		'PR': 'Print',
 		'DS': 'Design',
@@ -24,40 +35,37 @@ var Categories = {
 		'HU': 'Human',
 		'SC': 'School'
 	}
-},
-active_navigation_class = 'active';
-
-$.fn.attr_safe = function(attribute) {
-	return (typeof this.attr(attribute) !== typeof undefined || !this.attr(attribute)) ? this.attr(attribute) : 'undefined';
-};
-
-var markdown = function(item) {
-	var item_defined = typeof item !== typeof undefined;
-	var item_is_string = typeof item === typeof "a";
-	if (item_defined && item_is_string) {
-		return marked(item);
-	} else {
-		return '';
+})
+.factory('markdown', function() {
+	return function(item) {
+		var item_is_string = typeof item === typeof "a";
+		if (!angular.isUndefined(item) && item_is_string) {
+			return marked(item);
+		} else {
+			return '';
+		}
 	}
-},
-getCategoryIdFromSlug = function( obj, value ) {
+})
+.factory('slugify', function() {
+	return function(item) {
+		var output_string = item
+			.toLowerCase()
+			.replace(/[^\w ]+/g, '')
+			.replace(/ +/g, '-')
+		return output_string;
+	}
+})
+.factory('getCategoryIdFromSlug', ['slugify', function(slugify){
+	return function( obj, value ) {
     for( var prop in obj ) {
         if( obj.hasOwnProperty( prop ) ) {
              if( slugify(obj[ prop ]) === value )
                  return prop;
         }
     }
-},
-slugify = function(item) {
-	var output_string = item
-		.toLowerCase()
-		.replace(/[^\w ]+/g, '')
-		.replace(/ +/g, '-')
-	return output_string;
-},
-app = angular.module('myResume', ['ngRoute', 'ngSanitize']);
-
-app.factory('navUpdate', ['$rootScope', function($rootScope){
+}
+}])
+.factory('navUpdate', ['$rootScope', 'Categories', function($rootScope, Categories){
 	return function(obj) {
 		var h1 = obj.intro.h1 || obj.intro.title,
 		h2 = obj.intro.h2 || obj.intro.subtitle,
@@ -69,9 +77,8 @@ app.factory('navUpdate', ['$rootScope', function($rootScope){
 		$rootScope.nav.hero_image = hero_image;
 		$rootScope.nav.page.description = h1 + ', ' + h2;
 	}
-}]);
-
-app.factory('postJSON', ['$location', '$http', function($location, $http) {
+}])
+.factory('postJSON', ['$location', '$http', function($location, $http) {
 	return function(obj, url, callback) {
 		$http({
 			method: "POST",
@@ -79,41 +86,36 @@ app.factory('postJSON', ['$location', '$http', function($location, $http) {
 			withCredentials: true,
 			data: obj,
 		}).then(function(data) {
-			if (typeof callback !== undefined) {
+			if (!angular.isUndefined(callback)) {
 				callback(data);
 			}
 		});
 	}
-}]);
-
-app.filter('slugify', function() {
+}])
+.filter('slugify', ['slugify', function(slugify) {
 	return function(item) {	
 		return slugify(item);
 	};
-});
-
-app.filter('markdown', function() {
+}])
+.filter('markdown', ['markdown', function(markdown) {
 	return function(item) {
 		var output_string = markdown(item)
 		return output_string;
 	};
-});
-
-app.filter('effect', function() {
+}])
+.filter('effect', function() {
 	return function(value, arg) {
-		var output_string = "https://process.filestackapi.com/" + settings.FILEPICKER_API_KEY + "/" + arg + "/" + value
+		var output_string = "https://process.filestackapi.com/" + settings.FILEPICKER_API_KEY + "/" + encodeURI(arg) + "/" + value
 		return !!value && !!arg ? output_string: '';
 	};
-});
-
-app.filter('resize', function() {
+})
+.filter('resize', function() {
 	return function(value, arg) {
-		var output_string = "https://process.filestackapi.com/" + settings.FILEPICKER_API_KEY + "/resize=" + arg + "/" + value
+		var output_string = "https://process.filestackapi.com/" + settings.FILEPICKER_API_KEY + "/resize=" + encodeURI(arg) + "/" + value
 		return !!value && !!arg ? output_string: '';
 	};
-});
-
-app.config(['$locationProvider', '$routeProvider',
+})
+.config(['$locationProvider', '$routeProvider',
 	function config($locationProvider, $routeProvider) {
 		// $locationProvider.html5Mode(true);
 		$locationProvider.hashPrefix('');
@@ -146,32 +148,23 @@ app.config(['$locationProvider', '$routeProvider',
 			.otherwise({redirectTo:'/404'});
 	}
 ])
-
-app.config(['$httpProvider', function($httpProvider) {
+.config(['$httpProvider', function($httpProvider) {
 	$httpProvider.defaults.xsrfCookieName = 'csrftoken';
 	$httpProvider.defaults.xsrfHeaderName = 'X-CSRFToken';
-}]);
-
-app.run(function($timeout, $rootScope, $http, $location, postJSON) {
-
+}])
+.run(function($timeout, $rootScope, $http, $location, postJSON) {
 	$rootScope.nav = $rootScope.nav || {};
 	$http.get([$location.origin, '/api/person/', '?name=Italo&format=json'].join('')).then(function(person) {
 		$rootScope.nav.person = person.data[0];
-		$rootScope.nav.title = [$rootScope.nav.person.name, $rootScope.nav.person.lastname, "'s resume"].join('');
-		console.log($rootScope)
+		$rootScope.nav.title = [$rootScope.nav.person.name, ' ', $rootScope.nav.person.lastname, "'s resume"].join('');
 	});
-
 	$rootScope.$on('$viewContentLoaded', function() {
 		$timeout(function() {
-			$(document).foundation()
-				.on('click', 'a[href].active', function(e) {
-					e.preventDefault();
-				});
-			$('.js-lazy').lazyload();
+			var myLazyLoad = new LazyLoad({
+			    threshold: 500,
+			    elements_selector: ".js-lazy",
+			    throttle: 200,
+			});
 		}, 500);
 	});
-
-	$rootScope.markdown = function(item) {
-		return markdown(item);
-	};
 });

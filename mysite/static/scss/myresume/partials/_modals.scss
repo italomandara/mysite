@@ -25,11 +25,14 @@
 
     .row {
         margin: {
-            left: -$grid-column-gutter/2;
-            right: -$grid-column-gutter/2;
+            left: -$my-gutter/2;
+            right: -$my-gutter/2;
         } 
     }
-    
+    @extend .vertical-center-container;
+    [ng-transclude]{
+        @extend .vertical-center;
+    }
 }
 .modal-wrapper{
     text-align: left;

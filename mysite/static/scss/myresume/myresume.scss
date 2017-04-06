@@ -3,22 +3,17 @@
 @import 'partials/typography';
 @import 'partials/forms';
 @import 'partials/modals';
+@import 'partials/masonry';
 @import 'partials/widgets';
 @import 'partials/generic-containers';
 @import 'partials/icons';
 @import 'partials/loaders';
 @import 'partials/topbar-customizations';
+@import 'partials/callout-customizations';
 @import 'partials/backgrounds';
 @import 'partials/orbit';
 @import 'partials/off-canvas';
 @import 'partials/buttons';
-
-.callout.alert{
-    background-color: transparent;
-    border-color: $alert-color;
-    // border-width: 3px;
-    color: $alert-color;
-}
 
 .hero{
     padding: 50px 0;
