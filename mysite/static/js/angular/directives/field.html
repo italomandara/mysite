@@ -1,8 +1,0 @@
-<label ng-class="form[name].$invalid && submitted ? 'is-invalid-label' :''">
-	<span ng-bind-html="field.required ? field.label + '&nbsp;<span>*</span> ' : field.label"></span>
-	<input name="{{ name }}" ng-pattern="field.pattern" ng-class="form[name].$invalid && submitted ? 'is-invalid-input' :''" ng-if="field.type !== 'textarea' && !field.read_only" type="{{field.type === 'string' ? 'text' : field.type}}" ng-required="field.required" ng-model="model[name]">
-	<textarea name="{{ name }}" ng-pattern="field.pattern" ng-class="form[name].$invalid && submitted ? 'is-invalid-input' :''" ng-if="field.type === 'textarea' && !field.read_only" ng-model="model[name]" ng-required="field.required"></textarea>
-	<span ng-class="form[name].$invalid && submitted ? 'is-visible' :''" class="form-error">
-		{{ error }}
-	</span>
-</label>

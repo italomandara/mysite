@@ -1,0 +1,29 @@
+{% load static from staticfiles %}
+{% load compress %}
+{% load sass_tags %}
+
+<!DOCTYPE html>
+<html id="app">
+	<head>
+		{% compress js %}
+			<script type="text/javascript" src="{% static 'js/jquery.js' %}"></script>
+			<script type="text/javascript" src="{% static 'js/lazyload.js' %}"></script>
+		{% endcompress %}
+		{% verbatim %}
+		<meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<title>{{ nav.page.title }} | Italo Mandara cv</title>
+		<meta name="description" content="{{ nav.page.description }}">
+		{% endverbatim %}
+		<link href="https://fonts.googleapis.com/css?family=Roboto:300,300italic,700|Oswald" rel="stylesheet" />
+		<link href="{% sass_src 'scss/app_ng.scss' %}" rel="stylesheet" type="text/css" />
+		<link rel="icon" href="{% static "favicon.ico" %}" type="image/x-icon">
+	</head>
+	<body>
+		<div class="off-canvas-wrapper">
+		</div>
+	</body>
+</html>
+
+
