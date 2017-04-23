@@ -62,10 +62,7 @@ def index_vue(request):
 	else:
 		template = loader.get_template('home/index_vue.html')
 
-	context = {
-		'settings': {'FILEPICKER_API_KEY': settings.FILEPICKER_API_KEY},
-	}
-	return HttpResponse(template.render(context,request))
+	return HttpResponse(template.render({},request))
 
 def more(request):
 	template = loader.get_template('home/more.html')

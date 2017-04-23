@@ -3,10 +3,18 @@
 {% load sass_tags %}
 
 <!DOCTYPE html>
-<html id="app">
+<html>
 	<head>
+		<link rel="icon" href="{% static "favicon.ico" %}" type="image/x-icon">
 		<link href="https://fonts.googleapis.com/css?family=Roboto:300,300italic,700|Oswald" rel="stylesheet" />
 		<link href="{% sass_src 'scss/app.scss' %}" rel="stylesheet" type="text/css" />
+	</head>
+	<body>
+		<div id="app" class="off-canvas-wrapper">
+			{% verbatim %}
+				<p>{{ message }}</p>
+			{% endverbatim %}
+		</div>
 		{% compress js %}
 			<script type="text/javascript" src="{% static 'js/jquery.js' %}"></script>
 			<script type="text/javascript" src="{% static 'js/foundation/foundation.core.js' %}"></script>
@@ -43,18 +51,6 @@
 			<script type="text/javascript" src="{% static 'js/vue2.2.6.js' %}"></script>
 			<script type="text/javascript" src="{% static 'js/vue/app.js' %}"></script>
 		{% endcompress %}
-		{% verbatim %}
-			<meta charset="utf-8">
-			<meta http-equiv="X-UA-Compatible" content="IE=edge">
-			<meta name="viewport" content="width=device-width, initial-scale=1.0">
-			<title>{{ nav.page.title }} | Italo Mandara cv</title>
-			<meta name="description" content="{{ nav.page.description }}">
-		{% endverbatim %}
-		<link rel="icon" href="{% static "favicon.ico" %}" type="image/x-icon">
-	</head>
-	<body>
-		<div class="off-canvas-wrapper">
-		</div>
 	</body>
 </html>
 
