@@ -56,8 +56,12 @@ def index(request):
 
 	return HttpResponse(template.render(context, request))
 
-def index_ng(request):
-	template = loader.get_template('home/index_ng.html')
+def index_vue(request):
+	if settings.DEBUG:
+		template = loader.get_template('home/index_vue_dev.html')
+	else:
+		template = loader.get_template('home/index_vue.html')
+
 	context = {
 		'settings': {'FILEPICKER_API_KEY': settings.FILEPICKER_API_KEY},
 	}
