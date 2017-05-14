@@ -6,17 +6,17 @@
 <html>
 	<head>
 		<link rel="icon" href="{% static 'favicon.ico' %}" type="image/x-icon">
-		{# <link href="https://fonts.googleapis.com/css?family=Roboto:300,300italic,700|Oswald" rel="stylesheet" /> #}
-		{# <link href="{% sass_src 'scss/app.scss' %}" rel="stylesheet" type="text/css" /> #}
 		<link href="{% static 'vue/static/css/app.css' %}" rel="stylesheet" type="text/css" />
 	</head>
 	<body>
 		<div id="app" class="off-canvas-wrapper" >
 		</div>
 	</body>
-	<script type=text/javascript src="{% static 'vue/static/js/manifest.js' %}"></script>
-	<script type=text/javascript src="{% static 'vue/static/js/vendor.js' %}"></script>
-	<script type=text/javascript src="{% static 'vue/static/js/app.js' %}"></script>
+	{% compress js %}
+		<script type=text/javascript src="{% static 'vue/static/js/manifest.js' %}"></script>
+		<script type=text/javascript src="{% static 'vue/static/js/vendor.js' %}"></script>
+		<script type=text/javascript src="{% static 'vue/static/js/app.js' %}"></script>
+	{% endcompress %}
 </html>
 
 
