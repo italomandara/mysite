@@ -35,6 +35,12 @@ else:
     ALLOWED_HOSTS = ["localhost", "127.0.0.1",]
     print os.environ['PRODUCTION'], 'DEBUG', DEBUG, 'assuming we\'re not in production'
 
+CORS_ORIGIN_WHITELIST = (
+    'localhost:8080',
+    '127.0.0.1:8080'
+)
+
+# CORS_ORIGIN_ALLOW_ALL = True
 
 # Application definition
 
@@ -50,6 +56,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'corsheaders',
     'rest_framework',
 ]
 if DEBUG:
@@ -63,6 +70,8 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'corsheaders.middleware.CorsMiddleware',
+    'django.middleware.common.CommonMiddleware',
     # 'whitenoise.middleware.WhiteNoiseMiddleware',
 ]
 
