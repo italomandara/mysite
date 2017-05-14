@@ -57,10 +57,7 @@ def index(request):
 	return HttpResponse(template.render(context, request))
 
 def index_vue(request):
-	if settings.DEBUG:
-		template = loader.get_template('home/index_vue_dev.html')
-	else:
-		template = loader.get_template('home/index_vue.html')
+	template = loader.get_template('home/index_vue.html')
 
 	return HttpResponse(template.render({},request))
 

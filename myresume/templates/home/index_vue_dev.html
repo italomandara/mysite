@@ -7,52 +7,15 @@
 	<head>
 		<link rel="icon" href="{% static "favicon.ico" %}" type="image/x-icon">
 		<link href="https://fonts.googleapis.com/css?family=Roboto:300,300italic,700|Oswald" rel="stylesheet" />
-		<link href="{% sass_src 'scss/app.scss' %}" rel="stylesheet" type="text/css" />
+		{# <link href="{% sass_src 'scss/app.scss' %}" rel="stylesheet" type="text/css" /> #}
 	</head>
 	<body>
 		<div id="app" class="off-canvas-wrapper">
-			{% verbatim %}
-				<p>{{ message }}</p>
-			{% endverbatim %}
 		</div>
-		{% compress js %}
-			<script type="text/javascript" src="{% static 'js/jquery.js' %}"></script>
-			<script type="text/javascript" src="{% static 'js/foundation/foundation.core.js' %}"></script>
-			<script type="text/javascript" src="{% static 'js/foundation/foundation.abide.js' %}"></script>
-			<script type="text/javascript" src="{% static 'js/foundation/foundation.accordion.js' %}"></script>
-			<script type="text/javascript" src="{% static 'js/foundation/foundation.accordionMenu.js' %}"></script>
-			<script type="text/javascript" src="{% static 'js/foundation/foundation.drilldown.js' %}"></script>
-			<script type="text/javascript" src="{% static 'js/foundation/foundation.dropdown.js' %}"></script>
-			<script type="text/javascript" src="{% static 'js/foundation/foundation.dropdownMenu.js' %}"></script>
-			<script type="text/javascript" src="{% static 'js/foundation/foundation.equalizer.js' %}"></script>
-			<script type="text/javascript" src="{% static 'js/foundation/foundation.interchange.js' %}"></script>
-			<script type="text/javascript" src="{% static 'js/foundation/foundation.magellan.js' %}"></script>
-			<script type="text/javascript" src="{% static 'js/foundation/foundation.offcanvas.js' %}"></script>
-			<script type="text/javascript" src="{% static 'js/foundation/foundation.orbit.js' %}"></script>
-			<script type="text/javascript" src="{% static 'js/foundation/foundation.responsiveMenu.js' %}"></script>
-			<script type="text/javascript" src="{% static 'js/foundation/foundation.responsiveToggle.js' %}"></script>
-			<script type="text/javascript" src="{% static 'js/foundation/foundation.reveal.js' %}"></script>
-			<script type="text/javascript" src="{% static 'js/foundation/foundation.slider.js' %}"></script>
-			<script type="text/javascript" src="{% static 'js/foundation/foundation.sticky.js' %}"></script>
-			<script type="text/javascript" src="{% static 'js/foundation/foundation.tabs.js' %}"></script>
-			<script type="text/javascript" src="{% static 'js/foundation/foundation.toggler.js' %}"></script>
-			<script type="text/javascript" src="{% static 'js/foundation/foundation.tooltip.js' %}"></script>
-			<script type="text/javascript" src="{% static 'js/foundation/foundation.util.box.js' %}"></script>
-			<script type="text/javascript" src="{% static 'js/foundation/foundation.util.keyboard.js' %}"></script>
-			<script type="text/javascript" src="{% static 'js/foundation/foundation.util.mediaQuery.js' %}"></script>
-			<script type="text/javascript" src="{% static 'js/foundation/foundation.util.motion.js' %}"></script>
-			<script type="text/javascript" src="{% static 'js/foundation/foundation.util.nest.js' %}"></script>
-			<script type="text/javascript" src="{% static 'js/foundation/foundation.util.timerAndImageLoader.js' %}"></script>
-			<script type="text/javascript" src="{% static 'js/foundation/foundation.util.touch.js' %}"></script>
-			<script type="text/javascript" src="{% static 'js/foundation/foundation.util.triggers.js' %}"></script>
-			<script type="text/javascript" src="{% static 'js/foundation/foundation.zf.responsiveAccordionTabs.js' %}"></script>
-			<script type="text/javascript" src="{% static 'js/what-input.js' %}"></script>
-			<script type="text/javascript" src="{% static 'js/lazyload.js' %}"></script>
-			<script type="text/javascript" src="{% static 'js/vue/lib/vue2.2.6.js' %}"></script>
-			<script type="text/javascript" src="{% static 'js/vue/lib/vue2-filters.min.js' %}"></script>
-			<script type="text/javascript" src="{% static 'js/vue/lib/vue-router.min.js' %}"></script>
-			<script type="text/javascript" src="{% static 'js/vue/app.js' %}"></script>
-		{% endcompress %}
+
+		<script type="text/javascript" src="{% static 'js/vue/static/js/manifest.d134fed4fc6c0028b9e3.js' %}"></script>
+		<script type="text/javascript" src="{% static 'js/vue/static/js/vendor.d342f1b6a51b96dd6b21.js' %}"></script>
+		<script type="text/javascript" src="{% static 'js/vue/static/js/app.ad52d7e09ccff816be89.js' %}"></script>
 	</body>
 </html>
 
