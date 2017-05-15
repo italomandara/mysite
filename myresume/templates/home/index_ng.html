@@ -5,44 +5,46 @@
 <!DOCTYPE html>
 <html id="app" disabled-ng-app="myResume">
 	<head>
+	<link href="{% sass_src 'scss/app.scss' %}" rel="stylesheet" type="text/css" />
 		{% compress js %}
 			<script type="text/javascript" src="{% static 'js/jquery.js' %}"></script>
-			<script type="text/javascript" src="{% static 'js/angular/angular.js' %}"></script>
-			<script type="text/javascript" src="{% static 'js/angular/marked.js' %}"></script>
-			<script type="text/javascript" src="{% static 'js/angular/angular-deferred-bootstrap.js' %}"></script>		
-			<script type="text/javascript" src="{% static 'js/angular/angular-animate.js' %}"></script>
-			<script type="text/javascript" src="{% static 'js/angular/angular-foundation.js' %}"></script>
-			<script type="text/javascript" src="{% static 'js/angular/angular-touch.js' %}"></script>
-			<script type="text/javascript" src="{% static 'js/angular/angular-ui-router.js' %}"></script>
-			<script type="text/javascript" src="{% static 'js/angular/angular-sanitize.js' %}"></script>
-			<script type="text/javascript" src="{% static 'js/angular/config.js' %}"></script>
-			<script type="text/javascript" src="{% static 'js/angular/app.js' %}"></script>
-			<script type="text/javascript" src="{% static 'js/angular/directives/_directives.js' %}"></script>
-			<script type="text/javascript" src="{% static 'js/angular/directives/course.js' %}"></script>
-			<script type="text/javascript" src="{% static 'js/angular/directives/field.js' %}"></script>
-			<script type="text/javascript" src="{% static 'js/angular/directives/row.js' %}"></script>
-			<script type="text/javascript" src="{% static 'js/angular/directives/error.js' %}"></script>
-			<script type="text/javascript" src="{% static 'js/angular/directives/job.js' %}"></script>
-			<script type="text/javascript" src="{% static 'js/angular/directives/post.js' %}"></script>
-			<script type="text/javascript" src="{% static 'js/angular/directives/skill.js' %}"></script>
-			<script type="text/javascript" src="{% static 'js/angular/controllers/controllers.js' %}"></script>
-			<script type="text/javascript" src="{% static 'js/lazyload.js' %}"></script>
-
+			<script type="text/javascript" src="{% static 'js/foundation/foundation.core.js' %}"></script>
+			<script type="text/javascript" src="{% static 'js/foundation/foundation.abide.js' %}"></script>
+			<script type="text/javascript" src="{% static 'js/foundation/foundation.accordion.js' %}"></script>
+			<script type="text/javascript" src="{% static 'js/foundation/foundation.accordionMenu.js' %}"></script>
+			<script type="text/javascript" src="{% static 'js/foundation/foundation.drilldown.js' %}"></script>
+			<script type="text/javascript" src="{% static 'js/foundation/foundation.dropdown.js' %}"></script>
+			<script type="text/javascript" src="{% static 'js/foundation/foundation.dropdownMenu.js' %}"></script>
+			<script type="text/javascript" src="{% static 'js/foundation/foundation.equalizer.js' %}"></script>
+			<script type="text/javascript" src="{% static 'js/foundation/foundation.interchange.js' %}"></script>
+			<script type="text/javascript" src="{% static 'js/foundation/foundation.magellan.js' %}"></script>
+			<script type="text/javascript" src="{% static 'js/foundation/foundation.offcanvas.js' %}"></script>
+			<script type="text/javascript" src="{% static 'js/foundation/foundation.orbit.js' %}"></script>
+			<script type="text/javascript" src="{% static 'js/foundation/foundation.responsiveMenu.js' %}"></script>
+			<script type="text/javascript" src="{% static 'js/foundation/foundation.responsiveToggle.js' %}"></script>
+			<script type="text/javascript" src="{% static 'js/foundation/foundation.reveal.js' %}"></script>
+			<script type="text/javascript" src="{% static 'js/foundation/foundation.slider.js' %}"></script>
+			<script type="text/javascript" src="{% static 'js/foundation/foundation.sticky.js' %}"></script>
+			<script type="text/javascript" src="{% static 'js/foundation/foundation.tabs.js' %}"></script>
+			<script type="text/javascript" src="{% static 'js/foundation/foundation.toggler.js' %}"></script>
+			<script type="text/javascript" src="{% static 'js/foundation/foundation.tooltip.js' %}"></script>
+			<script type="text/javascript" src="{% static 'js/foundation/foundation.util.box.js' %}"></script>
+			<script type="text/javascript" src="{% static 'js/foundation/foundation.util.keyboard.js' %}"></script>
+			<script type="text/javascript" src="{% static 'js/foundation/foundation.util.mediaQuery.js' %}"></script>
+			<script type="text/javascript" src="{% static 'js/foundation/foundation.util.motion.js' %}"></script>
+			<script type="text/javascript" src="{% static 'js/foundation/foundation.util.nest.js' %}"></script>
+			<script type="text/javascript" src="{% static 'js/foundation/foundation.util.timerAndImageLoader.js' %}"></script>
+			<script type="text/javascript" src="{% static 'js/foundation/foundation.util.touch.js' %}"></script>
+			<script type="text/javascript" src="{% static 'js/foundation/foundation.util.triggers.js' %}"></script>
+			<script type="text/javascript" src="{% static 'js/foundation/foundation.zf.responsiveAccordionTabs.js' %}"></script>
+			<script type="text/javascript" src="{% static 'js/what-input.js' %}"></script>
+			<script type="text/javascript" src="{% static 'js/nunjucks.js' %}"></script>
+			<script type="text/javascript" src="{% static 'js/settings.js' %}"></script>
+			<script type="text/javascript" src="{% static 'js/templatetags.js' %}"></script>
+			<script type="text/javascript" src="{% static 'js/views.js' %}"></script>
 		{% endcompress %}
-		{% verbatim %}
-		<meta charset="utf-8">
-		<meta http-equiv="X-UA-Compatible" content="IE=edge">
-		<meta name="viewport" content="width=device-width, initial-scale=1.0">
-		<title>{{ nav.page.title }} | Italo Mandara cv</title>
-		<meta name="description" content="{{ nav.page.description }}">
-		{% endverbatim %}
-		<link href="https://fonts.googleapis.com/css?family=Roboto:300,300italic,700|Oswald" rel="stylesheet" />
-		<link href="{% sass_src 'scss/app_ng.scss' %}" rel="stylesheet" type="text/css" />
-		<link rel="icon" href="{% static "favicon.ico" %}" type="image/x-icon">
 	</head>
 	<body>
-		<div class="off-canvas-wrapper" ng-include="'static/js/angular/templates/base.html'">
-		</div>
 	</body>
 </html>
 

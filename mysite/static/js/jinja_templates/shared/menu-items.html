@@ -1,0 +1,22 @@
+<li>
+    <a href="index">Home</a>
+</li>
+<li>
+    <a href="more">More</a>
+</li>
+<li style="position:relative" role="menuitem" class="is-dropdown-submenu-parent opens-right" aria-haspopup="true" aria-expanded="false" aria-label="Thoughts">
+	<a href="thoughts">Thoughts</a>
+	{% if postcategories %}
+	<ul class="menu vertical submenu nested">
+		{% if is_accordion %}
+			<li><a href="thoughts">Thoughts</a></li>
+		{% endif %}
+		{% for postcategory in postcategories %}
+			<li><a href="">{{ postcategory.name }}</a></li>
+		{% endfor %}
+	</ul>
+	{% endif %}
+</li>
+<li>
+    <a href="#" >Contact</a>
+</li>

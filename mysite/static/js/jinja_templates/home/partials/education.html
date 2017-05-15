@@ -1,0 +1,9 @@
+<div class="category-{{ school.get_skill_category }} subcategory-{{ school.subcategory }}">
+	<p class="set-text-color to-gray margin bottom none"><small>{{ school.start_date|date:"Y" }} - {{ school.end_date|date:"Y" }}</small></p>
+	<strong>{{ school.title }}</strong>
+	<p class="margin none">{{ school.description }}</p>
+	<p class="set-text-color to-gray"><small><em>{{ school.location }}</em></small></p>
+	<p>
+		<span class="secondary label">{{ school.get_course_category }}</span>
+	</p>
+</div>

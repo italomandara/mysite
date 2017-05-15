@@ -1,0 +1,17 @@
+<div class="row">
+	{# {% if skills_list|length %} #}
+		<h4 class="margin bottom set-text-color to-white">Skills list</h4>
+		{% for skillcategory in skillcategories %}
+			<a href="#" class="button filter small secondary">{{ skillcategory.name }}</a>
+		{% endfor %}
+		{% for skillsubcategory in skillsubcategories %}
+			<a href="#" class="button filter small secondary">{{ skillsubcategory.name }}</a>
+		{% endfor %}
+			<a href="#" class="button filter small secondary active" data-filter="none">All</a>
+		<div class="masonry small-masonry-1 medium-masonry-2 large-masonry-4">
+			{% for skill in skillslist %}
+				{% include 'home/partials/skill.html' %}
+			{% endfor %}
+		</div>
+	{# {% endif %} #}
+</div>

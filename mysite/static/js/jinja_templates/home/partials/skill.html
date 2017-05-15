@@ -1,0 +1,16 @@
+{# {% load i18n %} #}
+
+<div class="js-filter filter size-filter category-{{ skill.getskillcategory | slugify }} subcategory-{{ skill.subcategory | slugify }}">
+	<div class="widget secondary large">
+		<h5><i class="{{ skill.icon }}"></i>{{ skill.name }}</h5>
+		<p>{{ skill.description }}</p>
+		<p class="margin bottom">
+			<span class="secondary label">{{ getSkillCategory(skill.category) }}</span>
+			<span class="secondary label">{{ skill.subcategory }}</span>
+		</p>
+		<p class="xsmall margin bottom">{% trans "proficiency" %}:</p>
+		<div class="progress" role="progressbar" tabindex="0" >
+			<div class="progress-meter" style="width: {{ skill.rating }}0%"></div>
+		</div>
+	</div>
+</div>

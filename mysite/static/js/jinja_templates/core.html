@@ -1,0 +1,35 @@
+
+
+
+		{% block outerBody %}
+		{% endblock %}
+		{% block modals %}
+			{% set contactform="Contact form" %}
+			{% set modal_id="contact" %}
+			{% set modal_title=contactform %}
+			{% set modal_content="forms/contact-form.html" %}
+			{# {% include 'shared/modal.html' %}	 #}
+			{% set contactformok="Contact request sent" %}
+			{% set modal_id="contact-thank-you" %}
+			{% set extra_classes="tiny text-center" %}
+			{% set modal_title=contactformok %}
+			{% set modal_content="modals/contact-thank-you.html" %}
+			{# {% include 'shared/modal.html' %} #}
+			{% set icons_text="Icons" %}
+			{% set modal_id="icons" %}
+			{% set extra_classes="medium text-center" %}
+			{% set modal_title=icons_text %}
+			{# {% include 'shared/modal.html' %} #}
+		{% endblock %}
+		{% block footerCss %}
+			<link href="https://fonts.googleapis.com/css?family=Roboto:300,300italic,700|Oswald" rel="stylesheet" />
+		{% endblock %}
+		{% block footerJs %}
+			{# {% compress js %} #}
+				<script type="text/javascript" src="static/js/jquery.lazyload.js"/>
+				{# <script type="text/javascript" src="static/js/app.js"/> #}
+			{# {% endcompress %} #}
+		{% endblock %}
+
+
+

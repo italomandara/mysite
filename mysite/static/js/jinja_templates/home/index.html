@@ -1,0 +1,35 @@
+{# {% extends 'base.html' %} #}
+
+{% block headCss %}
+	{{ block.super }}
+	{# {% compress css %} #}
+		<style>
+			#hero{
+				background-image: url({{ intro.image_primary }});
+				background-position: center center;
+			}
+		</style>
+	{# {% endcompress %} #}
+{% endblock %}
+
+{% block hero %}
+    {% include 'shared/hero.html' %}
+{% endblock %}
+
+{% block body %}
+	<div class="row">
+		<div class="medium-masonry-1 large-masonry-3 margin bottom top">{{ intro.body }}</div>
+		{# {% if profile %} #}
+			{% set mycontent=profile %}
+			{% include 'home/partials/row.html' %}
+		}
+		{# {% endif %}		 #}
+	</div>
+	<div class="background background-color-1 pad pad-top margin top">
+		{% include 'home/partials/skillslist.html' %}
+	</div>
+	<div class="background background-color-2 pad pad-top">
+		{% include 'home/partials/jobhistory.html' %}
+	</div>
+
+{% endblock %}
