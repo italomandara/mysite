@@ -139,36 +139,6 @@ USE_L10N = True
 
 USE_TZ = True
 
-
-# Update database configuration with $DATABASE_URL.
-db_from_env = dj_database_url.config()
-DATABASES['default'].update(db_from_env)
-
-# Simplified static file serving.
-# https://warehouse.python.org/project/whitenoise/
-
-# django filepicker
-FILEPICKER_API_KEY = os.environ['FILEPICKER_API_KEY']
-FILEPICKER_API_SECRET = os.environ['FILEPICKER_API_SECRET']
-CWD = os.getcwd()
-MEDIA_ROOT = os.path.join(CWD, 'media')
-
-
-# Static files (CSS, JavaScript, Images)
-# https://docs.djangoproject.com/en/1.8/howto/static-files/
-
-STATIC_ROOT = os.path.join(PROJECT_ROOT, 'staticfiles')
-STATIC_URL = '/static/'
-
-# Extra places for collectstatic to find static files.
-STATICFILES_DIRS = (
-    os.path.join(PROJECT_ROOT, 'static'),
-)
-
-# Simplified static file serving.
-# https://warehouse.python.org/project/whitenoise/
-STATICFILES_STORAGE = 'whitenoise.django.GzipManifestStaticFilesStorage'
-
 if DEBUG:
     REST_FRAMEWORK_RENDERERS = (
             'rest_framework.renderers.JSONRenderer',
@@ -207,3 +177,33 @@ LOGGING = {
         },
     },
 }
+
+# Update database configuration with $DATABASE_URL.
+db_from_env = dj_database_url.config()
+DATABASES['default'].update(db_from_env)
+
+# Simplified static file serving.
+# https://warehouse.python.org/project/whitenoise/
+
+# django filepicker
+FILEPICKER_API_KEY = os.environ['FILEPICKER_API_KEY']
+FILEPICKER_API_SECRET = os.environ['FILEPICKER_API_SECRET']
+CWD = os.getcwd()
+MEDIA_ROOT = os.path.join(CWD, 'media')
+MEDIA_URL = '/media/'
+
+
+# Static files (CSS, JavaScript, Images)
+# https://docs.djangoproject.com/en/1.8/howto/static-files/
+
+STATIC_ROOT = os.path.join(PROJECT_ROOT, 'staticfiles')
+STATIC_URL = '/static/'
+
+# Extra places for collectstatic to find static files.
+STATICFILES_DIRS = (
+    os.path.join(PROJECT_ROOT, 'static'),
+)
+
+# Simplified static file serving.
+# https://warehouse.python.org/project/whitenoise/
+STATICFILES_STORAGE = 'whitenoise.django.GzipManifestStaticFilesStorage'
