@@ -48,15 +48,15 @@ INSTALLED_APPS = [
     'captcha',
     'myresume.apps.MyresumeConfig',
     'django_markup',
-    'compressor',
-    'sass_processor',
+    # 'compressor',
+    # 'sass_processor',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'corsheaders',
+    # 'corsheaders',
     'rest_framework',
 ]
 if DEBUG:
@@ -172,11 +172,10 @@ STATIC_URL = '/static/'
 STATICFILES_FINDERS = (
     'django.contrib.staticfiles.finders.FileSystemFinder',
     'django.contrib.staticfiles.finders.AppDirectoriesFinder',
-    'compressor.finders.CompressorFinder',
 )
 
 # media urls
-# MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 MEDIA_URL = '/media/'
 
 
@@ -195,7 +194,7 @@ SASS_PRECISION = 8
 # COMPRESS_ROOT = STATIC_ROOT
 # COMPRESS_URL = STATIC_URL
 SASS_PROCESSOR_ENABLED = True
-COMPRESS_CSS_FILTERS = ['compressor.filters.cssmin.rCSSMinFilter']
+# COMPRESS_CSS_FILTERS = ['compressor.filters.cssmin.rCSSMinFilter']
 # COMPRESS_OFFLINE = not DEBUG
 
 GZIP_CONTENT_TYPES = (
@@ -205,15 +204,15 @@ GZIP_CONTENT_TYPES = (
     'text/javascript'
 )
 
-COMPRESS_STORAGE = 'compressor.storage.GzipCompressorFileStorage'
+# COMPRESS_STORAGE = 'compressor.storage.GzipCompressorFileStorage'
 
 
-if DEBUG:
+# if DEBUG:
     #sass processor
-    SASS_OUTPUT_STYLE = 'nested'
-else:   
+    # SASS_OUTPUT_STYLE = 'nested'
+# else:   
     #sass processor
-    SASS_OUTPUT_STYLE = 'compressed'
+    # SASS_OUTPUT_STYLE = 'compressed'
 
 # Simple Captcha
 CAPTCHA_CHALLENGE_FUNCT = 'captcha.helpers.math_challenge'
