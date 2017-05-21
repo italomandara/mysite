@@ -40,23 +40,18 @@ CORS_ORIGIN_WHITELIST = (
     '127.0.0.1:8080'
 )
 
-# CORS_ORIGIN_ALLOW_ALL = True
-
 # Application definition
 
 INSTALLED_APPS = [
     'captcha',
     'myresume.apps.MyresumeConfig',
     'django_markup',
-    # 'compressor',
-    # 'sass_processor',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    # 'corsheaders',
     'rest_framework',
 ]
 if DEBUG:
@@ -164,9 +159,9 @@ MEDIA_ROOT = os.path.join(CWD, 'media')
 
 PROJECT_ROOT = os.path.dirname(os.path.abspath(__file__))
 
-# STATICFILES_STORAGE = 'whitenoise.django.GzipManifestStaticFilesStorage'
-STATICFILES_STORAGE = 'django.contrib.staticfiles.storage.ManifestStaticFilesStorage'
-STATIC_ROOT = os.path.join(BASE_DIR, "staticfiles")
+STATICFILES_STORAGE = 'whitenoise.django.GzipManifestStaticFilesStorage'
+# STATICFILES_STORAGE = 'django.contrib.staticfiles.storage.ManifestStaticFilesStorage'
+STATIC_ROOT = os.path.join(PROJECT_ROOT, "staticfiles")
 STATIC_URL = '/static/'
 
 STATICFILES_FINDERS = (
@@ -175,7 +170,7 @@ STATICFILES_FINDERS = (
 )
 
 # media urls
-MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+MEDIA_ROOT = os.path.join(PROJECT_ROOT, 'media')
 MEDIA_URL = '/media/'
 
 
@@ -184,40 +179,12 @@ STATICFILES_DIRS = [
     os.path.join(PROJECT_ROOT, 'static'),
 ]
 
-# sass processor settings
-# SASS_PROCESSOR_ROOT = os.path.join(ROOT_PATH, 'static')
-SASS_PRECISION = 8
-
-# compressor
-# COMPRESS_ENABLED = DEBUG
-# COMPRESS_STORAGE = STATICFILES_STORAGE
-# COMPRESS_ROOT = STATIC_ROOT
-# COMPRESS_URL = STATIC_URL
-SASS_PROCESSOR_ENABLED = True
-# COMPRESS_CSS_FILTERS = ['compressor.filters.cssmin.rCSSMinFilter']
-# COMPRESS_OFFLINE = not DEBUG
-
 GZIP_CONTENT_TYPES = (
     'text/css',
     'application/javascript',
     'application/x-javascript',
     'text/javascript'
 )
-
-# COMPRESS_STORAGE = 'compressor.storage.GzipCompressorFileStorage'
-
-
-# if DEBUG:
-    #sass processor
-    # SASS_OUTPUT_STYLE = 'nested'
-# else:   
-    #sass processor
-    # SASS_OUTPUT_STYLE = 'compressed'
-
-# Simple Captcha
-CAPTCHA_CHALLENGE_FUNCT = 'captcha.helpers.math_challenge'
-CAPTCHA_NOISE_FUNCTIONS = ('captcha.helpers.noise_null',)
-CAPTCHA_FOREGROUND_COLOR = '#CCCCCC'
 
 if DEBUG:
     REST_FRAMEWORK_RENDERERS = (
