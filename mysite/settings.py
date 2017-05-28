@@ -188,6 +188,7 @@ DATABASES['default'].update(db_from_env)
 # django filepicker
 FILEPICKER_API_KEY = os.environ['FILEPICKER_API_KEY']
 FILEPICKER_API_SECRET = os.environ['FILEPICKER_API_SECRET']
+MARVEL_PUBLIC_KEY = os.environ['MARVEL_PUBLIC_KEY']
 CWD = os.getcwd()
 MEDIA_ROOT = os.path.join(CWD, 'media')
 MEDIA_URL = '/media/'

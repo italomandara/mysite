@@ -82,6 +82,7 @@ class SettingsViewSet(APIView):
 		result = {
 			'STATIC_ROOT': static(''),
 			'FILEPICKER_API_KEY': settings.FILEPICKER_API_KEY,
+			'MARVEL_PUBLIC_KEY': settings.MARVEL_PUBLIC_KEY,
 		}
 		response = Response(result, status=status.HTTP_200_OK)
 		return response
